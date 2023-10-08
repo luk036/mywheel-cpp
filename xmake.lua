@@ -15,7 +15,7 @@ if is_plat("linux") then
 end
 
 
-target("test_xnetwork")
+target("test_mywheel")
     set_kind("binary")
     add_includedirs("include", {public = true})
     add_includedirs("../py2cpp/include", {public = true})

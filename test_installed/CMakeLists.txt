@@ -9,7 +9,7 @@ if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
   )
 endif()
 
-project(XNetwork LANGUAGES CXX)
+project(MyWheel LANGUAGES CXX)
 
 # --- Import tools ----
 

@@ -2,23 +2,23 @@
 
 #include <string>
 
-namespace xnetwork {
+namespace mywheel {
 
-    /**  Language codes to be used with the XNetwork class */
+    /**  Language codes to be used with the Py2Cpp class */
     enum class LanguageCode { EN, DE, ES, FR };
 
     /**
      * @brief A class for saying hello in multiple languages
      */
-    class XNetwork {
+    class MyWheel {
         std::string name;
 
       public:
         /**
-         * @brief Creates a new xn
+         * @brief Creates a new MyWheel
          * @param name the name to greet
          */
-        XNetwork(std::string name);
+        MyWheel(std::string name);
 
         /**
          * @brief Creates a localized string containing the greeting
@@ -28,4 +28,4 @@ namespace xnetwork {
         std::string greet(LanguageCode lang = LanguageCode::EN) const;
     };
 
-}  // namespace xnetwork
+}  // namespace mywheel

@@ -1,11 +1,11 @@
 #include <fmt/format.h>
-#include <xnetwork/greeter.h>
+#include <mywheel/greeter.h>
 
-using namespace xnetwork;
+using namespace mywheel;
 
-XNetwork::XNetwork(std::string _name) : name(std::move(_name)) {}
+MyWheel::MyWheel(std::string _name) : name(std::move(_name)) {}
 
-std::string XNetwork::greet(LanguageCode lang) const {
+std::string MyWheel::greet(LanguageCode lang) const {
     switch (lang) {
         default:
         case LanguageCode::EN:

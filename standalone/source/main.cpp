@@ -1,5 +1,5 @@
-#include <xnetwork/greeter.h>
-#include <xnetwork/version.h>
+#include <mywheel/greeter.h>
+#include <mywheel/version.h>
 
 #include <cxxopts.hpp>
 #include <iostream>
@@ -7,11 +7,11 @@
 #include <unordered_map>
 
 auto main(int argc, char **argv) -> int {
-    const std::unordered_map<std::string, xnetwork::LanguageCode> languages{
-        {"en", xnetwork::LanguageCode::EN},
-        {"de", xnetwork::LanguageCode::DE},
-        {"es", xnetwork::LanguageCode::ES},
-        {"fr", xnetwork::LanguageCode::FR},
+    const std::unordered_map<std::string, mywheel::LanguageCode> languages{
+        {"en", mywheel::LanguageCode::EN},
+        {"de", mywheel::LanguageCode::DE},
+        {"es", mywheel::LanguageCode::ES},
+        {"fr", mywheel::LanguageCode::FR},
     };
 
     cxxopts::Options options(*argv, "A program to welcome the world!");
@@ -36,7 +36,7 @@ auto main(int argc, char **argv) -> int {
     }
 
     if (result["version"].as<bool>()) {
-        std::cout << "XNetwork, version " << XNETWORK_VERSION << std::endl;
+        std::cout << "MyWheel, version " << MYWHEEL_VERSION << std::endl;
         return 0;
     }
 
@@ -46,8 +46,8 @@ auto main(int argc, char **argv) -> int {
         return 1;
     }
 
-    // xnetwork::XNetwork xnetwork(name);
-    // std::cout << xnetwork.greet(langIt->second) << std::endl;
+    // mywheel::MyWheel mywheel(name);
+    // std::cout << mywheel.greet(langIt->second) << std::endl;
 
     return 0;
 }

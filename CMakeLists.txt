@@ -8,7 +8,7 @@ option(INSTALL_ONLY "Enable for installation only" OFF)
 
 # Note: update this to your new project's name and version
 project(
-  XNetwork
+  MyWheel
   VERSION 1.6.7
   LANGUAGES CXX
 )
