@@ -4,30 +4,41 @@
 #include <cassert>
 #include <cstddef>
 #include <utility>
-// #include <range/v3/view/repeat_n.hpp>
-// #include <type_traits>
 
-// template <typename Val> inline auto get_repeat_array(const Val& a,
-// std::ptrdiff_t n) {
-//     using repeat_n_return_type = decltype(ranges::views::repeat_n(a, n));
+class RepeatArray {
+  private:
+    int _value;
+    size_t _size;
 
-//     struct iterable_wrapper : public repeat_n_return_type {
-//       public:
-//         using value_type [[maybe_unused]] = Val;   // luk:
-//         using key_type [[maybe_unused]] = size_t;  // luk:
+  public:
+    RepeatArray(int value, size_t size) : _value{value}, _size{size} {}
 
-//         iterable_wrapper(repeat_n_return_type&& base)
-//             : repeat_n_return_type{std::forward<repeat_n_return_type>(base)}
-//             {}
+    int operator[](int index) { return _value; }
 
-//         auto operator[](const std::any& /* don't care */) const -> const Val&
-//         {
-//             return *this->begin();
-//         }
-//     };
+    size_t size() { return _size; }
 
-//     return iterable_wrapper{ranges::views::repeat_n(a, n)};
-// }
+    class Iterator {
+      private:
+        int _value;
+        size_t _count = 0;
+
+      public:
+        Iterator(int value, size_t count) : _value{value}, _count{count} {}
+
+        bool operator!=(const Iterator &other) const { return _count != other._count; }
+
+        int operator*() const { return _value; }
+
+        Iterator &operator++() {
+            _count++;
+            return *this;
+        }
+    };
+
+    Iterator begin() { return Iterator(_value, 0); }
+
+    Iterator end() { return Iterator(_value, _size); }
+};
 
 /**
  * @brief
