@@ -1,9 +1,8 @@
 #pragma once
 
-#include <vector>
-
 #include <py2cpp/enumerate.hpp>
 #include <py2cpp/range.hpp>
+#include <vector>
 
 namespace py {
 
@@ -182,15 +181,3 @@ namespace py {
     };
 
 }  // namespace py
-
-// int main() {
-//   Lict<int> a(std::vector<int>(8, 0));
-//   for (int i : a) {
-//     a[i] = i * i;
-//   }
-//   for (auto i : a) {
-//     std::cout << i << ": " << a[i] << std::endl;
-//   }
-//   std::cout << a.__contains__(3) << std::endl;
-//   return 0;
-// }

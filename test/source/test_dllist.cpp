@@ -1,9 +1,9 @@
 #include <doctest/doctest.h>  // for ResultBuilder, CHECK, Expr...
 // #include <__config>                        // for std
-#include <cinttypes>          // for uint8_t
+#include <cinttypes>           // for uint8_t
 #include <mywheel/dllist.hpp>  // for Dllist, DllIterator, oper...
 #include <mywheel/robin.hpp>   // for Robin, fun::Robin<>::iterable_w...
-#include <utility>            // for pair
+#include <utility>             // for pair
 
 using namespace std;
 
@@ -26,7 +26,7 @@ TEST_CASE("Test dllist") {
     CHECK(!L2.is_empty());
 
     auto count = 0U;
-    for (auto &_d : L2) {
+    for (const auto &_d : L2) {
         static_assert(sizeof _d >= 0, "make compiler happy");
         count += 1;
     }
@@ -36,7 +36,7 @@ TEST_CASE("Test dllist") {
 TEST_CASE("Test Robin") {
     fun::Robin<uint8_t> rr(6U);
     auto count = 0U;
-    for (auto _i : rr.exclude(2)) {
+    for (const auto &_i : rr.exclude(2)) {
         static_assert(sizeof _i >= 0, "make compiler happy");
         count += 1;
     }

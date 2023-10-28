@@ -1,10 +1,10 @@
 #include <doctest/doctest.h>  // for ResultBuilder, CHECK, Expression_lhs
 // #include <__config>            // for std
+#include <cstdint>              // for int32_t, uint32_t
 #include <mywheel/bpqueue.hpp>  // for BPQueue
 #include <mywheel/dllist.hpp>   // for Dllink
-#include <cstdint>             // for int32_t, uint32_t
-#include <utility>             // for pair
-#include <vector>              // for vector
+#include <utility>              // for pair
+#include <vector>               // for vector
 
 using namespace std;
 
@@ -42,15 +42,4 @@ TEST_CASE("Test BPQueue") {
         it.data.second = 2 * i - 10;
         i += 1;
     }
-    // bpq1.appendfrom(nodelist);
-
-    // auto count = 0U;
-    // for ([[maybe_unused]] auto& _ : bpq1)
-    // {
-    //     count += 1;
-    // }
-    // CHECK(count == 10);
-
-    // const vector<uint8_t> a {3, 4, 5, 6};
-    // gsl::span<const uint8_t> s {a};
 }

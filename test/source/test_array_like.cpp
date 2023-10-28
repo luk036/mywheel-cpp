@@ -12,3 +12,15 @@ TEST_CASE("Test RepeatArray") {
     }
     CHECK_EQ(count, arr.size());
 }
+
+TEST_CASE("Test ShiftArray") {
+    ShiftArray arr(std::vector<int>{1, 2, 3, 4, 5});
+    arr.set_start(2);
+    CHECK_EQ(arr[4], 3);
+    // size_t count = 0;
+    // for (auto res : arr.items()) {
+    //     ++count;
+    //     CHECK_EQ(std::get<0>(res), std::get<1>(res) + 1);
+    // }
+    // CHECK_EQ(count, arr.size());
+}
