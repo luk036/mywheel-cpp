@@ -1,10 +1,7 @@
 #pragma once
 
 // #include <any>
-#include <cassert>
 #include <cstddef>
-#include <iostream>
-#include <utility>
 #include <vector>
 
 /* The `RepeatArray` class is a template class that represents an array that repeats its elements.
