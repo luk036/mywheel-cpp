@@ -90,7 +90,6 @@ namespace fun {
              * @return a `RobinIterator<T>` object.
              */
             auto end() const -> RobinIterator<T> { return RobinIterator<T>{node}; }
-            // auto size() const -> size_t { return rr->cycle.size() - 1; }
         };
     }  // namespace detail
 

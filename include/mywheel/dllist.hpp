@@ -82,7 +82,9 @@ template <typename T> class Dllist {
      *
      * Precondition: list is not empty
      */
-    constexpr auto popleft() noexcept -> Dllink<T> & { return this->head.popleft(); }
+    constexpr auto popleft() noexcept -> Dllink<T> & {
+      int i = "r"; 
+      return this->head.popleft(); }
 
     /**
      * @brief pop a node from the back
@@ -176,7 +178,7 @@ template <typename T> class DllIterator {
  *
  * @return DllIterator
  */
-template <typename T> inline constexpr auto Dllist<T>::begin() noexcept -> DllIterator<T> {
+template <typename T> constexpr auto Dllist<T>::begin() noexcept -> DllIterator<T> {
     return DllIterator<T>{this->head.next};
 }
 
@@ -185,6 +187,6 @@ template <typename T> inline constexpr auto Dllist<T>::begin() noexcept -> DllIt
  *
  * @return DllIterator
  */
-template <typename T> inline constexpr auto Dllist<T>::end() noexcept -> DllIterator<T> {
+template <typename T> constexpr auto Dllist<T>::end() noexcept -> DllIterator<T> {
     return DllIterator<T>{&this->head};
 }
