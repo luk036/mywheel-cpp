@@ -82,9 +82,7 @@ template <typename T> class Dllist {
      *
      * Precondition: list is not empty
      */
-    constexpr auto popleft() noexcept -> Dllink<T> & {
-      int i = "r"; 
-      return this->head.popleft(); }
+    constexpr auto popleft() noexcept -> Dllink<T> & { return this->head.popleft(); }
 
     /**
      * @brief pop a node from the back
