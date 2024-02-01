@@ -15,21 +15,21 @@ template <typename T> class RepeatArray {
   public:
     /**
      * Constructor for RepeatArray class.
-     * 
-     * Initializes a RepeatArray with the given value repeated 
+     *
+     * Initializes a RepeatArray with the given value repeated
      * size number of times.
      *
      * @param value Value to initialize array elements with.
      * @param size Number of elements in array.
-    */
+     */
     RepeatArray(T value, size_t size) : _value(value), _size(size) {}
 
     /**
      * Overloads the subscript operator [] to return the value stored in the RepeatArray.
-     * 
+     *
      * @param index The index to access. This is unused since all elements have the same value.
      * @return The value stored in the RepeatArray.
-    */
+     */
     T operator[](size_t /* index */) const { return this->_value; }
 
     /**
@@ -55,10 +55,10 @@ template <typename T> class RepeatArray {
       public:
         /**
          * Constructor for the Iterator class.
-         * 
-         * Initializes an Iterator instance with a reference to the RepeatArray it will 
+         *
+         * Initializes an Iterator instance with a reference to the RepeatArray it will
          * iterate over, and a count representing the current position in the iteration.
-         * 
+         *
          * @param array Reference to the RepeatArray to iterate over.
          * @param count Current position in the iteration.
          */
@@ -66,8 +66,8 @@ template <typename T> class RepeatArray {
 
         /**
          * Compares two Iterator instances for inequality.
-         * 
-         * This operator overload checks if the current count of this Iterator 
+         *
+         * This operator overload checks if the current count of this Iterator
          * is not equal to the count of the other Iterator passed in.
          *
          * @param other Iterator to compare to.
@@ -77,7 +77,7 @@ template <typename T> class RepeatArray {
 
         /**
          * Returns the value stored in the underlying RepeatArray.
-         * 
+         *
          * This overloads the dereference operator for the Iterator class.
          * It returns the value stored in the RepeatArray that this Iterator
          * is iterating over.
@@ -88,7 +88,7 @@ template <typename T> class RepeatArray {
 
         /**
          * Pre-increment operator overload for Iterator class.
-         * 
+         *
          * Increments the internal count variable and returns a reference to self.
          *
          * @return The iterator object itself is being returned.
@@ -101,19 +101,19 @@ template <typename T> class RepeatArray {
 
     /**
      * Returns an iterator pointing to the first element of the container.
-     * 
+     *
      * This begins iteration at the start of the underlying container.
-     * 
+     *
      * @return Iterator object pointing to the first element.
      */
     Iterator begin() const { return Iterator(*this, 0); }
 
     /**
      * Returns an iterator pointing to the past-the-end element of the container.
-     * 
+     *
      * This ends iteration at the end of the underlying container.
      * Trying to dereference the returned iterator results in undefined behavior.
-     * 
+     *
      * @return Iterator pointing past the last element.
      */
     Iterator end() const { return Iterator(*this, this->_size); }
