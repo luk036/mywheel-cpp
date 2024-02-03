@@ -141,8 +141,8 @@ template <typename T> class ShiftArray {
      * The ShiftArray function takes a vector as input and initializes the start variable to 0 and
      * the lst variable to the input vector.
      *
-     * @param[in] lst The parameter "lst" is a vector of type T, which is the type of elements stored in
-     * the vector.
+     * @param[in] lst The parameter "lst" is a vector of type T, which is the type of elements
+     * stored in the vector.
      */
     explicit ShiftArray(std::vector<T> lst) : _lst(lst) {}
 
@@ -178,11 +178,11 @@ template <typename T> class ShiftArray {
         /**
          * The Iterator constructor takes a ShiftArray object and a count as parameters.
          *
-         * @param[in] array The "array" parameter is of type "ShiftArray<T>", which is a template class
-         * representing an array that can be shifted (rotated) to the left or right. It is passed by
-         * reference to the constructor of the "Iterator" class.
-         * @param[in] count The count parameter is of type size_t and represents the number of elements
-         * in the ShiftArray that the Iterator will iterate over.
+         * @param[in] array The "array" parameter is of type "ShiftArray<T>", which is a template
+         * class representing an array that can be shifted (rotated) to the left or right. It is
+         * passed by reference to the constructor of the "Iterator" class.
+         * @param[in] count The count parameter is of type size_t and represents the number of
+         * elements in the ShiftArray that the Iterator will iterate over.
          */
         Iterator(const ShiftArray<T>& array, size_t count) : _array(array), _count(count) {}
 

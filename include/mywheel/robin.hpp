@@ -29,8 +29,8 @@ namespace fun {
             /**
              * The function checks if the current iterator is not equal to another iterator.
              *
-             * @param[in] other The parameter "other" is of type RobinIterator, which is the type of the
-             * object being compared to the current object.
+             * @param[in] other The parameter "other" is of type RobinIterator, which is the type of
+             * the object being compared to the current object.
              *
              * @return The operator is returning a boolean value. If the current iterator is not
              * equal to the other iterator, it will return true. Otherwise, it will return false.
@@ -40,8 +40,8 @@ namespace fun {
             /**
              * The function checks if the current iterator is equal to another iterator.
              *
-             * @param[in] other The parameter "other" is of type RobinIterator, which is the type of the
-             * object being compared to the current object.
+             * @param[in] other The parameter "other" is of type RobinIterator, which is the type of
+             * the object being compared to the current object.
              *
              * @return The operator is returning a boolean value.
              */
@@ -111,8 +111,8 @@ namespace fun {
          * The Robin constructor initializes a cycle of objects with keys ranging from 0 to
          * num_parts-1.
          *
-         * @param[in] num_parts The parameter `num_parts` represents the number of parts or elements in
-         * the Robin object.
+         * @param[in] num_parts The parameter `num_parts` represents the number of parts or elements
+         * in the Robin object.
          */
         explicit Robin(T num_parts) : cycle(num_parts) {
             auto *slptr = &this->cycle[num_parts - 1];
