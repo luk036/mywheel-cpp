@@ -8,7 +8,7 @@ MyWheel::MyWheel(std::string _name) : name(std::move(_name)) {}
 /**
  * The function `greet` returns a greeting message based on the given language code.
  *
- * @param lang The "lang" parameter is of type "LanguageCode".
+ * @param[in] lang The "lang" parameter is of type "LanguageCode".
  *
  * @return a formatted greeting message based on the provided language code. The specific greeting
  * message depends on the value of the `lang` parameter. If the `lang` parameter is

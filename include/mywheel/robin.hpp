@@ -29,7 +29,7 @@ namespace fun {
             /**
              * The function checks if the current iterator is not equal to another iterator.
              *
-             * @param other The parameter "other" is of type RobinIterator, which is the type of the
+             * @param[in] other The parameter "other" is of type RobinIterator, which is the type of the
              * object being compared to the current object.
              *
              * @return The operator is returning a boolean value. If the current iterator is not
@@ -40,7 +40,7 @@ namespace fun {
             /**
              * The function checks if the current iterator is equal to another iterator.
              *
-             * @param other The parameter "other" is of type RobinIterator, which is the type of the
+             * @param[in] other The parameter "other" is of type RobinIterator, which is the type of the
              * object being compared to the current object.
              *
              * @return The operator is returning a boolean value.
@@ -111,7 +111,7 @@ namespace fun {
          * The Robin constructor initializes a cycle of objects with keys ranging from 0 to
          * num_parts-1.
          *
-         * @param num_parts The parameter `num_parts` represents the number of parts or elements in
+         * @param[in] num_parts The parameter `num_parts` represents the number of parts or elements in
          * the Robin object.
          */
         explicit Robin(T num_parts) : cycle(num_parts) {
@@ -129,7 +129,7 @@ namespace fun {
          * The `exclude` method in the `Robin` class returns an iterable wrapper that excludes a
          * specified part from the cycle.
          *
-         * @param from_part The `from_part` parameter in the `exclude` method is the part of the
+         * @param[in] from_part The `from_part` parameter in the `exclude` method is the part of the
          * cycle that you want to exclude. It is of type `T`, which is the same type as the elements
          * in the cycle.
          *

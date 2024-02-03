@@ -19,15 +19,15 @@ template <typename T> class RepeatArray {
      * Initializes a RepeatArray with the given value repeated
      * size number of times.
      *
-     * @param value Value to initialize array elements with.
-     * @param size Number of elements in array.
+     * @param[in] value Value to initialize array elements with.
+     * @param[in] size Number of elements in array.
      */
     RepeatArray(T value, size_t size) : _value(value), _size(size) {}
 
     /**
      * Overloads the subscript operator [] to return the value stored in the RepeatArray.
      *
-     * @param index The index to access. This is unused since all elements have the same value.
+     * @param[in] index The index to access. This is unused since all elements have the same value.
      * @return The value stored in the RepeatArray.
      */
     T operator[](size_t /* index */) const { return this->_value; }
@@ -59,8 +59,8 @@ template <typename T> class RepeatArray {
          * Initializes an Iterator instance with a reference to the RepeatArray it will
          * iterate over, and a count representing the current position in the iteration.
          *
-         * @param array Reference to the RepeatArray to iterate over.
-         * @param count Current position in the iteration.
+         * @param[in] array Reference to the RepeatArray to iterate over.
+         * @param[in] count Current position in the iteration.
          */
         Iterator(const RepeatArray<T>& array, size_t count) : _array(array), _count(count) {}
 
@@ -70,7 +70,7 @@ template <typename T> class RepeatArray {
          * This operator overload checks if the current count of this Iterator
          * is not equal to the count of the other Iterator passed in.
          *
-         * @param other Iterator to compare to.
+         * @param[in] other Iterator to compare to.
          * @return True if the counts are not equal, false otherwise.
          */
         bool operator!=(const Iterator& other) const { return this->_count != other._count; }
@@ -141,7 +141,7 @@ template <typename T> class ShiftArray {
      * The ShiftArray function takes a vector as input and initializes the start variable to 0 and
      * the lst variable to the input vector.
      *
-     * @param lst The parameter "lst" is a vector of type T, which is the type of elements stored in
+     * @param[in] lst The parameter "lst" is a vector of type T, which is the type of elements stored in
      * the vector.
      */
     explicit ShiftArray(std::vector<T> lst) : _lst(lst) {}
@@ -178,10 +178,10 @@ template <typename T> class ShiftArray {
         /**
          * The Iterator constructor takes a ShiftArray object and a count as parameters.
          *
-         * @param array The "array" parameter is of type "ShiftArray<T>", which is a template class
+         * @param[in] array The "array" parameter is of type "ShiftArray<T>", which is a template class
          * representing an array that can be shifted (rotated) to the left or right. It is passed by
          * reference to the constructor of the "Iterator" class.
-         * @param count The count parameter is of type size_t and represents the number of elements
+         * @param[in] count The count parameter is of type size_t and represents the number of elements
          * in the ShiftArray that the Iterator will iterate over.
          */
         Iterator(const ShiftArray<T>& array, size_t count) : _array(array), _count(count) {}
@@ -189,7 +189,7 @@ template <typename T> class ShiftArray {
         /**
          * The function checks if the count of two iterators are not equal.
          *
-         * @param other The "other" parameter is a reference to another Iterator object.
+         * @param[in] other The "other" parameter is a reference to another Iterator object.
          *
          * @return a boolean value.
          */
