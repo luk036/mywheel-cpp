@@ -12,7 +12,7 @@ include(../cmake/CPM.cmake)
 
 CPMAddPackage(
   GITHUB_REPOSITORY jarro2783/cxxopts
-  VERSION 3.0.0
+  VERSION 3.2.1
   OPTIONS "CXXOPTS_BUILD_EXAMPLES NO" "CXXOPTS_BUILD_TESTS NO" "CXXOPTS_ENABLE_INSTALL YES"
 )
 
@@ -24,6 +24,6 @@ file(GLOB sources CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp)
 
 add_executable(${PROJECT_NAME} ${sources})
 
-set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 14 OUTPUT_NAME "MyWheel")
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 17 OUTPUT_NAME "MyWheel")
 
-target_link_libraries(${PROJECT_NAME} MyWheel::MyWheel cxxopts)
+target_link_libraries(${PROJECT_NAME} MyWheel::MyWheel cxxopts::cxxopts)
