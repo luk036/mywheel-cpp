@@ -105,16 +105,16 @@
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">array</td>
-                  <td>The &quot;array&quot; parameter is of type &quot;RepeatArray&lt;T&gt;&quot;, which is a template class representing an array that repeats its elements. It is likely that this class has a member function or operator that allows accessing elements of the array.</td>
+                  <td style="width: 1%">array&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>Reference to the <a href="class_repeat_array.html" class="m-doc">RepeatArray</a> to iterate over.</td>
                 </tr>
                 <tr>
-                  <td>count</td>
-                  <td>The count parameter is of type size_t and represents the number of times the elements in the <a href="class_repeat_array.html" class="m-doc">RepeatArray</a> should be repeated.</td>
+                  <td>count&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>Current position in the iteration.</td>
                 </tr>
               </tbody>
             </table>
-<p>The <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> constructor takes a <a href="class_repeat_array.html" class="m-doc">RepeatArray</a> object and a count as parameters.</p>
+<p>Constructor for the <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> class.</p><p>Initializes an <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> instance with a reference to the <a href="class_repeat_array.html" class="m-doc">RepeatArray</a> it will iterate over, and a count representing the current position in the iteration.</p>
           </div></section>
           <section class="m-doc-details" id="ac73dce0642cdd55b063f93b373ff7fcc"><div>
             <h3>
@@ -126,18 +126,18 @@
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">other</td>
-                  <td>The &quot;other&quot; parameter is a reference to another <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> object.</td>
+                  <td style="width: 1%">other&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td><a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> to compare to.</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th>Returns</th>
-                  <td>a boolean value.</td>
+                  <td>True if the counts are not equal, false otherwise.</td>
                 </tr>
               </tfoot>
             </table>
-<p>The function checks if the count of two iterators are not equal.</p>
+<p>Compares two <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> instances for inequality.</p><p>This operator overload checks if the current count of this <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> is not equal to the count of the other <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> passed in.</p>
           </div></section>
           <section class="m-doc-details" id="aab6235edc2025cd09413b3d8d586b6cb"><div>
             <h3>
@@ -147,11 +147,11 @@
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>The value of the <code>array</code> member variable is being returned.</td>
+                  <td>The value stored in the underlying <a href="class_repeat_array.html" class="m-doc">RepeatArray</a>.</td>
                 </tr>
               </tfoot>
             </table>
-<p>The function returns the value of the array.</p>
+<p>Returns the value stored in the underlying <a href="class_repeat_array.html" class="m-doc">RepeatArray</a>.</p><p>This overloads the dereference operator for the <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> class. It returns the value stored in the <a href="class_repeat_array.html" class="m-doc">RepeatArray</a> that this <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> is iterating over.</p>
           </div></section>
           <section class="m-doc-details" id="ae933454b4ce1fe9cc65575c890950200"><div>
             <h3>
@@ -165,7 +165,7 @@
                 </tr>
               </tfoot>
             </table>
-<p>The above function overloads the pre-increment operator for an <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> class, incrementing the count variable and returning a reference to the updated object.</p>
+<p>Pre-increment operator overload for <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> class.</p><p>Increments the internal count variable and returns a reference to self.</p>
           </div></section>
         </section>
       </div>
@@ -212,7 +212,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.8 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.10.0 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

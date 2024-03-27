@@ -123,16 +123,16 @@
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">value</td>
-                  <td>The value parameter is of type T, which means it can be any data type. It represents the value that will be repeated in the array.</td>
+                  <td style="width: 1%">value&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>Value to initialize array elements with.</td>
                 </tr>
                 <tr>
-                  <td>size</td>
-                  <td>The size parameter is of type size_t and represents the size of the array.</td>
+                  <td>size&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>Number of elements in array.</td>
                 </tr>
               </tbody>
             </table>
-<p>The <a href="class_repeat_array.html" class="m-doc">RepeatArray</a> function creates an array of a given size and initializes all elements with a given value.</p>
+<p>Constructor for <a href="class_repeat_array.html" class="m-doc">RepeatArray</a> class.</p><p>Initializes a <a href="class_repeat_array.html" class="m-doc">RepeatArray</a> with the given value repeated size number of times.</p>
           </div></section>
           <section class="m-doc-details" id="a60bbc79d0ebc51b4daa2dce5c81187f1"><div>
             <h3>
@@ -145,11 +145,11 @@
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>The value of the variable &quot;value&quot; is being returned.</td>
+                  <td>The value stored in the <a href="class_repeat_array.html" class="m-doc">RepeatArray</a>.</td>
                 </tr>
               </tfoot>
             </table>
-<p>The above function overloads the subscript operator to return the value at the specified index.</p>
+<p>Overloads the subscript operator [] to return the value stored in the <a href="class_repeat_array.html" class="m-doc">RepeatArray</a>.</p>
           </div></section>
           <section class="m-doc-details" id="a137d9cce7244548af0ff3d8c21503952"><div>
             <h3>
@@ -166,7 +166,7 @@
                 </tr>
               </tfoot>
             </table>
-<p>The <a href="class_repeat_array.html#a137d9cce7244548af0ff3d8c21503952" class="m-doc">size()</a> function returns the size of a data structure.</p>
+<p>Returns the number of elements in the <a href="class_repeat_array.html" class="m-doc">RepeatArray</a>.</p>
           </div></section>
           <section class="m-doc-details" id="a0fe7216ef256f691366a13a619c96b8c"><div>
             <h3>
@@ -179,11 +179,11 @@
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>an iterator object.</td>
+                  <td><a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> object pointing to the first element.</td>
                 </tr>
               </tfoot>
             </table>
-<p>The function returns an iterator pointing to the beginning of a container.</p>
+<p>Returns an iterator pointing to the first element of the container.</p><p>This begins iteration at the start of the underlying container.</p>
           </div></section>
           <section class="m-doc-details" id="a4f27aae9e83976b5d9eb4289c349f290"><div>
             <h3>
@@ -196,11 +196,11 @@
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>The end iterator of the container.</td>
+                  <td><a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> pointing past the last element.</td>
                 </tr>
               </tfoot>
             </table>
-<p>The <a href="class_repeat_array.html#a4f27aae9e83976b5d9eb4289c349f290" class="m-doc">end()</a> function returns an iterator pointing to the end of the container.</p>
+<p>Returns an iterator pointing to the past-the-end element of the container.</p><p>This ends iteration at the end of the underlying container. Trying to dereference the returned iterator results in undefined behavior.</p>
           </div></section>
         </section>
       </div>
@@ -247,7 +247,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.8 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.10.0 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>
