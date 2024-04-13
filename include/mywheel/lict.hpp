@@ -22,7 +22,7 @@ namespace py {
         using const_iterator = py::Range<key_type>::iterator;
 
       private:
-        py::Range<key_type> _rng;
+        // py::Range<key_type> _rng;
         std::vector<T> _lst;
 
       public:
@@ -32,7 +32,7 @@ namespace py {
          * @param[in] lst The `lst` parameter is a vector. It is used to initialize the `self.lst`
          * attribute of the class
          */
-        explicit Lict(std::vector<T> lst) : _rng{py::range(lst.size())}, _lst(std::move(lst)) {}
+        explicit Lict(std::vector<T> lst) : _lst(std::move(lst)) {}
 
         /**
          * @brief This function allows you to access an element in a Lict object by its index.
@@ -86,14 +86,14 @@ namespace py {
          *
          * @return iterator
          */
-        iterator begin() const { return this->_rng.begin(); }
+        iterator begin() const { return py::range<key_type>(this->_lst.size()).begin(); }
 
         /**
          * @brief
          *
          * @return iterator
          */
-        iterator end() const { return this->_rng.end(); }
+        iterator end() const { return py::range<key_type>(this->_lst.size()).end(); }
 
         /**
          * @brief The `contains` function checks if a given value is present in the `rng` attribute
@@ -109,7 +109,7 @@ namespace py {
          *   >>> a.contains(2)
          *   true
          */
-        bool contains(const key_type &key) const { return this->_rng.contains(key); }
+        bool contains(const key_type &key) const { return key < this->_lst.size(); }
 
         /**
          * @brief This function returns the length of the `rng` attribute of the object.
@@ -121,7 +121,7 @@ namespace py {
          *   >>> a.size()
          *   4
          */
-        size_t size() const { return this->_rng.size(); }
+        size_t size() const { return this->_lst.size(); }
 
         /**
          * @brief The `values` function returns an iterator that yields the elements of the `lst`
