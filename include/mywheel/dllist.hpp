@@ -82,7 +82,11 @@ template <typename T> class Dllist {
      *
      * Precondition: list is not empty
      */
-    constexpr auto popleft() noexcept -> Dllink<T> & { return this->head.popleft(); }
+    constexpr auto popleft() noexcept -> Dllink<T> & {
+        auto res = this->head.next;
+        res->detach();
+        return *res;
+    }
 
     /**
      * @brief pop a node from the back
@@ -91,7 +95,11 @@ template <typename T> class Dllist {
      *
      * Precondition: list is not empty
      */
-    constexpr auto pop() noexcept -> Dllink<T> & { return this->head.pop(); }
+    constexpr auto pop() noexcept -> Dllink<T> & {
+        auto res = this->head.prev;
+        res->detach();
+        return *res;
+    }
 
     // For iterator
 

@@ -46,10 +46,10 @@ template <typename T> class Dllink {
      */
     constexpr Dllink() = default;
     ~Dllink() = default;
-    Dllink(const Dllink &) = delete;                                // don't copy
-    constexpr auto operator=(const Dllink &) -> Dllink & = delete;  // don't assign
+    Dllink(const Dllink &) = delete;                      // don't copy
+    auto operator=(const Dllink &) -> Dllink & = delete;  // don't assign
     constexpr Dllink(Dllink &&) noexcept = default;
-    constexpr auto operator=(Dllink &&) noexcept -> Dllink & = default;  // don't assign
+    constexpr auto operator=(Dllink &&) noexcept -> Dllink & = delete;  // don't assign
 
     /**
      * @brief lock the node (and don't append it to any list)
@@ -100,34 +100,6 @@ template <typename T> class Dllink {
         this->prev->next = &node;
         this->prev = &node;
         node.next = this;
-    }
-
-    /**
-     * @brief pop a node from the front
-     *
-     * @return Dllink&
-     *
-     * Precondition: list is not empty
-     */
-    constexpr auto popleft() noexcept -> Dllink & {
-        auto res = this->next;
-        this->next = res->next;
-        this->next->prev = this;
-        return *res;
-    }
-
-    /**
-     * @brief pop a node from the back
-     *
-     * @return Dllink&
-     *
-     * Precondition: list is not empty
-     */
-    constexpr auto pop() noexcept -> Dllink & {
-        auto res = this->prev;
-        this->prev = res->prev;
-        this->prev->next = this;
-        return *res;
     }
 };
 #pragma pack(pop)
