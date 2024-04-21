@@ -66,14 +66,14 @@ template <typename T> class Dllist {
      *
      * @param[in,out] node
      */
-    constexpr auto appendleft(Dllink<T> &node) noexcept -> void { this->head.appendleft(node); }
+    constexpr auto appendleft(Dllink<T> &node) noexcept -> void { this->head.attach(node); }
 
     /**
      * @brief append the node to the back
      *
      * @param[in,out] node
      */
-    constexpr auto append(Dllink<T> &node) noexcept -> void { this->head.append(node); }
+    constexpr auto append(Dllink<T> &node) noexcept -> void { this->head.prev->attach(node); }
 
     /**
      * @brief pop a node from the front
