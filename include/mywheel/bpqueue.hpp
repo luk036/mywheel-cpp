@@ -73,7 +73,7 @@ class BPQueue {
           high(static_cast<UInt>(b - offset)) {
         assert(a <= b);
         static_assert(std::is_integral<Int>::value, "bucket's key must be an integer");
-        bucket[0].append(this->sentinel);  // sentinel
+        bucket[0].appendleft(this->sentinel);  // sentinel
     }
 
     BPQueue(const BPQueue &) = delete;  // don't copy
@@ -122,9 +122,24 @@ class BPQueue {
      *
      * @param[in,out] it the item
      */
-    constexpr auto append_direct(Item &it) noexcept -> void {
+    constexpr auto appendleft_direct(Item &it) noexcept -> void {
         assert(static_cast<Int>(it.data.second) > this->offset);
-        this->append(it, Int(it.data.second));
+        this->appendleft(it, Int(it.data.second));
+    }
+
+    /**
+     * @brief Append item with external key
+     *
+     * @param[in,out] it the item
+     * @param[in] k  the key
+     */
+    constexpr auto appendleft(Item &it, Int k) noexcept -> void {
+        assert(k > this->offset);
+        it.data.second = UInt(k - this->offset);
+        if (this->max < it.data.second) {
+            this->max = it.data.second;
+        }
+        this->bucket[it.data.second].appendleft(it);
     }
 
     /**

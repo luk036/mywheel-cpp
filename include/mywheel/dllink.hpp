@@ -89,17 +89,5 @@ template <typename T> class Dllink {
         this->next = &node;
         node.prev = this;
     }
-
-    // /**
-    //  * @brief append the node to the back
-    //  *
-    //  * @param[in,out] node
-    //  */
-    // constexpr auto append(Dllink &node) noexcept -> void {
-    //     node.prev = this->prev;
-    //     this->prev->next = &node;
-    //     this->prev = &node;
-    //     node.next = this;
-    // }
 };
 #pragma pack(pop)
