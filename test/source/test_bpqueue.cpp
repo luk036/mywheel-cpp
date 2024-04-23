@@ -1,12 +1,12 @@
 #include <doctest/doctest.h>  // for ResultBuilder, CHECK, Expression_lhs
 // #include <__config>            // for std
-#include <cstdint>              // for int32_t, uint32_t
+#include <cstdint>  // for int32_t, uint32_t
 #include <memory>
 #include <mywheel/bpqueue.hpp>  // for BPQueue
 #include <mywheel/dllist.hpp>   // for Dllink
 #include <type_traits>
-#include <utility>              // for pair
-#include <vector>               // for vector
+#include <utility>  // for pair
+#include <vector>   // for vector
 
 using namespace std;
 
@@ -75,7 +75,7 @@ TEST_CASE("Test BPQueue 3") {
     auto nodelist = vector<Dllink<pair<int, uint32_t>>>(10);
 
     auto i = 0U;
-    for (auto &it : nodelist) {
+    for (auto& it : nodelist) {
         it.data.second = 2 * i - 10;
         i += 1;
     }
