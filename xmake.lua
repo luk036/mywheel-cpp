@@ -1,5 +1,3 @@
-set_languages("c++14")
-
 add_rules("mode.debug", "mode.release", "mode.coverage")
 add_requires("doctest", {alias = "doctest"})
 add_requires("fmt", {alias = "fmt"})
@@ -18,6 +16,7 @@ end
 
 
 target("test_mywheel")
+    set_languages("c++17")
     set_kind("binary")
     add_includedirs("include", {public = true})
     add_includedirs("../py2cpp/include", {public = true})
