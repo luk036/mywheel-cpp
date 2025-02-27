@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Dllink class | MyWheel</title>
+  <title>RepeatArray class | MyWheel</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -49,134 +49,158 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="dllink_8hpp.html">&lt;mywheel/dllink.hpp&gt;</a></div>
+          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="array__like_8hpp.html">&lt;mywheel/array_like.hpp&gt;</a></div>
           <div class="m-doc-template">template&lt;typename T&gt;</div>
-          Dllink <span class="m-thin">class</span>
+          RepeatArray <span class="m-thin">class</span>
         </h1>
-        <p>doubly linked node (that may also be a &quot;head&quot; a list)</p>
+        <p><span></span></p>
         <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
             <li>
               Reference
               <ul>
+                <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
-                <li><a href="#pub-attribs">Public variables</a></li>
               </ul>
             </li>
           </ul>
         </nav>
-<p>A Doubly-linked List class. This class simply contains a link of node&#x27;s. By adding a &quot;head&quot; node (sentinel), deleting a node is extremely fast (see &quot;Introduction to Algorithm&quot;). This class does not keep the length information as it is not necessary for the FM algorithm. This saves memory and run-time to update the length information. Note that this class does not own the list node. They are supplied by the caller in order to better reuse the nodes.</p>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a>
+            </dt>
+            <dd></dd>
+          </dl>
+        </section>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper"><a href="#a6a03742678e678d29736fe9b98a3da1f" class="m-doc">Dllink</a>(</span><span class="m-doc-wrap">T data) <span class="m-label m-flat m-info">explicit</span>  <span class="m-label m-flat m-primary">constexpr</span> <span class="m-label m-flat m-success">noexcept</span></span>
+              <span class="m-doc-wrap-bumper"><a href="#a00b701def5ca25d14b94a00303b7edbb" class="m-doc">RepeatArray</a>(</span><span class="m-doc-wrap">T value,
+              size_t size)</span>
             </dt>
-            <dd>Construct a new <a href="class_dllink.html" class="m-doc">Dllink</a> object.</dd>
-            <dt id="a25dad516981273f45af47e3b43d0708c">
-              <span class="m-doc-wrap-bumper"><a href="#a25dad516981273f45af47e3b43d0708c" class="m-doc-self">Dllink</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-primary">constexpr</span></span>
-            </dt>
-            <dd>Copy construct a new <a href="class_dllink.html" class="m-doc">Dllink</a> object (deleted intentionally)</dd>
-            <dt id="a4233c73e0e03747214734152b51235f2">
-              <span class="m-doc-wrap-bumper"><a href="#a4233c73e0e03747214734152b51235f2" class="m-doc-self">~Dllink</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="af66e0ad0563a3e1365eefff3d069f945">
-              <span class="m-doc-wrap-bumper"><a href="#af66e0ad0563a3e1365eefff3d069f945" class="m-doc-self">Dllink</a>(</span><span class="m-doc-wrap">const <a href="class_dllink.html" class="m-doc">Dllink</a>&amp;) <span class="m-label m-flat m-danger">deleted</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a5fcf61f432b00d8a49796b4579c82c86">
-              <span class="m-doc-wrap-bumper"><a href="#a5fcf61f432b00d8a49796b4579c82c86" class="m-doc-self">Dllink</a>(</span><span class="m-doc-wrap"><a href="class_dllink.html" class="m-doc">Dllink</a>&amp;&amp;) <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-primary">constexpr</span> <span class="m-label m-flat m-success">noexcept</span></span>
-            </dt>
-            <dd><span></span></dd>
+            <dd></dd>
           </dl>
         </section>
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="a9a745c1813b68b250fb3d2cb74ff4eb2">
-              <span class="m-doc-wrap-bumper">auto <a href="#a9a745c1813b68b250fb3d2cb74ff4eb2" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap">const <a href="class_dllink.html" class="m-doc">Dllink</a>&amp;) -&gt; Dllink &amp; -&gt; auto <span class="m-label m-flat m-danger">deleted</span> <span class="m-label m-flat m-primary">constexpr</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="af09db66d55224490a3d6efe1b311a26a">
-              <span class="m-doc-wrap-bumper">auto <a href="#af09db66d55224490a3d6efe1b311a26a" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap"><a href="class_dllink.html" class="m-doc">Dllink</a>&amp;&amp;) noexcept -&gt; Dllink &amp; -&gt; auto <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-primary">constexpr</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a27e74bbcaf00f31ee338d9a108e18190">
-              <span class="m-doc-wrap-bumper">auto <a href="#a27e74bbcaf00f31ee338d9a108e18190" class="m-doc-self">lock</a>(</span><span class="m-doc-wrap">) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
-            </dt>
-            <dd>lock the node (and don&#x27;t append it to any list)</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#acd221d02dd88444bfbff4fd2d5ed4217" class="m-doc">is_locked</a>(</span><span class="m-doc-wrap">) const noexcept -&gt; bool -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a60bbc79d0ebc51b4daa2dce5c81187f1" class="m-doc">operator[]</a>(</span><span class="m-doc-wrap">size_t) const -&gt; T</span>
             </dt>
-            <dd>whether the node is locked</dd>
-            <dt id="ac99050fc06316440338080375450a3cb">
-              <span class="m-doc-wrap-bumper">auto <a href="#ac99050fc06316440338080375450a3cb" class="m-doc-self">detach</a>(</span><span class="m-doc-wrap">) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
-            </dt>
-            <dd>detach from a list</dd>
-          </dl>
-        </section>
-        <section id="pub-attribs">
-          <h2><a href="#pub-attribs">Public variables</a></h2>
-          <dl class="m-doc">
+            <dd></dd>
             <dt>
-              T <a href="#a405e9b6b1d8ca4923501268911725928" class="m-doc">data</a>
+              <span class="m-doc-wrap-bumper">auto <a href="#a137d9cce7244548af0ff3d8c21503952" class="m-doc">size</a>(</span><span class="m-doc-wrap">) const -&gt; size_t</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0fe7216ef256f691366a13a619c96b8c" class="m-doc">begin</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a></span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4f27aae9e83976b5d9eb4289c349f290" class="m-doc">end</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a></span>
             </dt>
             <dd></dd>
           </dl>
         </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a6a03742678e678d29736fe9b98a3da1f"><div>
+          <section class="m-doc-details" id="a00b701def5ca25d14b94a00303b7edbb"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper"> Dllink&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6a03742678e678d29736fe9b98a3da1f" class="m-doc-self">Dllink</a>(</span><span class="m-doc-wrap">T data) <span class="m-label m-info">explicit</span>  <span class="m-label m-primary">constexpr</span> <span class="m-label m-success">noexcept</span></span></span>
+              <span class="m-doc-wrap-bumper"> RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a00b701def5ca25d14b94a00303b7edbb" class="m-doc-self">RepeatArray</a>(</span><span class="m-doc-wrap">T value,
+              size_t size)</span></span>
             </h3>
-            <p>Construct a new <a href="class_dllink.html" class="m-doc">Dllink</a> object.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">data&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>the data</td>
+                  <td style="width: 1%">value&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>Value to initialize array elements with.</td>
+                </tr>
+                <tr>
+                  <td>size&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>Number of elements in array.</td>
                 </tr>
               </tbody>
             </table>
+<p>Constructor for <a href="classRepeatArray.html" class="m-doc">RepeatArray</a> class.</p><p>Initializes a <a href="classRepeatArray.html" class="m-doc">RepeatArray</a> with the given value repeated size number of times.</p>
           </div></section>
-          <section class="m-doc-details" id="acd221d02dd88444bfbff4fd2d5ed4217"><div>
+          <section class="m-doc-details" id="a60bbc79d0ebc51b4daa2dce5c81187f1"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto Dllink&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acd221d02dd88444bfbff4fd2d5ed4217" class="m-doc-self">is_locked</a>(</span><span class="m-doc-wrap">) const noexcept -&gt; bool <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">T RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a60bbc79d0ebc51b4daa2dce5c81187f1" class="m-doc-self">operator[]</a>(</span><span class="m-doc-wrap">size_t) const</span></span>
             </h3>
-            <p>whether the node is locked</p>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>true</td>
+                  <td>The value stored in the <a href="classRepeatArray.html" class="m-doc">RepeatArray</a>.</td>
                 </tr>
               </tfoot>
             </table>
+<p>Overloads the subscript operator [] to return the value stored in the <a href="classRepeatArray.html" class="m-doc">RepeatArray</a>.</p>
           </div></section>
-        </section>
-        <section>
-          <h2>Variable documentation</h2>
-          <section class="m-doc-details" id="a405e9b6b1d8ca4923501268911725928"><div>
+          <section class="m-doc-details" id="a137d9cce7244548af0ff3d8c21503952"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              T Dllink&lt;T&gt;::<wbr /><a href="#a405e9b6b1d8ca4923501268911725928" class="m-doc-self">data</a>
+              <span class="m-doc-wrap-bumper">size_t RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a137d9cce7244548af0ff3d8c21503952" class="m-doc-self">size</a>(</span><span class="m-doc-wrap">) const</span></span>
             </h3>
-<p>data</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>the value of the variable &quot;size&quot; as a size_t data type.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Returns the number of elements in the <a href="classRepeatArray.html" class="m-doc">RepeatArray</a>.</p>
+          </div></section>
+          <section class="m-doc-details" id="a0fe7216ef256f691366a13a619c96b8c"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a> RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0fe7216ef256f691366a13a619c96b8c" class="m-doc-self">begin</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td><a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a> object pointing to the first element.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Returns an iterator pointing to the first element of the container.</p><p>This begins iteration at the start of the underlying container.</p>
+          </div></section>
+          <section class="m-doc-details" id="a4f27aae9e83976b5d9eb4289c349f290"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a> RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4f27aae9e83976b5d9eb4289c349f290" class="m-doc-self">end</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td><a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a> pointing past the last element.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Returns an iterator pointing to the past-the-end element of the container.</p><p>This ends iteration at the end of the underlying container. Trying to dereference the returned iterator results in undefined behavior.</p>
           </div></section>
         </section>
       </div>
@@ -223,7 +247,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.10.0 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.8 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

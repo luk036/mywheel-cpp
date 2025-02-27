@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>RepeatArray::Iterator class | MyWheel</title>
+  <title>ShiftArray::Iterator class | MyWheel</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -49,7 +49,7 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="class_repeat_array.html">RepeatArray</a>::<wbr/></span>Iterator <span class="m-thin">class</span>
+          <span class="m-breadcrumb"><a href="classShiftArray.html">ShiftArray</a>::<wbr/></span>Iterator <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="array__like_8hpp.html">&lt;mywheel/array_like.hpp&gt;</a></div>
         </h1>
         <nav class="m-block m-default">
@@ -64,12 +64,12 @@
             </li>
           </ul>
         </nav>
-<p>The code defines an iterator class for a repeat array, allowing iteration over the elements of the array.</p>
+<p>The code defines a class <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a> that allows iteration over elements in a <a href="classShiftArray.html" class="m-doc">ShiftArray</a>.</p>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper"><a href="#af3ba38d911e5183ecca8866e5a74e439" class="m-doc">Iterator</a>(</span><span class="m-doc-wrap">const <a href="class_repeat_array.html" class="m-doc">RepeatArray</a>&lt;T&gt;&amp; array,
+              <span class="m-doc-wrap-bumper"><a href="#ac25fbba9ac5a62b8bd181b5a6e1f6226" class="m-doc">Iterator</a>(</span><span class="m-doc-wrap">const <a href="classShiftArray.html" class="m-doc">ShiftArray</a>&lt;T&gt;&amp; array,
               size_t count)</span>
             </dt>
             <dd></dd>
@@ -79,24 +79,24 @@
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#ac73dce0642cdd55b063f93b373ff7fcc" class="m-doc">operator!=</a>(</span><span class="m-doc-wrap">const <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a>&amp; other) const -&gt; bool</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a630a53de1275ffb69c905c56b4b1bb42" class="m-doc">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a>&amp; other) const -&gt; bool</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#aab6235edc2025cd09413b3d8d586b6cb" class="m-doc">operator*</a>(</span><span class="m-doc-wrap">) const -&gt; T</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a54490990582fe0ca6366e9d9ad8d3fab" class="m-doc">operator*</a>(</span><span class="m-doc-wrap">) const -&gt; T</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#ae933454b4ce1fe9cc65575c890950200" class="m-doc">operator++</a>(</span><span class="m-doc-wrap">) -&gt; <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a>&amp;</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a017a2925a70ea17e05cccf6e4e81c19c" class="m-doc">operator++</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a>&amp;</span>
             </dt>
             <dd></dd>
           </dl>
         </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="af3ba38d911e5183ecca8866e5a74e439"><div>
+          <section class="m-doc-details" id="ac25fbba9ac5a62b8bd181b5a6e1f6226"><div>
             <h3>
-              <span class="m-doc-wrap-bumper"> RepeatArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af3ba38d911e5183ecca8866e5a74e439" class="m-doc-self">Iterator</a>(</span><span class="m-doc-wrap">const <a href="class_repeat_array.html" class="m-doc">RepeatArray</a>&lt;T&gt;&amp; array,
+              <span class="m-doc-wrap-bumper"> ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac25fbba9ac5a62b8bd181b5a6e1f6226" class="m-doc-self">Iterator</a>(</span><span class="m-doc-wrap">const <a href="classShiftArray.html" class="m-doc">ShiftArray</a>&lt;T&gt;&amp; array,
               size_t count)</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
@@ -106,19 +106,19 @@
               <tbody>
                 <tr>
                   <td style="width: 1%">array&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>Reference to the <a href="class_repeat_array.html" class="m-doc">RepeatArray</a> to iterate over.</td>
+                  <td>The &quot;array&quot; parameter is of type &quot;ShiftArray&lt;T&gt;&quot;, which is a template class representing an array that can be shifted (rotated) to the left or right. It is passed by reference to the constructor of the &quot;Iterator&quot; class.</td>
                 </tr>
                 <tr>
                   <td>count&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>Current position in the iteration.</td>
+                  <td>The count parameter is of type size_t and represents the number of elements in the <a href="classShiftArray.html" class="m-doc">ShiftArray</a> that the <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a> will iterate over.</td>
                 </tr>
               </tbody>
             </table>
-<p>Constructor for the <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> class.</p><p>Initializes an <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> instance with a reference to the <a href="class_repeat_array.html" class="m-doc">RepeatArray</a> it will iterate over, and a count representing the current position in the iteration.</p>
+<p>The <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a> constructor takes a <a href="classShiftArray.html" class="m-doc">ShiftArray</a> object and a count as parameters.</p>
           </div></section>
-          <section class="m-doc-details" id="ac73dce0642cdd55b063f93b373ff7fcc"><div>
+          <section class="m-doc-details" id="a630a53de1275ffb69c905c56b4b1bb42"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">bool RepeatArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac73dce0642cdd55b063f93b373ff7fcc" class="m-doc-self">operator!=</a>(</span><span class="m-doc-wrap">const <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a>&amp; other) const</span></span>
+              <span class="m-doc-wrap-bumper">bool ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a630a53de1275ffb69c905c56b4b1bb42" class="m-doc-self">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a>&amp; other) const</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <thead>
@@ -127,35 +127,35 @@
               <tbody>
                 <tr>
                   <td style="width: 1%">other&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td><a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> to compare to.</td>
+                  <td>The &quot;other&quot; parameter is a reference to another <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a> object.</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th>Returns</th>
-                  <td>True if the counts are not equal, false otherwise.</td>
+                  <td>a boolean value.</td>
                 </tr>
               </tfoot>
             </table>
-<p>Compares two <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> instances for inequality.</p><p>This operator overload checks if the current count of this <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> is not equal to the count of the other <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> passed in.</p>
+<p>The function checks if the count of two iterators are not equal.</p>
           </div></section>
-          <section class="m-doc-details" id="aab6235edc2025cd09413b3d8d586b6cb"><div>
+          <section class="m-doc-details" id="a54490990582fe0ca6366e9d9ad8d3fab"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">T RepeatArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aab6235edc2025cd09413b3d8d586b6cb" class="m-doc-self">operator*</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">T ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a54490990582fe0ca6366e9d9ad8d3fab" class="m-doc-self">operator*</a>(</span><span class="m-doc-wrap">) const</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>The value stored in the underlying <a href="class_repeat_array.html" class="m-doc">RepeatArray</a>.</td>
+                  <td>The code is returning the element at the index <code>array.start + count</code> in the <code>array.lst</code> array.</td>
                 </tr>
               </tfoot>
             </table>
-<p>Returns the value stored in the underlying <a href="class_repeat_array.html" class="m-doc">RepeatArray</a>.</p><p>This overloads the dereference operator for the <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> class. It returns the value stored in the <a href="class_repeat_array.html" class="m-doc">RepeatArray</a> that this <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> is iterating over.</p>
+<p>The function returns the value at the current position in an array.</p>
           </div></section>
-          <section class="m-doc-details" id="ae933454b4ce1fe9cc65575c890950200"><div>
+          <section class="m-doc-details" id="a017a2925a70ea17e05cccf6e4e81c19c"><div>
             <h3>
-              <span class="m-doc-wrap-bumper"><a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a>&amp; RepeatArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae933454b4ce1fe9cc65575c890950200" class="m-doc-self">operator++</a>(</span><span class="m-doc-wrap">)</span></span>
+              <span class="m-doc-wrap-bumper"><a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a>&amp; ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a017a2925a70ea17e05cccf6e4e81c19c" class="m-doc-self">operator++</a>(</span><span class="m-doc-wrap">)</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
@@ -165,7 +165,7 @@
                 </tr>
               </tfoot>
             </table>
-<p>Pre-increment operator overload for <a href="class_repeat_array_1_1_iterator.html" class="m-doc">Iterator</a> class.</p><p>Increments the internal count variable and returns a reference to self.</p>
+<p>The above function overloads the pre-increment operator for an <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a> class, incrementing the count variable and returning a reference to the updated object.</p>
           </div></section>
         </section>
       </div>
@@ -212,7 +212,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.10.0 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.8 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

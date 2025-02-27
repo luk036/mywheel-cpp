@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ShiftArray::Iterator class | MyWheel</title>
+  <title>fun::Robin struct | MyWheel</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -49,9 +49,22 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="class_shift_array.html">ShiftArray</a>::<wbr/></span>Iterator <span class="m-thin">class</span>
-          <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="array__like_8hpp.html">&lt;mywheel/array_like.hpp&gt;</a></div>
+          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="robin_8hpp.html">&lt;mywheel/robin.hpp&gt;</a></div>
+          <div class="m-doc-template">template&lt;typename T&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacefun.html">fun</a>::<wbr/></span>Robin <span class="m-thin">struct</span>
         </h1>
+        <p>Round <a href="structfun_1_1Robin.html" class="m-doc">Robin</a>.</p>
+        <table class="m-table m-fullwidth m-flat">
+          <thead>
+            <tr><th colspan="2">Template parameters</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 1%">T</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
         <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -60,17 +73,17 @@
               <ul>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pub-attribs">Public variables</a></li>
               </ul>
             </li>
           </ul>
         </nav>
-<p>The code defines a class <a href="class_shift_array_1_1_iterator.html" class="m-doc">Iterator</a> that allows iteration over elements in a <a href="class_shift_array.html" class="m-doc">ShiftArray</a>.</p>
+<p>The <code><a href="structfun_1_1Robin.html" class="m-doc">Robin</a></code> class is implementing a round-robin algorithm. It is used to cycle through a sequence of elements in a circular manner. The constructor initializes the cycle with a specified number of parts, and each part is assigned a unique key. The <code>exclude</code> method returns an iterable wrapper that excludes a specified part from the cycle.</p>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper"><a href="#ac25fbba9ac5a62b8bd181b5a6e1f6226" class="m-doc">Iterator</a>(</span><span class="m-doc-wrap">const <a href="class_shift_array.html" class="m-doc">ShiftArray</a>&lt;T&gt;&amp; array,
-              size_t count)</span>
+              <span class="m-doc-wrap-bumper"><a href="#a4608f5920d65065f1b7deac7efbea1fa" class="m-doc">Robin</a>(</span><span class="m-doc-wrap">T num_parts) <span class="m-label m-flat m-info">explicit</span> </span>
             </dt>
             <dd></dd>
           </dl>
@@ -79,25 +92,28 @@
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a630a53de1275ffb69c905c56b4b1bb42" class="m-doc">operator!=</a>(</span><span class="m-doc-wrap">const <a href="class_shift_array_1_1_iterator.html" class="m-doc">Iterator</a>&amp; other) const -&gt; bool</span>
-            </dt>
-            <dd></dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a54490990582fe0ca6366e9d9ad8d3fab" class="m-doc">operator*</a>(</span><span class="m-doc-wrap">) const -&gt; T</span>
-            </dt>
-            <dd></dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a017a2925a70ea17e05cccf6e4e81c19c" class="m-doc">operator++</a>(</span><span class="m-doc-wrap">) -&gt; <a href="class_shift_array_1_1_iterator.html" class="m-doc">Iterator</a>&amp;</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a487fe43c4db8a76ff0dc8af58cd711d4" class="m-doc">exclude</a>(</span><span class="m-doc-wrap">T from_part) const -&gt; detail::RobinIterableWrapper&lt; T &gt; -&gt; auto</span>
             </dt>
             <dd></dd>
           </dl>
         </section>
+        <section id="pub-attribs">
+          <h2><a href="#pub-attribs">Public variables</a></h2>
+          <dl class="m-doc">
+            <dt id="a953b93da16ae18ec39d9af390a0141c0">
+              std::vector&lt;<a href="structfun_1_1detail_1_1RobinSlNode.html" class="m-doc">detail::<wbr />RobinSlNode</a>&lt;T&gt;&gt; <a href="#a953b93da16ae18ec39d9af390a0141c0" class="m-doc-self">cycle</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="ac25fbba9ac5a62b8bd181b5a6e1f6226"><div>
+          <section class="m-doc-details" id="a4608f5920d65065f1b7deac7efbea1fa"><div>
             <h3>
-              <span class="m-doc-wrap-bumper"> ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac25fbba9ac5a62b8bd181b5a6e1f6226" class="m-doc-self">Iterator</a>(</span><span class="m-doc-wrap">const <a href="class_shift_array.html" class="m-doc">ShiftArray</a>&lt;T&gt;&amp; array,
-              size_t count)</span></span>
+              <div class="m-doc-template">
+                template&lt;typename T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"> fun::<wbr />Robin&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4608f5920d65065f1b7deac7efbea1fa" class="m-doc-self">Robin</a>(</span><span class="m-doc-wrap">T num_parts) <span class="m-label m-info">explicit</span> </span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <thead>
@@ -105,20 +121,19 @@
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">array&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>The &quot;array&quot; parameter is of type &quot;ShiftArray&lt;T&gt;&quot;, which is a template class representing an array that can be shifted (rotated) to the left or right. It is passed by reference to the constructor of the &quot;Iterator&quot; class.</td>
-                </tr>
-                <tr>
-                  <td>count&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>The count parameter is of type size_t and represents the number of elements in the <a href="class_shift_array.html" class="m-doc">ShiftArray</a> that the <a href="class_shift_array_1_1_iterator.html" class="m-doc">Iterator</a> will iterate over.</td>
+                  <td style="width: 1%">num_parts&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>The parameter <code>num_parts</code> represents the number of parts or elements in the <a href="structfun_1_1Robin.html" class="m-doc">Robin</a> object.</td>
                 </tr>
               </tbody>
             </table>
-<p>The <a href="class_shift_array_1_1_iterator.html" class="m-doc">Iterator</a> constructor takes a <a href="class_shift_array.html" class="m-doc">ShiftArray</a> object and a count as parameters.</p>
+<p>The <a href="structfun_1_1Robin.html" class="m-doc">Robin</a> constructor initializes a cycle of objects with keys ranging from 0 to num_parts-1.</p>
           </div></section>
-          <section class="m-doc-details" id="a630a53de1275ffb69c905c56b4b1bb42"><div>
+          <section class="m-doc-details" id="a487fe43c4db8a76ff0dc8af58cd711d4"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">bool ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a630a53de1275ffb69c905c56b4b1bb42" class="m-doc-self">operator!=</a>(</span><span class="m-doc-wrap">const <a href="class_shift_array_1_1_iterator.html" class="m-doc">Iterator</a>&amp; other) const</span></span>
+              <div class="m-doc-template">
+                template&lt;typename T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto fun::<wbr />Robin&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a487fe43c4db8a76ff0dc8af58cd711d4" class="m-doc-self">exclude</a>(</span><span class="m-doc-wrap">T from_part) const -&gt; detail::RobinIterableWrapper&lt; T &gt;</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <thead>
@@ -126,46 +141,18 @@
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">other&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>The &quot;other&quot; parameter is a reference to another <a href="class_shift_array_1_1_iterator.html" class="m-doc">Iterator</a> object.</td>
+                  <td style="width: 1%">from_part&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>The <code>from_part</code> parameter in the <code>exclude</code> method is the part of the cycle that you want to exclude. It is of type <code>T</code>, which is the same type as the elements in the cycle.</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th>Returns</th>
-                  <td>a boolean value.</td>
+                  <td>The <code>exclude</code> method in the <code><a href="structfun_1_1Robin.html" class="m-doc">Robin</a></code> class returns an iterable wrapper of type <code><a href="structfun_1_1detail_1_1RobinIterableWrapper.html" class="m-doc">detail::<wbr />RobinIterableWrapper</a>&lt;T&gt;</code>.</td>
                 </tr>
               </tfoot>
             </table>
-<p>The function checks if the count of two iterators are not equal.</p>
-          </div></section>
-          <section class="m-doc-details" id="a54490990582fe0ca6366e9d9ad8d3fab"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">T ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a54490990582fe0ca6366e9d9ad8d3fab" class="m-doc-self">operator*</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>The code is returning the element at the index <code>array.start + count</code> in the <code>array.lst</code> array.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>The function returns the value at the current position in an array.</p>
-          </div></section>
-          <section class="m-doc-details" id="a017a2925a70ea17e05cccf6e4e81c19c"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper"><a href="class_shift_array_1_1_iterator.html" class="m-doc">Iterator</a>&amp; ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a017a2925a70ea17e05cccf6e4e81c19c" class="m-doc-self">operator++</a>(</span><span class="m-doc-wrap">)</span></span>
-            </h3>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>The iterator object itself is being returned.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>The above function overloads the pre-increment operator for an <a href="class_shift_array_1_1_iterator.html" class="m-doc">Iterator</a> class, incrementing the count variable and returning a reference to the updated object.</p>
+<p>The <code>exclude</code> method in the <code><a href="structfun_1_1Robin.html" class="m-doc">Robin</a></code> class returns an iterable wrapper that excludes a specified part from the cycle.</p>
           </div></section>
         </section>
       </div>
@@ -212,7 +199,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.10.0 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.8 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

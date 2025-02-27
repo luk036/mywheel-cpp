@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>BpqIterator class | MyWheel</title>
+  <title>DllIterator class | MyWheel</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -49,11 +49,11 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="bpqueue_8hpp.html">&lt;mywheel/bpqueue.hpp&gt;</a></div>
-          <div class="m-doc-template">template&lt;typename Tp, typename Int = int32_t&gt;</div>
-          BpqIterator <span class="m-thin">class</span>
+          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="dllist_8hpp.html">&lt;mywheel/dllist.hpp&gt;</a></div>
+          <div class="m-doc-template">template&lt;typename T&gt;</div>
+          DllIterator <span class="m-thin">class</span>
         </h1>
-        <p>Bounded Priority Queue Iterator.</p>
+        <p>list iterator</p>
         <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -67,113 +67,107 @@
             </li>
           </ul>
         </nav>
-<p>Traverse the queue in descending order. Detaching a queue items may invalidate the iterator because the iterator makes a copy of the current key.</p>
+<p>List iterator. Traverse the list from the first item. Usually it is safe to attach/detach list items during the iterator is active.</p>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper"><a href="#a215a2ef9f2e4a6914358503b92eb4b06" class="m-doc">BpqIterator</a>(</span><span class="m-doc-wrap"><a href="class_b_p_queue.html" class="m-doc">BPQueue</a>&lt;Tp, Int&gt;&amp; bpq,
-              UInt curkey) <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper"><a href="#aa7bed31fcb170569f705742dc9f8f610" class="m-doc">DllIterator</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Dllink</a>&lt;T&gt;* cur) <span class="m-label m-flat m-info">explicit</span>  <span class="m-label m-flat m-primary">constexpr</span> <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
-            <dd>Construct a new bpq iterator object.</dd>
+            <dd>Construct a new dll iterator object.</dd>
           </dl>
         </section>
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a7128a50360b79d91e743057793a6c090" class="m-doc">operator++</a>(</span><span class="m-doc-wrap">) -&gt; BpqIterator &amp; -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab46750c24eea9c3c7d68652a12860613" class="m-doc">operator++</a>(</span><span class="m-doc-wrap">) noexcept -&gt; DllIterator &amp; -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
-            <dd>Move to the next item.</dd>
+            <dd>move to the next item</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a1084bbeefe16afe0b6de2129051f8865" class="m-doc">operator*</a>(</span><span class="m-doc-wrap">) -&gt; Item &amp; -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#af4f7f3471672b96f5a102ab8def924db" class="m-doc">operator*</a>(</span><span class="m-doc-wrap">) noexcept -&gt; Dllink&lt; T &gt; &amp; -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
-            <dd>Get the reference of the current item.</dd>
+            <dd>get the reference of the current item</dd>
           </dl>
         </section>
         <section id="friends">
           <h2><a href="#friends">Friends</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#ab2380b18899827e8ef1fa50f7aa6084f" class="m-doc">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_bpq_iterator.html" class="m-doc">BpqIterator</a>&amp; lhs,
-              const <a href="class_bpq_iterator.html" class="m-doc">BpqIterator</a>&amp; rhs) -&gt; bool -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0ed894a362835a930f9799f8e9378959" class="m-doc">operator==</a>(</span><span class="m-doc-wrap">const <a href="classDllIterator.html" class="m-doc">DllIterator</a>&amp; lhs,
+              const <a href="classDllIterator.html" class="m-doc">DllIterator</a>&amp; rhs) noexcept -&gt; bool -&gt; auto</span>
             </dt>
             <dd>eq operator</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a21ca9a54a8c62f7f58aa053bb162b38a" class="m-doc">operator!=</a>(</span><span class="m-doc-wrap">const <a href="class_bpq_iterator.html" class="m-doc">BpqIterator</a>&amp; lhs,
-              const <a href="class_bpq_iterator.html" class="m-doc">BpqIterator</a>&amp; rhs) -&gt; bool -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a97f56db216c9ca68a575b9af1dfe58ba" class="m-doc">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classDllIterator.html" class="m-doc">DllIterator</a>&amp; lhs,
+              const <a href="classDllIterator.html" class="m-doc">DllIterator</a>&amp; rhs) noexcept -&gt; bool -&gt; auto</span>
             </dt>
             <dd>neq operator</dd>
           </dl>
         </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a215a2ef9f2e4a6914358503b92eb4b06"><div>
+          <section class="m-doc-details" id="aa7bed31fcb170569f705742dc9f8f610"><div>
             <h3>
               <div class="m-doc-template">
-                template&lt;typename Tp, typename Int&gt;
+                template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper"> BpqIterator&lt;Tp, Int&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a215a2ef9f2e4a6914358503b92eb4b06" class="m-doc-self">BpqIterator</a>(</span><span class="m-doc-wrap"><a href="class_b_p_queue.html" class="m-doc">BPQueue</a>&lt;Tp, Int&gt;&amp; bpq,
-              UInt curkey) <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper"> DllIterator&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa7bed31fcb170569f705742dc9f8f610" class="m-doc-self">DllIterator</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Dllink</a>&lt;T&gt;* cur) <span class="m-label m-info">explicit</span>  <span class="m-label m-primary">constexpr</span> <span class="m-label m-success">noexcept</span></span></span>
             </h3>
-            <p>Construct a new bpq iterator object.</p>
+            <p>Construct a new dll iterator object.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">bpq&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>curkey&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td style="width: 1%">cur&nbsp;<span class="m-label m-flat m-info">in</span></td>
                   <td></td>
                 </tr>
               </tbody>
             </table>
           </div></section>
-          <section class="m-doc-details" id="a7128a50360b79d91e743057793a6c090"><div>
+          <section class="m-doc-details" id="ab46750c24eea9c3c7d68652a12860613"><div>
             <h3>
               <div class="m-doc-template">
-                template&lt;typename Tp, typename Int&gt;
+                template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto BpqIterator&lt;Tp, Int&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7128a50360b79d91e743057793a6c090" class="m-doc-self">operator++</a>(</span><span class="m-doc-wrap">) -&gt; BpqIterator &amp; <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">auto DllIterator&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab46750c24eea9c3c7d68652a12860613" class="m-doc-self">operator++</a>(</span><span class="m-doc-wrap">) noexcept -&gt; DllIterator &amp; <span class="m-label m-primary">constexpr</span></span></span>
             </h3>
-            <p>Move to the next item.</p>
+            <p>move to the next item</p>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td><a href="class_bpq_iterator.html" class="m-doc">BpqIterator</a>&amp;</td>
+                  <td><a href="classDllist.html" class="m-doc">Dllist</a>&amp;</td>
                 </tr>
               </tfoot>
             </table>
           </div></section>
-          <section class="m-doc-details" id="a1084bbeefe16afe0b6de2129051f8865"><div>
+          <section class="m-doc-details" id="af4f7f3471672b96f5a102ab8def924db"><div>
             <h3>
               <div class="m-doc-template">
-                template&lt;typename Tp, typename Int&gt;
+                template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto BpqIterator&lt;Tp, Int&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1084bbeefe16afe0b6de2129051f8865" class="m-doc-self">operator*</a>(</span><span class="m-doc-wrap">) -&gt; Item &amp; <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">auto DllIterator&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af4f7f3471672b96f5a102ab8def924db" class="m-doc-self">operator*</a>(</span><span class="m-doc-wrap">) noexcept -&gt; Dllink&lt; T &gt; &amp; <span class="m-label m-primary">constexpr</span></span></span>
             </h3>
-            <p>Get the reference of the current item.</p>
+            <p>get the reference of the current item</p>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>Item&amp;</td>
+                  <td><a href="classDllist.html" class="m-doc">Dllist</a>&amp;</td>
                 </tr>
               </tfoot>
             </table>
           </div></section>
-          <section class="m-doc-details" id="ab2380b18899827e8ef1fa50f7aa6084f"><div>
+          <section class="m-doc-details" id="a0ed894a362835a930f9799f8e9378959"><div>
             <h3>
               <div class="m-doc-template">
-                template&lt;typename Tp, typename Int&gt;
+                template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab2380b18899827e8ef1fa50f7aa6084f" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_bpq_iterator.html" class="m-doc">BpqIterator</a>&amp; lhs,
-              const <a href="class_bpq_iterator.html" class="m-doc">BpqIterator</a>&amp; rhs) -&gt; bool <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">auto </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0ed894a362835a930f9799f8e9378959" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classDllIterator.html" class="m-doc">DllIterator</a>&amp; lhs,
+              const <a href="classDllIterator.html" class="m-doc">DllIterator</a>&amp; rhs) noexcept -&gt; bool</span></span>
             </h3>
             <p>eq operator</p>
             <table class="m-table m-fullwidth m-flat">
@@ -198,13 +192,13 @@
               </tfoot>
             </table>
           </div></section>
-          <section class="m-doc-details" id="a21ca9a54a8c62f7f58aa053bb162b38a"><div>
+          <section class="m-doc-details" id="a97f56db216c9ca68a575b9af1dfe58ba"><div>
             <h3>
               <div class="m-doc-template">
-                template&lt;typename Tp, typename Int&gt;
+                template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a21ca9a54a8c62f7f58aa053bb162b38a" class="m-doc-self">operator!=</a>(</span><span class="m-doc-wrap">const <a href="class_bpq_iterator.html" class="m-doc">BpqIterator</a>&amp; lhs,
-              const <a href="class_bpq_iterator.html" class="m-doc">BpqIterator</a>&amp; rhs) -&gt; bool <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">auto </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a97f56db216c9ca68a575b9af1dfe58ba" class="m-doc-self">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classDllIterator.html" class="m-doc">DllIterator</a>&amp; lhs,
+              const <a href="classDllIterator.html" class="m-doc">DllIterator</a>&amp; rhs) noexcept -&gt; bool</span></span>
             </h3>
             <p>neq operator</p>
             <table class="m-table m-fullwidth m-flat">
@@ -274,7 +268,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.10.0 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.8 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

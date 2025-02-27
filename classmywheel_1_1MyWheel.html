@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>fun::Robin struct | MyWheel</title>
+  <title>mywheel::MyWheel class | MyWheel</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -49,22 +49,10 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="robin_8hpp.html">&lt;mywheel/robin.hpp&gt;</a></div>
-          <div class="m-doc-template">template&lt;typename T&gt;</div>
-          <span class="m-breadcrumb"><a href="namespacefun.html">fun</a>::<wbr/></span>Robin <span class="m-thin">struct</span>
+          <span class="m-breadcrumb"><a href="namespacemywheel.html">mywheel</a>::<wbr/></span>MyWheel <span class="m-thin">class</span>
+          <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="greeter_8h.html">&lt;mywheel/greeter.h&gt;</a></div>
         </h1>
-        <p>Round <a href="structfun_1_1_robin.html" class="m-doc">Robin</a>.</p>
-        <table class="m-table m-fullwidth m-flat">
-          <thead>
-            <tr><th colspan="2">Template parameters</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="width: 1%">T</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+        <p>A class for saying hello in multiple languages.</p>
         <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -73,86 +61,69 @@
               <ul>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
-                <li><a href="#pub-attribs">Public variables</a></li>
               </ul>
             </li>
           </ul>
         </nav>
-<p>The <code><a href="structfun_1_1_robin.html" class="m-doc">Robin</a></code> class is implementing a round-robin algorithm. It is used to cycle through a sequence of elements in a circular manner. The constructor initializes the cycle with a specified number of parts, and each part is assigned a unique key. The <code>exclude</code> method returns an iterable wrapper that excludes a specified part from the cycle.</p>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper"><a href="#a4608f5920d65065f1b7deac7efbea1fa" class="m-doc">Robin</a>(</span><span class="m-doc-wrap">T num_parts) <span class="m-label m-flat m-info">explicit</span> </span>
+              <span class="m-doc-wrap-bumper"><a href="#ae56a4bc143c6bba0051ba236fa58a3ac" class="m-doc">MyWheel</a>(</span><span class="m-doc-wrap">std::string name)</span>
             </dt>
-            <dd></dd>
+            <dd>Creates a new <a href="classmywheel_1_1MyWheel.html" class="m-doc">MyWheel</a>.</dd>
           </dl>
         </section>
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a487fe43c4db8a76ff0dc8af58cd711d4" class="m-doc">exclude</a>(</span><span class="m-doc-wrap">T from_part) const -&gt; detail::RobinIterableWrapper&lt; T &gt; -&gt; auto</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4535ee93b5c12e75cba870ebca4b931a" class="m-doc">greet</a>(</span><span class="m-doc-wrap"><a href="namespacemywheel.html#a70727b5379ef7a1bcecab7768a8058b0" class="m-doc">LanguageCode</a> lang = <a href="namespacemywheel.html#a70727b5379ef7a1bcecab7768a8058b0aaa85f1840e282d8a8304dbc2c0d7c9b2" class="m-doc">LanguageCode::<wbr />EN</a>) const -&gt; std::string</span>
             </dt>
-            <dd></dd>
-          </dl>
-        </section>
-        <section id="pub-attribs">
-          <h2><a href="#pub-attribs">Public variables</a></h2>
-          <dl class="m-doc">
-            <dt id="a953b93da16ae18ec39d9af390a0141c0">
-              std::vector&lt;<a href="structfun_1_1detail_1_1_robin_sl_node.html" class="m-doc">detail::<wbr />RobinSlNode</a>&lt;T&gt;&gt; <a href="#a953b93da16ae18ec39d9af390a0141c0" class="m-doc-self">cycle</a>
-            </dt>
-            <dd><span></span></dd>
+            <dd>Creates a localized string containing the greeting.</dd>
           </dl>
         </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a4608f5920d65065f1b7deac7efbea1fa"><div>
+          <section class="m-doc-details" id="ae56a4bc143c6bba0051ba236fa58a3ac"><div>
             <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper"> fun::<wbr />Robin&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4608f5920d65065f1b7deac7efbea1fa" class="m-doc-self">Robin</a>(</span><span class="m-doc-wrap">T num_parts) <span class="m-label m-info">explicit</span> </span></span>
+              <span class="m-doc-wrap-bumper"> mywheel::<wbr />MyWheel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae56a4bc143c6bba0051ba236fa58a3ac" class="m-doc-self">MyWheel</a>(</span><span class="m-doc-wrap">std::string name)</span></span>
             </h3>
+            <p>Creates a new <a href="classmywheel_1_1MyWheel.html" class="m-doc">MyWheel</a>.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">num_parts&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>The parameter <code>num_parts</code> represents the number of parts or elements in the <a href="structfun_1_1_robin.html" class="m-doc">Robin</a> object.</td>
+                  <td style="width: 1%">name&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the name to greet</td>
                 </tr>
               </tbody>
             </table>
-<p>The <a href="structfun_1_1_robin.html" class="m-doc">Robin</a> constructor initializes a cycle of objects with keys ranging from 0 to num_parts-1.</p>
           </div></section>
-          <section class="m-doc-details" id="a487fe43c4db8a76ff0dc8af58cd711d4"><div>
+          <section class="m-doc-details" id="a4535ee93b5c12e75cba870ebca4b931a"><div>
             <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">auto fun::<wbr />Robin&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a487fe43c4db8a76ff0dc8af58cd711d4" class="m-doc-self">exclude</a>(</span><span class="m-doc-wrap">T from_part) const -&gt; detail::RobinIterableWrapper&lt; T &gt;</span></span>
+              <span class="m-doc-wrap-bumper">std::string mywheel::<wbr />MyWheel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4535ee93b5c12e75cba870ebca4b931a" class="m-doc-self">greet</a>(</span><span class="m-doc-wrap"><a href="namespacemywheel.html#a70727b5379ef7a1bcecab7768a8058b0" class="m-doc">LanguageCode</a> lang = <a href="namespacemywheel.html#a70727b5379ef7a1bcecab7768a8058b0aaa85f1840e282d8a8304dbc2c0d7c9b2" class="m-doc">LanguageCode::<wbr />EN</a>) const</span></span>
             </h3>
+            <p>Creates a localized string containing the greeting.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">from_part&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>The <code>from_part</code> parameter in the <code>exclude</code> method is the part of the cycle that you want to exclude. It is of type <code>T</code>, which is the same type as the elements in the cycle.</td>
+                  <td style="width: 1%">lang&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the language to greet in</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th>Returns</th>
-                  <td>The <code>exclude</code> method in the <code><a href="structfun_1_1_robin.html" class="m-doc">Robin</a></code> class returns an iterable wrapper of type <code><a href="structfun_1_1detail_1_1_robin_iterable_wrapper.html" class="m-doc">detail::<wbr />RobinIterableWrapper</a>&lt;T&gt;</code>.</td>
+                  <td>a string containing the greeting</td>
                 </tr>
               </tfoot>
             </table>
-<p>The <code>exclude</code> method in the <code><a href="structfun_1_1_robin.html" class="m-doc">Robin</a></code> class returns an iterable wrapper that excludes a specified part from the cycle.</p>
           </div></section>
         </section>
       </div>
@@ -199,7 +170,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.10.0 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>MyWheel. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.8 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>
