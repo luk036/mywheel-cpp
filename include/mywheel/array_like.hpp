@@ -137,6 +137,8 @@ template <typename T> class ShiftArray {
     std::vector<T> _lst;
 
   public:
+    ShiftArray() : _lst{} {}
+
     /**
      * The ShiftArray function takes a vector as input and initializes the start variable to 0 and
      * the lst variable to the input vector.
