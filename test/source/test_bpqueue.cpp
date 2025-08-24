@@ -80,3 +80,14 @@ TEST_CASE("Test BPQueue 3") {
         i += 1;
     }
 }
+
+TEST_CASE("Test BPQueue get_max") {
+    auto bpq = BPQueue<int, int32_t>{-3, 3};
+    auto a = Dllink<std::pair<int, uint32_t>>{std::make_pair(3, uint32_t(0))};
+    bpq.append(a, 0);
+    CHECK_EQ(bpq.get_max(), 0);
+    bpq.increase_key(a, 1);
+    CHECK_EQ(bpq.get_max(), 1);
+    bpq.decrease_key(a, 2);
+    CHECK_EQ(bpq.get_max(), -1);
+}

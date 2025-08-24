@@ -22,6 +22,13 @@ target("test_mywheel")
     add_includedirs("../py2cpp/include", {public = true})
     add_files("test/source/*.cpp")
     add_packages("doctest", "fmt")
+    add_tests("default")
+    set_languages("c++17")
+    set_kind("binary")
+    add_includedirs("include", {public = true})
+    add_includedirs("../py2cpp/include", {public = true})
+    add_files("test/source/*.cpp")
+    add_packages("doctest", "fmt")
     -- require py2cpp installed
 
 

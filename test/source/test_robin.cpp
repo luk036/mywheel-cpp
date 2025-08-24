@@ -15,3 +15,15 @@ TEST_CASE("Test Robin") {
     }
     CHECK(count == 5);
 }
+
+TEST_CASE("Test Robin exclude") {
+    const fun::Robin<uint8_t> rr(6U);
+    auto count = 0U;
+    auto sum = 0U;
+    for (auto i : rr.exclude(2)) {
+        count += 1;
+        sum += i;
+    }
+    CHECK(count == 5);
+    CHECK(sum == 0 + 1 + 3 + 4 + 5);
+}

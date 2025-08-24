@@ -15,3 +15,11 @@ TEST_CASE("Test MapAdapter") {
     }
     CHECK(count == 3);
 }
+
+TEST_CASE("Test MapAdapter operator[]") {
+    const auto V = std::vector<double>{0.6, 0.7, 0.8};
+    const auto S = MapConstAdapter<std::vector<double>>{V};
+    CHECK_EQ(S[0], 0.6);
+    CHECK_EQ(S[1], 0.7);
+    CHECK_EQ(S[2], 0.8);
+}

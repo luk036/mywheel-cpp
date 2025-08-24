@@ -24,3 +24,13 @@ TEST_CASE("Test ShiftArray") {
     // }
     // CHECK_EQ(count, arr.size());
 }
+
+TEST_CASE("Test ShiftArray operator[]") {
+    ShiftArray<int> arr(std::vector<int>{1, 2, 3, 4, 5});
+    arr.set_start(2);
+    CHECK_EQ(arr[2], 1);
+    CHECK_EQ(arr[3], 2);
+    CHECK_EQ(arr[4], 3);
+    CHECK_EQ(arr[5], 4);
+    CHECK_EQ(arr[6], 5);
+}
