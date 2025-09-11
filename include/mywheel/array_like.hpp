@@ -2,8 +2,8 @@
 
 // #include <any>
 #include <cstddef>
-#include <vector>
 #include <stdexcept>
+#include <vector>
 
 /* The `RepeatArray` class is a template class that represents an array that repeats its elements.
 It has a constructor that takes a value and a size as parameters and initializes all elements of the
@@ -237,7 +237,7 @@ template <typename T> class ShiftArray {
      *
      * @return The end iterator of the container.
      */
-    Iterator end() const { 
+    Iterator end() const {
         if (this->_start > this->_lst.size()) {
             return Iterator(*this, 0);
         }
