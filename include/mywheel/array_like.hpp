@@ -3,6 +3,7 @@
 // #include <any>
 #include <cstddef>
 #include <vector>
+#include <stdexcept>
 
 /* The `RepeatArray` class is a template class that represents an array that repeats its elements.
 It has a constructor that takes a value and a size as parameters and initializes all elements of the
