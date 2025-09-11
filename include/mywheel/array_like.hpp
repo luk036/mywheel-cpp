@@ -22,7 +22,7 @@ template <typename T> class RepeatArray {
      * @param[in] value Value to initialize array elements with.
      * @param[in] size Number of elements in array.
      */
-    RepeatArray(T value, size_t size) : _value(value), _size(size) {}
+    RepeatArray(const T& value, size_t size) : _value(value), _size(size) {}
 
     /**
      * Overloads the subscript operator [] to return the value stored in the RepeatArray.
@@ -84,7 +84,7 @@ template <typename T> class RepeatArray {
          *
          * @return The value stored in the underlying RepeatArray.
          */
-        T operator*() const { return this->_array._value; }
+        const T& operator*() const { return this->_array._value; }
 
         /**
          * Pre-increment operator overload for Iterator class.
@@ -146,9 +146,16 @@ template <typename T> class ShiftArray {
      * @param[in] lst The parameter "lst" is a vector of type T, which is the type of elements
      * stored in the vector.
      */
-    explicit ShiftArray(std::vector<T> lst) : _lst(lst) {}
+    explicit ShiftArray(const std::vector<T>& lst) : _lst(lst) {}
 
-    void set_start(size_t start) { this->_start = start; }
+    explicit ShiftArray(std::vector<T>&& lst) : _lst(std::move(lst)) {}
+
+    void set_start(size_t start) {
+        if (start > this->_lst.size()) {
+            throw std::out_of_range("start index is out of range");
+        }
+        this->_start = start;
+    }
 
     /**
      * The above function is an overloaded operator[] that returns a constant reference to an
@@ -203,7 +210,7 @@ template <typename T> class ShiftArray {
          * @return The code is returning the element at the index `array.start + count` in the
          * `array.lst` array.
          */
-        T operator*() const { return this->_array._lst[this->_array._start + this->_count]; }
+        const T& operator*() const { return this->_array._lst[this->_array._start + this->_count]; }
 
         /**
          * The above function overloads the pre-increment operator for an Iterator class,
@@ -229,7 +236,12 @@ template <typename T> class ShiftArray {
      *
      * @return The end iterator of the container.
      */
-    Iterator end() const { return Iterator(*this, this->_lst.size() - this->_start); }
+    Iterator end() const { 
+        if (this->_start > this->_lst.size()) {
+            return Iterator(*this, 0);
+        }
+        return Iterator(*this, this->_lst.size() - this->_start);
+    }
 
     /**
      * The function returns the size of a list, excluding a specified starting index.

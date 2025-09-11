@@ -10,10 +10,14 @@ end
 if is_plat("linux") then
     set_warnings("all", "error")
     add_cxflags("-Wconversion", {force = true})
+    add_cxflags("-nostdinc++", {force = true})
+    add_sysincludedirs(os.getenv("PREFIX") .. "/include/c++/v1", {public = true})
+    add_sysincludedirs(os.getenv("PREFIX") .. "/include", {public = true})
 elseif is_plat("windows") then
     add_cxflags("/EHsc /W4 /WX /wd4819 /wd4996", {force = true})
 end
 
+set_optimize("fastest")
 
 target("test_mywheel")
     set_languages("c++17")
@@ -23,12 +27,6 @@ target("test_mywheel")
     add_files("test/source/*.cpp")
     add_packages("doctest", "fmt")
     add_tests("default")
-    set_languages("c++17")
-    set_kind("binary")
-    add_includedirs("include", {public = true})
-    add_includedirs("../py2cpp/include", {public = true})
-    add_files("test/source/*.cpp")
-    add_packages("doctest", "fmt")
     -- require py2cpp installed
 
 
