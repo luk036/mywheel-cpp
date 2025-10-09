@@ -105,7 +105,10 @@ namespace fun {
      * @tparam T
      */
     template <typename T> struct Robin {
-        std::vector<detail::RobinSlNode<T>> cycle;
+        using SlNode = detail::RobinSlNode<T>;
+        using IterableWrapper = detail::RobinIterableWrapper<T>;
+
+        std::vector<SlNode> cycle;
 
         /**
          * The Robin constructor initializes a cycle of objects with keys ranging from 0 to
@@ -115,13 +118,11 @@ namespace fun {
          * in the Robin object.
          */
         explicit Robin(T num_parts) : cycle(num_parts) {
-            auto *slptr = &this->cycle[num_parts - 1];
-            auto k = T(0);
-            for (auto &sl : this->cycle) {
-                sl.key = k;
-                slptr->next = &sl;
+            auto *slptr = &this->cycle.back();
+            for (auto i = T(0); i != num_parts; ++i) {
+                this->cycle[i].key = i;
+                slptr->next = &this->cycle[i];
                 slptr = slptr->next;
-                ++k;
             }
         }
 
@@ -134,10 +135,10 @@ namespace fun {
          * in the cycle.
          *
          * @return The `exclude` method in the `Robin` class returns an iterable wrapper of type
-         * `detail::RobinIterableWrapper<T>`.
+         * `IterableWrapper`.
          */
-        auto exclude(T from_part) const -> detail::RobinIterableWrapper<T> {
-            return detail::RobinIterableWrapper<T>{&this->cycle[from_part]};
+        auto exclude(T from_part) const -> IterableWrapper {
+            return IterableWrapper{&this->cycle[from_part]};
         }
     };
 

@@ -175,7 +175,7 @@ namespace py {
          *   (2, 3)
          *   (3, 6)
          */
-        auto items() { return py::enumerate(this->_lst); }
+        auto items() const { return py::const_enumerate(this->_lst); }
     };
 
 }  // namespace py

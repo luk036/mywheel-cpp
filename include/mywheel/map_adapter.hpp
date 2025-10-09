@@ -143,20 +143,7 @@ template <typename Container> class MapConstAdapter {
      *
      * @param[in] lst The parameter `lst` is a reference to a container object.
      */
-    explicit MapConstAdapter(const Container &lst)
-        : _rng{py::range(lst.size())}, _lst(lst), mapview(py::const_enumerate(_lst)) {}
-
-    /**
-     * The function overloads the subscript operator to access and modify the value associated with
-     * a given key in a map-like container.
-     *
-     * @param[in] key The parameter "key" is of type "key_type", which is a data type that
-     * represents the key used to search for an element in the container.
-     *
-     * @return The operator[] is returning a reference to the mapped_type value associated with the
-     * given key.
-     */
-    mapped_type &operator[](const key_type &key) { return this->_lst[key]; }
+    const mapped_type &operator[](const key_type &key) const { return this->_lst[key]; }
 
     /**
      * The function returns a constant reference to the value associated with the given key in a
