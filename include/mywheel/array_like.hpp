@@ -28,7 +28,6 @@ template <typename T> class RepeatArray {
     /**
      * Overloads the subscript operator [] to return the value stored in the RepeatArray.
      *
-     * @param[in] index The index to access. This is unused since all elements have the same value.
      * @return The value stored in the RepeatArray.
      */
     T operator[](size_t /* index */) const { return this->_value; }

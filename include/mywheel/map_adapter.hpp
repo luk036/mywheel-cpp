@@ -8,7 +8,7 @@
 /**
  * @brief Dict-like data structure by std::vector and Range
  *
- * @tparam T
+ * @tparam Container
  */
 template <typename Container> class MapAdapterBase {
   public:
@@ -82,7 +82,7 @@ template <typename Container> class MapAdapterBase {
 /**
  * @brief Dict-like data structure by std::vector and Range
  *
- * @tparam T
+ * @tparam Container
  */
 template <typename Container> class MapAdapter : public MapAdapterBase<Container> {
   public:
@@ -123,7 +123,7 @@ template <typename Container> class MapAdapter : public MapAdapterBase<Container
 /**
  * @brief Dict-like data structure by std::vector and Range
  *
- * @tparam T
+ * @tparam Container
  */
 template <typename Container> class MapConstAdapter {
   public:
@@ -139,11 +139,13 @@ template <typename Container> class MapConstAdapter {
 
   public:
     /**
-     * The function constructs a MapConstAdapter object using a given container.
+     * @brief Construct a new MapConstAdapter object
+     *
+     * The function constructs a new MapConstAdapter object with a given container.
      *
      * @param[in] lst The parameter `lst` is a reference to a container object.
      */
-    const mapped_type &operator[](const key_type &key) const { return this->_lst[key]; }
+    explicit MapConstAdapter(const Container &lst) : _rng{py::range(lst.size())}, _lst(lst), mapview(py::const_enumerate(this->_lst)) {}
 
     /**
      * The function returns a constant reference to the value associated with the given key in a
@@ -155,7 +157,7 @@ template <typename Container> class MapConstAdapter {
      * @return a constant reference to the value associated with the given key in the `_lst`
      * container.
      */
-    const mapped_type &operator[](const key_type &key) const { return this->_lst.at(key); }
+    const mapped_type &operator[](const key_type &key) const { return this->_lst[key]; }
 
     /**
      * The function at() returns a constant reference to the value associated with a given key in a

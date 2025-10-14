@@ -1,5 +1,7 @@
 DOXYFILE = 'Doxyfile'
 
+M_SHOW_UNDOCUMENTED = True
+
 LINKS_NAVBAR1 = [
     (None, 'pages', [(None, 'about')]),
     (None, 'namespaces', []),

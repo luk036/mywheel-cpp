@@ -32,8 +32,7 @@ template <typename Tp, typename Int> class BpqIterator;
  *
  * @tparam Tp
  * @tparam Int
- * @tparam _Sequence
- * @tparam std::make_unsigned_t<Int>>>>
+ * @tparam Sequence
  */
 template <typename Tp, typename Int = int32_t,
           typename Sequence = std::vector<Dllist<std::pair<Tp, std::make_unsigned_t<Int>>>>>
