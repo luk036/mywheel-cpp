@@ -34,3 +34,32 @@ TEST_CASE("Test ShiftArray operator[]") {
     CHECK_EQ(arr[5], 4);
     CHECK_EQ(arr[6], 5);
 }
+
+TEST_CASE("Test RepeatArray Stress Test") {
+    const size_t large_size = 1000000;
+    RepeatArray<int> arr(7, large_size);
+    CHECK_EQ(arr.size(), large_size);
+    for (size_t i = 0; i < large_size; ++i) {
+        CHECK_EQ(arr[i], 7);
+    }
+    size_t count = 0;
+    for (int i : arr) {
+        ++count;
+        CHECK_EQ(i, 7);
+    }
+    CHECK_EQ(count, large_size);
+}
+
+TEST_CASE("Test ShiftArray Stress Test") {
+    const size_t large_size = 1000000;
+    std::vector<int> vec(large_size);
+    for (size_t i = 0; i < large_size; ++i) {
+        vec[i] = static_cast<int>(i);
+    }
+    ShiftArray<int> arr(vec);
+    size_t start_offset = large_size / 2;
+    arr.set_start(start_offset);
+    for (size_t key = start_offset; key < start_offset + arr.size(); ++key) {
+        CHECK_EQ(arr[key], static_cast<int>(key - start_offset));
+    }
+}
