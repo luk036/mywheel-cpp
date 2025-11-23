@@ -17,6 +17,29 @@ template <typename T> class DllIterator;
  * algorithm. This saves memory and run-time to update the length
  * information. Note that this class does not own the list node. They
  * are supplied by the caller in order to better reuse the nodes.
+ * 
+ * ```
+ * Doubly Linked List Structure:
+ * 
+ *     ┌─────────────────────────────────────┐
+ *     │              Head/Sentinel          │
+ *     │  ┌─────┐     ┌─────┐     ┌─────┐   │
+ *     └─▶│next │────▶│next │────▶│next │───┘
+ *        │     │     │     │     │     │
+ *        │prev│◀────│prev│◀────│prev│◀─┐
+ *        └─────┘     └─────┘     └─────┘ │
+ *          ▲         ▲   ▲       ▲   ▲   │
+ *          │         │   │       │   │   │
+ *          └─────────┼───┼───────┼───┼───┘
+ *                    │   │       │   │
+ *                 ┌─────┐ ┌─────┐ ┌─────┐
+ *                 │Node1│ │Node2│ │Node3│
+ *                 │Data │ │Data │ │Data │
+ *                 └─────┘ └─────┘ └─────┘
+ * 
+ * Each node has 'next' and 'prev' pointers, with the head/sentinel
+ * serving as a boundary marker to simplify insertion/deletion.
+ * ```
  */
 #pragma pack(push, 1)
 template <typename T> class Dllink {

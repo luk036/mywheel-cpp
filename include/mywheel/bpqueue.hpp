@@ -30,6 +30,30 @@ template <typename Tp, typename Int> class BpqIterator;
  *
  * All the member functions assume that the keys are inside the bounds.
  *
+ * ```
+ * Priority Queue (BPQueue) with integer keys [0..4]:
+ * 
+ * Key 4: ┌─┐
+ *        │7│ -> ...
+ *        └─┘
+ * 
+ * Key 3: ┌─┐
+ *        │2│ -> │9│ -> ...
+ *        └─┘
+ * 
+ * Key 2: (empty)
+ * 
+ * Key 1: ┌─┐
+ *        │5│ -> │1│ -> │8│ -> ...
+ *        └─┘
+ * 
+ * Key 0: (empty)
+ * 
+ * Sentinel: (dummy element for boundary checks)
+ * 
+ * Max key: 4
+ * ```
+ *
  * @tparam Tp
  * @tparam Int
  * @tparam Sequence

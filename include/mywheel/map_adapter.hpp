@@ -8,6 +8,26 @@
 /**
  * @brief Dict-like data structure by std::vector and Range
  *
+ * ```
+ * MapAdapter Structure:
+ * 
+ * Original Container: [A] [B] [C] [D] [E]
+ *                    [0] [1] [2] [3] [4]  <-- Indices become keys
+ * 
+ * MapAdapter Interface:
+ * 
+ * operator[](0) → A
+ * operator[](1) → B
+ * operator[](2) → C
+ * operator[](3) → D
+ * operator[](4) → E
+ * 
+ * begin() → iterator to (0, A)
+ * end()   → iterator past (4, E)
+ * 
+ * enumerate() → [(0, A), (1, B), (2, C), (3, D), (4, E)]
+ * ```
+ *
  * @tparam Container
  */
 template <typename Container> class MapAdapterBase {

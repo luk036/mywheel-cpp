@@ -8,7 +8,7 @@
 template <typename T> class DllIterator;
 
 /**
- * @brief doubly linked node (that may also be a "head" a list)
+ * @brief doubly linked list with sentinel head node
  *
  * A Doubly-linked List class. This class simply contains a link of
  * node's. By adding a "head" node (sentinel), deleting a node is
@@ -17,6 +17,51 @@ template <typename T> class DllIterator;
  * algorithm. This saves memory and run-time to update the length
  * information. Note that this class does not own the list node. They
  * are supplied by the caller in order to better reuse the nodes.
+ * 
+ * ```
+ * Doubly Linked List with Sentinel Head:
+ * 
+ *     ┌─────────────────┐
+ *     │    Dllist       │
+ *     │  ┌───────────┐  │
+ *     └─▶│   head    │  │
+ *        │ (sentinel)│  │
+ *        └───────────┘  │
+ *          ▲     ▲      │
+ *          │     │      │
+ *     ┌─────┐   ┌─────┐ │
+ *     │prev │───│next │─┘
+ *     └─────┘   └─────┘
+ *       │         │
+ *       │    ┌────▼──┬─────────┐
+ *       │    │       │         │
+ *       │    │ ┌─────▼───┐     │
+ *       │    │ │  Node   │     │
+ *       │    │ │         │     │
+ *       │    │ └─────────┘     │
+ *       │    │     │           │
+ *       │    │     ▼           │
+ *       │    │ ┌─────────┐     │
+ *       │    │ │  Node   │     │
+ *       │    │ │         │     │
+ *       │    │ └─────────┘     │
+ *       │    │     │           │
+ *       │    │     ▼           │
+ *       │    │ ┌─────────┐     │
+ *       │    │ │  Node   │     │
+ *       │    │ │(tail)   │     │
+ *       │    │ └─────────┘     │
+ *       │    │     │           │
+ *       └────┴─────┼───────────┘
+ *                   ▼
+ *              ┌─────────┐
+ *              │  Node   │
+ *              │(head)   │
+ *              └─────────┘
+ * 
+ * The sentinel head simplifies operations by eliminating special cases
+ * for empty lists and boundary nodes.
+ * ```
  */
 #pragma pack(push, 1)
 template <typename T> class Dllist {

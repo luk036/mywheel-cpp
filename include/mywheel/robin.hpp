@@ -101,6 +101,34 @@ namespace fun {
      * initializes the cycle with a specified number of parts, and each part is
      * assigned a unique key. The `exclude` method returns an iterable wrapper that
      * excludes a specified part from the cycle.
+     * 
+     * ```
+     * Round Robin Cycle:
+     * 
+     *    ┌─────┐
+     *    │  0  │◄────────────────────────┐
+     *    └──┬──┘                        │
+     *       │                           │
+     *       ▼                           │
+     *    ┌─────┐                        │
+     *    │  1  │◄────┐                 │
+     *    └──┬──┘     │                 │
+     *       │        │                 │
+     *       ▼        │                 │
+     *    ┌─────┐     │                 │
+     *    │  2  │◄────┼─────────────────┤  <-- exclude(2) would skip this node
+     *    └──┬──┘     │                 │
+     *       │        │                 │
+     *       ▼        │                 │
+     *    ┌─────┐     │                 │
+     *    │  3  │◄────┘                 │
+     *    └──┬──┘                       │
+     *       │                          │
+     *       └──────────────────────────┘
+     * 
+     * The cycle forms a circular linked list where exclude(from_part)
+     * returns an iterator that starts after the excluded part.
+     * ```
      *
      * @tparam T
      */
