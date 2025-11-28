@@ -1,8 +1,9 @@
 #pragma once
 
-#include <py2cpp/enumerate.hpp>
-#include <py2cpp/range.hpp>
 #include <vector>
+
+#include "enumerate.hpp"
+#include "range.hpp"
 
 namespace py {
 
@@ -11,21 +12,6 @@ namespace py {
      *
      * The `Lict` class is a custom implementation of an unordered mapping with integer keys and
      * generic values, which adapts a vector to behave like a dictionary.
-     * 
-     * ```
-     * Lict (List-Dictionary) Structure:
-     * 
-     * Vector-based mapping with integer keys:
-     * 
-     * Keys:   [0] [1] [2] [3] [4]
-     *        ┌───┬───┬───┬───┬───┐
-     * Values: │ A │ B │ C │ D │ E │
-     *        └───┴───┴───┴───┴───┘
-     * 
-     * Access: lict[2] → returns 'C'
-     *         lict.contains(3) → true
-     *         lict.size() → 5
-     * ```
      *
      * @tparam T
      */
@@ -37,7 +23,7 @@ namespace py {
         using const_iterator = py::Range<key_type>::iterator;
 
       private:
-        // py::Range<key_type> _rng;
+        py::Range<key_type> _rng;
         std::vector<T> _lst;
 
       public:
@@ -47,7 +33,7 @@ namespace py {
          * @param[in] lst The `lst` parameter is a vector. It is used to initialize the `self.lst`
          * attribute of the class
          */
-        explicit Lict(std::vector<T> lst) : _lst(std::move(lst)) {}
+        explicit Lict(std::vector<T> lst) : _rng{py::range(lst.size())}, _lst(std::move(lst)) {}
 
         /**
          * @brief This function allows you to access an element in a Lict object by its index.
@@ -96,19 +82,21 @@ namespace py {
          */
         const T &at(const key_type &key) const { return this->_lst.at(key); }
 
-        /**
-         * @brief
-         *
-         * @return iterator
-         */
-        iterator begin() const { return py::range<key_type>(this->_lst.size()).begin(); }
+        // void erase() { throw std::runtime_error("NotImplementedError"); }
 
         /**
          * @brief
          *
          * @return iterator
          */
-        iterator end() const { return py::range<key_type>(this->_lst.size()).end(); }
+        iterator begin() const { return this->_rng.begin(); }
+
+        /**
+         * @brief
+         *
+         * @return iterator
+         */
+        iterator end() const { return this->_rng.end(); }
 
         /**
          * @brief The `contains` function checks if a given value is present in the `rng` attribute
@@ -124,7 +112,7 @@ namespace py {
          *   >>> a.contains(2)
          *   true
          */
-        bool contains(const key_type &key) const { return key < this->_lst.size(); }
+        bool contains(const key_type &key) const noexcept { return this->_rng.contains(key); }
 
         /**
          * @brief This function returns the length of the `rng` attribute of the object.
@@ -136,7 +124,7 @@ namespace py {
          *   >>> a.size()
          *   4
          */
-        size_t size() const { return this->_lst.size(); }
+        size_t size() const { return this->_rng.size(); }
 
         /**
          * @brief The `values` function returns an iterator that yields the elements of the `lst`
@@ -190,7 +178,36 @@ namespace py {
          *   (2, 3)
          *   (3, 6)
          */
+        auto items() { return py::enumerate(this->_lst); }
+
+        /**
+         * @brief The function returns an enumeration of the items in the list.
+         *
+         * @return: The `items` method is returning an enumeration of the `lst` attribute.
+         *
+         * Examples:
+         *   >>> const auto a = Lict({1, 4, 3, 6});
+         *   >>> for (const auto& [key, value] : a.items()) {
+         *   ...     fmt::print(key, value);
+         *   ... }
+         *   (0, 1)
+         *   (1, 4)
+         *   (2, 3)
+         *   (3, 6)
+         */
         auto items() const { return py::enumerate(this->_lst); }
     };
 
 }  // namespace py
+
+// int main() {
+//   Lict<int> a(std::vector<int>(8, 0));
+//   for (int i : a) {
+//     a[i] = i * i;
+//   }
+//   for (auto i : a) {
+//     std::cout << i << ": " << a[i] << std::endl;
+//   }
+//   std::cout << a.__contains__(3) << std::endl;
+//   return 0;
+// }

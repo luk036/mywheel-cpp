@@ -17,10 +17,10 @@ template <typename T> class DllIterator;
  * algorithm. This saves memory and run-time to update the length
  * information. Note that this class does not own the list node. They
  * are supplied by the caller in order to better reuse the nodes.
- * 
+ *
  * ```
  * Doubly Linked List with Sentinel Head:
- * 
+ *
  *     ┌─────────────────┐
  *     │    Dllist       │
  *     │  ┌───────────┐  │
@@ -58,7 +58,7 @@ template <typename T> class DllIterator;
  *              │  Node   │
  *              │(head)   │
  *              └─────────┘
- * 
+ *
  * The sentinel head simplifies operations by eliminating special cases
  * for empty lists and boundary nodes.
  * ```
