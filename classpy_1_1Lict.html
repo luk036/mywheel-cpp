@@ -52,7 +52,7 @@
           <div class="m-doc-template">template&lt;typename T&gt;</div>
           <span class="m-breadcrumb"><a href="namespacepy.html">py</a>::<wbr/></span>Lict <span class="m-thin">class</span>
         </h1>
-        <p>Dict-like data structure by std::vector and <a href="structpy_1_1Range.html" class="m-doc">Range</a>.</p>
+        <p>Dict-like data structure by std::vector and Range.</p>
         <table class="m-table m-fullwidth m-flat">
           <thead>
             <tr><th colspan="2">Template parameters</th></tr>
@@ -87,14 +87,10 @@
 
 <span class="nl">Access</span><span class="p">:</span><span class="w"> </span><span class="n">lict</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">returns</span><span class="w"> </span><span class="sc">&#39;C&#39;</span>
 <span class="w">        </span><span class="n">lict</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nb">true</span>
-<span class="w">        </span><span class="n">lict</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mi">5</span></pre><p>The <code><a href="classpy_1_1Lict.html" class="m-doc">Lict</a></code> class is a custom implementation of an unordered mapping with integer keys and generic values, which adapts a vector to behave like a dictionary.</p>
+<span class="w">        </span><span class="n">lict</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mi">5</span></pre>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="#a3ce7f20c34f6cd42830107594626ad53" class="m-doc">Lict</a>(</span><span class="m-doc-wrap">std::vector&lt;T&gt; lst) <span class="m-label m-flat m-info">explicit</span> </span>
-            </dt>
-            <dd>Constructor for a dictionary-like adaptor for a vector.</dd>
             <dt>
               <span class="m-doc-wrap-bumper"><a href="#a3ce7f20c34f6cd42830107594626ad53" class="m-doc">Lict</a>(</span><span class="m-doc-wrap">std::vector&lt;T&gt; lst) <span class="m-label m-flat m-info">explicit</span> </span>
             </dt>
@@ -144,74 +140,10 @@
               <span class="m-doc-wrap-bumper">auto <a href="#a5b1d2fdad7b6a444fabd298ce7a188a8" class="m-doc">items</a>(</span><span class="m-doc-wrap">) const -&gt; auto</span>
             </dt>
             <dd>The function returns an enumeration of the items in the list.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#aa64a3a070ab83cb320e01afd72a96847" class="m-doc">operator[]</a>(</span><span class="m-doc-wrap">const <a href="classpy_1_1Lict.html#ad25571c852e951339b14e42723ccf840" class="m-doc">key_<wbr />type</a>&amp; key) const -&gt; const T&amp;</span>
-            </dt>
-            <dd>This function allows you to access an element in a <a href="classpy_1_1Lict.html" class="m-doc">Lict</a> object by its index.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#ae2052cc554492eeb43d7ca4053566475" class="m-doc">operator[]</a>(</span><span class="m-doc-wrap">const <a href="classpy_1_1Lict.html#ad25571c852e951339b14e42723ccf840" class="m-doc">key_<wbr />type</a>&amp; key) -&gt; T&amp;</span>
-            </dt>
-            <dd>This function sets the value at a given index in a list-like object.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#ad37cafb033bbcede086ba76468adbaf5" class="m-doc">at</a>(</span><span class="m-doc-wrap">const <a href="classpy_1_1Lict.html#ad25571c852e951339b14e42723ccf840" class="m-doc">key_<wbr />type</a>&amp; key) const -&gt; const T&amp;</span>
-            </dt>
-            <dd>This function allows you to access an element in a <a href="classpy_1_1Lict.html" class="m-doc">Lict</a> object by its index.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#ae3620e72f3813e5be1389b38266ee143" class="m-doc">begin</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classpy_1_1Lict.html#abc47e990ffa169bc75edc465ba12348f" class="m-doc">iterator</a></span>
-            </dt>
-            <dd></dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a7b6108c5967edc1d268e93ab175428ee" class="m-doc">end</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classpy_1_1Lict.html#abc47e990ffa169bc75edc465ba12348f" class="m-doc">iterator</a></span>
-            </dt>
-            <dd></dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a39dea4980c98b790a87ffde26195a4ce" class="m-doc">contains</a>(</span><span class="m-doc-wrap">const <a href="classpy_1_1Lict.html#ad25571c852e951339b14e42723ccf840" class="m-doc">key_<wbr />type</a>&amp; key) const -&gt; bool <span class="m-label m-flat m-success">noexcept</span></span>
-            </dt>
-            <dd>The <code>contains</code> function checks if a given value is present in the <code>rng</code> attribute of the object.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a4dad65f610c3afe0d9847ef5d01fa920" class="m-doc">size</a>(</span><span class="m-doc-wrap">) const -&gt; size_t</span>
-            </dt>
-            <dd>This function returns the length of the <code>rng</code> attribute of the object.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a48c39ac3ff977e8ef30754258373fcca" class="m-doc">values</a>(</span><span class="m-doc-wrap">) const -&gt; const auto&amp;</span>
-            </dt>
-            <dd>The <code>values</code> function returns an iterator that yields the elements of the <code>lst</code> attribute of the <code><a href="classpy_1_1Lict.html" class="m-doc">Lict</a></code> object.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#aa513bb1c5697039b7c7fe0dd3a1bd8e3" class="m-doc">values</a>(</span><span class="m-doc-wrap">) -&gt; auto&amp;</span>
-            </dt>
-            <dd>The <code>values</code> function returns an iterator that yields the elements of the <code>lst</code> attribute of the <code><a href="classpy_1_1Lict.html" class="m-doc">Lict</a></code> object.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a541ba5ef4fc12fa71f40c79d588e20ba" class="m-doc">items</a>(</span><span class="m-doc-wrap">) -&gt; auto</span>
-            </dt>
-            <dd>The function returns an enumeration of the items in the list.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a5b1d2fdad7b6a444fabd298ce7a188a8" class="m-doc">items</a>(</span><span class="m-doc-wrap">) const -&gt; auto</span>
-            </dt>
-            <dd>The function returns an enumeration of the items in the list.</dd>
           </dl>
         </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a3ce7f20c34f6cd42830107594626ad53"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper"> py::<wbr />Lict&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3ce7f20c34f6cd42830107594626ad53" class="m-doc-self">Lict</a>(</span><span class="m-doc-wrap">std::vector&lt;T&gt; lst) <span class="m-label m-info">explicit</span> </span></span>
-            </h3>
-            <p>Constructor for a dictionary-like adaptor for a vector.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">lst&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>The <code>lst</code> parameter is a vector. It is used to initialize the <code>self.lst</code> attribute of the class</td>
-                </tr>
-              </tbody>
-            </table>
-          </div></section>
           <section class="m-doc-details" id="a3ce7f20c34f6cd42830107594626ad53"><div>
             <h3>
               <div class="m-doc-template">
@@ -437,230 +369,6 @@
               </tfoot>
             </table>
 <p>Examples:</p><blockquote><blockquote><blockquote><p>auto a = <a href="classpy_1_1Lict.html" class="m-doc">Lict</a>({1, 4, 3, 6}); for (auto&amp; [key, value] : a.items()) { ... fmt::print(key, value); ... } (0, 1) (1, 4) (2, 3) (3, 6)</p></blockquote></blockquote></blockquote>
-          </div></section>
-          <section class="m-doc-details" id="aa64a3a070ab83cb320e01afd72a96847"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">const T&amp; py::<wbr />Lict&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa64a3a070ab83cb320e01afd72a96847" class="m-doc-self">operator[]</a>(</span><span class="m-doc-wrap">const <a href="classpy_1_1Lict.html#ad25571c852e951339b14e42723ccf840" class="m-doc">key_<wbr />type</a>&amp; key) const</span></span>
-            </h3>
-            <p>This function allows you to access an element in a <a href="classpy_1_1Lict.html" class="m-doc">Lict</a> object by its index.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">key&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>The <code>key</code> parameter is of type <code>size_t</code> and it represents the index of the element that you want to retrieve from the list</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>the item at the specified index in the <code>lst</code> attribute.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Examples:</p><blockquote><blockquote><blockquote><p>auto a = <a href="classpy_1_1Lict.html" class="m-doc">Lict</a>({1, 4, 3, 6}); a[2] 3</p></blockquote></blockquote></blockquote>
-          </div></section>
-          <section class="m-doc-details" id="ae2052cc554492eeb43d7ca4053566475"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">T&amp; py::<wbr />Lict&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae2052cc554492eeb43d7ca4053566475" class="m-doc-self">operator[]</a>(</span><span class="m-doc-wrap">const <a href="classpy_1_1Lict.html#ad25571c852e951339b14e42723ccf840" class="m-doc">key_<wbr />type</a>&amp; key)</span></span>
-            </h3>
-            <p>This function sets the value at a given index in a list-like object.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">key&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>The key parameter represents the index at which the new value should be set in the list</td>
-                </tr>
-              </tbody>
-            </table>
-<p>Examples:</p><blockquote><blockquote><blockquote><p>auto a = <a href="classpy_1_1Lict.html" class="m-doc">Lict</a>({1, 4, 3, 6}); a[2] = 7 a[2] 7</p></blockquote></blockquote></blockquote>
-          </div></section>
-          <section class="m-doc-details" id="ad37cafb033bbcede086ba76468adbaf5"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">const T&amp; py::<wbr />Lict&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad37cafb033bbcede086ba76468adbaf5" class="m-doc-self">at</a>(</span><span class="m-doc-wrap">const <a href="classpy_1_1Lict.html#ad25571c852e951339b14e42723ccf840" class="m-doc">key_<wbr />type</a>&amp; key) const</span></span>
-            </h3>
-            <p>This function allows you to access an element in a <a href="classpy_1_1Lict.html" class="m-doc">Lict</a> object by its index.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">key&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>The <code>key</code> parameter is of type <code>size_t</code> and it represents the index of the element that you want to retrieve from the list</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>the item at the specified index in the <code>lst</code> attribute.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Examples:</p><blockquote><blockquote><blockquote><p>auto a = <a href="classpy_1_1Lict.html" class="m-doc">Lict</a>({1, 4, 3, 6}); a.at(2) 3</p></blockquote></blockquote></blockquote>
-          </div></section>
-          <section class="m-doc-details" id="ae3620e72f3813e5be1389b38266ee143"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper"><a href="classpy_1_1Lict.html#abc47e990ffa169bc75edc465ba12348f" class="m-doc">iterator</a> py::<wbr />Lict&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae3620e72f3813e5be1389b38266ee143" class="m-doc-self">begin</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>iterator</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div></section>
-          <section class="m-doc-details" id="a7b6108c5967edc1d268e93ab175428ee"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper"><a href="classpy_1_1Lict.html#abc47e990ffa169bc75edc465ba12348f" class="m-doc">iterator</a> py::<wbr />Lict&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7b6108c5967edc1d268e93ab175428ee" class="m-doc-self">end</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>iterator</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div></section>
-          <section class="m-doc-details" id="a39dea4980c98b790a87ffde26195a4ce"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">bool py::<wbr />Lict&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a39dea4980c98b790a87ffde26195a4ce" class="m-doc-self">contains</a>(</span><span class="m-doc-wrap">const <a href="classpy_1_1Lict.html#ad25571c852e951339b14e42723ccf840" class="m-doc">key_<wbr />type</a>&amp; key) const <span class="m-label m-success">noexcept</span></span></span>
-            </h3>
-            <p>The <code>contains</code> function checks if a given value is present in the <code>rng</code> attribute of the object.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">key&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>The <code>key</code> parameter represents the value that we want to check if it is present in the <code>self.rng</code> attribute</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>The method is returning a boolean value, indicating whether the given value is present in the <code>self.rng</code> attribute.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Examples:</p><blockquote><blockquote><blockquote><p>auto a = <a href="classpy_1_1Lict.html" class="m-doc">Lict</a>({1, 4, 3, 6}); a.contains(2) true</p></blockquote></blockquote></blockquote>
-          </div></section>
-          <section class="m-doc-details" id="a4dad65f610c3afe0d9847ef5d01fa920"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">size_t py::<wbr />Lict&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4dad65f610c3afe0d9847ef5d01fa920" class="m-doc-self">size</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <p>This function returns the length of the <code>rng</code> attribute of the object.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>The <code>size</code> function is returning the size of the <code>self.rng</code> attribute.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Examples:</p><blockquote><blockquote><blockquote><p>auto a = <a href="classpy_1_1Lict.html" class="m-doc">Lict</a>({1, 4, 3, 6}); a.size() 4</p></blockquote></blockquote></blockquote>
-          </div></section>
-          <section class="m-doc-details" id="a48c39ac3ff977e8ef30754258373fcca"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">const auto&amp; py::<wbr />Lict&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a48c39ac3ff977e8ef30754258373fcca" class="m-doc-self">values</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <p>The <code>values</code> function returns an iterator that yields the elements of the <code>lst</code> attribute of the <code><a href="classpy_1_1Lict.html" class="m-doc">Lict</a></code> object.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>The <code>values</code> method returns a const reference to the vector object.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Examples:</p><blockquote><blockquote><blockquote><p>const auto a = <a href="classpy_1_1Lict.html" class="m-doc">Lict</a>({1, 4, 3, 6}); for (const auto &amp;i : a.values()) { ... fmt::print(i); ... } 1 4 3 6</p></blockquote></blockquote></blockquote>
-          </div></section>
-          <section class="m-doc-details" id="aa513bb1c5697039b7c7fe0dd3a1bd8e3"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">auto&amp; py::<wbr />Lict&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa513bb1c5697039b7c7fe0dd3a1bd8e3" class="m-doc-self">values</a>(</span><span class="m-doc-wrap">)</span></span>
-            </h3>
-            <p>The <code>values</code> function returns an iterator that yields the elements of the <code>lst</code> attribute of the <code><a href="classpy_1_1Lict.html" class="m-doc">Lict</a></code> object.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>The <code>values</code> method returns a reference to the vector object.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Examples:</p><blockquote><blockquote><blockquote><p>auto a = <a href="classpy_1_1Lict.html" class="m-doc">Lict</a>({1, 4, 3, 6}); for (auto&amp; i : a.values()) { ... i += 1; ... fmt::print(i); ... } 2 5 4 7</p></blockquote></blockquote></blockquote>
-          </div></section>
-          <section class="m-doc-details" id="a541ba5ef4fc12fa71f40c79d588e20ba"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">auto py::<wbr />Lict&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a541ba5ef4fc12fa71f40c79d588e20ba" class="m-doc-self">items</a>(</span><span class="m-doc-wrap">)</span></span>
-            </h3>
-            <p>The function returns an enumeration of the items in the list.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>: The <code>items</code> method is returning an enumeration of the <code>lst</code> attribute.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Examples:</p><blockquote><blockquote><blockquote><p>auto a = <a href="classpy_1_1Lict.html" class="m-doc">Lict</a>({1, 4, 3, 6}); for (auto&amp; [key, value] : a.items()) { ... fmt::print(key, value); ... } (0, 1) (1, 4) (2, 3) (3, 6)</p></blockquote></blockquote></blockquote>
-          </div></section>
-          <section class="m-doc-details" id="a5b1d2fdad7b6a444fabd298ce7a188a8"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename T&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">auto py::<wbr />Lict&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5b1d2fdad7b6a444fabd298ce7a188a8" class="m-doc-self">items</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <p>The function returns an enumeration of the items in the list.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>: The <code>items</code> method is returning an enumeration of the <code>lst</code> attribute.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Examples:</p><blockquote><blockquote><blockquote><p>const auto a = <a href="classpy_1_1Lict.html" class="m-doc">Lict</a>({1, 4, 3, 6}); for (const auto&amp; [key, value] : a.items()) { ... fmt::print(key, value); ... } (0, 1) (1, 4) (2, 3) (3, 6)</p></blockquote></blockquote></blockquote>
           </div></section>
         </section>
       </div>
