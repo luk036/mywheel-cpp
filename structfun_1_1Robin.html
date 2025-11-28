@@ -49,7 +49,6 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="robin_8hpp.html">&lt;mywheel/robin.hpp&gt;</a></div>
           <div class="m-doc-template">template&lt;typename T&gt;</div>
           <span class="m-breadcrumb"><a href="namespacefun.html">fun</a>::<wbr/></span>Robin <span class="m-thin">struct</span>
         </h1>
@@ -73,12 +72,35 @@
               <ul>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
-                <li><a href="#pub-attribs">Public variables</a></li>
               </ul>
             </li>
           </ul>
         </nav>
-<p>The <code><a href="structfun_1_1Robin.html" class="m-doc">Robin</a></code> class is implementing a round-robin algorithm. It is used to cycle through a sequence of elements in a circular manner. The constructor initializes the cycle with a specified number of parts, and each part is assigned a unique key. The <code>exclude</code> method returns an iterable wrapper that excludes a specified part from the cycle.</p>
+<p>The <code><a href="structfun_1_1Robin.html" class="m-doc">Robin</a></code> class is implementing a round-robin algorithm. It is used to cycle through a sequence of elements in a circular manner. The constructor initializes the cycle with a specified number of parts, and each part is assigned a unique key. The <code>exclude</code> method returns an iterable wrapper that excludes a specified part from the cycle.</p><pre class="m-code"><span class="n">Round</span><span class="w"> </span><span class="n">Robin</span><span class="w"> </span><span class="n">Cycle</span><span class="o">:</span>
+
+<span class="w">   </span><span class="err">┌─────┐</span>
+<span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="err">│◄────────────────────────┐</span>
+<span class="w">   </span><span class="err">└──┬──┘</span><span class="w">                        </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">                           </span><span class="err">│</span>
+<span class="w">      </span><span class="err">▼</span><span class="w">                           </span><span class="err">│</span>
+<span class="w">   </span><span class="err">┌─────┐</span><span class="w">                        </span><span class="err">│</span>
+<span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="err">│◄────┐</span><span class="w">                 </span><span class="err">│</span>
+<span class="w">   </span><span class="err">└──┬──┘</span><span class="w">     </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">        </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
+<span class="w">      </span><span class="err">▼</span><span class="w">        </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
+<span class="w">   </span><span class="err">┌─────┐</span><span class="w">     </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
+<span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="mi">2</span><span class="w">  </span><span class="err">│◄────┼─────────────────┤</span><span class="w">  </span><span class="o">&lt;--</span><span class="w"> </span><span class="n">exclude</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">would</span><span class="w"> </span><span class="n">skip</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">node</span>
+<span class="w">   </span><span class="err">└──┬──┘</span><span class="w">     </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">        </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
+<span class="w">      </span><span class="err">▼</span><span class="w">        </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
+<span class="w">   </span><span class="err">┌─────┐</span><span class="w">     </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
+<span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="err">│◄────┘</span><span class="w">                 </span><span class="err">│</span>
+<span class="w">   </span><span class="err">└──┬──┘</span><span class="w">                       </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">                          </span><span class="err">│</span>
+<span class="w">      </span><span class="err">└──────────────────────────┘</span>
+
+<span class="n">The</span><span class="w"> </span><span class="n">cycle</span><span class="w"> </span><span class="n">forms</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">circular</span><span class="w"> </span><span class="n">linked</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">where</span><span class="w"> </span><span class="n">exclude</span><span class="p">(</span><span class="n">from_part</span><span class="p">)</span>
+<span class="n">returns</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">starts</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">excluded</span><span class="w"> </span><span class="n">part</span><span class="p">.</span></pre>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
@@ -92,18 +114,9 @@
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a487fe43c4db8a76ff0dc8af58cd711d4" class="m-doc">exclude</a>(</span><span class="m-doc-wrap">T from_part) const -&gt; detail::RobinIterableWrapper&lt; T &gt; -&gt; auto</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1fbd580a3509262f191d12c458e2382c" class="m-doc">exclude</a>(</span><span class="m-doc-wrap">T from_part) const -&gt; IterableWrapper -&gt; auto</span>
             </dt>
             <dd></dd>
-          </dl>
-        </section>
-        <section id="pub-attribs">
-          <h2><a href="#pub-attribs">Public variables</a></h2>
-          <dl class="m-doc">
-            <dt id="a953b93da16ae18ec39d9af390a0141c0">
-              std::vector&lt;<a href="structfun_1_1detail_1_1RobinSlNode.html" class="m-doc">detail::<wbr />RobinSlNode</a>&lt;T&gt;&gt; <a href="#a953b93da16ae18ec39d9af390a0141c0" class="m-doc-self">cycle</a>
-            </dt>
-            <dd><span></span></dd>
           </dl>
         </section>
         <section>
@@ -128,12 +141,12 @@
             </table>
 <p>The <a href="structfun_1_1Robin.html" class="m-doc">Robin</a> constructor initializes a cycle of objects with keys ranging from 0 to num_parts-1.</p>
           </div></section>
-          <section class="m-doc-details" id="a487fe43c4db8a76ff0dc8af58cd711d4"><div>
+          <section class="m-doc-details" id="a1fbd580a3509262f191d12c458e2382c"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto fun::<wbr />Robin&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a487fe43c4db8a76ff0dc8af58cd711d4" class="m-doc-self">exclude</a>(</span><span class="m-doc-wrap">T from_part) const -&gt; detail::RobinIterableWrapper&lt; T &gt;</span></span>
+              <span class="m-doc-wrap-bumper">auto fun::<wbr />Robin&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1fbd580a3509262f191d12c458e2382c" class="m-doc-self">exclude</a>(</span><span class="m-doc-wrap">T from_part) const -&gt; IterableWrapper</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <thead>
@@ -148,7 +161,7 @@
               <tfoot>
                 <tr>
                   <th>Returns</th>
-                  <td>The <code>exclude</code> method in the <code><a href="structfun_1_1Robin.html" class="m-doc">Robin</a></code> class returns an iterable wrapper of type <code><a href="structfun_1_1detail_1_1RobinIterableWrapper.html" class="m-doc">detail::<wbr />RobinIterableWrapper</a>&lt;T&gt;</code>.</td>
+                  <td>The <code>exclude</code> method in the <code><a href="structfun_1_1Robin.html" class="m-doc">Robin</a></code> class returns an iterable wrapper of type <code>IterableWrapper</code>.</td>
                 </tr>
               </tfoot>
             </table>

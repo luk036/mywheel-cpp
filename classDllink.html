@@ -49,7 +49,6 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="dllink_8hpp.html">&lt;mywheel/dllink.hpp&gt;</a></div>
           <div class="m-doc-template">template&lt;typename T&gt;</div>
           Dllink <span class="m-thin">class</span>
         </h1>
@@ -67,7 +66,26 @@
             </li>
           </ul>
         </nav>
-<p>A Doubly-linked List class. This class simply contains a link of node&#x27;s. By adding a &quot;head&quot; node (sentinel), deleting a node is extremely fast (see &quot;Introduction to Algorithm&quot;). This class does not keep the length information as it is not necessary for the FM algorithm. This saves memory and run-time to update the length information. Note that this class does not own the list node. They are supplied by the caller in order to better reuse the nodes.</p>
+<p>A Doubly-linked List class. This class simply contains a link of node&#x27;s. By adding a &quot;head&quot; node (sentinel), deleting a node is extremely fast (see &quot;Introduction to Algorithm&quot;). This class does not keep the length information as it is not necessary for the FM algorithm. This saves memory and run-time to update the length information. Note that this class does not own the list node. They are supplied by the caller in order to better reuse the nodes.</p><pre class="m-code"><span class="n">Doubly</span><span class="w"> </span><span class="n">Linked</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">Structure</span><span class="o">:</span>
+
+<span class="w">    </span><span class="err">┌─────────────────────────────────────┐</span>
+<span class="w">    </span><span class="err">│</span><span class="w">              </span><span class="n">Head</span><span class="o">/</span><span class="n">Sentinel</span><span class="w">          </span><span class="err">│</span>
+<span class="w">    </span><span class="err">│</span><span class="w">  </span><span class="err">┌─────┐</span><span class="w">     </span><span class="err">┌─────┐</span><span class="w">     </span><span class="err">┌─────┐</span><span class="w">   </span><span class="err">│</span>
+<span class="w">    </span><span class="err">└─▶│</span><span class="n">next</span><span class="w"> </span><span class="err">│────▶│</span><span class="n">next</span><span class="w"> </span><span class="err">│────▶│</span><span class="n">next</span><span class="w"> </span><span class="err">│───┘</span>
+<span class="w">       </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">     </span><span class="err">│</span>
+<span class="w">       </span><span class="err">│</span><span class="n">prev</span><span class="err">│◀────│</span><span class="n">prev</span><span class="err">│◀────│</span><span class="n">prev</span><span class="err">│◀─┐</span>
+<span class="w">       </span><span class="err">└─────┘</span><span class="w">     </span><span class="err">└─────┘</span><span class="w">     </span><span class="err">└─────┘</span><span class="w"> </span><span class="err">│</span>
+<span class="w">         </span><span class="err">▲</span><span class="w">         </span><span class="err">▲</span><span class="w">   </span><span class="err">▲</span><span class="w">       </span><span class="err">▲</span><span class="w">   </span><span class="err">▲</span><span class="w">   </span><span class="err">│</span>
+<span class="w">         </span><span class="err">│</span><span class="w">         </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">│</span>
+<span class="w">         </span><span class="err">└─────────┼───┼───────┼───┼───┘</span>
+<span class="w">                   </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">│</span>
+<span class="w">                </span><span class="err">┌─────┐</span><span class="w"> </span><span class="err">┌─────┐</span><span class="w"> </span><span class="err">┌─────┐</span>
+<span class="w">                </span><span class="err">│</span><span class="n">Node1</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="n">Node2</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="n">Node3</span><span class="err">│</span>
+<span class="w">                </span><span class="err">│</span><span class="n">Data</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="n">Data</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="n">Data</span><span class="w"> </span><span class="err">│</span>
+<span class="w">                </span><span class="err">└─────┘</span><span class="w"> </span><span class="err">└─────┘</span><span class="w"> </span><span class="err">└─────┘</span>
+
+<span class="n">Each</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="err">&#39;</span><span class="n">next</span><span class="err">&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="err">&#39;</span><span class="n">prev</span><span class="err">&#39;</span><span class="w"> </span><span class="n">pointers</span><span class="p">,</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">head</span><span class="o">/</span><span class="n">sentinel</span>
+<span class="n">serving</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">boundary</span><span class="w"> </span><span class="n">marker</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">simplify</span><span class="w"> </span><span class="n">insertion</span><span class="o">/</span><span class="n">deletion</span><span class="p">.</span></pre>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
@@ -79,31 +97,11 @@
               <span class="m-doc-wrap-bumper"><a href="#a25dad516981273f45af47e3b43d0708c" class="m-doc-self">Dllink</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
             <dd>Copy construct a new <a href="classDllink.html" class="m-doc">Dllink</a> object (deleted intentionally)</dd>
-            <dt id="a4233c73e0e03747214734152b51235f2">
-              <span class="m-doc-wrap-bumper"><a href="#a4233c73e0e03747214734152b51235f2" class="m-doc-self">~Dllink</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="af66e0ad0563a3e1365eefff3d069f945">
-              <span class="m-doc-wrap-bumper"><a href="#af66e0ad0563a3e1365eefff3d069f945" class="m-doc-self">Dllink</a>(</span><span class="m-doc-wrap">const <a href="classDllink.html" class="m-doc">Dllink</a>&amp;) <span class="m-label m-flat m-danger">deleted</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a5fcf61f432b00d8a49796b4579c82c86">
-              <span class="m-doc-wrap-bumper"><a href="#a5fcf61f432b00d8a49796b4579c82c86" class="m-doc-self">Dllink</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Dllink</a>&amp;&amp;) <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-primary">constexpr</span> <span class="m-label m-flat m-success">noexcept</span></span>
-            </dt>
-            <dd><span></span></dd>
           </dl>
         </section>
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="aec25d01404ee8afa76fefce8be60961a">
-              <span class="m-doc-wrap-bumper">auto <a href="#aec25d01404ee8afa76fefce8be60961a" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap">const <a href="classDllink.html" class="m-doc">Dllink</a>&amp;) -&gt; Dllink &amp; -&gt; auto <span class="m-label m-flat m-danger">deleted</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="abbe209074421353f5ccad7964cbff6e2">
-              <span class="m-doc-wrap-bumper">auto <a href="#abbe209074421353f5ccad7964cbff6e2" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Dllink</a>&amp;&amp;) noexcept -&gt; Dllink &amp; -&gt; auto <span class="m-label m-flat m-danger">deleted</span> <span class="m-label m-flat m-primary">constexpr</span></span>
-            </dt>
-            <dd><span></span></dd>
             <dt id="a27e74bbcaf00f31ee338d9a108e18190">
               <span class="m-doc-wrap-bumper">auto <a href="#a27e74bbcaf00f31ee338d9a108e18190" class="m-doc-self">lock</a>(</span><span class="m-doc-wrap">) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>

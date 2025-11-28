@@ -49,72 +49,64 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="map__adapter_8hpp.html">&lt;mywheel/map_adapter.hpp&gt;</a></div>
           <div class="m-doc-template">template&lt;typename Container&gt;</div>
           MapAdapter <span class="m-thin">class</span>
         </h1>
         <p>Dict-like data structure by std::vector and Range.</p>
+        <table class="m-table m-fullwidth m-flat">
+          <thead>
+            <tr><th colspan="2">Template parameters</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 1%">Container</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
         <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
             <li>
               Reference
               <ul>
-                <li><a href="#base-classes">Base classes</a></li>
-                <li><a href="#pub-types">Public types</a></li>
-                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
               </ul>
             </li>
           </ul>
         </nav>
-        <section id="base-classes">
-          <h2><a href="#base-classes">Base classes</a></h2>
-          <dl class="m-doc">
-            <dt>
-              <div class="m-doc-template">template&lt;typename Container&gt;</div>
-              class <a href="classMapAdapterBase.html" class="m-doc">MapAdapterBase&lt;Container&gt;</a>
-            </dt>
-            <dd>Dict-like data structure by std::vector and Range.</dd>
-          </dl>
-        </section>
-        <section id="pub-types">
-          <h2><a href="#pub-types">Public types</a></h2>
-          <dl class="m-doc">
-            <dt id="a8fb99030b7706c56bc75a9ae694b5d38">
-              using <a href="#a8fb99030b7706c56bc75a9ae694b5d38" class="m-doc-self">key_type</a> = size_t
-            </dt>
-            <dd><span></span></dd>
-            <dt id="ad5a66feb8fdde8bee3f04aea9956b510">
-              using <a href="#ad5a66feb8fdde8bee3f04aea9956b510" class="m-doc-self">mapped_type</a> = typename Container::value_type
-            </dt>
-            <dd><span></span></dd>
-            <dt id="ace736e64299823bec5787b3262e9b4bf">
-              using <a href="#ace736e64299823bec5787b3262e9b4bf" class="m-doc-self">value_type</a> = std::pair&lt;<a href="classMapAdapter.html#a8fb99030b7706c56bc75a9ae694b5d38" class="m-doc">key_<wbr />type</a>, <a href="classMapAdapter.html#ad5a66feb8fdde8bee3f04aea9956b510" class="m-doc">mapped_<wbr />type</a>&gt;
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a3cbab5905c7250f7e79a45a3818c0264">
-              using <a href="#a3cbab5905c7250f7e79a45a3818c0264" class="m-doc-self">Base</a> = <a href="classMapAdapterBase.html" class="m-doc">MapAdapterBase</a>&lt;Container&gt;
-            </dt>
-            <dd><span></span></dd>
-            <dt id="adea3f37a360f906d3a5222efa38bfb68">
-              using <a href="#adea3f37a360f906d3a5222efa38bfb68" class="m-doc-self">E</a> = decltype(py::enumerate(<a href="classMapAdapterBase.html#a6889e1a79227c9230b37a2731336a242" class="m-doc">Base::<wbr />_lst</a>))
-            </dt>
-            <dd><span></span></dd>
-          </dl>
-        </section>
-        <section id="typeless-methods">
-          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
-          <dl class="m-doc">
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="#a6bec6c85b83b484cba6bbe5642f9caed" class="m-doc">MapAdapter</a>(</span><span class="m-doc-wrap">Container&amp; lst) <span class="m-label m-flat m-info">explicit</span> </span>
-            </dt>
-            <dd></dd>
-          </dl>
-        </section>
+<pre class="m-code"><span class="n">MapAdapter</span><span class="w"> </span><span class="n">Structure</span><span class="o">:</span>
+
+<span class="n">Original</span><span class="w"> </span><span class="n">Container</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">B</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">C</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">D</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">E</span><span class="p">]</span>
+<span class="w">                   </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w">  </span><span class="o">&lt;--</span><span class="w"> </span><span class="n">Indices</span><span class="w"> </span><span class="n">become</span><span class="w"> </span><span class="n">keys</span>
+
+<span class="n">MapAdapter</span><span class="w"> </span><span class="n">Interface</span><span class="o">:</span>
+
+<span class="k">operator</span><span class="p">[](</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">A</span>
+<span class="k">operator</span><span class="p">[](</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">B</span>
+<span class="k">operator</span><span class="p">[](</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">C</span>
+<span class="k">operator</span><span class="p">[](</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">D</span>
+<span class="k">operator</span><span class="p">[](</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">E</span>
+
+<span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">)</span>
+<span class="n">end</span><span class="p">()</span><span class="w">   </span><span class="err">→</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="n">past</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="p">)</span>
+
+<span class="n">enumerate</span><span class="p">()</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">D</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="p">)]</span></pre>
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7abe856c344bdf88eeaf557940e0cfbc" class="m-doc">at</a>(</span><span class="m-doc-wrap">const <a href="classMapAdapter.html#a8fb99030b7706c56bc75a9ae694b5d38" class="m-doc">key_<wbr />type</a>&amp; key) const -&gt; const <a href="classMapAdapter.html#ad5a66feb8fdde8bee3f04aea9956b510" class="m-doc">mapped_<wbr />type</a>&amp;</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abc7756cd2da906e9d86bd6b4db3c66af" class="m-doc">contains</a>(</span><span class="m-doc-wrap">const <a href="classMapAdapter.html#a8fb99030b7706c56bc75a9ae694b5d38" class="m-doc">key_<wbr />type</a>&amp; key) const -&gt; bool</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a20f1a2cbe428745e957b5c4b4bebe190" class="m-doc">size</a>(</span><span class="m-doc-wrap">) const -&gt; size_t</span>
+            </dt>
+            <dd></dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a5da9c98d5695e059cbc1396848df79c7" class="m-doc">begin</a>(</span><span class="m-doc-wrap">) const -&gt; auto</span>
             </dt>
@@ -127,12 +119,29 @@
         </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a6bec6c85b83b484cba6bbe5642f9caed"><div>
+          <section class="m-doc-details" id="a7abe856c344bdf88eeaf557940e0cfbc"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename Container&gt;
               </div>
-              <span class="m-doc-wrap-bumper"> MapAdapter&lt;Container&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6bec6c85b83b484cba6bbe5642f9caed" class="m-doc-self">MapAdapter</a>(</span><span class="m-doc-wrap">Container&amp; lst) <span class="m-label m-info">explicit</span> </span></span>
+              <span class="m-doc-wrap-bumper">const <a href="classMapAdapter.html#ad5a66feb8fdde8bee3f04aea9956b510" class="m-doc">mapped_<wbr />type</a>&amp; MapAdapter&lt;Container&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7abe856c344bdf88eeaf557940e0cfbc" class="m-doc-self">at</a>(</span><span class="m-doc-wrap">const <a href="classMapAdapter.html#a8fb99030b7706c56bc75a9ae694b5d38" class="m-doc">key_<wbr />type</a>&amp; key) const</span></span>
+            </h3>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>a constant reference to the value associated with the given key.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The function <a href="classMapAdapter.html#a7abe856c344bdf88eeaf557940e0cfbc" class="m-doc">at()</a> returns a constant reference to the value associated with a given key in a map.</p>
+          </div></section>
+          <section class="m-doc-details" id="abc7756cd2da906e9d86bd6b4db3c66af"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Container&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">bool MapAdapter&lt;Container&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abc7756cd2da906e9d86bd6b4db3c66af" class="m-doc-self">contains</a>(</span><span class="m-doc-wrap">const <a href="classMapAdapter.html#a8fb99030b7706c56bc75a9ae694b5d38" class="m-doc">key_<wbr />type</a>&amp; key) const</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <thead>
@@ -140,12 +149,35 @@
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">lst&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>The <code>lst</code> parameter is a reference to a container object.</td>
+                  <td style="width: 1%">key&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>The parameter &quot;key&quot; is of type &quot;key_type&quot;, which is a data type that represents the key used to search for an element in the container.</td>
                 </tr>
               </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>a boolean value. It will return true if the key is contained in the data structure, and false otherwise.</td>
+                </tr>
+              </tfoot>
             </table>
-<p>The function constructs a new <a href="classMapAdapter.html" class="m-doc">MapAdapter</a> object with a given container and creates a mapview using py::enumerate.</p>
+<p>The function checks if a given key is present in a data structure.</p>
+          </div></section>
+          <section class="m-doc-details" id="a20f1a2cbe428745e957b5c4b4bebe190"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Container&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">size_t MapAdapter&lt;Container&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a20f1a2cbe428745e957b5c4b4bebe190" class="m-doc-self">size</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The size of the <code>_rng</code> object is being returned.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The <a href="classMapAdapter.html#a20f1a2cbe428745e957b5c4b4bebe190" class="m-doc">size()</a> function returns the size of the _rng container.</p>
           </div></section>
           <section class="m-doc-details" id="a5da9c98d5695e059cbc1396848df79c7"><div>
             <h3>

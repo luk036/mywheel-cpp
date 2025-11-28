@@ -49,7 +49,6 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="array__like_8hpp.html">&lt;mywheel/array_like.hpp&gt;</a></div>
           <div class="m-doc-template">template&lt;typename T&gt;</div>
           ShiftArray <span class="m-thin">class</span>
         </h1>
@@ -78,7 +77,13 @@
             </li>
           </ul>
         </nav>
-<p>The <code><a href="classShiftArray.html" class="m-doc">ShiftArray</a></code> class is a template class that extends a given container type. It allows accessing elements of the container using shifted indices. The shift value is set using the <code>set_start</code> method, and the shifted indices are calculated by subtracting the shift value from the original index. The class provides <code>operator[]</code> overloads to access elements using shifted indices.</p>
+<p>The <code><a href="classShiftArray.html" class="m-doc">ShiftArray</a></code> class is a template class that extends a given container type. It allows accessing elements of the container using shifted indices. The shift value is set using the <code>set_start</code> method, and the shifted indices are calculated by subtracting the shift value from the original index. The class provides <code>operator[]</code> overloads to access elements using shifted indices.</p><pre class="m-code"><span class="n">Original</span><span class="w"> </span><span class="n">indices</span><span class="o">:</span><span class="w">  </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">Array</span><span class="w"> </span><span class="n">content</span><span class="o">:</span><span class="w">     </span><span class="p">[</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">B</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">C</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">D</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">E</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">F</span><span class="p">]</span>
+
+<span class="n">After</span><span class="w"> </span><span class="n">set_start</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">:</span>
+
+<span class="n">Accessible</span><span class="w"> </span><span class="n">range</span><span class="o">:</span><span class="w">        </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="o">&lt;--</span><span class="w"> </span><span class="n">These</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">[</span><span class="n">C</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">D</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">E</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">F</span><span class="p">]</span>
+<span class="n">Shifted</span><span class="w"> </span><span class="n">indices</span><span class="o">:</span><span class="w">         </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w">  </span><span class="o">&lt;--</span><span class="w"> </span><span class="n">Internal</span><span class="w"> </span><span class="n">indices</span></pre>
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
@@ -91,27 +96,15 @@
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
-            <dt id="a9b8038eba70b86adf1525ec86c5f506e">
-              <span class="m-doc-wrap-bumper"><a href="#a9b8038eba70b86adf1525ec86c5f506e" class="m-doc-self">ShiftArray</a>(</span><span class="m-doc-wrap">)</span>
-            </dt>
-            <dd><span></span></dd>
             <dt>
               <span class="m-doc-wrap-bumper"><a href="#a4bc73a638e30cc93c87621b6e78873d5" class="m-doc">ShiftArray</a>(</span><span class="m-doc-wrap">const std::vector&lt;T&gt;&amp; lst) <span class="m-label m-flat m-info">explicit</span> </span>
             </dt>
             <dd></dd>
-            <dt id="a9874ca8c9fe5ec4c155c354ea3d8610d">
-              <span class="m-doc-wrap-bumper"><a href="#a9874ca8c9fe5ec4c155c354ea3d8610d" class="m-doc-self">ShiftArray</a>(</span><span class="m-doc-wrap">std::vector&lt;T&gt;&amp;&amp; lst) <span class="m-label m-flat m-info">explicit</span> </span>
-            </dt>
-            <dd><span></span></dd>
           </dl>
         </section>
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="a1cb30f22ba0e254790b4549552488c89">
-              <span class="m-doc-wrap-bumper">void <a href="#a1cb30f22ba0e254790b4549552488c89" class="m-doc-self">set_start</a>(</span><span class="m-doc-wrap">size_t start)</span>
-            </dt>
-            <dd><span></span></dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#aa91aa8f634fd201a8e7fe73eb7eaee8e" class="m-doc">operator[]</a>(</span><span class="m-doc-wrap">size_t key) const -&gt; const T&amp;</span>
             </dt>

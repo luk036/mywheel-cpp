@@ -49,7 +49,6 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="bpqueue_8hpp.html">&lt;mywheel/bpqueue.hpp&gt;</a></div>
           <div class="m-doc-template">template&lt;typename Tp, typename Int = int32_t, typename Sequence = std::vector&lt;<a href="classDllist.html" class="m-doc">Dllist</a>&lt;std::pair&lt;Tp, std::make_unsigned_t&lt;Int&gt;&gt;&gt;&gt;&gt;</div>
           BPQueue <span class="m-thin">class</span>
         </h1>
@@ -79,39 +78,33 @@
             <li>
               Reference
               <ul>
-                <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
               </ul>
             </li>
           </ul>
         </nav>
-<p>Bounded Priority Queue with integer keys in [a..b]. Implemented by an array (bucket) of doubly-linked lists. Efficient if the keys are bounded by a small integer value.</p><p>Note that this class does not own PQ nodes. This feature allows these nodes sharable in both doubly linked list class and this class. In the Fiduccia-Mattheyses algorithm, nodes are either attached to the gain buckets (PQ) or to the waiting_list (doubly-linked list), but cannot be in both at the same time.</p><p>Another improvement is to increase the size of the array by one element, i.e. (b - a + 2). The extra dummy array element (called sentinel) is used to reduce the boundary checking during updates.</p><p>All the member functions assume that the keys are inside the bounds.</p>
-        <section id="pub-types">
-          <h2><a href="#pub-types">Public types</a></h2>
-          <dl class="m-doc">
-            <dt id="a1e1a0d968262798981fdf87cfcd15b6f">
-              using <a href="#a1e1a0d968262798981fdf87cfcd15b6f" class="m-doc-self">value_type</a> = typename Sequence::value_type
-            </dt>
-            <dd><span></span></dd>
-            <dt id="ab43c0c2b99ad73507f384196549f4075">
-              using <a href="#ab43c0c2b99ad73507f384196549f4075" class="m-doc-self">reference</a> = typename Sequence::reference
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a2e96546c6488e9c916c1510b02c2bc6d">
-              using <a href="#a2e96546c6488e9c916c1510b02c2bc6d" class="m-doc-self">const_reference</a> = typename Sequence::const_reference
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a69fb329f8f355536b145cff39468e141">
-              using <a href="#a69fb329f8f355536b145cff39468e141" class="m-doc-self">size_type</a> = typename Sequence::size_type
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a8994b0c9f0d6342f5e84141cc46ed117">
-              using <a href="#a8994b0c9f0d6342f5e84141cc46ed117" class="m-doc-self">container_type</a> = Sequence
-            </dt>
-            <dd><span></span></dd>
-          </dl>
-        </section>
+<p>Bounded Priority Queue with integer keys in [a..b]. Implemented by an array (bucket) of doubly-linked lists. Efficient if the keys are bounded by a small integer value.</p><p>Note that this class does not own PQ nodes. This feature allows these nodes sharable in both doubly linked list class and this class. In the Fiduccia-Mattheyses algorithm, nodes are either attached to the gain buckets (PQ) or to the waiting_list (doubly-linked list), but cannot be in both at the same time.</p><p>Another improvement is to increase the size of the array by one element, i.e. (b - a + 2). The extra dummy array element (called sentinel) is used to reduce the boundary checking during updates.</p><p>All the member functions assume that the keys are inside the bounds.</p><pre class="m-code"><span class="n">Priority</span><span class="w"> </span><span class="n">Queue</span><span class="w"> </span><span class="p">(</span><span class="n">BPQueue</span><span class="p">)</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">keys</span><span class="w"> </span><span class="p">[</span><span class="mf">0..4</span><span class="p">]</span><span class="o">:</span>
+
+<span class="n">Key</span><span class="w"> </span><span class="mi">4</span><span class="o">:</span><span class="w"> </span><span class="err">┌─┐</span>
+<span class="w">       </span><span class="err">│</span><span class="mi">7</span><span class="err">│</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">...</span>
+<span class="w">       </span><span class="err">└─┘</span>
+
+<span class="n">Key</span><span class="w"> </span><span class="mi">3</span><span class="o">:</span><span class="w"> </span><span class="err">┌─┐</span>
+<span class="w">       </span><span class="err">│</span><span class="mi">2</span><span class="err">│</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="err">│</span><span class="mi">9</span><span class="err">│</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">...</span>
+<span class="w">       </span><span class="err">└─┘</span>
+
+<span class="n">Key</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="n">empty</span><span class="p">)</span>
+
+<span class="n">Key</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="err">┌─┐</span>
+<span class="w">       </span><span class="err">│</span><span class="mi">5</span><span class="err">│</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="err">│</span><span class="mi">1</span><span class="err">│</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="err">│</span><span class="mi">8</span><span class="err">│</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">...</span>
+<span class="w">       </span><span class="err">└─┘</span>
+
+<span class="n">Key</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="n">empty</span><span class="p">)</span>
+
+<span class="nl">Sentinel</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">dummy</span><span class="w"> </span><span class="n">element</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">boundary</span><span class="w"> </span><span class="n">checks</span><span class="p">)</span>
+
+<span class="n">Max</span><span class="w"> </span><span class="n">key</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span></pre>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
@@ -120,31 +113,11 @@
               Int b) <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
             <dd>Construct a new <a href="classBPQueue.html" class="m-doc">BPQueue</a> object.</dd>
-            <dt id="a310b947f4834482124f16353d5d53244">
-              <span class="m-doc-wrap-bumper"><a href="#a310b947f4834482124f16353d5d53244" class="m-doc-self">BPQueue</a>(</span><span class="m-doc-wrap">const <a href="classBPQueue.html" class="m-doc">BPQueue</a>&amp;) <span class="m-label m-flat m-danger">deleted</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a92d46af8da9b966faa0704980c676e91">
-              <span class="m-doc-wrap-bumper"><a href="#a92d46af8da9b966faa0704980c676e91" class="m-doc-self">~BPQueue</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="ad324bb145c15aeae34ee6a18a11ab967">
-              <span class="m-doc-wrap-bumper"><a href="#ad324bb145c15aeae34ee6a18a11ab967" class="m-doc-self">BPQueue</a>(</span><span class="m-doc-wrap"><a href="classBPQueue.html" class="m-doc">BPQueue</a>&amp;&amp;) <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-primary">constexpr</span> <span class="m-label m-flat m-success">noexcept</span></span>
-            </dt>
-            <dd><span></span></dd>
           </dl>
         </section>
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="abc1962e03e4598ea337dd61a215d34b1">
-              <span class="m-doc-wrap-bumper">auto <a href="#abc1962e03e4598ea337dd61a215d34b1" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap">const <a href="classBPQueue.html" class="m-doc">BPQueue</a>&amp;) -&gt; BPQueue &amp; -&gt; auto <span class="m-label m-flat m-danger">deleted</span> <span class="m-label m-flat m-primary">constexpr</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="acde78aa582b5ed31f301091aea34ad91">
-              <span class="m-doc-wrap-bumper">auto <a href="#acde78aa582b5ed31f301091aea34ad91" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap"><a href="classBPQueue.html" class="m-doc">BPQueue</a>&amp;&amp;) noexcept -&gt; BPQueue &amp; -&gt; auto <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-primary">constexpr</span></span>
-            </dt>
-            <dd><span></span></dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#ae77088c089569dba3c48014ca8ff1517" class="m-doc">is_empty</a>(</span><span class="m-doc-wrap">) const noexcept -&gt; bool -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>

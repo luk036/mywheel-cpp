@@ -49,11 +49,10 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="dllist_8hpp.html">&lt;mywheel/dllist.hpp&gt;</a></div>
           <div class="m-doc-template">template&lt;typename T&gt;</div>
           Dllist <span class="m-thin">class</span>
         </h1>
-        <p>doubly linked node (that may also be a &quot;head&quot; a list)</p>
+        <p>doubly linked list with sentinel head node</p>
         <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -66,7 +65,48 @@
             </li>
           </ul>
         </nav>
-<p>A Doubly-linked List class. This class simply contains a link of node&#x27;s. By adding a &quot;head&quot; node (sentinel), deleting a node is extremely fast (see &quot;Introduction to Algorithm&quot;). This class does not keep the length information as it is not necessary for the FM algorithm. This saves memory and run-time to update the length information. Note that this class does not own the list node. They are supplied by the caller in order to better reuse the nodes.</p>
+<p>A Doubly-linked List class. This class simply contains a link of node&#x27;s. By adding a &quot;head&quot; node (sentinel), deleting a node is extremely fast (see &quot;Introduction to Algorithm&quot;). This class does not keep the length information as it is not necessary for the FM algorithm. This saves memory and run-time to update the length information. Note that this class does not own the list node. They are supplied by the caller in order to better reuse the nodes.</p><pre class="m-code"><span class="n">Doubly</span><span class="w"> </span><span class="n">Linked</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">Sentinel</span><span class="w"> </span><span class="n">Head</span><span class="o">:</span>
+
+<span class="w">    </span><span class="err">┌─────────────────┐</span>
+<span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="n">Dllist</span><span class="w">       </span><span class="err">│</span>
+<span class="w">    </span><span class="err">│</span><span class="w">  </span><span class="err">┌───────────┐</span><span class="w">  </span><span class="err">│</span>
+<span class="w">    </span><span class="err">└─▶│</span><span class="w">   </span><span class="n">head</span><span class="w">    </span><span class="err">│</span><span class="w">  </span><span class="err">│</span>
+<span class="w">       </span><span class="err">│</span><span class="w"> </span><span class="p">(</span><span class="n">sentinel</span><span class="p">)</span><span class="err">│</span><span class="w">  </span><span class="err">│</span>
+<span class="w">       </span><span class="err">└───────────┘</span><span class="w">  </span><span class="err">│</span>
+<span class="w">         </span><span class="err">▲</span><span class="w">     </span><span class="err">▲</span><span class="w">      </span><span class="err">│</span>
+<span class="w">         </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">      </span><span class="err">│</span>
+<span class="w">    </span><span class="err">┌─────┐</span><span class="w">   </span><span class="err">┌─────┐</span><span class="w"> </span><span class="err">│</span>
+<span class="w">    </span><span class="err">│</span><span class="n">prev</span><span class="w"> </span><span class="err">│───│</span><span class="n">next</span><span class="w"> </span><span class="err">│─┘</span>
+<span class="w">    </span><span class="err">└─────┘</span><span class="w">   </span><span class="err">└─────┘</span>
+<span class="w">      </span><span class="err">│</span><span class="w">         </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">┌────▼──┬─────────┐</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">       </span><span class="err">│</span><span class="w">         </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">┌─────▼───┐</span><span class="w">     </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">  </span><span class="n">Node</span><span class="w">   </span><span class="err">│</span><span class="w">     </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">         </span><span class="err">│</span><span class="w">     </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">└─────────┘</span><span class="w">     </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">           </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">     </span><span class="err">▼</span><span class="w">           </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">┌─────────┐</span><span class="w">     </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">  </span><span class="n">Node</span><span class="w">   </span><span class="err">│</span><span class="w">     </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">         </span><span class="err">│</span><span class="w">     </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">└─────────┘</span><span class="w">     </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">           </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">     </span><span class="err">▼</span><span class="w">           </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">┌─────────┐</span><span class="w">     </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">  </span><span class="n">Node</span><span class="w">   </span><span class="err">│</span><span class="w">     </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="p">(</span><span class="n">tail</span><span class="p">)</span><span class="w">   </span><span class="err">│</span><span class="w">     </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">└─────────┘</span><span class="w">     </span><span class="err">│</span>
+<span class="w">      </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">           </span><span class="err">│</span>
+<span class="w">      </span><span class="err">└────┴─────┼───────────┘</span>
+<span class="w">                  </span><span class="err">▼</span>
+<span class="w">             </span><span class="err">┌─────────┐</span>
+<span class="w">             </span><span class="err">│</span><span class="w">  </span><span class="n">Node</span><span class="w">   </span><span class="err">│</span>
+<span class="w">             </span><span class="err">│</span><span class="p">(</span><span class="n">head</span><span class="p">)</span><span class="w">   </span><span class="err">│</span>
+<span class="w">             </span><span class="err">└─────────┘</span>
+
+<span class="n">The</span><span class="w"> </span><span class="n">sentinel</span><span class="w"> </span><span class="n">head</span><span class="w"> </span><span class="n">simplifies</span><span class="w"> </span><span class="n">operations</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">eliminating</span><span class="w"> </span><span class="n">special</span><span class="w"> </span><span class="n">cases</span>
+<span class="k">for</span><span class="w"> </span><span class="n">empty</span><span class="w"> </span><span class="n">lists</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">boundary</span><span class="w"> </span><span class="n">nodes</span><span class="p">.</span></pre>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
@@ -78,31 +118,11 @@
               <span class="m-doc-wrap-bumper"><a href="#a6b17839ece5d57331890be49659753b7" class="m-doc-self">Dllist</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
             <dd>Copy construct a new <a href="classDllist.html" class="m-doc">Dllist</a> object (deleted intentionally)</dd>
-            <dt id="a7bf964dbc382a016d3ca5e270635b44f">
-              <span class="m-doc-wrap-bumper"><a href="#a7bf964dbc382a016d3ca5e270635b44f" class="m-doc-self">~Dllist</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="af2f3678ba7bdf464db098d75b3151174">
-              <span class="m-doc-wrap-bumper"><a href="#af2f3678ba7bdf464db098d75b3151174" class="m-doc-self">Dllist</a>(</span><span class="m-doc-wrap">const <a href="classDllist.html" class="m-doc">Dllist</a>&amp;) <span class="m-label m-flat m-danger">deleted</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="ae5dc3a0ff1c3530eb6ab6406d270d691">
-              <span class="m-doc-wrap-bumper"><a href="#ae5dc3a0ff1c3530eb6ab6406d270d691" class="m-doc-self">Dllist</a>(</span><span class="m-doc-wrap"><a href="classDllist.html" class="m-doc">Dllist</a>&amp;&amp;) <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-primary">constexpr</span> <span class="m-label m-flat m-success">noexcept</span></span>
-            </dt>
-            <dd><span></span></dd>
           </dl>
         </section>
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="aae9409d5efd923d2c93b1ddf64048cac">
-              <span class="m-doc-wrap-bumper">auto <a href="#aae9409d5efd923d2c93b1ddf64048cac" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap">const <a href="classDllist.html" class="m-doc">Dllist</a>&amp;) -&gt; Dllist &amp; -&gt; auto <span class="m-label m-flat m-danger">deleted</span> <span class="m-label m-flat m-primary">constexpr</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a9b6cd33d2948398d382f25007da8d021">
-              <span class="m-doc-wrap-bumper">auto <a href="#a9b6cd33d2948398d382f25007da8d021" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap"><a href="classDllist.html" class="m-doc">Dllist</a>&amp;&amp;) noexcept -&gt; Dllist &amp; -&gt; auto <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-primary">constexpr</span></span>
-            </dt>
-            <dd><span></span></dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a65d4471d28e61f31312c5444c33c1d9f" class="m-doc">is_empty</a>(</span><span class="m-doc-wrap">) const noexcept -&gt; bool -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>

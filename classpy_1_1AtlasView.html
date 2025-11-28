@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>RepeatArray class | MyWheel</title>
+  <title>py::AtlasView class | MyWheel</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -49,161 +49,157 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-template">template&lt;typename T&gt;</div>
-          RepeatArray <span class="m-thin">class</span>
+          <div class="m-doc-template">template&lt;typename Vertex, typename Graph&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacepy.html">py</a>::<wbr/></span>AtlasView <span class="m-thin">class</span>
         </h1>
-        <p>The <code><a href="classRepeatArray.html" class="m-doc">RepeatArray</a></code> class is a template class that represents an array that repeats its elements. It has a constructor that takes a value and a size as parameters and initializes all elements of the array with the given value.</p>
+        <table class="m-table m-fullwidth m-flat">
+          <thead>
+            <tr><th colspan="2">Template parameters</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 1%">Vertex</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Graph</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
         <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
             <li>
               Reference
               <ul>
-                <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
               </ul>
             </li>
           </ul>
         </nav>
-<pre class="m-code"><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">1</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="mi">3</span><span class="w">   </span><span class="mi">4</span>
-<span class="o">+---+---+---+---+---+</span>
-<span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="o">&lt;--</span><span class="w"> </span><span class="n">All</span><span class="w"> </span><span class="n">elements</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">value</span>
-<span class="o">+---+---+---+---+---+</span></pre>
-        <section id="pub-types">
-          <h2><a href="#pub-types">Public types</a></h2>
-          <dl class="m-doc">
-            <dt>
-              class <a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a>
-            </dt>
-            <dd></dd>
-          </dl>
-        </section>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper"><a href="#a42ec98f19f942ce4a4fa5a2148ee25ea" class="m-doc">RepeatArray</a>(</span><span class="m-doc-wrap">const T&amp; value,
-              size_t size)</span>
+              <span class="m-doc-wrap-bumper"><a href="#a1275b6d64636c5657fbe4d036aa59ea1" class="m-doc">AtlasView</a>(</span><span class="m-doc-wrap">Vertex v,
+              const Graph&amp; gra)</span>
             </dt>
-            <dd></dd>
+            <dd>Construct a new Atlas View object.</dd>
           </dl>
         </section>
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a60bbc79d0ebc51b4daa2dce5c81187f1" class="m-doc">operator[]</a>(</span><span class="m-doc-wrap">size_t) const -&gt; T</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a987781262abe5873972c0e2c3b336d07" class="m-doc">begin</a>(</span><span class="m-doc-wrap">) const -&gt; auto</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a137d9cce7244548af0ff3d8c21503952" class="m-doc">size</a>(</span><span class="m-doc-wrap">) const -&gt; size_t</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a01ed062bb1960ee7045945ce537698e4" class="m-doc">end</a>(</span><span class="m-doc-wrap">) const -&gt; auto</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a0fe7216ef256f691366a13a619c96b8c" class="m-doc">begin</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#aab0939c260ec88442fd61f94b2de208b" class="m-doc">cbegin</a>(</span><span class="m-doc-wrap">) const -&gt; auto</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a4f27aae9e83976b5d9eb4289c349f290" class="m-doc">end</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a277af61654ab50f54341f194a4ada511" class="m-doc">cend</a>(</span><span class="m-doc-wrap">) const -&gt; auto</span>
             </dt>
             <dd></dd>
           </dl>
         </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a42ec98f19f942ce4a4fa5a2148ee25ea"><div>
+          <section class="m-doc-details" id="a1275b6d64636c5657fbe4d036aa59ea1"><div>
             <h3>
               <div class="m-doc-template">
-                template&lt;typename T&gt;
+                template&lt;typename Vertex, typename Graph&gt;
               </div>
-              <span class="m-doc-wrap-bumper"> RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a42ec98f19f942ce4a4fa5a2148ee25ea" class="m-doc-self">RepeatArray</a>(</span><span class="m-doc-wrap">const T&amp; value,
-              size_t size)</span></span>
+              <span class="m-doc-wrap-bumper"> py::<wbr />AtlasView&lt;Vertex, Graph&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1275b6d64636c5657fbe4d036aa59ea1" class="m-doc-self">AtlasView</a>(</span><span class="m-doc-wrap">Vertex v,
+              const Graph&amp; gra)</span></span>
             </h3>
+            <p>Construct a new Atlas View object.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">value&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>Value to initialize array elements with.</td>
+                  <td style="width: 1%">v&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>size&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>Number of elements in array.</td>
+                  <td>gra&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
-<p>Constructor for <a href="classRepeatArray.html" class="m-doc">RepeatArray</a> class.</p><p>Initializes a <a href="classRepeatArray.html" class="m-doc">RepeatArray</a> with the given value repeated size number of times.</p>
           </div></section>
-          <section class="m-doc-details" id="a60bbc79d0ebc51b4daa2dce5c81187f1"><div>
+          <section class="m-doc-details" id="a987781262abe5873972c0e2c3b336d07"><div>
             <h3>
               <div class="m-doc-template">
-                template&lt;typename T&gt;
+                template&lt;typename Vertex, typename Graph&gt;
               </div>
-              <span class="m-doc-wrap-bumper">T RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a60bbc79d0ebc51b4daa2dce5c81187f1" class="m-doc-self">operator[]</a>(</span><span class="m-doc-wrap">size_t) const</span></span>
+              <span class="m-doc-wrap-bumper">auto py::<wbr />AtlasView&lt;Vertex, Graph&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a987781262abe5873972c0e2c3b336d07" class="m-doc-self">begin</a>(</span><span class="m-doc-wrap">) const</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>The value stored in the <a href="classRepeatArray.html" class="m-doc">RepeatArray</a>.</td>
+                  <td>auto</td>
                 </tr>
               </tfoot>
             </table>
-<p>Overloads the subscript operator [] to return the value stored in the <a href="classRepeatArray.html" class="m-doc">RepeatArray</a>.</p>
           </div></section>
-          <section class="m-doc-details" id="a137d9cce7244548af0ff3d8c21503952"><div>
+          <section class="m-doc-details" id="a01ed062bb1960ee7045945ce537698e4"><div>
             <h3>
               <div class="m-doc-template">
-                template&lt;typename T&gt;
+                template&lt;typename Vertex, typename Graph&gt;
               </div>
-              <span class="m-doc-wrap-bumper">size_t RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a137d9cce7244548af0ff3d8c21503952" class="m-doc-self">size</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">auto py::<wbr />AtlasView&lt;Vertex, Graph&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a01ed062bb1960ee7045945ce537698e4" class="m-doc-self">end</a>(</span><span class="m-doc-wrap">) const</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>the value of the variable &quot;size&quot; as a size_t data type.</td>
+                  <td>auto</td>
                 </tr>
               </tfoot>
             </table>
-<p>Returns the number of elements in the <a href="classRepeatArray.html" class="m-doc">RepeatArray</a>.</p>
           </div></section>
-          <section class="m-doc-details" id="a0fe7216ef256f691366a13a619c96b8c"><div>
+          <section class="m-doc-details" id="aab0939c260ec88442fd61f94b2de208b"><div>
             <h3>
               <div class="m-doc-template">
-                template&lt;typename T&gt;
+                template&lt;typename Vertex, typename Graph&gt;
               </div>
-              <span class="m-doc-wrap-bumper"><a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a> RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0fe7216ef256f691366a13a619c96b8c" class="m-doc-self">begin</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">auto py::<wbr />AtlasView&lt;Vertex, Graph&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aab0939c260ec88442fd61f94b2de208b" class="m-doc-self">cbegin</a>(</span><span class="m-doc-wrap">) const</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td><a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a> object pointing to the first element.</td>
+                  <td>auto</td>
                 </tr>
               </tfoot>
             </table>
-<p>Returns an iterator pointing to the first element of the container.</p><p>This begins iteration at the start of the underlying container.</p>
           </div></section>
-          <section class="m-doc-details" id="a4f27aae9e83976b5d9eb4289c349f290"><div>
+          <section class="m-doc-details" id="a277af61654ab50f54341f194a4ada511"><div>
             <h3>
               <div class="m-doc-template">
-                template&lt;typename T&gt;
+                template&lt;typename Vertex, typename Graph&gt;
               </div>
-              <span class="m-doc-wrap-bumper"><a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a> RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4f27aae9e83976b5d9eb4289c349f290" class="m-doc-self">end</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">auto py::<wbr />AtlasView&lt;Vertex, Graph&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a277af61654ab50f54341f194a4ada511" class="m-doc-self">cend</a>(</span><span class="m-doc-wrap">) const</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td><a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a> pointing past the last element.</td>
+                  <td>auto</td>
                 </tr>
               </tfoot>
             </table>
-<p>Returns an iterator pointing to the past-the-end element of the container.</p><p>This ends iteration at the end of the underlying container. Trying to dereference the returned iterator results in undefined behavior.</p>
           </div></section>
         </section>
       </div>
