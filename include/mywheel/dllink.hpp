@@ -86,7 +86,7 @@ template <typename T> class Dllink {
      * @return true
      * @return false
      */
-    constexpr auto is_locked() const noexcept -> bool { return this->next == this; }
+    [[nodiscard]] constexpr auto is_locked() const noexcept -> bool { return this->next == this; }
 
     /**
      * @brief detach from a list

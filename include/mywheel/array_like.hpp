@@ -39,14 +39,14 @@ template <typename T> class RepeatArray {
      *
      * @return The value stored in the RepeatArray.
      */
-    T operator[](size_t /* index */) const { return this->_value; }
+    const T& operator[](size_t /* index */) const noexcept { return this->_value; }
 
     /**
      * Returns the number of elements in the RepeatArray.
      *
      * @return the value of the variable "size" as a size_t data type.
      */
-    size_t size() const { return this->_size; }
+    size_t size() const noexcept { return this->_size; }
 
     /**
      * The code defines an iterator class for a repeat array, allowing iteration over the elements
@@ -82,7 +82,7 @@ template <typename T> class RepeatArray {
          * @param[in] other Iterator to compare to.
          * @return True if the counts are not equal, false otherwise.
          */
-        bool operator!=(const Iterator& other) const { return this->_count != other._count; }
+        bool operator!=(const Iterator& other) const noexcept { return this->_count != other._count; }
 
         /**
          * Returns the value stored in the underlying RepeatArray.
@@ -93,7 +93,7 @@ template <typename T> class RepeatArray {
          *
          * @return The value stored in the underlying RepeatArray.
          */
-        const T& operator*() const { return this->_array._value; }
+        const T& operator*() const noexcept { return this->_array._value; }
 
         /**
          * Pre-increment operator overload for Iterator class.
@@ -102,7 +102,7 @@ template <typename T> class RepeatArray {
          *
          * @return The iterator object itself is being returned.
          */
-        Iterator& operator++() {
+        Iterator& operator++() noexcept {
             this->_count++;
             return *this;
         }
@@ -167,7 +167,7 @@ template <typename T> class ShiftArray {
      */
     explicit ShiftArray(const std::vector<T>& lst) : _lst(lst) {}
 
-    explicit ShiftArray(std::vector<T>&& lst) : _lst(std::move(lst)) {}
+    explicit ShiftArray(std::vector<T>&& lst) noexcept : _lst(std::move(lst)) {}
 
     void set_start(size_t start) {
         if (start > this->_lst.size()) {
@@ -221,7 +221,7 @@ template <typename T> class ShiftArray {
          *
          * @return a boolean value.
          */
-        bool operator!=(const Iterator& other) const { return this->_count != other._count; }
+        bool operator!=(const Iterator& other) const noexcept { return this->_count != other._count; }
 
         /**
          * The function returns the value at the current position in an array.
@@ -237,7 +237,7 @@ template <typename T> class ShiftArray {
          *
          * @return The iterator object itself is being returned.
          */
-        Iterator& operator++() {
+        Iterator& operator++() noexcept {
             this->_count++;
             return *this;
         }
@@ -267,5 +267,5 @@ template <typename T> class ShiftArray {
      *
      * @return the size of the list (lst) minus the starting index (start).
      */
-    size_t size() const { return this->_lst.size() - this->_start; }
+    size_t size() const noexcept { return this->_lst.size() - this->_start; }
 };

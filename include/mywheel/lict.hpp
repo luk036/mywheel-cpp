@@ -101,14 +101,16 @@ namespace py {
          *
          * @return iterator
          */
-        iterator begin() const { return py::range<key_type>(this->_lst.size()).begin(); }
+        iterator begin() const noexcept {
+            return py::range<key_type>(this->_lst.size()).begin();
+        }
 
         /**
          * @brief
          *
          * @return iterator
          */
-        iterator end() const { return py::range<key_type>(this->_lst.size()).end(); }
+        iterator end() const noexcept { return py::range<key_type>(this->_lst.size()).end(); }
 
         /**
          * @brief The `contains` function checks if a given value is present in the `rng` attribute
@@ -124,7 +126,9 @@ namespace py {
          *   >>> a.contains(2)
          *   true
          */
-        bool contains(const key_type &key) const { return key < this->_lst.size(); }
+        [[nodiscard]] bool contains(const key_type &key) const noexcept {
+            return key < this->_lst.size();
+        }
 
         /**
          * @brief This function returns the length of the `rng` attribute of the object.
@@ -136,7 +140,7 @@ namespace py {
          *   >>> a.size()
          *   4
          */
-        size_t size() const { return this->_lst.size(); }
+        [[nodiscard]] size_t size() const noexcept { return this->_lst.size(); }
 
         /**
          * @brief The `values` function returns an iterator that yields the elements of the `lst`
@@ -190,7 +194,7 @@ namespace py {
          *   (2, 3)
          *   (3, 6)
          */
-        auto items() const { return py::enumerate(this->_lst); }
+        auto items() const noexcept { return py::enumerate(this->_lst); }
     };
 
 }  // namespace py

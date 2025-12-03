@@ -165,7 +165,7 @@ namespace fun {
          * @return The `exclude` method in the `Robin` class returns an iterable wrapper of type
          * `IterableWrapper`.
          */
-        auto exclude(T from_part) const -> IterableWrapper {
+        [[nodiscard]] auto exclude(T from_part) const noexcept -> IterableWrapper {
             return IterableWrapper{&this->cycle[from_part]};
         }
     };
