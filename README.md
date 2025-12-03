@@ -25,7 +25,7 @@
 - Reproducible dependency management via [CPM.cmake](https://github.com/TheLartians/CPM.cmake)
 - Installable target with automatic versioning information and header generation via [PackageProject.cmake](https://github.com/TheLartians/PackageProject.cmake)
 - Automatic [documentation](https://thelartians.github.io/ModernCppStarter) and deployment with [Doxygen](https://www.doxygen.nl) and [GitHub Pages](https://pages.github.com)
-- Support for [sanitizer tools, and more](#additional-tools)
+- Support for [sanitizer tools, and more](\ref additional-tools)
 
 ## Usage
 
@@ -44,7 +44,7 @@ Eventually, you can remove any unused files, such as the standalone directory or
 Feel free to replace the License with one suited for your project.
 
 To cleanly separate the library and subproject code, the outer `CMakeList.txt` only defines the library itself while the tests and other subprojects are self-contained in their own directories.
-During development it is usually convenient to [build all subprojects at once](#build-everything-at-once).
+During development it is usually convenient to [build all subprojects at once](\ref build-everything-at-once).
 
 ### Build and run the standalone target
 
@@ -107,7 +107,7 @@ open build/doc/doxygen/html/index.html
 
 To build the documentation locally, you will need Doxygen, jinja2 and Pygments installed on your system.
 
-### Build everything at once
+### \anchor build-everything-at-once Build everything at once
 
 The project also includes an `all` directory that allows building all targets at the same time.
 This is useful during development, as it exposes all subprojects to your IDE and avoids redundant builds of the library.
@@ -126,7 +126,7 @@ cmake --build build --target fix-format
 cmake --build build --target GenerateDocs
 ```
 
-### Additional tools
+### \anchor additional-tools Additional tools
 
 The test and standalone subprojects include the [tools.cmake](cmake/tools.cmake) file which is used to import additional tools on-demand through CMake configuration arguments.
 The following are currently supported.

@@ -8,17 +8,33 @@
 template <typename T> class DllIterator;
 
 /**
- * @brief doubly linked list with sentinel head node
+ * @brief Doubly-linked list with sentinel head node for efficient operations
  *
- * A Doubly-linked List class. This class simply contains a link of
- * node's. By adding a "head" node (sentinel), deleting a node is
- * extremely fast (see "Introduction to Algorithm"). This class does
- * not keep the length information as it is not necessary for the FM
- * algorithm. This saves memory and run-time to update the length
- * information. Note that this class does not own the list node. They
- * are supplied by the caller in order to better reuse the nodes.
+ * The Dllist class implements a doubly-linked list using a sentinel head node
+ * pattern that eliminates edge cases and provides O(1) insertion and deletion
+ * operations. The design is optimized for algorithms where nodes frequently
+ * move between different lists, such as the Fiduccia-Mattheyses algorithm.
  *
- * ```
+ * Key Features:
+ * - Sentinel head eliminates special cases for empty lists
+ * - O(1) insertion, deletion, and access operations
+ * - No length tracking for maximum efficiency
+ * - Non-owning design for flexible node management
+ * - Packed structure for memory efficiency
+ * - Iterator support for STL compatibility
+ *
+ * The sentinel approach means the list always has at least one node (the head),
+ * which simplifies all operations and eliminates the need for null pointer checks.
+ *
+ * Time Complexity:
+ * - Insert (front/back): O(1)
+ * - Remove (front/back): O(1)
+ * - Check empty: O(1)
+ * - Iterator operations: O(1)
+ *
+ * Space Complexity: O(1) for list structure + O(n) for nodes
+ *
+ * ```cpp
  * Doubly Linked List with Sentinel Head:
  *
  *     ┌─────────────────┐
@@ -61,7 +77,9 @@ template <typename T> class DllIterator;
  *
  * The sentinel head simplifies operations by eliminating special cases
  * for empty lists and boundary nodes.
- * ```
+ * ```cpp
+ *
+ * @tparam T The type of data stored in the nodes
  */
 #pragma pack(push, 1)
 template <typename T> class Dllist {
@@ -94,8 +112,7 @@ template <typename T> class Dllist {
     /**
      * @brief whether the list is empty
      *
-     * @return true
-     * @return false
+     * @return true if empty, false otherwise
      */
     constexpr auto is_empty() const noexcept -> bool { return this->head.next == &this->head; }
 
@@ -122,7 +139,7 @@ template <typename T> class Dllist {
     /**
      * @brief pop a node from the front
      *
-     * @return Dllist&
+     * @return Dllink& reference to popped node
      *
      * Precondition: list is not empty
      */
@@ -135,7 +152,7 @@ template <typename T> class Dllist {
     /**
      * @brief pop a node from the back
      *
-     * @return Dllist&
+     * @return Dllink& reference to popped node
      *
      * Precondition: list is not empty
      */
@@ -148,16 +165,16 @@ template <typename T> class Dllist {
     // For iterator
 
     /**
-     * @brief
+     * @brief Get iterator to beginning of list
      *
-     * @return DllIterator
+     * @return DllIterator iterator to beginning
      */
     constexpr auto begin() noexcept -> DllIterator<T>;
 
     /**
-     * @brief
+     * @brief Get iterator to end of list
      *
-     * @return DllIterator
+     * @return DllIterator iterator to end
      */
     constexpr auto end() noexcept -> DllIterator<T>;
 };
@@ -184,7 +201,7 @@ template <typename T> class DllIterator {
     /**
      * @brief move to the next item
      *
-     * @return Dllist&
+     * @return DllIterator& reference to self
      */
     constexpr auto operator++() noexcept -> DllIterator & {
         this->cur = this->cur->next;
@@ -194,17 +211,16 @@ template <typename T> class DllIterator {
     /**
      * @brief get the reference of the current item
      *
-     * @return Dllist&
+     * @return Dllink& reference to current item
      */
     constexpr auto operator*() noexcept -> Dllink<T> & { return *this->cur; }
 
     /**
      * @brief eq operator
      *
-     * @param[in] lhs
-     * @param[in] rhs
-     * @return true
-     * @return false
+     * @param[in] lhs left hand side iterator
+     * @param[in] rhs right hand side iterator
+     * @return true if equal, false otherwise
      */
     friend auto operator==(const DllIterator &lhs, const DllIterator &rhs) noexcept -> bool {
         return lhs.cur == rhs.cur;
@@ -213,10 +229,9 @@ template <typename T> class DllIterator {
     /**
      * @brief neq operator
      *
-     * @param[in] lhs
-     * @param[in] rhs
-     * @return true
-     * @return false
+     * @param[in] lhs left hand side iterator
+     * @param[in] rhs right hand side iterator
+     * @return true if not equal, false otherwise
      */
     friend auto operator!=(const DllIterator &lhs, const DllIterator &rhs) noexcept -> bool {
         return !(lhs == rhs);
@@ -224,18 +239,18 @@ template <typename T> class DllIterator {
 };
 
 /**
- * @brief begin
+ * @brief Get iterator to beginning of list
  *
- * @return DllIterator
+ * @return DllIterator iterator to beginning
  */
 template <typename T> constexpr auto Dllist<T>::begin() noexcept -> DllIterator<T> {
     return DllIterator<T>{this->head.next};
 }
 
 /**
- * @brief end
+ * @brief Get iterator to end of list
  *
- * @return DllIterator
+ * @return DllIterator iterator to end
  */
 template <typename T> constexpr auto Dllist<T>::end() noexcept -> DllIterator<T> {
     return DllIterator<T>{&this->head};

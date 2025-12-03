@@ -1,6 +1,25 @@
-DOXYFILE = 'Doxyfile'
+import warnings
+import logging
 
-M_SHOW_UNDOCUMENTED = True
+# Suppress Python deprecation warnings about testing element truth values
+warnings.filterwarnings("ignore", category=DeprecationWarning, message=".*Testing an element's truth value.*")
+
+# Suppress warnings about external images not found in XML output
+warnings.filterwarnings("ignore", message=".*was not found in XML_OUTPUT", category=RuntimeWarning)
+warnings.filterwarnings("ignore", message=".*was not found in XML_OUTPUT", category=UserWarning)
+
+# Suppress the specific logging messages about external images in m.css
+class ImageNotFoundFilter(logging.Filter):
+    def filter(self, record):
+        # Suppress specific image not found messages
+        if "was not found in XML_OUTPUT" in record.getMessage():
+            return False
+        return True
+
+# Apply the filter to the root logger
+logging.getLogger().addFilter(ImageNotFoundFilter())
+
+DOXYFILE = 'Doxyfile'
 
 LINKS_NAVBAR1 = [
     (None, 'pages', [(None, 'about')]),
@@ -12,10 +31,10 @@ LINKS_NAVBAR1 = [
 
 # LINKS_NAVBAR1 = [
 #     (None, 'pages', [(None, 'about')]),
-#     (None, 'namespaces', [(None, 'namespacemywheel')]),
+#     (None, 'namespaces', [(None, 'namespacexnetwork')]),
 # ]
 #
 # LINKS_NAVBAR2 = [
-#     (None, 'annotated', [(None, 'classmywheel_1_1_mywheel')]),
-#     (None, 'files', [(None, 'mywheel_8h')]),
+#     (None, 'annotated', [(None, 'classxnetwork_1_1_xnetwork')]),
+#     (None, 'files', [(None, 'xnetwork_8h')]),
 # ]
