@@ -42,7 +42,7 @@ TEST_CASE("Test Robin Stress Test - Exclude and Iterate") {
     const int num_iterations = 100;
     for (int iter = 0; iter < num_iterations; ++iter) {
         int excluded_part = distrib(gen);
-        
+
         std::vector<int> expected_elements;
         for (int i = 0; i < num_parts; ++i) {
             if (i != excluded_part) {

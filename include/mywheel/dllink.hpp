@@ -36,7 +36,7 @@ template <typename T> class DllIterator;
  *
  * ```cpp
  * Doubly Linked List Structure:
- * 
+ *
  *     ┌─────────────────────────────────────┐
  *     │              Head/Sentinel          │
  *     │  ┌─────┐     ┌─────┐     ┌─────┐   │
@@ -52,7 +52,7 @@ template <typename T> class DllIterator;
  *                 │Node1│ │Node2│ │Node3│
  *                 │Data │ │Data │ │Data │
  *                 └─────┘ └─────┘ └─────┘
- * 
+ *
  * Each node has 'next' and 'prev' pointers, with the head/sentinel
  * serving as a boundary marker to simplify insertion/deletion.
  * ```cpp
@@ -80,7 +80,7 @@ template <typename T> class Dllink {
      * A static assert ensures the class remains memory-efficient.
      *
      * @param[in] data The data to store in the node (moved)
-     * 
+     *
      * @post The node is initialized and ready for list operations
      */
     constexpr explicit Dllink(T data) noexcept : data{std::move(data)} {
@@ -94,7 +94,7 @@ template <typename T> class Dllink {
      * The node starts in a self-contained state.
      */
     constexpr Dllink() = default;
-    
+
     /**
      * @brief Destructor
      *
@@ -103,7 +103,7 @@ template <typename T> class Dllink {
      * first if the node is in a list.
      */
     ~Dllink() = default;
-    
+
     // Rule of Five: Explicitly control operations to prevent unintended copying
     Dllink(const Dllink &) = delete;                      // Copy constructor deleted
     auto operator=(const Dllink &) -> Dllink & = delete;  // Copy assignment deleted
@@ -141,7 +141,7 @@ template <typename T> class Dllink {
      *
      * @pre The node must not be locked
      * @pre The node must be part of a list
-     * 
+     *
      * @post The node is removed from the list and self-contained
      */
     constexpr auto detach() noexcept -> void {
@@ -161,7 +161,7 @@ template <typename T> class Dllink {
      * The node being attached should not already be in another list.
      *
      * @param[in,out] node Reference to the node to attach
-     * 
+     *
      * @pre node should not be currently in a list
      * @post node is inserted after this node
      */

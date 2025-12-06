@@ -9,7 +9,7 @@
  * @brief The `RepeatArray` class is a template class that represents an array that repeats its elements.
  * It has a constructor that takes a value and a size as parameters and initializes all elements of the
  * array with the given value.
- * 
+ *
  * ```
  *    0   1   2   3   4
  * +---+---+---+---+---+
@@ -141,9 +141,9 @@ template <typename T> class RepeatArray {
  * ```
  * Original indices:  [0] [1] [2] [3] [4] [5]
  * Array content:     [A] [B] [C] [D] [E] [F]
- * 
+ *
  * After set_start(2):
- * 
+ *
  * Accessible range:        [0] [1] [2] [3]  <-- These map to [C] [D] [E] [F]
  * Shifted indices:         [2] [3] [4] [5]  <-- Internal indices
  * ```
