@@ -52,10 +52,10 @@ template <typename T> class DllIterator;
  *                 │Node1│ │Node2│ │Node3│
  *                 │Data │ │Data │ │Data │
  *                 └─────┘ └─────┘ └─────┘
+ * ```
  *
  * Each node has 'next' and 'prev' pointers, with the head/sentinel
  * serving as a boundary marker to simplify insertion/deletion.
- * ```cpp
  *
  * @tparam T The type of data stored in the node
  */

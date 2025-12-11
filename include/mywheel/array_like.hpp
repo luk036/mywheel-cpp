@@ -49,10 +49,9 @@ template <typename T> class RepeatArray {
     size_t size() const noexcept { return this->_size; }
 
     /**
-     * The code defines an iterator class for a repeat array, allowing iteration over the elements
-     * of the array.
+     * Iterator class for RepeatArray, allowing iteration over the elements of the array.
      *
-     * @return The `begin()` function returns an iterator pointing to the beginning of the
+     * The `begin()` function returns an iterator pointing to the beginning of the
      * RepeatArray, while the `end()` function returns an iterator pointing to the end of the
      * RepeatArray.
      */
@@ -193,9 +192,7 @@ template <typename T> class ShiftArray {
     T& operator[](size_t key) { return this->_lst[key - this->_start]; }
 
     /**
-     * The code defines a class Iterator that allows iteration over elements in a ShiftArray.
-     *
-     * @return The code is returning an iterator object.
+     * Iterator class for ShiftArray, allowing iteration over elements in the array.
      */
     class Iterator {
       private:

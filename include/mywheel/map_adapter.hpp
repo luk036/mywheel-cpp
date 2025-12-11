@@ -27,7 +27,7 @@
  * end()   → iterator past (4, E)
  *
  * enumerate() → [(0, A), (1, B), (2, C), (3, D), (4, E)]
- * ```cpp
+ * ```
  *
  * @tparam Container
  */

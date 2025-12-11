@@ -25,7 +25,7 @@ namespace py {
      * Access: lict[2] → returns 'C'
      *         lict.contains(3) → true
      *         lict.size() → 5
-     * ```cpp
+     * ```
      *
      * @tparam T
      */

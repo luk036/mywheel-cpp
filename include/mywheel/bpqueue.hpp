@@ -64,7 +64,7 @@
      * Sentinel: (dummy element for boundary checks)
      *
      * Max key: 4
-     * ```cpp
+     * ```
      *
      * @tparam Tp The type of payload data stored in each node
      * @tparam Int The integer type used for keys (default: int32_t)
@@ -444,7 +444,6 @@
          *
          * @param[in] bpq Reference to the priority queue to iterate over
          * @param[in] curkey The initial key value to start from
-         * @param[in] curkey
          */
         constexpr BpqIterator(BPQueue<Tp, Int> &bpq, UInt curkey)
             : bpq{bpq}, curkey{curkey}, curitem{bpq.bucket[curkey].begin()} {}

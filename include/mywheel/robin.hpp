@@ -128,7 +128,7 @@ namespace fun {
      *
      * The cycle forms a circular linked list where exclude(from_part)
      * returns an iterator that starts after the excluded part.
-     * ```cpp
+     * ```
      *
      * @tparam T
      */

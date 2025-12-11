@@ -77,7 +77,7 @@ template <typename T> class DllIterator;
  *
  * The sentinel head simplifies operations by eliminating special cases
  * for empty lists and boundary nodes.
- * ```cpp
+ * ```
  *
  * @tparam T The type of data stored in the nodes
  */
