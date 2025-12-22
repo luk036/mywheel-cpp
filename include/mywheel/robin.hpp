@@ -24,7 +24,7 @@ namespace fun {
          * @tparam T
          */
         template <typename T> struct RobinIterator {
-            const RobinSlNode<T> *cur;
+            const RobinSlNode<T> *curr;
 
             /**
              * The function checks if the current iterator is not equal to another iterator.
@@ -35,7 +35,7 @@ namespace fun {
              * @return The operator is returning a boolean value. If the current iterator is not
              * equal to the other iterator, it will return true. Otherwise, it will return false.
              */
-            auto operator!=(const RobinIterator &other) const -> bool { return cur != other.cur; }
+            auto operator!=(const RobinIterator &other) const -> bool { return curr != other.curr; }
 
             /**
              * The function checks if the current iterator is equal to another iterator.
@@ -45,7 +45,7 @@ namespace fun {
              *
              * @return The operator is returning a boolean value.
              */
-            auto operator==(const RobinIterator &other) const -> bool { return cur == other.cur; }
+            auto operator==(const RobinIterator &other) const -> bool { return curr == other.curr; }
 
             /**
              * The function increments the iterator to the next element and returns a reference to
@@ -55,7 +55,7 @@ namespace fun {
              * object.
              */
             auto operator++() -> RobinIterator & {
-                cur = cur->next;
+                curr = curr->next;
                 return *this;
             }
 
@@ -65,7 +65,7 @@ namespace fun {
              *
              * @return The code is returning a reference to a constant object of type T.
              */
-            auto operator*() const -> const T & { return cur->key; }
+            auto operator*() const -> const T & { return curr->key; }
         };
 
         /**
@@ -75,21 +75,21 @@ namespace fun {
          * @tparam T
          */
         template <typename T> struct RobinIterableWrapper {
-            const detail::RobinSlNode<T> *node;
+            const detail::RobinSlNode<T> *curr_node;
 
             /**
              * The begin() function returns a RobinIterator object pointing to the next node.
              *
              * @return a `RobinIterator<T>` object.
              */
-            auto begin() const -> RobinIterator<T> { return RobinIterator<T>{node->next}; }
+            auto begin() const -> RobinIterator<T> { return RobinIterator<T>{curr_node->next}; }
 
             /**
              * The function returns a RobinIterator object representing the end of a collection.
              *
              * @return a `RobinIterator<T>` object.
              */
-            auto end() const -> RobinIterator<T> { return RobinIterator<T>{node}; }
+            auto end() const -> RobinIterator<T> { return RobinIterator<T>{curr_node}; }
         };
     }  // namespace detail
 
@@ -147,9 +147,9 @@ namespace fun {
          */
         explicit Robin(T num_parts) : cycle(num_parts) {
             auto *slptr = &this->cycle.back();
-            for (auto i = T(0); i != num_parts; ++i) {
-                this->cycle[i].key = i;
-                slptr->next = &this->cycle[i];
+            for (auto idx = T(0); idx != num_parts; ++idx) {
+                this->cycle[idx].key = idx;
+                slptr->next = &this->cycle[idx];
                 slptr = slptr->next;
             }
         }

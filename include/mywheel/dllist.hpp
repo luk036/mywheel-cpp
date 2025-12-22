@@ -188,15 +188,15 @@ template <typename T> class Dllist {
  */
 template <typename T> class DllIterator {
   private:
-    Dllink<T> *cur; /**< pointer to the current item */
+    Dllink<T> *curr; /**< pointer to the current item */
 
   public:
     /**
      * @brief Construct a new dll iterator object
      *
-     * @param[in] cur
+     * @param[in] curr Pointer to the current item
      */
-    constexpr explicit DllIterator(Dllink<T> *cur) noexcept : cur{cur} {}
+    constexpr explicit DllIterator(Dllink<T> *curr) noexcept : curr{curr} {}
 
     /**
      * @brief move to the next item
@@ -204,7 +204,7 @@ template <typename T> class DllIterator {
      * @return DllIterator& reference to self
      */
     constexpr auto operator++() noexcept -> DllIterator & {
-        this->cur = this->cur->next;
+        this->curr = this->curr->next;
         return *this;
     }
 
@@ -213,7 +213,7 @@ template <typename T> class DllIterator {
      *
      * @return Dllink& reference to current item
      */
-    constexpr auto operator*() noexcept -> Dllink<T> & { return *this->cur; }
+    constexpr auto operator*() noexcept -> Dllink<T> & { return *this->curr; }
 
     /**
      * @brief eq operator
@@ -223,7 +223,7 @@ template <typename T> class DllIterator {
      * @return true if equal, false otherwise
      */
     friend auto operator==(const DllIterator &lhs, const DllIterator &rhs) noexcept -> bool {
-        return lhs.cur == rhs.cur;
+        return lhs.curr == rhs.curr;
     }
 
     /**

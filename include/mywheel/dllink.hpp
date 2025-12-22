@@ -146,10 +146,10 @@ template <typename T> class Dllink {
      */
     constexpr auto detach() noexcept -> void {
         assert(!this->is_locked());
-        const auto n = this->next;
-        const auto p = this->prev;
-        p->next = n;
-        n->prev = p;
+        const auto next_node = this->next;
+        const auto prev_node = this->prev;
+        prev_node->next = next_node;
+        next_node->prev = prev_node;
     }
 
   private:

@@ -38,12 +38,12 @@ template <typename Container> class MapAdapter {
     using key_type = size_t;
     using mapped_type = typename Container::value_type;
     using value_type = std::pair<key_type, mapped_type>;
-    using E = decltype(py::enumerate(std::declval<Container &>()));
+    using Enumerator = decltype(py::enumerate(std::declval<Container &>()));
 
   private:
     py::Range<key_type> _rng;
     Container &_lst;
-    E mapview;
+    Enumerator mapview;
 
   public:
     explicit MapAdapter(Container &lst)

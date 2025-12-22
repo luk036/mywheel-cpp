@@ -144,13 +144,13 @@
          * Sets the key stored in the item's data payload. The key is stored
          * internally as an unsigned value offset from the lower bound.
          *
-         * @param[out] it Reference to the item whose key should be set
+         * @param[out] item Reference to the item whose key should be set
          * @param[in] gain The new key value for the item
          *
          * @pre gain must be within the queue's key bounds [a, b]
          */
-        constexpr auto set_key(Item &it, Int gain) noexcept -> void {
-            it.data.second = static_cast<UInt>(gain - this->offset);
+        constexpr auto set_key(Item &item, Int gain) noexcept -> void {
+            item.data.second = static_cast<UInt>(gain - this->offset);
         }
 
         /**
@@ -186,14 +186,14 @@
          * in the item's data payload. This is more efficient than appendleft()
          * when the key is already known and stored in the item.
          *
-         * @param[in,out] it Reference to the item to insert
+         * @param[in,out] item Reference to the item to insert
          *
          * @pre The item must have a valid internal key set via set_key()
          * @pre The internal key must be > offset
          */
-        constexpr auto appendleft_direct(Item &it) noexcept -> void {
-            assert(static_cast<Int>(it.data.second) > this->offset);
-            this->appendleft(it, Int(it.data.second));
+        constexpr auto appendleft_direct(Item &item) noexcept -> void {
+            assert(static_cast<Int>(item.data.second) > this->offset);
+            this->appendleft(item, Int(item.data.second));
         }
 
         /**
@@ -203,20 +203,20 @@
          * at the front of the bucket's doubly-linked list. The item's internal
          * key is automatically set and the max key is updated if necessary.
          *
-         * @param[in,out] it Reference to the item to insert
+         * @param[in,out] item Reference to the item to insert
          * @param[in] k The key value for the item
          *
          * @pre k must be > offset (within valid key range)
          * @post Item is inserted at front of bucket for key k
          * @post max key is updated if k is greater than current max
          */
-        constexpr auto appendleft(Item &it, Int k) noexcept -> void {
+        constexpr auto appendleft(Item &item, Int k) noexcept -> void {
             assert(k > this->offset);
-            it.data.second = UInt(k - this->offset);
-            if (this->max < it.data.second) {
-                this->max = it.data.second;
+            item.data.second = UInt(k - this->offset);
+            if (this->max < item.data.second) {
+                this->max = item.data.second;
             }
-            this->bucket[it.data.second].appendleft(it);
+            this->bucket[item.data.second].appendleft(item);
         }
 
         /**
@@ -226,20 +226,20 @@
          * at the back of the bucket's doubly-linked list. The item's internal
          * key is automatically set and the max key is updated if necessary.
          *
-         * @param[in,out] it Reference to the item to insert
+         * @param[in,out] item Reference to the item to insert
          * @param[in] k The key value for the item
          *
          * @pre k must be > offset (within valid key range)
          * @post Item is inserted at back of bucket for key k
          * @post max key is updated if k is greater than current max
          */
-        constexpr auto append(Item &it, Int k) noexcept -> void {
+        constexpr auto append(Item &item, Int k) noexcept -> void {
             assert(k > this->offset);
-            it.data.second = UInt(k - this->offset);
-            if (this->max < it.data.second) {
-                this->max = it.data.second;
+            item.data.second = UInt(k - this->offset);
+            if (this->max < item.data.second) {
+                this->max = item.data.second;
             }
-            this->bucket[it.data.second].append(it);
+            this->bucket[item.data.second].append(item);
         }
 
         /**
@@ -271,24 +271,24 @@
          * are processed in FIFO order. This method is commonly used in algorithms
          * like Fiduccia-Mattheyses where gain values decrease over time.
          *
-         * @param[in,out] it Reference to the item whose key should be decreased
+         * @param[in,out] item Reference to the item whose key should be decreased
          * @param[in] delta The amount to decrease the key by
          *
          * @pre delta > 0
-         * @pre it must be currently in the queue
+         * @pre item must be currently in the queue
          * @pre New key must be within valid range
          *
          * @note The order of items with the same key is not preserved (FIFO behavior)
          */
-        constexpr auto decrease_key(Item &it, UInt delta) noexcept -> void {
-            // this->bucket[it.data.second].detach(it)
-            it.detach();
-            it.data.second -= delta;
-            assert(it.data.second > 0);
-            assert(it.data.second <= this->high);
-            this->bucket[it.data.second].append(it);  // FIFO
-            if (this->max < it.data.second) {
-                this->max = it.data.second;
+        constexpr auto decrease_key(Item &item, UInt delta) noexcept -> void {
+            // this->bucket[item.data.second].detach(item)
+            item.detach();
+            item.data.second -= delta;
+            assert(item.data.second > 0);
+            assert(item.data.second <= this->high);
+            this->bucket[item.data.second].append(item);  // FIFO
+            if (this->max < item.data.second) {
+                this->max = item.data.second;
                 return;
             }
             while (this->bucket[this->max].is_empty()) {
@@ -304,24 +304,24 @@
          * are processed in LIFO order. This method is useful when gain values
          * need to be increased during algorithm execution.
          *
-         * @param[in,out] it Reference to the item whose key should be increased
+         * @param[in,out] item Reference to the item whose key should be increased
          * @param[in] delta The amount to increase the key by
          *
          * @pre delta > 0
-         * @pre it must be currently in the queue
+         * @pre item must be currently in the queue
          * @pre New key must be within valid range
          *
          * @note The order of items with the same key is not preserved (LIFO behavior)
          */
-        constexpr auto increase_key(Item &it, UInt delta) noexcept -> void {
-            // this->bucket[it.data.second].detach(it)
-            it.detach();
-            it.data.second += delta;
-            assert(it.data.second > 0);
-            assert(it.data.second <= this->high);
-            this->bucket[it.data.second].appendleft(it);  // LIFO
-            if (this->max < it.data.second) {
-                this->max = it.data.second;
+        constexpr auto increase_key(Item &item, UInt delta) noexcept -> void {
+            // this->bucket[item.data.second].detach(item)
+            item.detach();
+            item.data.second += delta;
+            assert(item.data.second > 0);
+            assert(item.data.second <= this->high);
+            this->bucket[item.data.second].appendleft(item);  // LIFO
+            if (this->max < item.data.second) {
+                this->max = item.data.second;
             }
         }
 
@@ -333,23 +333,23 @@
          * it handles both directions and respects item locking. If the item
          * is locked, the operation is ignored.
          *
-         * @param[in,out] it Reference to the item whose key should be modified
+         * @param[in,out] item Reference to the item whose key should be modified
          * @param[in] delta The amount to change the key (positive for increase, negative for
          * decrease)
          *
-         * @pre it must be currently in the queue
+         * @pre item must be currently in the queue
          * @pre New key must be within valid range
          *
          * @note If the item is locked, no modification is performed
          */
-        constexpr auto modify_key(Item &it, Int delta) noexcept -> void {
-            if (it.is_locked()) {
+        constexpr auto modify_key(Item &item, Int delta) noexcept -> void {
+            if (item.is_locked()) {
                 return;
             }
             if (delta > 0) {
-                this->increase_key(it, UInt(delta));
+                this->increase_key(item, UInt(delta));
             } else if (delta < 0) {
-                this->decrease_key(it, UInt(-delta));
+                this->decrease_key(item, UInt(-delta));
             }
         }
 
@@ -360,15 +360,15 @@
          * if necessary. This is useful when you need to remove an item but
          * don't need to process it immediately.
          *
-         * @param[in,out] it Reference to the item to detach
+         * @param[in,out] item Reference to the item to detach
          *
-         * @pre it must be currently in the queue
+         * @pre item must be currently in the queue
          * @post The item is no longer in any bucket
          * @post max key is updated if the highest bucket becomes empty
          */
-        constexpr auto detach(Item &it) noexcept -> void {
-            // this->bucket[it.data.second].detach(it)
-            it.detach();
+        constexpr auto detach(Item &item) noexcept -> void {
+            // this->bucket[item.data.second].detach(item)
+            item.detach();
             while (this->bucket[this->max].is_empty()) {
                 this->max -= 1;
             }
@@ -421,8 +421,8 @@
 
       private:
         BPQueue<Tp, Int> &bpq;  //!< Reference to the priority queue being iterated
-        UInt curkey;            //!< Current key value being processed
-        DllIterator<std::pair<Tp, UInt>> curitem;  //!< Iterator within the current bucket's list
+        UInt curr_key;          //!< Current key value being processed
+        DllIterator<std::pair<Tp, UInt>> curr_item;  //!< Iterator within the current bucket's list
 
         /**
          * @brief Get reference to the current bucket's sentinel node
@@ -432,7 +432,7 @@
          *
          * @return Item& Reference to the current bucket's sentinel node
          */
-        constexpr auto curlist() -> Item & { return this->bpq.bucket[this->curkey]; }
+        constexpr auto curlist() -> Item & { return this->bpq.bucket[this->curr_key]; }
 
       public:
         /**
@@ -443,10 +443,10 @@
          * beginning of the bucket corresponding to this key.
          *
          * @param[in] bpq Reference to the priority queue to iterate over
-         * @param[in] curkey The initial key value to start from
+         * @param[in] curr_key The initial key value to start from
          */
-        constexpr BpqIterator(BPQueue<Tp, Int> &bpq, UInt curkey)
-            : bpq{bpq}, curkey{curkey}, curitem{bpq.bucket[curkey].begin()} {}
+        constexpr BpqIterator(BPQueue<Tp, Int> &bpq, UInt curr_key)
+            : bpq{bpq}, curr_key{curr_key}, curr_item{bpq.bucket[curr_key].begin()} {}
 
         /**
          * @brief Move to the next item
@@ -454,12 +454,12 @@
          * @return BpqIterator& reference to self
          */
         constexpr auto operator++() -> BpqIterator & {
-            ++this->curitem;
-            while (this->curitem == this->curlist().end()) {
+            ++this->curr_item;
+            while (this->curr_item == this->curlist().end()) {
                 do {
-                    this->curkey -= 1;
+                    this->curr_key -= 1;
                 } while (this->curlist().is_empty());
-                this->curitem = this->curlist().begin();
+                this->curr_item = this->curlist().begin();
             }
             return *this;
         }
@@ -469,7 +469,7 @@
          *
          * @return Item& reference to current item
          */
-        constexpr auto operator*() -> Item & { return *this->curitem; }
+        constexpr auto operator*() -> Item & { return *this->curr_item; }
 
         /**
          * @brief eq operator
@@ -479,7 +479,7 @@
          * @return true if equal, false otherwise
          */
         friend constexpr auto operator==(const BpqIterator &lhs, const BpqIterator &rhs) -> bool {
-            return lhs.curitem == rhs.curitem;
+            return lhs.curr_item == rhs.curr_item;
         }
 
         /**
