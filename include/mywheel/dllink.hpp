@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cassert>
+#include <cstddef>
 #include <utility>  // for std::move()
 
 // Forward declaration for begin() end()
@@ -67,8 +68,8 @@ template <typename T> class Dllink {
 
   private:
     static constexpr size_t MAX_DLLINK_SIZE = 24;
-    Dllink *next{this}; /**< Pointer to the next node in the list */
-    Dllink *prev{this}; /**< Pointer to the previous node in the list */
+    Dllink* next{this}; /**< Pointer to the next node in the list */
+    Dllink* prev{this}; /**< Pointer to the previous node in the list */
 
   public:
     T data{}; /**< User data payload stored in the node */
@@ -106,10 +107,10 @@ template <typename T> class Dllink {
     ~Dllink() = default;
 
     // Rule of Five: Explicitly control operations to prevent unintended copying
-    Dllink(const Dllink &) = delete;                      // Copy constructor deleted
-    auto operator=(const Dllink &) -> Dllink & = delete;  // Copy assignment deleted
-    constexpr Dllink(Dllink &&) noexcept = default;      // Move constructor allowed
-    constexpr auto operator=(Dllink &&) noexcept -> Dllink & = delete;  // Move assignment deleted
+    Dllink(const Dllink&) = delete;                                   // Copy constructor deleted
+    auto operator=(const Dllink&) -> Dllink& = delete;                // Copy assignment deleted
+    constexpr Dllink(Dllink&&) noexcept = default;                    // Move constructor allowed
+    constexpr auto operator=(Dllink&&) noexcept -> Dllink& = delete;  // Move assignment deleted
 
     /**
      * @brief Lock the node to prevent list operations
@@ -166,7 +167,7 @@ template <typename T> class Dllink {
      * @pre node should not be currently in a list
      * @post node is inserted after this node
      */
-    constexpr auto attach(Dllink &node) noexcept -> void {
+    constexpr auto attach(Dllink& node) noexcept -> void {
         node.next = this->next;
         this->next->prev = &node;
         this->next = &node;

@@ -6,9 +6,9 @@
 #include <vector>
 
 /**
- * @brief The `RepeatArray` class is a template class that represents an array that repeats its elements.
- * It has a constructor that takes a value and a size as parameters and initializes all elements of the
- * array with the given value.
+ * @brief The `RepeatArray` class is a template class that represents an array that repeats its
+ * elements. It has a constructor that takes a value and a size as parameters and initializes all
+ * elements of the array with the given value.
  *
  * ```
  *    0   1   2   3   4
@@ -81,7 +81,9 @@ template <typename T> class RepeatArray {
          * @param[in] other Iterator to compare to.
          * @return True if the counts are not equal, false otherwise.
          */
-        auto operator!=(const Iterator& other) const noexcept -> bool { return this->_count != other._count; }
+        auto operator!=(const Iterator& other) const noexcept -> bool {
+            return this->_count != other._count;
+        }
 
         /**
          * Returns the value stored in the underlying RepeatArray.
@@ -218,7 +220,9 @@ template <typename T> class ShiftArray {
          *
          * @return a boolean value.
          */
-        auto operator!=(const Iterator& other) const noexcept -> bool { return this->_count != other._count; }
+        auto operator!=(const Iterator& other) const noexcept -> bool {
+            return this->_count != other._count;
+        }
 
         /**
          * The function returns the value at the current position in an array.
@@ -226,7 +230,9 @@ template <typename T> class ShiftArray {
          * @return The code is returning the element at the index `array.start + count` in the
          * `array.lst` array.
          */
-        auto operator*() const -> const T& { return this->_array._lst[this->_array._start + this->_count]; }
+        auto operator*() const -> const T& {
+            return this->_array._lst[this->_array._start + this->_count];
+        }
 
         /**
          * The above function overloads the pre-increment operator for an Iterator class,

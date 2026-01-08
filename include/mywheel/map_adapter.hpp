@@ -38,22 +38,22 @@ template <typename Container> class MapAdapter {
     using key_type = size_t;
     using mapped_type = typename Container::value_type;
     using value_type = std::pair<key_type, mapped_type>;
-    using Enumerator = decltype(py::enumerate(std::declval<Container &>()));
+    using Enumerator = decltype(py::enumerate(std::declval<Container&>()));
 
   private:
     py::Range<key_type> _rng;
-    Container &_lst;
+    Container& _lst;
     Enumerator mapview;
 
   public:
-    explicit MapAdapter(Container &lst)
+    explicit MapAdapter(Container& lst)
         : _rng{py::range(lst.size())}, _lst(lst), mapview(py::enumerate(this->_lst)) {}
 
-    auto operator[](const key_type &key) const -> const mapped_type& { return _lst.at(key); }
+    auto operator[](const key_type& key) const -> const mapped_type& { return _lst.at(key); }
 
     template <bool dependent = true,
               typename = std::enable_if_t<dependent && !is_const_container::value>>
-    auto operator[](const key_type &key) -> mapped_type& {
+    auto operator[](const key_type& key) -> mapped_type& {
         return _lst[key];
     }
 
@@ -63,7 +63,7 @@ template <typename Container> class MapAdapter {
      *
      * @return a constant reference to the value associated with the given key.
      */
-    auto at(const key_type &key) const -> const mapped_type& { return _lst.at(key); }
+    auto at(const key_type& key) const -> const mapped_type& { return _lst.at(key); }
 
     /**
      * The function checks if a given key is present in a data structure.
@@ -74,7 +74,7 @@ template <typename Container> class MapAdapter {
      * @return a boolean value. It will return true if the key is contained in the data structure,
      * and false otherwise.
      */
-    auto contains(const key_type &key) const -> bool { return _rng.contains(key); }
+    auto contains(const key_type& key) const -> bool { return _rng.contains(key); }
 
     /**
      * The size() function returns the size of the _rng container.

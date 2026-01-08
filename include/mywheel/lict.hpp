@@ -63,7 +63,7 @@ namespace py {
          *   3
          *
          */
-        auto operator[](const key_type &key) const -> const T& { return this->_lst.at(key); }
+        auto operator[](const key_type& key) const -> const T& { return this->_lst.at(key); }
 
         /**
          * @brief This function sets the value at a given index in a list-like object.
@@ -78,7 +78,7 @@ namespace py {
          *   7
          *
          */
-        auto operator[](const key_type &key) -> T& { return this->_lst[key]; }
+        auto operator[](const key_type& key) -> T& { return this->_lst[key]; }
 
         /**
          * @brief This function allows you to access an element in a Lict object by its index.
@@ -94,7 +94,7 @@ namespace py {
          *   3
          *
          */
-        auto at(const key_type &key) const -> const T& { return this->_lst.at(key); }
+        auto at(const key_type& key) const -> const T& { return this->_lst.at(key); }
 
         /**
          * @brief Get iterator to beginning
@@ -110,7 +110,9 @@ namespace py {
          *
          * @return iterator to end
          */
-        auto end() const noexcept -> iterator { return py::range<key_type>(this->_lst.size()).end(); }
+        auto end() const noexcept -> iterator {
+            return py::range<key_type>(this->_lst.size()).end();
+        }
 
         /**
          * @brief The `contains` function checks if a given value is present in the `rng` attribute
@@ -126,7 +128,7 @@ namespace py {
          *   >>> a.contains(2)
          *   true
          */
-        [[nodiscard]] auto contains(const key_type &key) const noexcept -> bool {
+        [[nodiscard]] auto contains(const key_type& key) const noexcept -> bool {
             return key < this->_lst.size();
         }
 

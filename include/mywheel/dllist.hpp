@@ -105,10 +105,10 @@ template <typename T> class Dllist {
      */
     constexpr Dllist() = default;
     ~Dllist() = default;
-    Dllist(const Dllist &) = delete;                                // don't copy
-    constexpr auto operator=(const Dllist &) -> Dllist & = delete;  // don't assign
-    constexpr Dllist(Dllist &&) noexcept = default;
-    constexpr auto operator=(Dllist &&) noexcept -> Dllist & = default;  // don't assign
+    Dllist(const Dllist&) = delete;                               // don't copy
+    constexpr auto operator=(const Dllist&) -> Dllist& = delete;  // don't assign
+    constexpr Dllist(Dllist&&) noexcept = default;
+    constexpr auto operator=(Dllist&&) noexcept -> Dllist& = default;  // don't assign
 
     /**
      * @brief whether the list is empty
@@ -128,14 +128,14 @@ template <typename T> class Dllist {
      *
      * @param[in,out] node
      */
-    constexpr auto appendleft(Dllink<T> &node) noexcept -> void { this->head.attach(node); }
+    constexpr auto appendleft(Dllink<T>& node) noexcept -> void { this->head.attach(node); }
 
     /**
      * @brief append the node to the back
      *
      * @param[in,out] node
      */
-    constexpr auto append(Dllink<T> &node) noexcept -> void { this->head.prev->attach(node); }
+    constexpr auto append(Dllink<T>& node) noexcept -> void { this->head.prev->attach(node); }
 
     /**
      * @brief pop a node from the front
@@ -144,7 +144,7 @@ template <typename T> class Dllist {
      *
      * Precondition: list is not empty
      */
-    constexpr auto popleft() noexcept -> Dllink<T> & {
+    constexpr auto popleft() noexcept -> Dllink<T>& {
         auto res = this->head.next;
         res->detach();
         return *res;
@@ -157,7 +157,7 @@ template <typename T> class Dllist {
      *
      * Precondition: list is not empty
      */
-    constexpr auto pop() noexcept -> Dllink<T> & {
+    constexpr auto pop() noexcept -> Dllink<T>& {
         auto res = this->head.prev;
         res->detach();
         return *res;
@@ -189,7 +189,7 @@ template <typename T> class Dllist {
  */
 template <typename T> class DllIterator {
   private:
-    Dllink<T> *curr; /**< pointer to the current item */
+    Dllink<T>* curr; /**< pointer to the current item */
 
   public:
     /**
@@ -197,14 +197,14 @@ template <typename T> class DllIterator {
      *
      * @param[in] curr Pointer to the current item
      */
-    constexpr explicit DllIterator(Dllink<T> *curr) noexcept : curr{curr} {}
+    constexpr explicit DllIterator(Dllink<T>* curr) noexcept : curr{curr} {}
 
     /**
      * @brief move to the next item
      *
      * @return DllIterator& reference to self
      */
-    constexpr auto operator++() noexcept -> DllIterator & {
+    constexpr auto operator++() noexcept -> DllIterator& {
         this->curr = this->curr->next;
         return *this;
     }
@@ -214,7 +214,7 @@ template <typename T> class DllIterator {
      *
      * @return Dllink& reference to current item
      */
-    constexpr auto operator*() noexcept -> Dllink<T> & { return *this->curr; }
+    constexpr auto operator*() noexcept -> Dllink<T>& { return *this->curr; }
 
     /**
      * @brief eq operator
@@ -223,7 +223,7 @@ template <typename T> class DllIterator {
      * @param[in] rhs right hand side iterator
      * @return true if equal, false otherwise
      */
-    friend auto operator==(const DllIterator &lhs, const DllIterator &rhs) noexcept -> bool {
+    friend auto operator==(const DllIterator& lhs, const DllIterator& rhs) noexcept -> bool {
         return lhs.curr == rhs.curr;
     }
 
@@ -234,7 +234,7 @@ template <typename T> class DllIterator {
      * @param[in] rhs right hand side iterator
      * @return true if not equal, false otherwise
      */
-    friend auto operator!=(const DllIterator &lhs, const DllIterator &rhs) noexcept -> bool {
+    friend auto operator!=(const DllIterator& lhs, const DllIterator& rhs) noexcept -> bool {
         return !(lhs == rhs);
     }
 };

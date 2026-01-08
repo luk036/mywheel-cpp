@@ -13,7 +13,7 @@ namespace fun {
          * @tparam T
          */
         template <typename T> struct RobinSlNode {
-            RobinSlNode *next;
+            RobinSlNode* next;
             T key;
         };
 
@@ -24,7 +24,7 @@ namespace fun {
          * @tparam T
          */
         template <typename T> struct RobinIterator {
-            const RobinSlNode<T> *curr;
+            const RobinSlNode<T>* curr;
 
             /**
              * The function checks if the current iterator is not equal to another iterator.
@@ -35,7 +35,7 @@ namespace fun {
              * @return The operator is returning a boolean value. If the current iterator is not
              * equal to the other iterator, it will return true. Otherwise, it will return false.
              */
-            auto operator!=(const RobinIterator &other) const -> bool { return curr != other.curr; }
+            auto operator!=(const RobinIterator& other) const -> bool { return curr != other.curr; }
 
             /**
              * The function checks if the current iterator is equal to another iterator.
@@ -45,7 +45,7 @@ namespace fun {
              *
              * @return The operator is returning a boolean value.
              */
-            auto operator==(const RobinIterator &other) const -> bool { return curr == other.curr; }
+            auto operator==(const RobinIterator& other) const -> bool { return curr == other.curr; }
 
             /**
              * The function increments the iterator to the next element and returns a reference to
@@ -54,7 +54,7 @@ namespace fun {
              * @return The `operator++` function is returning a reference to a `RobinIterator`
              * object.
              */
-            auto operator++() -> RobinIterator & {
+            auto operator++() -> RobinIterator& {
                 curr = curr->next;
                 return *this;
             }
@@ -65,7 +65,7 @@ namespace fun {
              *
              * @return The code is returning a reference to a constant object of type T.
              */
-            auto operator*() const -> const T & { return curr->key; }
+            auto operator*() const -> const T& { return curr->key; }
         };
 
         /**
@@ -75,7 +75,7 @@ namespace fun {
          * @tparam T
          */
         template <typename T> struct RobinIterableWrapper {
-            const detail::RobinSlNode<T> *curr_node;
+            const detail::RobinSlNode<T>* curr_node;
 
             /**
              * The begin() function returns a RobinIterator object pointing to the next node.
@@ -145,11 +145,13 @@ namespace fun {
          * @param[in] num_parts The parameter `num_parts` represents the number of parts or elements
          * in the Robin object.
          */
-        explicit Robin(T num_parts) : cycle(static_cast<typename std::vector<SlNode>::size_type>(num_parts)) {
-            auto *slptr = &this->cycle.back();
+        explicit Robin(T num_parts)
+            : cycle(static_cast<typename std::vector<SlNode>::size_type>(num_parts)) {
+            auto* slptr = &this->cycle.back();
             for (auto idx = T(0); idx != num_parts; ++idx) {
                 this->cycle[static_cast<typename std::vector<SlNode>::size_type>(idx)].key = idx;
-                slptr->next = &this->cycle[static_cast<typename std::vector<SlNode>::size_type>(idx)];
+                slptr->next
+                    = &this->cycle[static_cast<typename std::vector<SlNode>::size_type>(idx)];
                 slptr = slptr->next;
             }
         }
@@ -166,7 +168,8 @@ namespace fun {
          * `IterableWrapper`.
          */
         [[nodiscard]] auto exclude(T from_part) const noexcept -> IterableWrapper {
-            return IterableWrapper{&this->cycle[static_cast<typename std::vector<SlNode>::size_type>(from_part)]};
+            return IterableWrapper{
+                &this->cycle[static_cast<typename std::vector<SlNode>::size_type>(from_part)]};
         }
     };
 
