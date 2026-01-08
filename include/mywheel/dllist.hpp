@@ -86,6 +86,7 @@ template <typename T> class Dllist {
     friend DllIterator<T>;
 
   private:
+    static constexpr size_t MAX_DLLIST_SIZE = 24;
     Dllink<T> head;
 
   public:
@@ -95,7 +96,7 @@ template <typename T> class Dllist {
      * @param[in] data the data
      */
     constexpr explicit Dllist(T data) noexcept : head{std::move(data)} {
-        static_assert(sizeof(Dllist) <= 24, "keep this class small");
+        static_assert(sizeof(Dllist) <= MAX_DLLIST_SIZE, "keep this class small");
     }
 
     /**

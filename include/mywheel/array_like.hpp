@@ -39,14 +39,14 @@ template <typename T> class RepeatArray {
      *
      * @return The value stored in the RepeatArray.
      */
-    const T& operator[](size_t /* index */) const noexcept { return this->_value; }
+    auto operator[](size_t /* index */) const noexcept -> const T& { return this->_value; }
 
     /**
      * Returns the number of elements in the RepeatArray.
      *
      * @return the value of the variable "size" as a size_t data type.
      */
-    size_t size() const noexcept { return this->_size; }
+    auto size() const noexcept -> size_t { return this->_size; }
 
     /**
      * Iterator class for RepeatArray, allowing iteration over the elements of the array.
@@ -81,7 +81,7 @@ template <typename T> class RepeatArray {
          * @param[in] other Iterator to compare to.
          * @return True if the counts are not equal, false otherwise.
          */
-        bool operator!=(const Iterator& other) const noexcept { return this->_count != other._count; }
+        auto operator!=(const Iterator& other) const noexcept -> bool { return this->_count != other._count; }
 
         /**
          * Returns the value stored in the underlying RepeatArray.
@@ -92,7 +92,7 @@ template <typename T> class RepeatArray {
          *
          * @return The value stored in the underlying RepeatArray.
          */
-        const T& operator*() const noexcept { return this->_array._value; }
+        auto operator*() const noexcept -> const T& { return this->_array._value; }
 
         /**
          * Pre-increment operator overload for Iterator class.
@@ -101,7 +101,7 @@ template <typename T> class RepeatArray {
          *
          * @return The iterator object itself is being returned.
          */
-        Iterator& operator++() noexcept {
+        auto operator++() noexcept -> Iterator& {
             this->_count++;
             return *this;
         }
@@ -114,7 +114,7 @@ template <typename T> class RepeatArray {
      *
      * @return Iterator object pointing to the first element.
      */
-    Iterator begin() const { return Iterator(*this, 0); }
+    auto begin() const -> Iterator { return Iterator(*this, 0); }
 
     /**
      * Returns an iterator pointing to the past-the-end element of the container.
@@ -124,7 +124,7 @@ template <typename T> class RepeatArray {
      *
      * @return Iterator pointing past the last element.
      */
-    Iterator end() const { return Iterator(*this, this->_size); }
+    auto end() const -> Iterator { return Iterator(*this, this->_size); }
 };
 
 /**
@@ -181,7 +181,7 @@ template <typename T> class ShiftArray {
      *
      * @return The operator[] is returning a constant reference to an element in the list.
      */
-    const T& operator[](size_t key) const { return this->_lst[key - this->_start]; }
+    auto operator[](size_t key) const -> const T& { return this->_lst[key - this->_start]; }
 
     /**
      * The function overloads the subscript operator to access elements in a list-like container.
@@ -189,7 +189,7 @@ template <typename T> class ShiftArray {
      * @return The T& operator[] function returns a reference to an element in the lst vector, which
      * is accessed using the key parameter.
      */
-    T& operator[](size_t key) { return this->_lst[key - this->_start]; }
+    auto operator[](size_t key) -> T& { return this->_lst[key - this->_start]; }
 
     /**
      * Iterator class for ShiftArray, allowing iteration over elements in the array.
@@ -218,7 +218,7 @@ template <typename T> class ShiftArray {
          *
          * @return a boolean value.
          */
-        bool operator!=(const Iterator& other) const noexcept { return this->_count != other._count; }
+        auto operator!=(const Iterator& other) const noexcept -> bool { return this->_count != other._count; }
 
         /**
          * The function returns the value at the current position in an array.
@@ -226,7 +226,7 @@ template <typename T> class ShiftArray {
          * @return The code is returning the element at the index `array.start + count` in the
          * `array.lst` array.
          */
-        const T& operator*() const { return this->_array._lst[this->_array._start + this->_count]; }
+        auto operator*() const -> const T& { return this->_array._lst[this->_array._start + this->_count]; }
 
         /**
          * The above function overloads the pre-increment operator for an Iterator class,
@@ -234,7 +234,7 @@ template <typename T> class ShiftArray {
          *
          * @return The iterator object itself is being returned.
          */
-        Iterator& operator++() noexcept {
+        auto operator++() noexcept -> Iterator& {
             this->_count++;
             return *this;
         }
@@ -245,14 +245,14 @@ template <typename T> class ShiftArray {
      *
      * @return an iterator object.
      */
-    Iterator begin() const { return Iterator(*this, 0); }
+    auto begin() const -> Iterator { return Iterator(*this, 0); }
 
     /**
      * The end() function returns an iterator pointing to the end of a list.
      *
      * @return The end iterator of the container.
      */
-    Iterator end() const {
+    auto end() const -> Iterator {
         if (this->_start > this->_lst.size()) {
             return Iterator(*this, 0);
         }
@@ -264,5 +264,5 @@ template <typename T> class ShiftArray {
      *
      * @return the size of the list (lst) minus the starting index (start).
      */
-    size_t size() const noexcept { return this->_lst.size() - this->_start; }
+    auto size() const noexcept -> size_t { return this->_lst.size() - this->_start; }
 };

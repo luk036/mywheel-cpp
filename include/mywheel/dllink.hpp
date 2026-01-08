@@ -66,6 +66,7 @@ template <typename T> class Dllink {
     friend DllIterator<T>;
 
   private:
+    static constexpr size_t MAX_DLLINK_SIZE = 24;
     Dllink *next{this}; /**< Pointer to the next node in the list */
     Dllink *prev{this}; /**< Pointer to the previous node in the list */
 
@@ -84,7 +85,7 @@ template <typename T> class Dllink {
      * @post The node is initialized and ready for list operations
      */
     constexpr explicit Dllink(T data) noexcept : data{std::move(data)} {
-        static_assert(sizeof(Dllink) <= 24, "keep this class small");
+        static_assert(sizeof(Dllink) <= MAX_DLLINK_SIZE, "keep this class small");
     }
 
     /**

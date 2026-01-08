@@ -49,11 +49,11 @@ template <typename Container> class MapAdapter {
     explicit MapAdapter(Container &lst)
         : _rng{py::range(lst.size())}, _lst(lst), mapview(py::enumerate(this->_lst)) {}
 
-    const mapped_type &operator[](const key_type &key) const { return _lst.at(key); }
+    auto operator[](const key_type &key) const -> const mapped_type& { return _lst.at(key); }
 
     template <bool dependent = true,
               typename = std::enable_if_t<dependent && !is_const_container::value>>
-    mapped_type &operator[](const key_type &key) {
+    auto operator[](const key_type &key) -> mapped_type& {
         return _lst[key];
     }
 
@@ -63,7 +63,7 @@ template <typename Container> class MapAdapter {
      *
      * @return a constant reference to the value associated with the given key.
      */
-    const mapped_type &at(const key_type &key) const { return _lst.at(key); }
+    auto at(const key_type &key) const -> const mapped_type& { return _lst.at(key); }
 
     /**
      * The function checks if a given key is present in a data structure.
@@ -74,14 +74,14 @@ template <typename Container> class MapAdapter {
      * @return a boolean value. It will return true if the key is contained in the data structure,
      * and false otherwise.
      */
-    bool contains(const key_type &key) const { return _rng.contains(key); }
+    auto contains(const key_type &key) const -> bool { return _rng.contains(key); }
 
     /**
      * The size() function returns the size of the _rng container.
      *
      * @return The size of the `_rng` object is being returned.
      */
-    size_t size() const { return _rng.size(); }
+    auto size() const -> size_t { return _rng.size(); }
 
     /**
      * The function returns an iterator pointing to the beginning of the mapview.

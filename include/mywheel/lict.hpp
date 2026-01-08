@@ -63,7 +63,7 @@ namespace py {
          *   3
          *
          */
-        const T &operator[](const key_type &key) const { return this->_lst.at(key); }
+        auto operator[](const key_type &key) const -> const T& { return this->_lst.at(key); }
 
         /**
          * @brief This function sets the value at a given index in a list-like object.
@@ -78,7 +78,7 @@ namespace py {
          *   7
          *
          */
-        T &operator[](const key_type &key) { return this->_lst[key]; }
+        auto operator[](const key_type &key) -> T& { return this->_lst[key]; }
 
         /**
          * @brief This function allows you to access an element in a Lict object by its index.
@@ -94,14 +94,14 @@ namespace py {
          *   3
          *
          */
-        const T &at(const key_type &key) const { return this->_lst.at(key); }
+        auto at(const key_type &key) const -> const T& { return this->_lst.at(key); }
 
         /**
          * @brief Get iterator to beginning
          *
          * @return iterator to beginning
          */
-        iterator begin() const noexcept {
+        auto begin() const noexcept -> iterator {
             return py::range<key_type>(this->_lst.size()).begin();
         }
 
@@ -110,7 +110,7 @@ namespace py {
          *
          * @return iterator to end
          */
-        iterator end() const noexcept { return py::range<key_type>(this->_lst.size()).end(); }
+        auto end() const noexcept -> iterator { return py::range<key_type>(this->_lst.size()).end(); }
 
         /**
          * @brief The `contains` function checks if a given value is present in the `rng` attribute
@@ -126,7 +126,7 @@ namespace py {
          *   >>> a.contains(2)
          *   true
          */
-        [[nodiscard]] bool contains(const key_type &key) const noexcept {
+        [[nodiscard]] auto contains(const key_type &key) const noexcept -> bool {
             return key < this->_lst.size();
         }
 
@@ -140,7 +140,7 @@ namespace py {
          *   >>> a.size()
          *   4
          */
-        [[nodiscard]] size_t size() const noexcept { return this->_lst.size(); }
+        [[nodiscard]] auto size() const noexcept -> size_t { return this->_lst.size(); }
 
         /**
          * @brief The `values` function returns an iterator that yields the elements of the `lst`
@@ -158,7 +158,7 @@ namespace py {
          *   3
          *   6
          */
-        const auto &values() const { return this->_lst; }
+        auto values() const -> const auto& { return this->_lst; }
 
         /**
          * @brief The `values` function returns an iterator that yields the elements of the `lst`
@@ -177,7 +177,7 @@ namespace py {
          *   4
          *   7
          */
-        auto &values() { return this->_lst; }
+        auto values() -> auto& { return this->_lst; }
 
         /**
          * @brief The function returns an enumeration of the items in the list.

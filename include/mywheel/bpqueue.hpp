@@ -111,11 +111,11 @@
          *
          * @post The queue is empty and ready for operations
          */
-        constexpr BPQueue(Int a, Int b)
-            : bucket(static_cast<UInt>(b - a) + 2U),
-              offset(a - 1),
-              high(static_cast<UInt>(b - offset)) {
-            assert(a <= b);
+        constexpr BPQueue(Int min_key, Int max_key)
+            : bucket(static_cast<UInt>(max_key - min_key) + 2U),
+              offset(min_key - 1),
+              high(static_cast<UInt>(max_key - offset)) {
+            assert(min_key <= max_key);
             static_assert(std::is_integral<Int>::value, "bucket's key must be an integer");
             bucket[0].appendleft(this->sentinel);  // sentinel
         }
@@ -210,9 +210,9 @@
          * @post Item is inserted at front of bucket for key k
          * @post max key is updated if k is greater than current max
          */
-        constexpr auto appendleft(Item &item, Int k) noexcept -> void {
-            assert(k > this->offset);
-            item.data.second = UInt(k - this->offset);
+        constexpr auto appendleft(Item &item, Int key) noexcept -> void {
+            assert(key > this->offset);
+            item.data.second = UInt(key - this->offset);
             if (this->max < item.data.second) {
                 this->max = item.data.second;
             }
@@ -233,9 +233,9 @@
          * @post Item is inserted at back of bucket for key k
          * @post max key is updated if k is greater than current max
          */
-        constexpr auto append(Item &item, Int k) noexcept -> void {
-            assert(k > this->offset);
-            item.data.second = UInt(k - this->offset);
+        constexpr auto append(Item &item, Int key) noexcept -> void {
+            assert(key > this->offset);
+            item.data.second = UInt(key - this->offset);
             if (this->max < item.data.second) {
                 this->max = item.data.second;
             }
@@ -500,7 +500,7 @@
      * @return BpqIterator iterator to beginning
      */
     template <typename Tp, typename Int, class Sequence>
-    inline constexpr auto BPQueue<Tp, Int, Sequence>::begin() -> BpqIterator<Tp, Int> {
+    constexpr auto BPQueue<Tp, Int, Sequence>::begin() -> BpqIterator<Tp, Int> {
         return {*this, this->max};
     }
 
@@ -510,6 +510,6 @@
      * @return BpqIterator iterator to end
      */
     template <typename Tp, typename Int, class Sequence>
-    inline constexpr auto BPQueue<Tp, Int, Sequence>::end() -> BpqIterator<Tp, Int> {
+    constexpr auto BPQueue<Tp, Int, Sequence>::end() -> BpqIterator<Tp, Int> {
         return {*this, 0};
     }
