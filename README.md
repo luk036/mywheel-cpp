@@ -1,7 +1,6 @@
 [![Actions Status](https://github.com/luk036/mywheel-cpp/workflows/MacOS/badge.svg)](https://github.com/luk036/mywheel-cpp/actions)
 [![Actions Status](https://github.com/luk036/mywheel-cpp/workflows/Windows/badge.svg)](https://github.com/luk036/mywheel-cpp/actions)
 [![Actions Status](https://github.com/luk036/mywheel-cpp/workflows/Ubuntu/badge.svg)](https://github.com/luk036/mywheel-cpp/actions)
-[![Actions Status](https://github.com/luk036/mywheel-cpp/workflows/Style/badge.svg)](https://github.com/luk036/mywheel-cpp/actions)
 [![Actions Status](https://github.com/luk036/mywheel-cpp/workflows/Install/badge.svg)](https://github.com/luk036/mywheel-cpp/actions)
 [![codecov](https://codecov.io/gh/luk036/mywheel-cpp/branch/master/graph/badge.svg)](https://codecov.io/gh/luk036/mywheel-cpp)
 
