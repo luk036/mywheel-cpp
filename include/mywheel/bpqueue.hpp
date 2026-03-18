@@ -103,10 +103,10 @@ class BPQueue {
      * The internal bucket array is sized to (b - a + 2) to include the sentinel.
      * The sentinel is automatically initialized to optimize boundary operations.
      *
-     * @param[in] a The lower bound of allowed keys (inclusive)
-     * @param[in] b The upper bound of allowed keys (inclusive)
+     * @param[in] min_key The lower bound of allowed keys (inclusive)
+     * @param[in] max_key The upper bound of allowed keys (inclusive)
      *
-     * @pre a <= b
+     * @pre min_key <= max_key
      * @pre Int must be an integral type
      *
      * @post The queue is empty and ready for operations
@@ -198,16 +198,16 @@ class BPQueue {
     /**
      * @brief Append item to the front of its bucket with specified key
      *
-     * Inserts an item into the bucket corresponding to key `k`, placing it
+     * Inserts an item into the bucket corresponding to key `key`, placing it
      * at the front of the bucket's doubly-linked list. The item's internal
      * key is automatically set and the max key is updated if necessary.
      *
      * @param[in,out] item Reference to the item to insert
-     * @param[in] k The key value for the item
+     * @param[in] key The key value for the item
      *
-     * @pre k must be > offset (within valid key range)
-     * @post Item is inserted at front of bucket for key k
-     * @post max key is updated if k is greater than current max
+     * @pre key must be > offset (within valid key range)
+     * @post Item is inserted at front of bucket for key key
+     * @post max key is updated if key is greater than current max
      */
     constexpr auto appendleft(Item& item, Int key) noexcept -> void {
         assert(key > this->offset);
@@ -221,16 +221,16 @@ class BPQueue {
     /**
      * @brief Append item to the back of its bucket with specified key
      *
-     * Inserts an item into the bucket corresponding to key `k`, placing it
+     * Inserts an item into the bucket corresponding to key `key`, placing it
      * at the back of the bucket's doubly-linked list. The item's internal
      * key is automatically set and the max key is updated if necessary.
      *
      * @param[in,out] item Reference to the item to insert
-     * @param[in] k The key value for the item
+     * @param[in] key The key value for the item
      *
-     * @pre k must be > offset (within valid key range)
-     * @post Item is inserted at back of bucket for key k
-     * @post max key is updated if k is greater than current max
+     * @pre key must be > offset (within valid key range)
+     * @post Item is inserted at back of bucket for key key
+     * @post max key is updated if key is greater than current max
      */
     constexpr auto append(Item& item, Int key) noexcept -> void {
         assert(key > this->offset);
