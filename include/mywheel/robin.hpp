@@ -13,8 +13,8 @@ namespace fun {
          * @tparam T
          */
         template <typename T> struct RobinSlNode {
-            RobinSlNode* next;
-            T key;
+            RobinSlNode* next;  //!< Pointer to the next node in the cycle
+            T key;             //!< The key/value stored in this node
         };
 
         /**
@@ -24,7 +24,7 @@ namespace fun {
          * @tparam T
          */
         template <typename T> struct RobinIterator {
-            const RobinSlNode<T>* curr;
+            const RobinSlNode<T>* curr;  //!< Pointer to the current node in the iteration
 
             /**
              * The function checks if the current iterator is not equal to another iterator.
@@ -75,7 +75,7 @@ namespace fun {
          * @tparam T
          */
         template <typename T> struct RobinIterableWrapper {
-            const detail::RobinSlNode<T>* curr_node;
+            const detail::RobinSlNode<T>* curr_node;  //!< Pointer to the node to start iteration from
 
             /**
              * The begin() function returns a RobinIterator object pointing to the next node.
@@ -136,7 +136,7 @@ namespace fun {
         using SlNode = detail::RobinSlNode<T>;
         using IterableWrapper = detail::RobinIterableWrapper<T>;
 
-        std::vector<SlNode> cycle;
+        std::vector<SlNode> cycle;  //!< Vector storing the circular linked list nodes
 
         /**
          * The Robin constructor initializes a cycle of objects with keys ranging from 0 to

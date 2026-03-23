@@ -41,16 +41,41 @@ template <typename Container> class MapAdapter {
     using Enumerator = decltype(py::enumerate(std::declval<Container&>()));
 
   private:
-    py::Range<key_type> _rng;
-    Container& _lst;
-    Enumerator mapview;
+    py::Range<key_type> _rng;  //!< Range of valid keys (0 to size-1)
+    Container& _lst;           //!< Reference to the underlying container
+    Enumerator mapview;        //!< Enumerator for iterating over (key, value) pairs
 
   public:
+    /**
+     * @brief Construct a MapAdapter from a container
+     *
+     * Creates an adapter that provides a dict-like interface for the given container.
+     * The container's indices become the keys of the mapping.
+     *
+     * @param[in] lst Reference to the container to adapt
+     */
     explicit MapAdapter(Container& lst)
         : _rng{py::range(lst.size())}, _lst(lst), mapview(py::enumerate(this->_lst)) {}
 
+    /**
+     * @brief Access element by key (const version)
+     *
+     * Returns a const reference to the element at the specified index/key.
+     *
+     * @param[in] key The index of the element to access
+     * @return const reference to the element at the given key
+     */
     auto operator[](const key_type& key) const -> const mapped_type& { return _lst.at(key); }
 
+    /**
+     * @brief Access element by key (mutable version)
+     *
+     * Returns a reference to the element at the specified index/key, allowing modification.
+     * This overload is only available for non-const containers.
+     *
+     * @param[in] key The index of the element to access
+     * @return reference to the element at the given key
+     */
     template <bool dependent = true,
               typename = std::enable_if_t<dependent && !is_const_container::value>>
     auto operator[](const key_type& key) -> mapped_type& {
