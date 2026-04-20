@@ -14,7 +14,7 @@ namespace fun {
          */
         template <typename T> struct RobinSlNode {
             RobinSlNode* next;  //!< Pointer to the next node in the cycle
-            T key;             //!< The key/value stored in this node
+            T key;              //!< The key/value stored in this node
         };
 
         /**
@@ -75,7 +75,8 @@ namespace fun {
          * @tparam T
          */
         template <typename T> struct RobinIterableWrapper {
-            const detail::RobinSlNode<T>* curr_node;  //!< Pointer to the node to start iteration from
+            const detail::RobinSlNode<T>*
+                curr_node;  //!< Pointer to the node to start iteration from
 
             /**
              * The begin() function returns a RobinIterator object pointing to the next node.
