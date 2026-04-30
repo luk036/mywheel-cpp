@@ -47,13 +47,13 @@ TEST_CASE("Test Robin Stress Test - Exclude and Iterate") {
         std::vector<int> expected_elements;
         for (int i = 0; i < num_parts; ++i) {
             if (i != excluded_part) {
-                expected_elements.push_back(i);
+                expected_elements.emplace_back(i);
             }
         }
 
         std::vector<int> actual_elements;
         for (int i : robin_stress.exclude(excluded_part)) {
-            actual_elements.push_back(i);
+            actual_elements.emplace_back(i);
         }
         std::sort(actual_elements.begin(), actual_elements.end());
 

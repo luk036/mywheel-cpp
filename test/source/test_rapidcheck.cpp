@@ -81,7 +81,7 @@ TEST_CASE("Property-based test: BPQueue popleft returns items in descending key 
             auto key = static_cast<int32_t>(*rc::gen::inRange(min_key, max_key + 1));
             items[i].data = std::make_pair(static_cast<int>(i), 0);
             bpq.appendleft(items[i], key);
-            keys.push_back(key);
+            keys.emplace_back(key);
         }
 
         std::sort(keys.begin(), keys.end(), std::greater<int32_t>());
@@ -171,13 +171,13 @@ TEST_CASE("Property-based test: Dllist append and pop consistency") {
         auto num_items = static_cast<size_t>(*rc::gen::inRange(1, 100));
         for (size_t i = 0; i < num_items; ++i) {
             auto val = *rc::gen::inRange(-1000, 1000);
-            values.push_back(val);
+            values.emplace_back(val);
             list.append(val);
         }
 
         std::vector<int> popped;
         while (!list.is_empty()) {
-            popped.push_back(list.pop());
+            popped.emplace_back(list.pop());
         }
 
         RC_ASSERT(popped == values);
@@ -211,13 +211,13 @@ TEST_CASE("Property-based test: Dllist appendleft and popleft consistency") {
         auto num_items = static_cast<size_t>(*rc::gen::inRange(1, 100));
         for (size_t i = 0; i < num_items; ++i) {
             auto val = *rc::gen::inRange(-1000, 1000);
-            values.push_back(val);
+            values.emplace_back(val);
             list.appendleft(val);
         }
 
         std::vector<int> popped;
         while (!list.is_empty()) {
-            popped.push_back(list.popleft());
+            popped.emplace_back(list.popleft());
         }
 
         std::reverse(values.begin(), values.end());
@@ -239,7 +239,7 @@ TEST_CASE("Property-based test: Robin cycle contains all parts") {
 
         std::vector<int> visited;
         for (const auto& part : iterable) {
-            visited.push_back(part);
+            visited.emplace_back(part);
         }
 
         RC_ASSERT(visited.size() == static_cast<size_t>(num_parts - 1));
@@ -281,10 +281,10 @@ TEST_CASE("Property-based test: Robin cycle is circular") {
 
         std::vector<int> seq1, seq2;
         for (const auto& part : iterable1) {
-            seq1.push_back(part);
+            seq1.emplace_back(part);
         }
         for (const auto& part : iterable2) {
-            seq2.push_back(part);
+            seq2.emplace_back(part);
         }
 
         RC_ASSERT(seq1 == seq2);
@@ -314,7 +314,7 @@ TEST_CASE("Property-based test: BPQueue iterator visits all items") {
         std::vector<int32_t> iterated_keys;
         for (auto& item : bpq) {
             auto key = min_key + static_cast<int32_t>(item.data.second);
-            iterated_keys.push_back(key);
+            iterated_keys.emplace_back(key);
         }
 
         // Keys should be in descending order
