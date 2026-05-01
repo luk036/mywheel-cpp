@@ -106,23 +106,23 @@
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#aa91aa8f634fd201a8e7fe73eb7eaee8e" class="m-doc">operator[]</a>(</span><span class="m-doc-wrap">size_t key) const -&gt; const T&amp;</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#af5d71a04aab7279d7209905aecce5393" class="m-doc">operator[]</a>(</span><span class="m-doc-wrap">size_t key) const -&gt; const T &amp; -&gt; auto</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#af82fbe781ddcf34ab3822b105db18a9c" class="m-doc">operator[]</a>(</span><span class="m-doc-wrap">size_t key) -&gt; T&amp;</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac56a1bdb5d24b69c253fb5eda3b7c8c4" class="m-doc">operator[]</a>(</span><span class="m-doc-wrap">size_t key) -&gt; T &amp; -&gt; auto</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a7ab66240f86b76b011aeb0b556755de9" class="m-doc">begin</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab76954450574ee5bb8a7ea96bc0d5776" class="m-doc">begin</a>(</span><span class="m-doc-wrap">) const -&gt; Iterator -&gt; auto</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a97f19113d7cbd3620490f1a4ee2c32d0" class="m-doc">end</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a97d1be0ab7dc02aa3946713952d3dfa1" class="m-doc">end</a>(</span><span class="m-doc-wrap">) const -&gt; Iterator -&gt; auto</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a38718143cd9200384ddb9d50cef978d9" class="m-doc">size</a>(</span><span class="m-doc-wrap">) const -&gt; size_t</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#aab153133d15f57609b4639e291fbb84b" class="m-doc">size</a>(</span><span class="m-doc-wrap">) const noexcept -&gt; size_t -&gt; auto</span>
             </dt>
             <dd></dd>
           </dl>
@@ -149,12 +149,12 @@
             </table>
 <p>The <a href="classShiftArray.html" class="m-doc">ShiftArray</a> function takes a vector as input and initializes the start variable to 0 and the lst variable to the input vector.</p>
           </div></section>
-          <section class="m-doc-details" id="aa91aa8f634fd201a8e7fe73eb7eaee8e"><div>
+          <section class="m-doc-details" id="af5d71a04aab7279d7209905aecce5393"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper">const T&amp; ShiftArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa91aa8f634fd201a8e7fe73eb7eaee8e" class="m-doc-self">operator[]</a>(</span><span class="m-doc-wrap">size_t key) const</span></span>
+              <span class="m-doc-wrap-bumper">auto ShiftArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af5d71a04aab7279d7209905aecce5393" class="m-doc-self">operator[]</a>(</span><span class="m-doc-wrap">size_t key) const -&gt; const T &amp;</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
@@ -166,12 +166,12 @@
             </table>
 <p>The above function is an overloaded operator[] that returns a constant reference to an element in a list.</p>
           </div></section>
-          <section class="m-doc-details" id="af82fbe781ddcf34ab3822b105db18a9c"><div>
+          <section class="m-doc-details" id="ac56a1bdb5d24b69c253fb5eda3b7c8c4"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper">T&amp; ShiftArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af82fbe781ddcf34ab3822b105db18a9c" class="m-doc-self">operator[]</a>(</span><span class="m-doc-wrap">size_t key)</span></span>
+              <span class="m-doc-wrap-bumper">auto ShiftArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac56a1bdb5d24b69c253fb5eda3b7c8c4" class="m-doc-self">operator[]</a>(</span><span class="m-doc-wrap">size_t key) -&gt; T &amp;</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
@@ -183,12 +183,12 @@
             </table>
 <p>The function overloads the subscript operator to access elements in a list-like container.</p>
           </div></section>
-          <section class="m-doc-details" id="a7ab66240f86b76b011aeb0b556755de9"><div>
+          <section class="m-doc-details" id="ab76954450574ee5bb8a7ea96bc0d5776"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper"><a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a> ShiftArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7ab66240f86b76b011aeb0b556755de9" class="m-doc-self">begin</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">auto ShiftArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab76954450574ee5bb8a7ea96bc0d5776" class="m-doc-self">begin</a>(</span><span class="m-doc-wrap">) const -&gt; Iterator</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
@@ -200,12 +200,12 @@
             </table>
 <p>The function returns an iterator pointing to the beginning of a container.</p>
           </div></section>
-          <section class="m-doc-details" id="a97f19113d7cbd3620490f1a4ee2c32d0"><div>
+          <section class="m-doc-details" id="a97d1be0ab7dc02aa3946713952d3dfa1"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper"><a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a> ShiftArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a97f19113d7cbd3620490f1a4ee2c32d0" class="m-doc-self">end</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">auto ShiftArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a97d1be0ab7dc02aa3946713952d3dfa1" class="m-doc-self">end</a>(</span><span class="m-doc-wrap">) const -&gt; Iterator</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
@@ -215,14 +215,14 @@
                 </tr>
               </tfoot>
             </table>
-<p>The <a href="classShiftArray.html#a97f19113d7cbd3620490f1a4ee2c32d0" class="m-doc">end()</a> function returns an iterator pointing to the end of a list.</p>
+<p>The <a href="classShiftArray.html#a97d1be0ab7dc02aa3946713952d3dfa1" class="m-doc">end()</a> function returns an iterator pointing to the end of a list.</p>
           </div></section>
-          <section class="m-doc-details" id="a38718143cd9200384ddb9d50cef978d9"><div>
+          <section class="m-doc-details" id="aab153133d15f57609b4639e291fbb84b"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper">size_t ShiftArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a38718143cd9200384ddb9d50cef978d9" class="m-doc-self">size</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">auto ShiftArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aab153133d15f57609b4639e291fbb84b" class="m-doc-self">size</a>(</span><span class="m-doc-wrap">) const noexcept -&gt; size_t</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>

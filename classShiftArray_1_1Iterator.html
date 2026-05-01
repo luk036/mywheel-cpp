@@ -63,7 +63,7 @@
             </li>
           </ul>
         </nav>
-<p>The code defines a class <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a> that allows iteration over elements in a <a href="classShiftArray.html" class="m-doc">ShiftArray</a>.</p>
+<p><a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a> class for <a href="classShiftArray.html" class="m-doc">ShiftArray</a>, allowing iteration over elements in the array.</p>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
@@ -78,15 +78,15 @@
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a630a53de1275ffb69c905c56b4b1bb42" class="m-doc">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a>&amp; other) const -&gt; bool</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2e1502cc6a6d5ed0d4d8e5ee565eff37" class="m-doc">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a>&amp; other) const noexcept -&gt; bool -&gt; auto</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a4fde0d46755eeda568ae7e81fd7ea802" class="m-doc">operator*</a>(</span><span class="m-doc-wrap">) const -&gt; const T&amp;</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8435c7cae1283954da3a95e8bc9549b4" class="m-doc">operator*</a>(</span><span class="m-doc-wrap">) const -&gt; const T &amp; -&gt; auto</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a017a2925a70ea17e05cccf6e4e81c19c" class="m-doc">operator++</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a>&amp;</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a70bfceca0c598e96ae5a0fe17ff1f891" class="m-doc">operator++</a>(</span><span class="m-doc-wrap">) noexcept -&gt; Iterator &amp; -&gt; auto</span>
             </dt>
             <dd></dd>
           </dl>
@@ -115,9 +115,9 @@
             </table>
 <p>The <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a> constructor takes a <a href="classShiftArray.html" class="m-doc">ShiftArray</a> object and a count as parameters.</p>
           </div></section>
-          <section class="m-doc-details" id="a630a53de1275ffb69c905c56b4b1bb42"><div>
+          <section class="m-doc-details" id="a2e1502cc6a6d5ed0d4d8e5ee565eff37"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">bool ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a630a53de1275ffb69c905c56b4b1bb42" class="m-doc-self">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a>&amp; other) const</span></span>
+              <span class="m-doc-wrap-bumper">auto ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2e1502cc6a6d5ed0d4d8e5ee565eff37" class="m-doc-self">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a>&amp; other) const noexcept -&gt; bool</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <thead>
@@ -138,9 +138,9 @@
             </table>
 <p>The function checks if the count of two iterators are not equal.</p>
           </div></section>
-          <section class="m-doc-details" id="a4fde0d46755eeda568ae7e81fd7ea802"><div>
+          <section class="m-doc-details" id="a8435c7cae1283954da3a95e8bc9549b4"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">const T&amp; ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4fde0d46755eeda568ae7e81fd7ea802" class="m-doc-self">operator*</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">auto ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8435c7cae1283954da3a95e8bc9549b4" class="m-doc-self">operator*</a>(</span><span class="m-doc-wrap">) const -&gt; const T &amp;</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
@@ -152,9 +152,9 @@
             </table>
 <p>The function returns the value at the current position in an array.</p>
           </div></section>
-          <section class="m-doc-details" id="a017a2925a70ea17e05cccf6e4e81c19c"><div>
+          <section class="m-doc-details" id="a70bfceca0c598e96ae5a0fe17ff1f891"><div>
             <h3>
-              <span class="m-doc-wrap-bumper"><a href="classShiftArray_1_1Iterator.html" class="m-doc">Iterator</a>&amp; ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a017a2925a70ea17e05cccf6e4e81c19c" class="m-doc-self">operator++</a>(</span><span class="m-doc-wrap">)</span></span>
+              <span class="m-doc-wrap-bumper">auto ShiftArray::<wbr />Iterator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a70bfceca0c598e96ae5a0fe17ff1f891" class="m-doc-self">operator++</a>(</span><span class="m-doc-wrap">) noexcept -&gt; Iterator &amp;</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>

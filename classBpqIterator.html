@@ -52,7 +52,7 @@
           <div class="m-doc-template">template&lt;typename Tp, typename Int = int32_t&gt;</div>
           BpqIterator <span class="m-thin">class</span>
         </h1>
-        <p>Bounded Priority Queue Iterator.</p>
+        <p>Iterator for traversing <a href="classBPQueue.html" class="m-doc">BPQueue</a> in descending key order.</p>
         <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -66,15 +66,15 @@
             </li>
           </ul>
         </nav>
-<p>Traverse the queue in descending order. Detaching a queue items may invalidate the iterator because the iterator makes a copy of the current key.</p>
+<p>The <a href="classBpqIterator.html" class="m-doc">BpqIterator</a> provides forward iteration through all items in the priority queue, starting from the highest key value and moving to lower key values. Within each bucket, items are traversed in the order they appear in the doubly-linked list.</p><p>Important: Modifying the queue (detaching items) during iteration may invalidate the iterator because it maintains a copy of the current key value rather than a reference to the queue state.</p><p>The iterator follows STL forward iterator concepts and can be used with range-based for loops and STL algorithms.</p>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper"><a href="#a215a2ef9f2e4a6914358503b92eb4b06" class="m-doc">BpqIterator</a>(</span><span class="m-doc-wrap"><a href="classBPQueue.html" class="m-doc">BPQueue</a>&lt;Tp, Int&gt;&amp; bpq,
-              UInt curkey) <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper"><a href="#a93f62ef189ee1a0db4d34ef4c4c9d9bc" class="m-doc">BpqIterator</a>(</span><span class="m-doc-wrap"><a href="classBPQueue.html" class="m-doc">BPQueue</a>&lt;Tp, Int&gt;&amp; bpq,
+              UInt curr_key) <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
-            <dd>Construct a new bpq iterator object.</dd>
+            <dd>Construct a <a href="classBpqIterator.html" class="m-doc">BpqIterator</a> for a specific key in a queue.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -107,15 +107,15 @@
         </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a215a2ef9f2e4a6914358503b92eb4b06"><div>
+          <section class="m-doc-details" id="a93f62ef189ee1a0db4d34ef4c4c9d9bc"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename Tp, typename Int&gt;
               </div>
-              <span class="m-doc-wrap-bumper"> BpqIterator&lt;Tp, Int&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a215a2ef9f2e4a6914358503b92eb4b06" class="m-doc-self">BpqIterator</a>(</span><span class="m-doc-wrap"><a href="classBPQueue.html" class="m-doc">BPQueue</a>&lt;Tp, Int&gt;&amp; bpq,
-              UInt curkey) <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper"> BpqIterator&lt;Tp, Int&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a93f62ef189ee1a0db4d34ef4c4c9d9bc" class="m-doc-self">BpqIterator</a>(</span><span class="m-doc-wrap"><a href="classBPQueue.html" class="m-doc">BPQueue</a>&lt;Tp, Int&gt;&amp; bpq,
+              UInt curr_key) <span class="m-label m-primary">constexpr</span></span></span>
             </h3>
-            <p>Construct a new bpq iterator object.</p>
+            <p>Construct a <a href="classBpqIterator.html" class="m-doc">BpqIterator</a> for a specific key in a queue.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -123,14 +123,15 @@
               <tbody>
                 <tr>
                   <td style="width: 1%">bpq&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td></td>
+                  <td>Reference to the priority queue to iterate over</td>
                 </tr>
                 <tr>
-                  <td>curkey&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td></td>
+                  <td>curr_key&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>The initial key value to start from</td>
                 </tr>
               </tbody>
             </table>
+<p>Creates an iterator positioned at the specified key value in the given priority queue. The iterator will start traversing from the beginning of the bucket corresponding to this key.</p>
           </div></section>
           <section class="m-doc-details" id="a7128a50360b79d91e743057793a6c090"><div>
             <h3>
@@ -144,7 +145,7 @@
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td><a href="classBpqIterator.html" class="m-doc">BpqIterator</a>&amp;</td>
+                  <td><a href="classBpqIterator.html" class="m-doc">BpqIterator</a>&amp; reference to self</td>
                 </tr>
               </tfoot>
             </table>
@@ -161,7 +162,7 @@
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>Item&amp;</td>
+                  <td>Item&amp; reference to current item</td>
                 </tr>
               </tfoot>
             </table>
@@ -182,17 +183,17 @@
               <tbody>
                 <tr>
                   <td style="width: 1%">lhs&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td></td>
+                  <td>left hand side iterator</td>
                 </tr>
                 <tr>
                   <td>rhs&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td></td>
+                  <td>right hand side iterator</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th>Returns</th>
-                  <td>true</td>
+                  <td>true if equal, false otherwise</td>
                 </tr>
               </tfoot>
             </table>
@@ -213,17 +214,17 @@
               <tbody>
                 <tr>
                   <td style="width: 1%">lhs&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td></td>
+                  <td>left hand side iterator</td>
                 </tr>
                 <tr>
                   <td>rhs&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td></td>
+                  <td>right hand side iterator</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th>Returns</th>
-                  <td>true</td>
+                  <td>true if not equal, false otherwise</td>
                 </tr>
               </tfoot>
             </table>

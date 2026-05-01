@@ -71,7 +71,7 @@
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper"><a href="#aa7bed31fcb170569f705742dc9f8f610" class="m-doc">DllIterator</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Dllink</a>&lt;T&gt;* cur) <span class="m-label m-flat m-info">explicit</span>  <span class="m-label m-flat m-primary">constexpr</span> <span class="m-label m-flat m-success">noexcept</span></span>
+              <span class="m-doc-wrap-bumper"><a href="#af1ec6e8997d513613f2be4c3d59e5f64" class="m-doc">DllIterator</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Dllink</a>&lt;T&gt;* curr) <span class="m-label m-flat m-info">explicit</span>  <span class="m-label m-flat m-primary">constexpr</span> <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
             <dd>Construct a new dll iterator object.</dd>
           </dl>
@@ -106,12 +106,12 @@
         </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="aa7bed31fcb170569f705742dc9f8f610"><div>
+          <section class="m-doc-details" id="af1ec6e8997d513613f2be4c3d59e5f64"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper"> DllIterator&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa7bed31fcb170569f705742dc9f8f610" class="m-doc-self">DllIterator</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Dllink</a>&lt;T&gt;* cur) <span class="m-label m-info">explicit</span>  <span class="m-label m-primary">constexpr</span> <span class="m-label m-success">noexcept</span></span></span>
+              <span class="m-doc-wrap-bumper"> DllIterator&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af1ec6e8997d513613f2be4c3d59e5f64" class="m-doc-self">DllIterator</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Dllink</a>&lt;T&gt;* curr) <span class="m-label m-info">explicit</span>  <span class="m-label m-primary">constexpr</span> <span class="m-label m-success">noexcept</span></span></span>
             </h3>
             <p>Construct a new dll iterator object.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -120,8 +120,8 @@
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">cur&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td></td>
+                  <td style="width: 1%">curr&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>Pointer to the current item</td>
                 </tr>
               </tbody>
             </table>
@@ -138,7 +138,7 @@
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td><a href="classDllist.html" class="m-doc">Dllist</a>&amp;</td>
+                  <td><a href="classDllIterator.html" class="m-doc">DllIterator</a>&amp; reference to self</td>
                 </tr>
               </tfoot>
             </table>
@@ -155,7 +155,7 @@
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td><a href="classDllist.html" class="m-doc">Dllist</a>&amp;</td>
+                  <td><a href="classDllink.html" class="m-doc">Dllink</a>&amp; reference to current item</td>
                 </tr>
               </tfoot>
             </table>
@@ -176,17 +176,17 @@
               <tbody>
                 <tr>
                   <td style="width: 1%">lhs&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td></td>
+                  <td>left hand side iterator</td>
                 </tr>
                 <tr>
                   <td>rhs&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td></td>
+                  <td>right hand side iterator</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th>Returns</th>
-                  <td>true</td>
+                  <td>true if equal, false otherwise</td>
                 </tr>
               </tfoot>
             </table>
@@ -207,17 +207,17 @@
               <tbody>
                 <tr>
                   <td style="width: 1%">lhs&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td></td>
+                  <td>left hand side iterator</td>
                 </tr>
                 <tr>
                   <td>rhs&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td></td>
+                  <td>right hand side iterator</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th>Returns</th>
-                  <td>true</td>
+                  <td>true if not equal, false otherwise</td>
                 </tr>
               </tfoot>
             </table>

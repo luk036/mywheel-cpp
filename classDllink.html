@@ -52,7 +52,18 @@
           <div class="m-doc-template">template&lt;typename T&gt;</div>
           Dllink <span class="m-thin">class</span>
         </h1>
-        <p>doubly linked node (that may also be a &quot;head&quot; a list)</p>
+        <p>Doubly-linked list node with sentinel support.</p>
+        <table class="m-table m-fullwidth m-flat">
+          <thead>
+            <tr><th colspan="2">Template parameters</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 1%">T</td>
+              <td>The type of data stored in the node</td>
+            </tr>
+          </tbody>
+        </table>
         <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -66,7 +77,7 @@
             </li>
           </ul>
         </nav>
-<p>A Doubly-linked List class. This class simply contains a link of node&#x27;s. By adding a &quot;head&quot; node (sentinel), deleting a node is extremely fast (see &quot;Introduction to Algorithm&quot;). This class does not keep the length information as it is not necessary for the FM algorithm. This saves memory and run-time to update the length information. Note that this class does not own the list node. They are supplied by the caller in order to better reuse the nodes.</p><pre class="m-code"><span class="n">Doubly</span><span class="w"> </span><span class="n">Linked</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">Structure</span><span class="o">:</span>
+<p>The <a href="classDllink.html" class="m-doc">Dllink</a> class represents a node in a doubly-linked list that can also serve as a list head (sentinel node). This design enables extremely fast insertion and deletion operations without special cases for empty lists or boundary conditions.</p><p>Key Features:</p><ul><li>Can function as both regular node and list head (sentinel)</li><li>O(1) insertion and deletion operations</li><li>No length tracking for maximum efficiency</li><li>Non-owning design for flexible node management</li><li>Packed structure for memory efficiency</li></ul><p>The sentinel-based approach eliminates edge cases in list operations, making the implementation simpler and more robust. This is particularly useful in algorithms like Fiduccia-Mattheyses where nodes frequently move between different lists.</p><p>Time Complexity:</p><ul><li>Insert: O(1)</li><li>Delete: O(1)</li><li>Attach/Detach: O(1)</li></ul><p>Space Complexity: O(1) per node</p><pre class="m-code"><span class="n">Doubly</span><span class="w"> </span><span class="n">Linked</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">Structure</span><span class="o">:</span>
 
 <span class="w">    </span><span class="err">┌─────────────────────────────────────┐</span>
 <span class="w">    </span><span class="err">│</span><span class="w">              </span><span class="n">Head</span><span class="o">/</span><span class="n">Sentinel</span><span class="w">          </span><span class="err">│</span>
@@ -82,38 +93,39 @@
 <span class="w">                </span><span class="err">┌─────┐</span><span class="w"> </span><span class="err">┌─────┐</span><span class="w"> </span><span class="err">┌─────┐</span>
 <span class="w">                </span><span class="err">│</span><span class="n">Node1</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="n">Node2</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="n">Node3</span><span class="err">│</span>
 <span class="w">                </span><span class="err">│</span><span class="n">Data</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="n">Data</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="n">Data</span><span class="w"> </span><span class="err">│</span>
-<span class="w">                </span><span class="err">└─────┘</span><span class="w"> </span><span class="err">└─────┘</span><span class="w"> </span><span class="err">└─────┘</span>
-
-<span class="n">Each</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="err">&#39;</span><span class="n">next</span><span class="err">&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="err">&#39;</span><span class="n">prev</span><span class="err">&#39;</span><span class="w"> </span><span class="n">pointers</span><span class="p">,</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">head</span><span class="o">/</span><span class="n">sentinel</span>
-<span class="n">serving</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">boundary</span><span class="w"> </span><span class="n">marker</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">simplify</span><span class="w"> </span><span class="n">insertion</span><span class="o">/</span><span class="n">deletion</span><span class="p">.</span></pre>
+<span class="w">                </span><span class="err">└─────┘</span><span class="w"> </span><span class="err">└─────┘</span><span class="w"> </span><span class="err">└─────┘</span></pre><p>Each node has &#x27;next&#x27; and &#x27;prev&#x27; pointers, with the head/sentinel serving as a boundary marker to simplify insertion/deletion.</p>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
             <dt>
               <span class="m-doc-wrap-bumper"><a href="#a6a03742678e678d29736fe9b98a3da1f" class="m-doc">Dllink</a>(</span><span class="m-doc-wrap">T data) <span class="m-label m-flat m-info">explicit</span>  <span class="m-label m-flat m-primary">constexpr</span> <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
-            <dd>Construct a new <a href="classDllink.html" class="m-doc">Dllink</a> object.</dd>
-            <dt id="a25dad516981273f45af47e3b43d0708c">
-              <span class="m-doc-wrap-bumper"><a href="#a25dad516981273f45af47e3b43d0708c" class="m-doc-self">Dllink</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-primary">constexpr</span></span>
+            <dd>Construct a <a href="classDllink.html" class="m-doc">Dllink</a> node with initial data.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a25dad516981273f45af47e3b43d0708c" class="m-doc">Dllink</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
-            <dd>Copy construct a new <a href="classDllink.html" class="m-doc">Dllink</a> object (deleted intentionally)</dd>
+            <dd>Default constructor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a4233c73e0e03747214734152b51235f2" class="m-doc">~Dllink</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
+            </dt>
+            <dd>Destructor.</dd>
           </dl>
         </section>
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="a27e74bbcaf00f31ee338d9a108e18190">
-              <span class="m-doc-wrap-bumper">auto <a href="#a27e74bbcaf00f31ee338d9a108e18190" class="m-doc-self">lock</a>(</span><span class="m-doc-wrap">) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a27e74bbcaf00f31ee338d9a108e18190" class="m-doc">lock</a>(</span><span class="m-doc-wrap">) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
-            <dd>lock the node (and don&#x27;t append it to any list)</dd>
+            <dd>Lock the node to prevent list operations.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#acd221d02dd88444bfbff4fd2d5ed4217" class="m-doc">is_locked</a>(</span><span class="m-doc-wrap">) const noexcept -&gt; bool -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
-            <dd>whether the node is locked</dd>
-            <dt id="ac99050fc06316440338080375450a3cb">
-              <span class="m-doc-wrap-bumper">auto <a href="#ac99050fc06316440338080375450a3cb" class="m-doc-self">detach</a>(</span><span class="m-doc-wrap">) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+            <dd>Check if the node is locked.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac99050fc06316440338080375450a3cb" class="m-doc">detach</a>(</span><span class="m-doc-wrap">) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
-            <dd>detach from a list</dd>
+            <dd>Remove the node from its current list.</dd>
           </dl>
         </section>
         <section id="pub-attribs">
@@ -134,7 +146,7 @@
               </div>
               <span class="m-doc-wrap-bumper"> Dllink&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6a03742678e678d29736fe9b98a3da1f" class="m-doc-self">Dllink</a>(</span><span class="m-doc-wrap">T data) <span class="m-label m-info">explicit</span>  <span class="m-label m-primary">constexpr</span> <span class="m-label m-success">noexcept</span></span></span>
             </h3>
-            <p>Construct a new <a href="classDllink.html" class="m-doc">Dllink</a> object.</p>
+            <p>Construct a <a href="classDllink.html" class="m-doc">Dllink</a> node with initial data.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -142,10 +154,41 @@
               <tbody>
                 <tr>
                   <td style="width: 1%">data&nbsp;<span class="m-label m-flat m-info">in</span></td>
-                  <td>the data</td>
+                  <td>The data to store in the node (moved)</td>
                 </tr>
               </tbody>
             </table>
+<p>Creates a new <a href="classDllink.html" class="m-doc">Dllink</a> node and initializes it with the provided data. The node starts in a self-contained state where next and prev point to itself. A static assert ensures the class remains memory-efficient.</p><aside class="m-note m-success"><h4>Postcondition</h4><p>The node is initialized and ready for list operations</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a25dad516981273f45af47e3b43d0708c"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"> Dllink&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a25dad516981273f45af47e3b43d0708c" class="m-doc-self">Dllink</a>(</span><span class="m-doc-wrap">) <span class="m-label m-info">defaulted</span> <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Default constructor.</p>
+<p>Creates a <a href="classDllink.html" class="m-doc">Dllink</a> node with default-initialized data. The node starts in a self-contained state.</p>
+          </div></section>
+          <section class="m-doc-details" id="a4233c73e0e03747214734152b51235f2"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"> Dllink&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4233c73e0e03747214734152b51235f2" class="m-doc-self">~Dllink</a>(</span><span class="m-doc-wrap">) <span class="m-label m-info">defaulted</span></span></span>
+            </h3>
+            <p>Destructor.</p>
+<p>Cleans up the node. Note that this does not remove the node from any list it might be part of - <a href="classDllink.html#ac99050fc06316440338080375450a3cb" class="m-doc">detach()</a> should be called first if the node is in a list.</p>
+          </div></section>
+          <section class="m-doc-details" id="a27e74bbcaf00f31ee338d9a108e18190"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto Dllink&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a27e74bbcaf00f31ee338d9a108e18190" class="m-doc-self">lock</a>(</span><span class="m-doc-wrap">) noexcept -&gt; void <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Lock the node to prevent list operations.</p>
+<p>Locks the node by setting its next pointer to itself. A locked node cannot be inserted into any list and will be ignored by list operations. This is useful for temporarily removing nodes from consideration without actually detaching them.</p><aside class="m-note m-success"><h4>Postcondition</h4><p>The node is locked and cannot be used in list operations</p></aside>
           </div></section>
           <section class="m-doc-details" id="acd221d02dd88444bfbff4fd2d5ed4217"><div>
             <h3>
@@ -154,15 +197,26 @@
               </div>
               <span class="m-doc-wrap-bumper">auto Dllink&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acd221d02dd88444bfbff4fd2d5ed4217" class="m-doc-self">is_locked</a>(</span><span class="m-doc-wrap">) const noexcept -&gt; bool <span class="m-label m-primary">constexpr</span></span></span>
             </h3>
-            <p>whether the node is locked</p>
+            <p>Check if the node is locked.</p>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>true</td>
+                  <td>true if locked, false otherwise</td>
                 </tr>
               </tfoot>
             </table>
+<p>Returns true if the node is locked (next pointer points to itself). Locked nodes cannot participate in list operations.</p>
+          </div></section>
+          <section class="m-doc-details" id="ac99050fc06316440338080375450a3cb"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto Dllink&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac99050fc06316440338080375450a3cb" class="m-doc-self">detach</a>(</span><span class="m-doc-wrap">) noexcept -&gt; void <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Remove the node from its current list.</p>
+<p>Detaches the node from whatever list it&#x27;s currently in by linking its previous and next nodes together. The node itself becomes self-contained (next and prev point to itself).</p><aside class="m-note m-success"><h4>Precondition</h4><p>The node must not be locked</p><p>The node must be part of a list</p></aside><aside class="m-note m-success"><h4>Postcondition</h4><p>The node is removed from the list and self-contained</p></aside>
           </div></section>
         </section>
         <section>
@@ -174,7 +228,7 @@
               </div>
               T Dllink&lt;T&gt;::<wbr /><a href="#a405e9b6b1d8ca4923501268911725928" class="m-doc-self">data</a>
             </h3>
-<p>data</p>
+<p>User data payload stored in the node</p>
           </div></section>
         </section>
       </div>

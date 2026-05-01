@@ -93,19 +93,19 @@
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a60bbc79d0ebc51b4daa2dce5c81187f1" class="m-doc">operator[]</a>(</span><span class="m-doc-wrap">size_t) const -&gt; T</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#abaf1947abaac8c274dc0448346a0a947" class="m-doc">operator[]</a>(</span><span class="m-doc-wrap">size_t) const noexcept -&gt; const T &amp; -&gt; auto</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a137d9cce7244548af0ff3d8c21503952" class="m-doc">size</a>(</span><span class="m-doc-wrap">) const -&gt; size_t</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9a6f644c43ed72d9381ab9b4659b513e" class="m-doc">size</a>(</span><span class="m-doc-wrap">) const noexcept -&gt; size_t -&gt; auto</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a0fe7216ef256f691366a13a619c96b8c" class="m-doc">begin</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab6b97fb222614c9306fcaa5c6c51fe11" class="m-doc">begin</a>(</span><span class="m-doc-wrap">) const -&gt; Iterator -&gt; auto</span>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a4f27aae9e83976b5d9eb4289c349f290" class="m-doc">end</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a22114a4077e758ff73fa1186e480f417" class="m-doc">end</a>(</span><span class="m-doc-wrap">) const -&gt; Iterator -&gt; auto</span>
             </dt>
             <dd></dd>
           </dl>
@@ -137,12 +137,12 @@
             </table>
 <p>Constructor for <a href="classRepeatArray.html" class="m-doc">RepeatArray</a> class.</p><p>Initializes a <a href="classRepeatArray.html" class="m-doc">RepeatArray</a> with the given value repeated size number of times.</p>
           </div></section>
-          <section class="m-doc-details" id="a60bbc79d0ebc51b4daa2dce5c81187f1"><div>
+          <section class="m-doc-details" id="abaf1947abaac8c274dc0448346a0a947"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper">T RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a60bbc79d0ebc51b4daa2dce5c81187f1" class="m-doc-self">operator[]</a>(</span><span class="m-doc-wrap">size_t) const</span></span>
+              <span class="m-doc-wrap-bumper">auto RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abaf1947abaac8c274dc0448346a0a947" class="m-doc-self">operator[]</a>(</span><span class="m-doc-wrap">size_t) const noexcept -&gt; const T &amp;</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
@@ -154,12 +154,12 @@
             </table>
 <p>Overloads the subscript operator [] to return the value stored in the <a href="classRepeatArray.html" class="m-doc">RepeatArray</a>.</p>
           </div></section>
-          <section class="m-doc-details" id="a137d9cce7244548af0ff3d8c21503952"><div>
+          <section class="m-doc-details" id="a9a6f644c43ed72d9381ab9b4659b513e"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper">size_t RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a137d9cce7244548af0ff3d8c21503952" class="m-doc-self">size</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">auto RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9a6f644c43ed72d9381ab9b4659b513e" class="m-doc-self">size</a>(</span><span class="m-doc-wrap">) const noexcept -&gt; size_t</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
@@ -171,12 +171,12 @@
             </table>
 <p>Returns the number of elements in the <a href="classRepeatArray.html" class="m-doc">RepeatArray</a>.</p>
           </div></section>
-          <section class="m-doc-details" id="a0fe7216ef256f691366a13a619c96b8c"><div>
+          <section class="m-doc-details" id="ab6b97fb222614c9306fcaa5c6c51fe11"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper"><a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a> RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0fe7216ef256f691366a13a619c96b8c" class="m-doc-self">begin</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">auto RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab6b97fb222614c9306fcaa5c6c51fe11" class="m-doc-self">begin</a>(</span><span class="m-doc-wrap">) const -&gt; Iterator</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
@@ -188,12 +188,12 @@
             </table>
 <p>Returns an iterator pointing to the first element of the container.</p><p>This begins iteration at the start of the underlying container.</p>
           </div></section>
-          <section class="m-doc-details" id="a4f27aae9e83976b5d9eb4289c349f290"><div>
+          <section class="m-doc-details" id="a22114a4077e758ff73fa1186e480f417"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename T&gt;
               </div>
-              <span class="m-doc-wrap-bumper"><a href="classRepeatArray_1_1Iterator.html" class="m-doc">Iterator</a> RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4f27aae9e83976b5d9eb4289c349f290" class="m-doc-self">end</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">auto RepeatArray&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a22114a4077e758ff73fa1186e480f417" class="m-doc-self">end</a>(</span><span class="m-doc-wrap">) const -&gt; Iterator</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>

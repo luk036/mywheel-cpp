@@ -52,7 +52,18 @@
           <div class="m-doc-template">template&lt;typename T&gt;</div>
           Dllist <span class="m-thin">class</span>
         </h1>
-        <p>doubly linked list with sentinel head node</p>
+        <p>Doubly-linked list with sentinel head node for efficient operations.</p>
+        <table class="m-table m-fullwidth m-flat">
+          <thead>
+            <tr><th colspan="2">Template parameters</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 1%">T</td>
+              <td>The type of data stored in the nodes</td>
+            </tr>
+          </tbody>
+        </table>
         <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -65,7 +76,7 @@
             </li>
           </ul>
         </nav>
-<p>A Doubly-linked List class. This class simply contains a link of node&#x27;s. By adding a &quot;head&quot; node (sentinel), deleting a node is extremely fast (see &quot;Introduction to Algorithm&quot;). This class does not keep the length information as it is not necessary for the FM algorithm. This saves memory and run-time to update the length information. Note that this class does not own the list node. They are supplied by the caller in order to better reuse the nodes.</p><pre class="m-code"><span class="n">Doubly</span><span class="w"> </span><span class="n">Linked</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">Sentinel</span><span class="w"> </span><span class="n">Head</span><span class="o">:</span>
+<p>The <a href="classDllist.html" class="m-doc">Dllist</a> class implements a doubly-linked list using a sentinel head node pattern that eliminates edge cases and provides O(1) insertion and deletion operations. The design is optimized for algorithms where nodes frequently move between different lists, such as the Fiduccia-Mattheyses algorithm.</p><p>Key Features:</p><ul><li>Sentinel head eliminates special cases for empty lists</li><li>O(1) insertion, deletion, and access operations</li><li>No length tracking for maximum efficiency</li><li>Non-owning design for flexible node management</li><li>Packed structure for memory efficiency</li><li>Iterator support for STL compatibility</li></ul><p>The sentinel approach means the list always has at least one node (the head), which simplifies all operations and eliminates the need for null pointer checks.</p><p>Time Complexity:</p><ul><li>Insert (front/back): O(1)</li><li>Remove (front/back): O(1)</li><li>Check empty: O(1)</li><li>Iterator operations: O(1)</li></ul><p>Space Complexity: O(1) for list structure + O(n) for nodes</p><pre class="m-code"><span class="n">Doubly</span><span class="w"> </span><span class="n">Linked</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">Sentinel</span><span class="w"> </span><span class="n">Head</span><span class="o">:</span>
 
 <span class="w">    </span><span class="err">┌─────────────────┐</span>
 <span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="n">Dllist</span><span class="w">       </span><span class="err">│</span>
@@ -150,11 +161,11 @@
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a848b684dce407e308ac8b99cb2799d52" class="m-doc">begin</a>(</span><span class="m-doc-wrap">) noexcept -&gt; DllIterator&lt; T &gt; -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
-            <dd>begin</dd>
+            <dd>Get iterator to beginning of list.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a89873c355d93b9d1ccfb5007c1aa6abe" class="m-doc">end</a>(</span><span class="m-doc-wrap">) noexcept -&gt; DllIterator&lt; T &gt; -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
-            <dd>end</dd>
+            <dd>Get iterator to end of list.</dd>
           </dl>
         </section>
         <section>
@@ -191,7 +202,7 @@
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>true</td>
+                  <td>true if empty, false otherwise</td>
                 </tr>
               </tfoot>
             </table>
@@ -248,7 +259,7 @@
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td><a href="classDllist.html" class="m-doc">Dllist</a>&amp;</td>
+                  <td><a href="classDllink.html" class="m-doc">Dllink</a>&amp; reference to popped node</td>
                 </tr>
               </tfoot>
             </table>
@@ -266,7 +277,7 @@
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td><a href="classDllist.html" class="m-doc">Dllist</a>&amp;</td>
+                  <td><a href="classDllink.html" class="m-doc">Dllink</a>&amp; reference to popped node</td>
                 </tr>
               </tfoot>
             </table>
@@ -279,12 +290,12 @@
               </div>
               <span class="m-doc-wrap-bumper">auto Dllist&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a848b684dce407e308ac8b99cb2799d52" class="m-doc-self">begin</a>(</span><span class="m-doc-wrap">) noexcept -&gt; DllIterator&lt; T &gt; <span class="m-label m-primary">constexpr</span></span></span>
             </h3>
-            <p>begin</p>
+            <p>Get iterator to beginning of list.</p>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td><a href="classDllIterator.html" class="m-doc">DllIterator</a></td>
+                  <td><a href="classDllIterator.html" class="m-doc">DllIterator</a> iterator to beginning</td>
                 </tr>
               </tfoot>
             </table>
@@ -296,12 +307,12 @@
               </div>
               <span class="m-doc-wrap-bumper">auto Dllist&lt;T&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a89873c355d93b9d1ccfb5007c1aa6abe" class="m-doc-self">end</a>(</span><span class="m-doc-wrap">) noexcept -&gt; DllIterator&lt; T &gt; <span class="m-label m-primary">constexpr</span></span></span>
             </h3>
-            <p>end</p>
+            <p>Get iterator to end of list.</p>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td><a href="classDllIterator.html" class="m-doc">DllIterator</a></td>
+                  <td><a href="classDllIterator.html" class="m-doc">DllIterator</a> iterator to end</td>
                 </tr>
               </tfoot>
             </table>
