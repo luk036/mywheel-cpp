@@ -57,7 +57,7 @@ TEST_CASE("Test BPQueue 3") {
     auto node_e = Dllink<std::pair<int, uint32_t>>{std::make_pair(0, uint32_t(0))};
     auto node_f = Dllink<std::pair<int, uint32_t>>{std::make_pair(0, uint32_t(0))};
 
-    CHECK(node_d.data.second == 0);
+    CHECK_EQ(node_d.data.second, 0);
 
     bpq1.appendleft(node_e, 3);
     bpq1.append(node_f, -PMAX);
@@ -70,7 +70,7 @@ TEST_CASE("Test BPQueue 3") {
     bpq2.modify_key(node_d, 15);
     bpq2.modify_key(node_d, -3);
     CHECK(bpq1.is_empty());
-    CHECK(bpq2.get_max() == 6);
+    CHECK_EQ(bpq2.get_max(), 6);
 
     auto nodelist = vector<Dllink<pair<int, uint32_t>>>(10);
 

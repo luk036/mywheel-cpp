@@ -30,7 +30,7 @@ TEST_CASE("Test dllist") {
         [[maybe_unused]] auto& dummy = _;
         count += 1;
     }
-    CHECK(count == 2);
+    CHECK_EQ(count, 2);
 }
 
 TEST_CASE("Test dllist pop") {
@@ -48,27 +48,27 @@ TEST_CASE("Test dllist pop") {
         [[maybe_unused]] auto& dummy = _;
         count++;
     }
-    CHECK(count == 3);
+    CHECK_EQ(count, 3);
 
     auto& popped = L1.pop();
-    CHECK(popped.data.first == 3);
+    CHECK_EQ(popped.data.first, 3);
 
     count = 0;
     for (const auto& _ : L1) {
         [[maybe_unused]] auto& dummy = _;
         count++;
     }
-    CHECK(count == 2);
+    CHECK_EQ(count, 2);
 
     auto& popped_left = L1.popleft();
-    CHECK(popped_left.data.first == 1);
+    CHECK_EQ(popped_left.data.first, 1);
 
     count = 0;
     for (const auto& _ : L1) {
         [[maybe_unused]] auto& dummy = _;
         count++;
     }
-    CHECK(count == 1);
+    CHECK_EQ(count, 1);
 
     L1.pop();
     CHECK(L1.is_empty());
@@ -81,5 +81,5 @@ TEST_CASE("Test Robin") {
         static_assert(sizeof _i >= 0, "make compiler happy");
         count += 1;
     }
-    CHECK(count == 5);
+    CHECK_EQ(count, 5);
 }

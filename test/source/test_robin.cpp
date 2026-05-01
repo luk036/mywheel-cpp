@@ -17,7 +17,7 @@ TEST_CASE("Test Robin") {
         static_assert(sizeof _i >= 0, "make compiler happy");
         count += 1;
     }
-    CHECK(count == 5);
+    CHECK_EQ(count, 5);
 }
 
 TEST_CASE("Test Robin exclude") {
@@ -28,8 +28,8 @@ TEST_CASE("Test Robin exclude") {
         count += 1;
         sum += i;
     }
-    CHECK(count == 5);
-    CHECK(sum == 0 + 1 + 3 + 4 + 5);
+    CHECK_EQ(count, 5);
+    CHECK_EQ(sum, 0 + 1 + 3 + 4 + 5);
 }
 
 TEST_CASE("Test Robin Stress Test - Exclude and Iterate") {
@@ -57,7 +57,7 @@ TEST_CASE("Test Robin Stress Test - Exclude and Iterate") {
         }
         std::sort(actual_elements.begin(), actual_elements.end());
 
-        CHECK(actual_elements.size() == num_parts - 1);
-        CHECK(actual_elements == expected_elements);
+        CHECK_EQ(actual_elements.size(), num_parts - 1);
+        CHECK_EQ(actual_elements, expected_elements);
     }
 }
