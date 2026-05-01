@@ -15,7 +15,7 @@ TEST_CASE("Test BPQueue 1") {
     auto node_a = Dllink<std::pair<int, uint32_t>>{std::make_pair(3, uint32_t(0))};
     bpq.append(node_a, 0);
     CHECK_EQ(bpq.get_max(), 0);
-    CHECK(!bpq.is_empty());
+    CHECK_FALSE(bpq.is_empty());
     bpq.set_key(node_a, 0);
     CHECK_EQ(node_a.data.second, 4);
     bpq.popleft();
