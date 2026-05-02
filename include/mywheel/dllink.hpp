@@ -35,7 +35,7 @@ template <typename T> class DllIterator;
  *
  * Space Complexity: O(1) per node
  *
- * ```cpp
+ * @verbatim
  * Doubly Linked List Structure:
  *
  *     ┌─────────────────────────────────────┐
@@ -53,7 +53,7 @@ template <typename T> class DllIterator;
  *                 │Node1│ │Node2│ │Node3│
  *                 │Data │ │Data │ │Data │
  *                 └─────┘ └─────┘ └─────┘
- * ```
+ * @endverbatim
  *
  * Each node has 'next' and 'prev' pointers, with the head/sentinel
  * serving as a boundary marker to simplify insertion/deletion.

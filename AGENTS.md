@@ -160,10 +160,10 @@ Use Javadoc-style with `@`, `@param`, `@return`:
  * @brief Brief description
  *
  * Extended description with examples:
- * ```cpp
+ * @verbatim
  * auto a = Lict({1, 4, 3, 6});
  * a.contains(2)  // true
- * ```
+ * @endverbatim
  *
  * @param key The key parameter
  * @return The value

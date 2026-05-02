@@ -10,12 +10,12 @@
  * elements. It has a constructor that takes a value and a size as parameters and initializes all
  * elements of the array with the given value.
  *
- * ```
+ * @verbatim
  *    0   1   2   3   4
  * +---+---+---+---+---+
  * | 5 | 5 | 5 | 5 | 5 |  <-- All elements have the same value
  * +---+---+---+---+---+
- * ```
+ * @endverbatim
  */
 template <typename T> class RepeatArray {
   private:
@@ -139,7 +139,7 @@ template <typename T> class RepeatArray {
  * class provides `operator[]` overloads to access elements using shifted
  * indices.
  *
- * ```
+ * @verbatim
  * Original indices:  [0] [1] [2] [3] [4] [5]
  * Array content:     [A] [B] [C] [D] [E] [F]
  *
@@ -147,7 +147,7 @@ template <typename T> class RepeatArray {
  *
  * Accessible range:        [0] [1] [2] [3]  <-- These map to [C] [D] [E] [F]
  * Shifted indices:         [2] [3] [4] [5]  <-- Internal indices
- * ```
+ * @endverbatim
  *
  * @tparam T
  */

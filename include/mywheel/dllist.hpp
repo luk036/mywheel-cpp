@@ -34,7 +34,7 @@ template <typename T> class DllIterator;
  *
  * Space Complexity: O(1) for list structure + O(n) for nodes
  *
- * ```cpp
+ * @verbatim
  * Doubly Linked List with Sentinel Head:
  *
  *     ┌─────────────────┐
@@ -77,7 +77,7 @@ template <typename T> class DllIterator;
  *
  * The sentinel head simplifies operations by eliminating special cases
  * for empty lists and boundary nodes.
- * ```
+ * @endverbatim
  *
  * @tparam T The type of data stored in the nodes
  */

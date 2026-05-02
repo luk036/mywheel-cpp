@@ -42,7 +42,7 @@ template <typename Tp, typename Int> class BpqIterator;
  *
  * Space Complexity: O(b-a+1) for the bucket array + O(n) for nodes
  *
- * ```cpp
+ * @verbatim
  * Priority Queue (BPQueue) with integer keys [0..4]:
  *
  * Key 4: ┌─┐
@@ -64,7 +64,7 @@ template <typename Tp, typename Int> class BpqIterator;
  * Sentinel: (dummy element for boundary checks)
  *
  * Max key: 4
- * ```
+ * @endverbatim
  *
  * @tparam Tp The type of payload data stored in each node
  * @tparam Int The integer type used for keys (default: int32_t)

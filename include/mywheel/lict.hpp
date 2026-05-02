@@ -12,7 +12,7 @@ namespace py {
      * The `Lict` class is a custom implementation of an unordered mapping with integer keys and
      * generic values, which adapts a vector to behave like a dictionary.
      *
-     * ```cpp
+     * @verbatim
      * Lict (List-Dictionary) Structure:
      *
      * Vector-based mapping with integer keys:
@@ -25,7 +25,7 @@ namespace py {
      * Access: lict[2] → returns 'C'
      *         lict.contains(3) → true
      *         lict.size() → 5
-     * ```
+     * @endverbatim
      *
      * @tparam T
      */
