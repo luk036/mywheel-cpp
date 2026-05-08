@@ -1,10 +1,10 @@
 #include <doctest/doctest.h>  // for ResultBuilder, CHECK, Expression_lhs
 // #include <__config>            // for std
-#include <cstdint>  // for int32_t, uint32_t
+#include <cstdint>              // for int32_t, uint32_t
 #include <mywheel/bpqueue.hpp>  // for BPQueue
 #include <mywheel/dllist.hpp>   // for Dllink
-#include <utility>  // for pair
-#include <vector>   // for vector
+#include <utility>              // for pair
+#include <vector>               // for vector
 
 using namespace std;
 
