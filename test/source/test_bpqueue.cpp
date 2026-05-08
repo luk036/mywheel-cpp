@@ -10,7 +10,7 @@ using namespace std;
 
 TEST_CASE("Test BPQueue 1") {
     auto bpq = BPQueue<int, int32_t>{-3, 3};
-    auto node_a = Dllink<std::pair<int, uint32_t>>{std::make_pair(3, uint32_t(0))};
+    auto node_a = Dllink<std::pair<int, uint32_t>>{std::make_pair(3, static_cast<uint32_t>(0))};
     bpq.append(node_a, 0);
     CHECK_EQ(bpq.get_max(), 0);
     CHECK_FALSE(bpq.is_empty());
@@ -23,7 +23,7 @@ TEST_CASE("Test BPQueue 1") {
 
 TEST_CASE("Test BPQueue 2") {
     auto bpq = BPQueue<int, int32_t>{-3, 3};
-    auto node_a = Dllink<std::pair<int, uint32_t>>{std::make_pair(3, uint32_t(0))};
+    auto node_a = Dllink<std::pair<int, uint32_t>>{std::make_pair(3, static_cast<uint32_t>(0))};
     bpq.appendleft_direct(node_a);
     CHECK_EQ(bpq.get_max(), 0);
     bpq.increase_key(node_a, 1);
@@ -51,9 +51,9 @@ TEST_CASE("Test BPQueue 3") {
 
     CHECK(bpq1.is_empty());
 
-    auto node_d = Dllink<std::pair<int, uint32_t>>{std::make_pair(0, uint32_t(0))};
-    auto node_e = Dllink<std::pair<int, uint32_t>>{std::make_pair(0, uint32_t(0))};
-    auto node_f = Dllink<std::pair<int, uint32_t>>{std::make_pair(0, uint32_t(0))};
+    auto node_d = Dllink<std::pair<int, uint32_t>>{std::make_pair(0, static_cast<uint32_t>(0))};
+    auto node_e = Dllink<std::pair<int, uint32_t>>{std::make_pair(0, static_cast<uint32_t>(0))};
+    auto node_f = Dllink<std::pair<int, uint32_t>>{std::make_pair(0, static_cast<uint32_t>(0))};
 
     CHECK_EQ(node_d.data.second, 0);
 
@@ -81,7 +81,7 @@ TEST_CASE("Test BPQueue 3") {
 
 TEST_CASE("Test BPQueue get_max") {
     auto bpq = BPQueue<int, int32_t>{-3, 3};
-    auto node_a = Dllink<std::pair<int, uint32_t>>{std::make_pair(3, uint32_t(0))};
+    auto node_a = Dllink<std::pair<int, uint32_t>>{std::make_pair(3, static_cast<uint32_t>(0))};
     bpq.append(node_a, 0);
     CHECK_EQ(bpq.get_max(), 0);
     bpq.increase_key(node_a, 1);
