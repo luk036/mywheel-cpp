@@ -27,7 +27,7 @@ TEST_CASE("Test dllist") {
 
     auto count = 0U;
     for (const auto& _ : L2) {
-        [[maybe_unused]] auto& dummy = _;
+        [[maybe_unused]] const auto& dummy = _;
         count += 1;
     }
     CHECK_EQ(count, 2);
@@ -45,7 +45,7 @@ TEST_CASE("Test dllist pop") {
 
     auto count = 0;
     for (const auto& _ : L1) {
-        [[maybe_unused]] auto& dummy = _;
+        [[maybe_unused]] const auto& dummy = _;
         count++;
     }
     CHECK_EQ(count, 3);
@@ -55,7 +55,7 @@ TEST_CASE("Test dllist pop") {
 
     count = 0;
     for (const auto& _ : L1) {
-        [[maybe_unused]] auto& dummy = _;
+        [[maybe_unused]] const auto& dummy = _;
         count++;
     }
     CHECK_EQ(count, 2);
@@ -65,7 +65,7 @@ TEST_CASE("Test dllist pop") {
 
     count = 0;
     for (const auto& _ : L1) {
-        [[maybe_unused]] auto& dummy = _;
+        [[maybe_unused]] const auto& dummy = _;
         count++;
     }
     CHECK_EQ(count, 1);
@@ -77,8 +77,7 @@ TEST_CASE("Test dllist pop") {
 TEST_CASE("Test Robin") {
     fun::Robin<uint8_t> rr(6U);
     auto count = 0U;
-    for (const auto& _i : rr.exclude(2)) {
-        static_assert(sizeof _i >= 0, "make compiler happy");
+    for ([[maybe_unused]] const auto& _i : rr.exclude(2)) {
         count += 1;
     }
     CHECK_EQ(count, 5);

@@ -8,8 +8,7 @@ TEST_CASE("Test Lict") {
     CHECK_EQ(S.size(), 3U);
     CHECK(S.contains(1));
     auto count = 0;
-    for (const auto& p : S) {
-        static_assert(sizeof(p) >= 0, "make compiler happy");
+    for ([[maybe_unused]] const auto& p : S) {
         ++count;
     }
     CHECK_EQ(count, 3);
