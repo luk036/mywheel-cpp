@@ -146,14 +146,15 @@ namespace fun {
          * @param[in] num_parts The parameter `num_parts` represents the number of parts or elements
          * in the Robin object.
          */
-        explicit Robin(T num_parts)
-            : cycle(static_cast<typename std::vector<SlNode>::size_type>(num_parts)) {
-            auto* slptr = &this->cycle.back();
+        explicit Robin(T num_parts) {
+            this->cycle.reserve(static_cast<size_t>(num_parts));
             for (auto idx = T(0); idx != num_parts; ++idx) {
-                this->cycle[static_cast<typename std::vector<SlNode>::size_type>(idx)].key = idx;
-                slptr->next
-                    = &this->cycle[static_cast<typename std::vector<SlNode>::size_type>(idx)];
-                slptr = slptr->next;
+                this->cycle.push_back({nullptr, idx});
+            }
+            auto* slptr = &this->cycle.back();
+            for (auto& node : this->cycle) {
+                slptr->next = &node;
+                slptr = &node;
             }
         }
 

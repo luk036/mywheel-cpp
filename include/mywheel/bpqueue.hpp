@@ -2,6 +2,7 @@
 
 #include <cassert>      // for assert
 #include <cstdint>      // for int32_t
+#include <set>          // for set
 #include <type_traits>  // for make_unsigned_t, is_integral, integral_consta...
 #include <utility>      // for pair
 #include <vector>       // for vector, vector<>::value_type, vector<>::const...
@@ -94,6 +95,59 @@ class BPQueue {
     UInt max{};       //!< Current maximum key value with non-empty bucket
     Int offset;       //!< Offset value (a - 1) for key translation
     UInt high;        //!< Maximum allowed key value (b - a + 1)
+    std::set<UInt> nonempty_set;  //!< Set of non-empty bucket indices for O(k) clear and O(log k) max-find
+
+    /**
+     * @brief Update state after removing an item from a bucket
+     *
+     * Checks if the bucket became empty and maintains the nonempty_set
+     * and max tracker accordingly.
+     *
+     * @param[in] key The bucket key from which an item was removed
+     */
+    auto _after_remove(UInt key) noexcept -> void {
+        if (this->bucket[key].is_empty()) {
+            this->nonempty_set.erase(key);
+            if (key == this->max) {
+                if (this->nonempty_set.empty()) {
+                    this->max = 0;
+                } else {
+                    this->max = *this->nonempty_set.rbegin();
+                }
+            }
+        }
+    }
+
+    /**
+     * @brief Update state after adding an item to a bucket
+     *
+     * Maintains the nonempty_set and updates max if this key exceeds it.
+     *
+     * @param[in] key The bucket key to which an item was added
+     */
+    auto _after_add(UInt key) noexcept -> void {
+        this->nonempty_set.insert(key);
+        if (this->max < key) {
+            this->max = key;
+        }
+    }
+
+    /**
+     * @brief Find the largest non-empty bucket key strictly less than the given key
+     *
+     * Used by BpqIterator to skip over empty buckets without scanning.
+     * Returns 0 if no such bucket exists.
+     *
+     * @param[in] key Upper bound (exclusive)
+     * @return Largest non-empty key < key, or 0 if none
+     */
+    [[nodiscard]] auto _prev_nonempty(UInt key) const noexcept -> UInt {
+        if (key == 0 || this->nonempty_set.empty()) { return 0; }
+        auto it = this->nonempty_set.lower_bound(key);
+        if (it == this->nonempty_set.begin()) { return 0; }
+        --it;
+        return *it;
+    }
 
   public:
     /**
@@ -171,11 +225,12 @@ class BPQueue {
      * The queue becomes empty after this operation but retains its key bounds.
      * Note that nodes are not destroyed, only detached from the buckets.
      */
-    constexpr auto clear() noexcept -> void {
-        while (this->max > 0) {
-            this->bucket[this->max].clear();
-            this->max -= 1;
+    auto clear() noexcept -> void {
+        for (const auto& key : this->nonempty_set) {
+            this->bucket[key].clear();
         }
+        this->nonempty_set.clear();
+        this->max = 0;
     }
 
     /**
@@ -190,7 +245,7 @@ class BPQueue {
      * @pre The item must have a valid internal key set via set_key()
      * @pre The internal key must be > offset
      */
-    constexpr auto appendleft_direct(Item& item) noexcept -> void {
+    auto appendleft_direct(Item& item) noexcept -> void {
         assert(static_cast<Int>(item.data.second) > this->offset);
         this->appendleft(item, Int(item.data.second));
     }
@@ -209,13 +264,11 @@ class BPQueue {
      * @post Item is inserted at front of bucket for key key
      * @post max key is updated if key is greater than current max
      */
-    constexpr auto appendleft(Item& item, Int key) noexcept -> void {
+    auto appendleft(Item& item, Int key) noexcept -> void {
         assert(key > this->offset);
         item.data.second = UInt(key - this->offset);
-        if (this->max < item.data.second) {
-            this->max = item.data.second;
-        }
         this->bucket[item.data.second].appendleft(item);
+        _after_add(item.data.second);
     }
 
     /**
@@ -232,13 +285,11 @@ class BPQueue {
      * @post Item is inserted at back of bucket for key key
      * @post max key is updated if key is greater than current max
      */
-    constexpr auto append(Item& item, Int key) noexcept -> void {
+    auto append(Item& item, Int key) noexcept -> void {
         assert(key > this->offset);
         item.data.second = UInt(key - this->offset);
-        if (this->max < item.data.second) {
-            this->max = item.data.second;
-        }
         this->bucket[item.data.second].append(item);
+        _after_add(item.data.second);
     }
 
     /**
@@ -254,11 +305,9 @@ class BPQueue {
      * @post The returned item is no longer in any bucket
      * @post max key is updated if the highest bucket becomes empty
      */
-    constexpr auto popleft() noexcept -> Item& {
+    auto popleft() noexcept -> Item& {
         auto& res = this->bucket[this->max].popleft();
-        while (this->bucket[this->max].is_empty()) {
-            this->max -= 1;
-        }
+        _after_remove(this->max);
         return res;
     }
 
@@ -279,20 +328,15 @@ class BPQueue {
      *
      * @note The order of items with the same key is not preserved (FIFO behavior)
      */
-    constexpr auto decrease_key(Item& item, UInt delta) noexcept -> void {
-        // this->bucket[item.data.second].detach(item)
+    auto decrease_key(Item& item, UInt delta) noexcept -> void {
+        auto old_key = item.data.second;
         item.detach();
+        _after_remove(old_key);
         item.data.second -= delta;
         assert(item.data.second > 0);
         assert(item.data.second <= this->high);
         this->bucket[item.data.second].append(item);  // FIFO
-        if (this->max < item.data.second) {
-            this->max = item.data.second;
-            return;
-        }
-        while (this->bucket[this->max].is_empty()) {
-            this->max -= 1;
-        }
+        _after_add(item.data.second);
     }
 
     /**
@@ -312,16 +356,15 @@ class BPQueue {
      *
      * @note The order of items with the same key is not preserved (LIFO behavior)
      */
-    constexpr auto increase_key(Item& item, UInt delta) noexcept -> void {
-        // this->bucket[item.data.second].detach(item)
+    auto increase_key(Item& item, UInt delta) noexcept -> void {
+        auto old_key = item.data.second;
         item.detach();
+        _after_remove(old_key);
         item.data.second += delta;
         assert(item.data.second > 0);
         assert(item.data.second <= this->high);
         this->bucket[item.data.second].appendleft(item);  // LIFO
-        if (this->max < item.data.second) {
-            this->max = item.data.second;
-        }
+        _after_add(item.data.second);
     }
 
     /**
@@ -341,10 +384,7 @@ class BPQueue {
      *
      * @note If the item is locked, no modification is performed
      */
-    constexpr auto modify_key(Item& item, Int delta) noexcept -> void {
-        if (item.is_locked()) {
-            return;
-        }
+    auto modify_key(Item& item, Int delta) noexcept -> void {
         if (delta > 0) {
             this->increase_key(item, UInt(delta));
         } else if (delta < 0) {
@@ -365,12 +405,10 @@ class BPQueue {
      * @post The item is no longer in any bucket
      * @post max key is updated if the highest bucket becomes empty
      */
-    constexpr auto detach(Item& item) noexcept -> void {
-        // this->bucket[item.data.second].detach(item)
+    auto detach(Item& item) noexcept -> void {
+        auto old_key = item.data.second;
         item.detach();
-        while (this->bucket[this->max].is_empty()) {
-            this->max -= 1;
-        }
+        _after_remove(old_key);
     }
 
     /**
@@ -452,12 +490,11 @@ template <typename Tp, typename Int = int32_t> class BpqIterator {
      *
      * @return BpqIterator& reference to self
      */
-    constexpr auto operator++() -> BpqIterator& {
+    auto operator++() -> BpqIterator& {
         ++this->curr_item;
         while (this->curr_item == this->curlist().end()) {
-            do {
-                this->curr_key -= 1;
-            } while (this->curlist().is_empty());
+            this->curr_key = this->bpq._prev_nonempty(this->curr_key);
+            if (this->curr_key == 0) { break; }
             this->curr_item = this->curlist().begin();
         }
         return *this;
