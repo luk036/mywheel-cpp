@@ -9,7 +9,7 @@ option(INSTALL_ONLY "Enable for installation only" OFF)
 # Note: update this to your new project's name and version
 project(
   MyWheel
-  VERSION 1.1.4
+  VERSION 1.1.3
   LANGUAGES CXX
 )
 
@@ -73,5 +73,5 @@ packageProject(
   INCLUDE_DESTINATION include/${PROJECT_NAME}-${PROJECT_VERSION}
   VERSION_HEADER "${VERSION_HEADER_LOCATION}"
   COMPATIBILITY SameMajorVersion
-  DEPENDENCIES "Py2Cpp 1.6.0"
+  DEPENDENCIES "Py2Cpp 1.4"
 )

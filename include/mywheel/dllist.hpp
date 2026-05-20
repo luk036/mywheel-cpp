@@ -145,7 +145,6 @@ template <typename T> class Dllist {
      * Precondition: list is not empty
      */
     constexpr auto popleft() noexcept -> Dllink<T>& {
-        assert(!this->is_empty());
         auto res = this->head.next;
         res->detach();
         return *res;
@@ -159,7 +158,6 @@ template <typename T> class Dllist {
      * Precondition: list is not empty
      */
     constexpr auto pop() noexcept -> Dllink<T>& {
-        assert(!this->is_empty());
         auto res = this->head.prev;
         res->detach();
         return *res;
