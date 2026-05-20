@@ -84,27 +84,28 @@
             </li>
           </ul>
         </nav>
-<p>A highly efficient priority queue implementation that works with integer keys within a specified bounded range [a..b]. The implementation uses an array of doubly-linked lists (buckets), where each bucket contains all items with the same priority/key value.</p><p>Key Features:</p><ul><li>O(1) insertion and removal operations</li><li>O(1) access to maximum priority element</li><li>Memory efficient for small key ranges</li><li>Non-owning node design for flexibility</li><li>Sentinel element for boundary optimization</li></ul><p>The class does not own the queue nodes, allowing them to be shared between this priority queue and other data structures (like doubly-linked lists). This design is particularly useful in algorithms like Fiduccia-Mattheyses where nodes move between different containers.</p><p>The implementation includes a sentinel bucket to reduce boundary checking overhead during key updates and operations.</p><p>Time Complexity:</p><ul><li>Insert: O(1)</li><li>Remove max: O(1)</li><li>Update key: O(1)</li><li>Check empty: O(1)</li></ul><p>Space Complexity: O(b-a+1) for the bucket array + O(n) for nodes</p><pre class="m-code"><span class="n">Priority</span><span class="w"> </span><span class="n">Queue</span><span class="w"> </span><span class="p">(</span><span class="n">BPQueue</span><span class="p">)</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">keys</span><span class="w"> </span><span class="p">[</span><span class="mf">0..4</span><span class="p">]</span><span class="o">:</span>
-
-<span class="n">Key</span><span class="w"> </span><span class="mi">4</span><span class="o">:</span><span class="w"> </span><span class="err">┌─┐</span>
-<span class="w">       </span><span class="err">│</span><span class="mi">7</span><span class="err">│</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">...</span>
-<span class="w">       </span><span class="err">└─┘</span>
-
-<span class="n">Key</span><span class="w"> </span><span class="mi">3</span><span class="o">:</span><span class="w"> </span><span class="err">┌─┐</span>
-<span class="w">       </span><span class="err">│</span><span class="mi">2</span><span class="err">│</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="err">│</span><span class="mi">9</span><span class="err">│</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">...</span>
-<span class="w">       </span><span class="err">└─┘</span>
-
-<span class="n">Key</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="n">empty</span><span class="p">)</span>
-
-<span class="n">Key</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="err">┌─┐</span>
-<span class="w">       </span><span class="err">│</span><span class="mi">5</span><span class="err">│</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="err">│</span><span class="mi">1</span><span class="err">│</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="err">│</span><span class="mi">8</span><span class="err">│</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">...</span>
-<span class="w">       </span><span class="err">└─┘</span>
-
-<span class="n">Key</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="n">empty</span><span class="p">)</span>
-
-<span class="nl">Sentinel</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">dummy</span><span class="w"> </span><span class="n">element</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">boundary</span><span class="w"> </span><span class="n">checks</span><span class="p">)</span>
-
-<span class="n">Max</span><span class="w"> </span><span class="n">key</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span></pre>
+<p>A highly efficient priority queue implementation that works with integer keys within a specified bounded range [a..b]. The implementation uses an array of doubly-linked lists (buckets), where each bucket contains all items with the same priority/key value.</p><p>Key Features:</p><ul><li>O(1) insertion and removal operations</li><li>O(1) access to maximum priority element</li><li>Memory efficient for small key ranges</li><li>Non-owning node design for flexibility</li><li>Sentinel element for boundary optimization</li></ul><p>The class does not own the queue nodes, allowing them to be shared between this priority queue and other data structures (like doubly-linked lists). This design is particularly useful in algorithms like Fiduccia-Mattheyses where nodes move between different containers.</p><p>The implementation includes a sentinel bucket to reduce boundary checking overhead during key updates and operations.</p><p>Time Complexity:</p><ul><li>Insert: O(1)</li><li>Remove max: O(1)</li><li>Update key: O(1)</li><li>Check empty: O(1)</li></ul><p>Space Complexity: O(b-a+1) for the bucket array + O(n) for nodes</p><pre>* Priority Queue (BPQueue) with integer keys [0..4]:
+*
+* Key 4: ┌─┐
+*        │7│ -&gt; ...
+*        └─┘
+*
+* Key 3: ┌─┐
+*        │2│ -&gt; │9│ -&gt; ...
+*        └─┘
+*
+* Key 2: (empty)
+*
+* Key 1: ┌─┐
+*        │5│ -&gt; │1│ -&gt; │8│ -&gt; ...
+*        └─┘
+*
+* Key 0: (empty)
+*
+* Sentinel: (dummy element for boundary checks)
+*
+* Max key: 4
+* </pre>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
@@ -132,44 +133,44 @@
             </dt>
             <dd>Get the current maximum key value in the queue.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#aec98c95622195b1a60461585228d8770" class="m-doc">clear</a>(</span><span class="m-doc-wrap">) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7fd8d8bb16869879c20e898a9ba8ca89" class="m-doc">clear</a>(</span><span class="m-doc-wrap">) noexcept -&gt; void -&gt; auto</span>
             </dt>
             <dd>Clear all elements from the priority queue.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a20399a39f8841685c8d6e24c17e02276" class="m-doc">appendleft_direct</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#afbbe56eddc05f7e3b49d21e0e368e76b" class="m-doc">appendleft_direct</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item) noexcept -&gt; void -&gt; auto</span>
             </dt>
             <dd>Append item using its pre-set internal key.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#ade19e2ffd0a672524e84edfbab3727bd" class="m-doc">appendleft</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
-              Int key) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a36af221ab1c8b1d82b9a0817b6873f6f" class="m-doc">appendleft</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
+              Int key) noexcept -&gt; void -&gt; auto</span>
             </dt>
             <dd>Append item to the front of its bucket with specified key.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a9ee9593eec87da0c50c04b715035027f" class="m-doc">append</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
-              Int key) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac945dc65ed6bf8b119a306752d2724bd" class="m-doc">append</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
+              Int key) noexcept -&gt; void -&gt; auto</span>
             </dt>
             <dd>Append item to the back of its bucket with specified key.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#aa85a210f06d1d19f9a239583ea533815" class="m-doc">popleft</a>(</span><span class="m-doc-wrap">) noexcept -&gt; Item &amp; -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a28a9ea5c4ec7b2d3a2ea11126f6318b2" class="m-doc">popleft</a>(</span><span class="m-doc-wrap">) noexcept -&gt; Item &amp; -&gt; auto</span>
             </dt>
             <dd>Remove and return the item with the highest key.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a79ad39491f254ca84194aa1115e170b1" class="m-doc">decrease_key</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
-              UInt delta) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0ba1534845a11efbc394c84f9533efb7" class="m-doc">decrease_key</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
+              UInt delta) noexcept -&gt; void -&gt; auto</span>
             </dt>
             <dd>Decrease the key of an item by the specified delta.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#acfe0eda96bbaf942f9887bebd35d4ca4" class="m-doc">increase_key</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
-              UInt delta) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#ace354e86f70c2aacce77b5fc089a4f28" class="m-doc">increase_key</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
+              UInt delta) noexcept -&gt; void -&gt; auto</span>
             </dt>
             <dd>Increase the key of an item by the specified delta.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a8b345db512ce2052bd663e78ddbdd759" class="m-doc">modify_key</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
-              Int delta) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#af05cfa9a33748d98894ba88a2bc6a13d" class="m-doc">modify_key</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
+              Int delta) noexcept -&gt; void -&gt; auto</span>
             </dt>
             <dd>Modify the key of an item by the specified delta.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a88939a5dee916c1a9e5ff446b60ef748" class="m-doc">detach</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item) noexcept -&gt; void -&gt; auto <span class="m-label m-flat m-primary">constexpr</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#adc108fe227b26744aa7492b762cb9182" class="m-doc">detach</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item) noexcept -&gt; void -&gt; auto</span>
             </dt>
             <dd>Remove an item from the queue without returning it.</dd>
             <dt>
@@ -272,22 +273,22 @@
             </table>
 <p>Returns the highest key value that has non-empty items in the queue. If the queue is empty, this returns the offset value (a - 1).</p>
           </div></section>
-          <section class="m-doc-details" id="aec98c95622195b1a60461585228d8770"><div>
+          <section class="m-doc-details" id="a7fd8d8bb16869879c20e898a9ba8ca89"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename Tp, typename Int, typename Sequence&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aec98c95622195b1a60461585228d8770" class="m-doc-self">clear</a>(</span><span class="m-doc-wrap">) noexcept -&gt; void <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7fd8d8bb16869879c20e898a9ba8ca89" class="m-doc-self">clear</a>(</span><span class="m-doc-wrap">) noexcept -&gt; void</span></span>
             </h3>
             <p>Clear all elements from the priority queue.</p>
 <p>Removes all items from all buckets and resets the maximum key to 0. The queue becomes empty after this operation but retains its key bounds. Note that nodes are not destroyed, only detached from the buckets.</p>
           </div></section>
-          <section class="m-doc-details" id="a20399a39f8841685c8d6e24c17e02276"><div>
+          <section class="m-doc-details" id="afbbe56eddc05f7e3b49d21e0e368e76b"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename Tp, typename Int, typename Sequence&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a20399a39f8841685c8d6e24c17e02276" class="m-doc-self">appendleft_direct</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item) noexcept -&gt; void <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afbbe56eddc05f7e3b49d21e0e368e76b" class="m-doc-self">appendleft_direct</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item) noexcept -&gt; void</span></span>
             </h3>
             <p>Append item using its pre-set internal key.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -301,15 +302,15 @@
                 </tr>
               </tbody>
             </table>
-<p>Inserts an item into the queue using the key value already stored in the item&#x27;s data payload. This is more efficient than <a href="classBPQueue.html#ade19e2ffd0a672524e84edfbab3727bd" class="m-doc">appendleft()</a> when the key is already known and stored in the item.</p><aside class="m-note m-success"><h4>Precondition</h4><p>The item must have a valid internal key set via <a href="classBPQueue.html#a51e2adf5a1658e445c2107d355af3304" class="m-doc">set_<wbr />key()</a></p><p>The internal key must be &gt; offset</p></aside>
+<p>Inserts an item into the queue using the key value already stored in the item&#x27;s data payload. This is more efficient than <a href="classBPQueue.html#a36af221ab1c8b1d82b9a0817b6873f6f" class="m-doc">appendleft()</a> when the key is already known and stored in the item.</p><aside class="m-note m-success"><h4>Precondition</h4><p>The item must have a valid internal key set via <a href="classBPQueue.html#a51e2adf5a1658e445c2107d355af3304" class="m-doc">set_<wbr />key()</a></p><p>The internal key must be &gt; offset</p></aside>
           </div></section>
-          <section class="m-doc-details" id="ade19e2ffd0a672524e84edfbab3727bd"><div>
+          <section class="m-doc-details" id="a36af221ab1c8b1d82b9a0817b6873f6f"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename Tp, typename Int, typename Sequence&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ade19e2ffd0a672524e84edfbab3727bd" class="m-doc-self">appendleft</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
-              Int key) noexcept -&gt; void <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a36af221ab1c8b1d82b9a0817b6873f6f" class="m-doc-self">appendleft</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
+              Int key) noexcept -&gt; void</span></span>
             </h3>
             <p>Append item to the front of its bucket with specified key.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -329,13 +330,13 @@
             </table>
 <p>Inserts an item into the bucket corresponding to key <code>key</code>, placing it at the front of the bucket&#x27;s doubly-linked list. The item&#x27;s internal key is automatically set and the max key is updated if necessary.</p><aside class="m-note m-success"><h4>Precondition</h4><p>key must be &gt; offset (within valid key range)</p></aside><aside class="m-note m-success"><h4>Postcondition</h4><p>Item is inserted at front of bucket for key key</p><p>max key is updated if key is greater than current max</p></aside>
           </div></section>
-          <section class="m-doc-details" id="a9ee9593eec87da0c50c04b715035027f"><div>
+          <section class="m-doc-details" id="ac945dc65ed6bf8b119a306752d2724bd"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename Tp, typename Int, typename Sequence&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9ee9593eec87da0c50c04b715035027f" class="m-doc-self">append</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
-              Int key) noexcept -&gt; void <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac945dc65ed6bf8b119a306752d2724bd" class="m-doc-self">append</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
+              Int key) noexcept -&gt; void</span></span>
             </h3>
             <p>Append item to the back of its bucket with specified key.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -355,12 +356,12 @@
             </table>
 <p>Inserts an item into the bucket corresponding to key <code>key</code>, placing it at the back of the bucket&#x27;s doubly-linked list. The item&#x27;s internal key is automatically set and the max key is updated if necessary.</p><aside class="m-note m-success"><h4>Precondition</h4><p>key must be &gt; offset (within valid key range)</p></aside><aside class="m-note m-success"><h4>Postcondition</h4><p>Item is inserted at back of bucket for key key</p><p>max key is updated if key is greater than current max</p></aside>
           </div></section>
-          <section class="m-doc-details" id="aa85a210f06d1d19f9a239583ea533815"><div>
+          <section class="m-doc-details" id="a28a9ea5c4ec7b2d3a2ea11126f6318b2"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename Tp, typename Int, typename Sequence&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa85a210f06d1d19f9a239583ea533815" class="m-doc-self">popleft</a>(</span><span class="m-doc-wrap">) noexcept -&gt; Item &amp; <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a28a9ea5c4ec7b2d3a2ea11126f6318b2" class="m-doc-self">popleft</a>(</span><span class="m-doc-wrap">) noexcept -&gt; Item &amp;</span></span>
             </h3>
             <p>Remove and return the item with the highest key.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -373,13 +374,13 @@
             </table>
 <p>Removes the item at the front of the bucket with the current maximum key value. If that bucket becomes empty, automatically updates the max key to point to the next non-empty bucket.</p><aside class="m-note m-success"><h4>Precondition</h4><p>The queue must not be empty</p></aside><aside class="m-note m-success"><h4>Postcondition</h4><p>The returned item is no longer in any bucket</p><p>max key is updated if the highest bucket becomes empty</p></aside>
           </div></section>
-          <section class="m-doc-details" id="a79ad39491f254ca84194aa1115e170b1"><div>
+          <section class="m-doc-details" id="a0ba1534845a11efbc394c84f9533efb7"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename Tp, typename Int, typename Sequence&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a79ad39491f254ca84194aa1115e170b1" class="m-doc-self">decrease_key</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
-              UInt delta) noexcept -&gt; void <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0ba1534845a11efbc394c84f9533efb7" class="m-doc-self">decrease_key</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
+              UInt delta) noexcept -&gt; void</span></span>
             </h3>
             <p>Decrease the key of an item by the specified delta.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -399,13 +400,13 @@
             </table>
 <p>Removes the item from its current bucket, decreases its key by delta, and inserts it at the back of the new bucket. Items with the same key are processed in FIFO order. This method is commonly used in algorithms like Fiduccia-Mattheyses where gain values decrease over time.</p><aside class="m-note m-success"><h4>Precondition</h4><p>delta &gt; 0</p><p>item must be currently in the queue</p><p>New key must be within valid range</p></aside><aside class="m-note m-info"><h4>Note</h4><p>The order of items with the same key is not preserved (FIFO behavior)</p></aside>
           </div></section>
-          <section class="m-doc-details" id="acfe0eda96bbaf942f9887bebd35d4ca4"><div>
+          <section class="m-doc-details" id="ace354e86f70c2aacce77b5fc089a4f28"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename Tp, typename Int, typename Sequence&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acfe0eda96bbaf942f9887bebd35d4ca4" class="m-doc-self">increase_key</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
-              UInt delta) noexcept -&gt; void <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ace354e86f70c2aacce77b5fc089a4f28" class="m-doc-self">increase_key</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
+              UInt delta) noexcept -&gt; void</span></span>
             </h3>
             <p>Increase the key of an item by the specified delta.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -425,13 +426,13 @@
             </table>
 <p>Removes the item from its current bucket, increases its key by delta, and inserts it at the front of the new bucket. Items with the same key are processed in LIFO order. This method is useful when gain values need to be increased during algorithm execution.</p><aside class="m-note m-success"><h4>Precondition</h4><p>delta &gt; 0</p><p>item must be currently in the queue</p><p>New key must be within valid range</p></aside><aside class="m-note m-info"><h4>Note</h4><p>The order of items with the same key is not preserved (LIFO behavior)</p></aside>
           </div></section>
-          <section class="m-doc-details" id="a8b345db512ce2052bd663e78ddbdd759"><div>
+          <section class="m-doc-details" id="af05cfa9a33748d98894ba88a2bc6a13d"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename Tp, typename Int, typename Sequence&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8b345db512ce2052bd663e78ddbdd759" class="m-doc-self">modify_key</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
-              Int delta) noexcept -&gt; void <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af05cfa9a33748d98894ba88a2bc6a13d" class="m-doc-self">modify_key</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item,
+              Int delta) noexcept -&gt; void</span></span>
             </h3>
             <p>Modify the key of an item by the specified delta.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -451,12 +452,12 @@
             </table>
 <p>A unified method that can increase or decrease an item&#x27;s key based on the sign of delta. This is the preferred method for key updates as it handles both directions and respects item locking. If the item is locked, the operation is ignored.</p><aside class="m-note m-success"><h4>Precondition</h4><p>item must be currently in the queue</p><p>New key must be within valid range</p></aside><aside class="m-note m-info"><h4>Note</h4><p>If the item is locked, no modification is performed</p></aside>
           </div></section>
-          <section class="m-doc-details" id="a88939a5dee916c1a9e5ff446b60ef748"><div>
+          <section class="m-doc-details" id="adc108fe227b26744aa7492b762cb9182"><div>
             <h3>
               <div class="m-doc-template">
                 template&lt;typename Tp, typename Int, typename Sequence&gt;
               </div>
-              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a88939a5dee916c1a9e5ff446b60ef748" class="m-doc-self">detach</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item) noexcept -&gt; void <span class="m-label m-primary">constexpr</span></span></span>
+              <span class="m-doc-wrap-bumper">auto BPQueue&lt;Tp, Int, Sequence&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adc108fe227b26744aa7492b762cb9182" class="m-doc-self">detach</a>(</span><span class="m-doc-wrap"><a href="classDllink.html" class="m-doc">Item</a>&amp; item) noexcept -&gt; void</span></span>
             </h3>
             <p>Remove an item from the queue without returning it.</p>
             <table class="m-table m-fullwidth m-flat">

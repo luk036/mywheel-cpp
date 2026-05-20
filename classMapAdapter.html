@@ -76,23 +76,24 @@
             </li>
           </ul>
         </nav>
-<pre class="m-code"><span class="n">MapAdapter</span><span class="w"> </span><span class="n">Structure</span><span class="o">:</span>
-
-<span class="n">Original</span><span class="w"> </span><span class="n">Container</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">B</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">C</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">D</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">E</span><span class="p">]</span>
-<span class="w">                   </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w">  </span><span class="o">&lt;--</span><span class="w"> </span><span class="n">Indices</span><span class="w"> </span><span class="n">become</span><span class="w"> </span><span class="n">keys</span>
-
-<span class="n">MapAdapter</span><span class="w"> </span><span class="n">Interface</span><span class="o">:</span>
-
-<span class="k">operator</span><span class="p">[](</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">A</span>
-<span class="k">operator</span><span class="p">[](</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">B</span>
-<span class="k">operator</span><span class="p">[](</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">C</span>
-<span class="k">operator</span><span class="p">[](</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">D</span>
-<span class="k">operator</span><span class="p">[](</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">E</span>
-
-<span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">)</span>
-<span class="n">end</span><span class="p">()</span><span class="w">   </span><span class="err">→</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="n">past</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="p">)</span>
-
-<span class="n">enumerate</span><span class="p">()</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">D</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="p">)]</span></pre>
+<pre>* MapAdapter Structure:
+*
+* Original Container: [A] [B] [C] [D] [E]
+*                    [0] [1] [2] [3] [4]  &lt;-- Indices become keys
+*
+* MapAdapter Interface:
+*
+* operator[](0) → A
+* operator[](1) → B
+* operator[](2) → C
+* operator[](3) → D
+* operator[](4) → E
+*
+* begin() → iterator to (0, A)
+* end()   → iterator past (4, E)
+*
+* enumerate() → [(0, A), (1, B), (2, C), (3, D), (4, E)]
+* </pre>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">

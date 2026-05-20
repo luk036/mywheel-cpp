@@ -77,31 +77,32 @@
             </li>
           </ul>
         </nav>
-<p>The <code><a href="structfun_1_1Robin.html" class="m-doc">Robin</a></code> class is implementing a round-robin algorithm. It is used to cycle through a sequence of elements in a circular manner. The constructor initializes the cycle with a specified number of parts, and each part is assigned a unique key. The <code>exclude</code> method returns an iterable wrapper that excludes a specified part from the cycle.</p><pre class="m-code"><span class="n">Round</span><span class="w"> </span><span class="n">Robin</span><span class="w"> </span><span class="n">Cycle</span><span class="o">:</span>
-
-<span class="w">   </span><span class="err">┌─────┐</span>
-<span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="err">│◄────────────────────────┐</span>
-<span class="w">   </span><span class="err">└──┬──┘</span><span class="w">                        </span><span class="err">│</span>
-<span class="w">      </span><span class="err">│</span><span class="w">                           </span><span class="err">│</span>
-<span class="w">      </span><span class="err">▼</span><span class="w">                           </span><span class="err">│</span>
-<span class="w">   </span><span class="err">┌─────┐</span><span class="w">                        </span><span class="err">│</span>
-<span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="err">│◄────┐</span><span class="w">                 </span><span class="err">│</span>
-<span class="w">   </span><span class="err">└──┬──┘</span><span class="w">     </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
-<span class="w">      </span><span class="err">│</span><span class="w">        </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
-<span class="w">      </span><span class="err">▼</span><span class="w">        </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
-<span class="w">   </span><span class="err">┌─────┐</span><span class="w">     </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
-<span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="mi">2</span><span class="w">  </span><span class="err">│◄────┼─────────────────┤</span><span class="w">  </span><span class="o">&lt;--</span><span class="w"> </span><span class="n">exclude</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">would</span><span class="w"> </span><span class="n">skip</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">node</span>
-<span class="w">   </span><span class="err">└──┬──┘</span><span class="w">     </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
-<span class="w">      </span><span class="err">│</span><span class="w">        </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
-<span class="w">      </span><span class="err">▼</span><span class="w">        </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
-<span class="w">   </span><span class="err">┌─────┐</span><span class="w">     </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span>
-<span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="err">│◄────┘</span><span class="w">                 </span><span class="err">│</span>
-<span class="w">   </span><span class="err">└──┬──┘</span><span class="w">                       </span><span class="err">│</span>
-<span class="w">      </span><span class="err">│</span><span class="w">                          </span><span class="err">│</span>
-<span class="w">      </span><span class="err">└──────────────────────────┘</span>
-
-<span class="n">The</span><span class="w"> </span><span class="n">cycle</span><span class="w"> </span><span class="n">forms</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">circular</span><span class="w"> </span><span class="n">linked</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">where</span><span class="w"> </span><span class="n">exclude</span><span class="p">(</span><span class="n">from_part</span><span class="p">)</span>
-<span class="n">returns</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">starts</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">excluded</span><span class="w"> </span><span class="n">part</span><span class="p">.</span></pre>
+<p>The <code><a href="structfun_1_1Robin.html" class="m-doc">Robin</a></code> class is implementing a round-robin algorithm. It is used to cycle through a sequence of elements in a circular manner. The constructor initializes the cycle with a specified number of parts, and each part is assigned a unique key. The <code>exclude</code> method returns an iterable wrapper that excludes a specified part from the cycle.</p><pre>* Round Robin Cycle:
+*
+*    ┌─────┐
+*    │  0  │◄────────────────────────┐
+*    └──┬──┘                        │
+*       │                           │
+*       ▼                           │
+*    ┌─────┐                        │
+*    │  1  │◄────┐                 │
+*    └──┬──┘     │                 │
+*       │        │                 │
+*       ▼        │                 │
+*    ┌─────┐     │                 │
+*    │  2  │◄────┼─────────────────┤  &lt;-- exclude(2) would skip this node
+*    └──┬──┘     │                 │
+*       │        │                 │
+*       ▼        │                 │
+*    ┌─────┐     │                 │
+*    │  3  │◄────┘                 │
+*    └──┬──┘                       │
+*       │                          │
+*       └──────────────────────────┘
+*
+* The cycle forms a circular linked list where exclude(from_part)
+* returns an iterator that starts after the excluded part.
+* </pre>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">

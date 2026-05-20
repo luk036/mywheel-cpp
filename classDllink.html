@@ -77,23 +77,24 @@
             </li>
           </ul>
         </nav>
-<p>The <a href="classDllink.html" class="m-doc">Dllink</a> class represents a node in a doubly-linked list that can also serve as a list head (sentinel node). This design enables extremely fast insertion and deletion operations without special cases for empty lists or boundary conditions.</p><p>Key Features:</p><ul><li>Can function as both regular node and list head (sentinel)</li><li>O(1) insertion and deletion operations</li><li>No length tracking for maximum efficiency</li><li>Non-owning design for flexible node management</li><li>Packed structure for memory efficiency</li></ul><p>The sentinel-based approach eliminates edge cases in list operations, making the implementation simpler and more robust. This is particularly useful in algorithms like Fiduccia-Mattheyses where nodes frequently move between different lists.</p><p>Time Complexity:</p><ul><li>Insert: O(1)</li><li>Delete: O(1)</li><li>Attach/Detach: O(1)</li></ul><p>Space Complexity: O(1) per node</p><pre class="m-code"><span class="n">Doubly</span><span class="w"> </span><span class="n">Linked</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">Structure</span><span class="o">:</span>
-
-<span class="w">    </span><span class="err">┌─────────────────────────────────────┐</span>
-<span class="w">    </span><span class="err">│</span><span class="w">              </span><span class="n">Head</span><span class="o">/</span><span class="n">Sentinel</span><span class="w">          </span><span class="err">│</span>
-<span class="w">    </span><span class="err">│</span><span class="w">  </span><span class="err">┌─────┐</span><span class="w">     </span><span class="err">┌─────┐</span><span class="w">     </span><span class="err">┌─────┐</span><span class="w">   </span><span class="err">│</span>
-<span class="w">    </span><span class="err">└─▶│</span><span class="n">next</span><span class="w"> </span><span class="err">│────▶│</span><span class="n">next</span><span class="w"> </span><span class="err">│────▶│</span><span class="n">next</span><span class="w"> </span><span class="err">│───┘</span>
-<span class="w">       </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">     </span><span class="err">│</span>
-<span class="w">       </span><span class="err">│</span><span class="n">prev</span><span class="err">│◀────│</span><span class="n">prev</span><span class="err">│◀────│</span><span class="n">prev</span><span class="err">│◀─┐</span>
-<span class="w">       </span><span class="err">└─────┘</span><span class="w">     </span><span class="err">└─────┘</span><span class="w">     </span><span class="err">└─────┘</span><span class="w"> </span><span class="err">│</span>
-<span class="w">         </span><span class="err">▲</span><span class="w">         </span><span class="err">▲</span><span class="w">   </span><span class="err">▲</span><span class="w">       </span><span class="err">▲</span><span class="w">   </span><span class="err">▲</span><span class="w">   </span><span class="err">│</span>
-<span class="w">         </span><span class="err">│</span><span class="w">         </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">│</span>
-<span class="w">         </span><span class="err">└─────────┼───┼───────┼───┼───┘</span>
-<span class="w">                   </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">│</span>
-<span class="w">                </span><span class="err">┌─────┐</span><span class="w"> </span><span class="err">┌─────┐</span><span class="w"> </span><span class="err">┌─────┐</span>
-<span class="w">                </span><span class="err">│</span><span class="n">Node1</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="n">Node2</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="n">Node3</span><span class="err">│</span>
-<span class="w">                </span><span class="err">│</span><span class="n">Data</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="n">Data</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="n">Data</span><span class="w"> </span><span class="err">│</span>
-<span class="w">                </span><span class="err">└─────┘</span><span class="w"> </span><span class="err">└─────┘</span><span class="w"> </span><span class="err">└─────┘</span></pre><p>Each node has &#x27;next&#x27; and &#x27;prev&#x27; pointers, with the head/sentinel serving as a boundary marker to simplify insertion/deletion.</p>
+<p>The <a href="classDllink.html" class="m-doc">Dllink</a> class represents a node in a doubly-linked list that can also serve as a list head (sentinel node). This design enables extremely fast insertion and deletion operations without special cases for empty lists or boundary conditions.</p><p>Key Features:</p><ul><li>Can function as both regular node and list head (sentinel)</li><li>O(1) insertion and deletion operations</li><li>No length tracking for maximum efficiency</li><li>Non-owning design for flexible node management</li><li>Packed structure for memory efficiency</li></ul><p>The sentinel-based approach eliminates edge cases in list operations, making the implementation simpler and more robust. This is particularly useful in algorithms like Fiduccia-Mattheyses where nodes frequently move between different lists.</p><p>Time Complexity:</p><ul><li>Insert: O(1)</li><li>Delete: O(1)</li><li>Attach/Detach: O(1)</li></ul><p>Space Complexity: O(1) per node</p><pre>* Doubly Linked List Structure:
+*
+*     ┌─────────────────────────────────────┐
+*     │              Head/Sentinel          │
+*     │  ┌─────┐     ┌─────┐     ┌─────┐   │
+*     └─▶│next │────▶│next │────▶│next │───┘
+*        │     │     │     │     │     │
+*        │prev│◀────│prev│◀────│prev│◀─┐
+*        └─────┘     └─────┘     └─────┘ │
+*          ▲         ▲   ▲       ▲   ▲   │
+*          │         │   │       │   │   │
+*          └─────────┼───┼───────┼───┼───┘
+*                    │   │       │   │
+*                 ┌─────┐ ┌─────┐ ┌─────┐
+*                 │Node1│ │Node2│ │Node3│
+*                 │Data │ │Data │ │Data │
+*                 └─────┘ └─────┘ └─────┘
+* </pre><p>Each node has &#x27;next&#x27; and &#x27;prev&#x27; pointers, with the head/sentinel serving as a boundary marker to simplify insertion/deletion.</p>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
