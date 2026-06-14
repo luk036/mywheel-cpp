@@ -165,6 +165,16 @@ class BPQueue {
     }
 
     /**
+     * @brief Get the offset value used for key translation
+     *
+     * Returns the offset value (a - 1) that is subtracted from keys
+     * to convert them to unsigned internal indices.
+     *
+     * @return Int The offset value
+     */
+    [[nodiscard]] constexpr auto get_offset() const noexcept -> Int { return this->offset; }
+
+    /**
      * @brief Clear all elements from the priority queue
      *
      * Removes all items from all buckets and resets the maximum key to 0.
