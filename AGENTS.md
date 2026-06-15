@@ -211,7 +211,7 @@ CPMAddPackage("gh:owner/repo@version")
 
 ### MSVC
 ```bash
-/W4 /WX /wd5285 /wd4819 /wd4996
+/utf-8 /W4 /WX /wd5285 /wd4996
 /EHsc
 ```
 
