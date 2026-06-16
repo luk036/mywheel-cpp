@@ -36,7 +36,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 17)
 if(NOT TEST_INSTALLED_VERSION)
   if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     target_compile_options(
-      MyWheel INTERFACE -Wall -Wpedantic -Wextra -Werror -Wno-deprecated-literal-operator
+      MyWheel INTERFACE -Wall -Wpedantic -Wextra -Werror
     )
   elseif(MSVC)
     target_compile_options(MyWheel INTERFACE /utf-8 /W4 /WX)
