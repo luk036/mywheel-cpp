@@ -1,5 +1,9 @@
 #pragma once
 
+/** @file robin.hpp
+ *  @brief Round-robin cycle implementation with circular singly-linked list.
+ */
+
 #include <vector>
 
 namespace fun {
@@ -12,6 +16,10 @@ namespace fun {
          *
          * @tparam T
          */
+        /**
+         * @brief Node in a singly-linked cycle for round-robin iteration.
+         * @tparam T Type of the key/value stored in the node.
+         */
         template <typename T> struct RobinSlNode {
             RobinSlNode* next;  //!< Pointer to the next node in the cycle
             T key;              //!< The key/value stored in this node
@@ -22,6 +30,10 @@ namespace fun {
          * the implementation of the `Robin` class in the `fun` namespace.
          *
          * @tparam T
+         */
+        /**
+         * @brief Iterator for traversing elements in a Robin cycle.
+         * @tparam T Type of the key/value stored in nodes.
          */
         template <typename T> struct RobinIterator {
             const RobinSlNode<T>* curr;  //!< Pointer to the current node in the iteration
@@ -73,6 +85,10 @@ namespace fun {
          * is used in the implementation of the `Robin` class in the `fun` namespace.
          *
          * @tparam T
+         */
+        /**
+         * @brief Wrapper providing begin/end iteration excluding a specified part.
+         * @tparam T Type of the key/value stored in nodes.
          */
         template <typename T> struct RobinIterableWrapper {
             const detail::RobinSlNode<T>*

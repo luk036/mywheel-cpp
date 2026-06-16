@@ -1,5 +1,9 @@
 #pragma once
 
+/** @file map_adapter.hpp
+ *  @brief Dict-like adapter wrapping std::vector with Range keys.
+ */
+
 #include <py2cpp/enumerate.hpp>
 #include <py2cpp/range.hpp>
 #include <type_traits>
@@ -88,6 +92,12 @@ template <typename Container> class MapAdapter {
      *
      * @return a constant reference to the value associated with the given key.
      */
+    /**
+     * @brief Access element by key with bounds checking.
+     * @param[in] key The index of the element to access.
+     * @return const reference to the element at the given key.
+     * @throws std::out_of_range if key is out of bounds.
+     */
     auto at(const key_type& key) const -> const mapped_type& { return _lst.at(key); }
 
     /**
@@ -99,12 +109,16 @@ template <typename Container> class MapAdapter {
      * @return a boolean value. It will return true if the key is contained in the data structure,
      * and false otherwise.
      */
+    /**
+     * @brief Check whether a key is within the valid range.
+     * @param[in] key The key to check.
+     * @return true if the key is within [0, size), false otherwise.
+     */
     auto contains(const key_type& key) const -> bool { return _rng.contains(key); }
 
     /**
-     * The size() function returns the size of the _rng container.
-     *
-     * @return The size of the `_rng` object is being returned.
+     * @brief Get the number of elements in the adapted container.
+     * @return The number of elements.
      */
     auto size() const -> size_t { return _rng.size(); }
 
@@ -114,12 +128,15 @@ template <typename Container> class MapAdapter {
      * @return The `begin()` function is returning an iterator pointing to the beginning of the
      * `mapview` container.
      */
+    /**
+     * @brief Get iterator to the first (key, value) pair.
+     * @return Iterator to the beginning of the map view.
+     */
     auto begin() const { return mapview.begin(); }
 
     /**
-     * The function returns an iterator pointing to the end of the mapview.
-     *
-     * @return The end iterator of the mapview.
+     * @brief Get iterator past the last (key, value) pair.
+     * @return Iterator to the end of the map view.
      */
     auto end() const { return mapview.end(); }
 };

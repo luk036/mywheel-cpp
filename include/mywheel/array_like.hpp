@@ -1,14 +1,18 @@
 #pragma once
 
+/** @file array_like.hpp
+ *  @brief RepeatArray and ShiftArray - array-like containers with special indexing semantics.
+ */
+
 // #include <any>
 #include <cstddef>
 #include <stdexcept>
 #include <vector>
 
 /**
- * @brief The `RepeatArray` class is a template class that represents an array that repeats its
- * elements. It has a constructor that takes a value and a size as parameters and initializes all
- * elements of the array with the given value.
+ * @brief Array that repeats a single value for all elements.
+ *
+ * @tparam T Type of the repeated value.
  *
  * @verbatim
  *    0   1   2   3   4
@@ -130,14 +134,12 @@ template <typename T> class RepeatArray {
 };
 
 /**
- * @brief Shift Array
+ * @brief Array with shifted index access semantics.
  *
- * The `ShiftArray` class is a template class that extends a given container
- * type. It allows accessing elements of the container using shifted indices.
- * The shift value is set using the `set_start` method, and the shifted indices
- * are calculated by subtracting the shift value from the original index. The
- * class provides `operator[]` overloads to access elements using shifted
- * indices.
+ * Allows accessing elements of a container using indices that are offset
+ * by a configurable start value.
+ *
+ * @tparam T Type of elements in the array.
  *
  * @verbatim
  * Original indices:  [0] [1] [2] [3] [4] [5]
@@ -148,8 +150,6 @@ template <typename T> class RepeatArray {
  * Accessible range:        [0] [1] [2] [3]  <-- These map to [C] [D] [E] [F]
  * Shifted indices:         [2] [3] [4] [5]  <-- Internal indices
  * @endverbatim
- *
- * @tparam T
  */
 template <typename T> class ShiftArray {
   private:

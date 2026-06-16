@@ -1,5 +1,9 @@
 #pragma once
 
+/** @file bpqueue.hpp
+ *  @brief Bounded priority queue with integer keys using bucket array of doubly-linked lists.
+ */
+
 #include <cassert>      // for assert
 #include <cstdint>      // for int32_t
 #include <type_traits>  // for make_unsigned_t, is_integral, integral_consta...

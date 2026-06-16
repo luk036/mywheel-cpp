@@ -1,5 +1,9 @@
 #pragma once
 
+/** @file dllink.hpp
+ *  @brief Doubly-linked list node with sentinel support.
+ */
+
 #include <cassert>
 #include <cstddef>
 #include <utility>  // for std::move()

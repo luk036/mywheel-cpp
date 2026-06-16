@@ -1,5 +1,9 @@
 #pragma once
 
+/** @file dllist.hpp
+ *  @brief Doubly-linked list with sentinel head node for efficient operations.
+ */
+
 #include <utility>  // import std::move()
 
 #include "dllink.hpp"  // for Dllink
