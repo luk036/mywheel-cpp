@@ -13,6 +13,11 @@ TEST_CASE("Test RepeatArray") {
     CHECK_EQ(count, arr.size());
 }
 
+TEST_CASE("RepeatArray: empty initialization") {
+    RepeatArray<int> arr(3, 0);
+    CHECK(arr.empty());
+}
+
 TEST_CASE("Test ShiftArray") {
     ShiftArray<int> arr(std::vector<int>{1, 2, 3, 4, 5});
     arr.set_start(2);
@@ -62,4 +67,10 @@ TEST_CASE("Test ShiftArray Stress Test") {
     for (size_t key = start_offset; key < start_offset + arr.size(); ++key) {
         CHECK_EQ(arr[key], static_cast<int>(key - start_offset));
     }
+}
+
+TEST_CASE("ShiftArray: empty initialization") {
+    ShiftArray<int> arr;
+    arr.set_start(0);
+    CHECK(arr.empty());
 }

@@ -52,6 +52,8 @@ template <typename T> class RepeatArray {
      */
     auto size() const noexcept -> size_t { return this->_size; }
 
+    bool empty() const noexcept { return this->_size == 0; }
+
     /**
      * Iterator class for RepeatArray, allowing iteration over the elements of the array.
      *
@@ -177,6 +179,8 @@ template <typename T> class ShiftArray {
         this->_start = start;
     }
 
+    bool empty() const noexcept { return this->_lst.empty() || this->_start >= this->_lst.size(); }
+    
     /**
      * The above function is an overloaded operator[] that returns a constant reference to an
      * element in a list.
