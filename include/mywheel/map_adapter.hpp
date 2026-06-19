@@ -110,9 +110,7 @@ template <typename Container> class MapAdapter {
      * and false otherwise.
      */
     /**
-     * @brief Check whether a key is within the valid range.
-     * @param[in] key The key to check.
-     * @return true if the key is within [0, size), false otherwise.
+     * @overload
      */
     auto contains(const key_type& key) const -> bool { return _rng.contains(key); }
 
