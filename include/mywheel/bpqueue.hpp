@@ -469,9 +469,12 @@ template <typename Tp, typename Int = int32_t> class BpqIterator {
     constexpr auto operator++() -> BpqIterator& {
         ++this->curr_item;
         while (this->curr_item == this->curlist().end()) {
-            do {
+            while (true) {
                 this->curr_key -= 1;
-            } while (this->curlist().is_empty());
+                if (!this->curlist().is_empty()) {
+                    break;
+                }
+            }
             this->curr_item = this->curlist().begin();
         }
         return *this;
