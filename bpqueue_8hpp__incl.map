@@ -1,0 +1,22 @@
+<map id="mywheel/bpqueue.hpp" name="mywheel/bpqueue.hpp">
+<area shape="rect" id="Node000001" title="Bounded priority queue with integer keys using bucket array of doubly&#45;linked lists." alt="" coords="136,5,307,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="51,225,120,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,33,70,53,38,66,18,80,10,96,8,114,11,132,18,150,40,185,65,214,61,217,36,188,14,153,6,133,3,114,5,95,14,77,35,61,69,48,149,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="28,79,95,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,33,101,75,99,71,195,28"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="120,79,212,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="215,33,185,69,181,66,210,29"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="293,225,353,251"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="308,20,339,27,370,38,398,54,421,77,430,96,431,116,426,136,415,155,385,191,352,219,349,215,381,187,411,152,421,134,426,116,425,98,417,80,395,58,368,42,338,32,307,25"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="344,79,406,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="247,28,339,70,337,75,245,33"/>
+<area shape="rect" id="Node000007" href="$dllist_8hpp.html" title="Doubly&#45;linked list with sentinel head node for efficient operations." alt="" coords="236,79,319,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="233,29,262,66,258,69,229,33"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="284,104,318,211,313,213,279,105"/>
+<area shape="rect" id="Node000008" href="$dllink_8hpp.html" title="Doubly&#45;linked list node with sentinel support." alt="" coords="192,152,278,177"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="273,106,251,142,247,139,268,103"/>
+<area shape="poly" id="edge9_Node000008_Node000002" title=" " alt="" coords="212,180,124,222,121,217,210,175"/>
+<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="251,175,300,214,296,219,248,179"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="198,225,269,251"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="237,178,237,212,232,212,232,178"/>
+</map>
