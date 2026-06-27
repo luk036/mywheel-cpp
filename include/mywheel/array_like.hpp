@@ -180,7 +180,7 @@ template <typename T> class ShiftArray {
     }
 
     bool empty() const noexcept { return this->_lst.empty() || this->_start >= this->_lst.size(); }
-    
+
     /**
      * The above function is an overloaded operator[] that returns a constant reference to an
      * element in a list.
