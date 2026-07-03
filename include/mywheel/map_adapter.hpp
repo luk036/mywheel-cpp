@@ -42,12 +42,10 @@ template <typename Container> class MapAdapter {
     using key_type = size_t;
     using mapped_type = typename Container::value_type;
     using value_type = std::pair<key_type, mapped_type>;
-    using Enumerator = decltype(py::enumerate(std::declval<Container&>()));
 
   private:
     py::Range<key_type> _rng;  //!< Range of valid keys (0 to size-1)
     Container& _lst;           //!< Reference to the underlying container
-    Enumerator mapview;        //!< Enumerator for iterating over (key, value) pairs
 
   public:
     /**
@@ -58,8 +56,7 @@ template <typename Container> class MapAdapter {
      *
      * @param[in] lst Reference to the container to adapt
      */
-    explicit MapAdapter(Container& lst)
-        : _rng{py::range(lst.size())}, _lst(lst), mapview(py::enumerate(this->_lst)) {}
+    explicit MapAdapter(Container& lst) : _rng{py::range(lst.size())}, _lst(lst) {}
 
     /**
      * @brief Access element by key (const version)
@@ -121,22 +118,16 @@ template <typename Container> class MapAdapter {
     auto size() const -> size_t { return _rng.size(); }
 
     /**
-     * The function returns an iterator pointing to the beginning of the mapview.
-     *
-     * @return The `begin()` function is returning an iterator pointing to the beginning of the
-     * `mapview` container.
-     */
-    /**
      * @brief Get iterator to the first (key, value) pair.
      * @return Iterator to the beginning of the map view.
      */
-    auto begin() const { return mapview.begin(); }
+    auto begin() const { return py::enumerate(this->_lst).begin(); }
 
     /**
      * @brief Get iterator past the last (key, value) pair.
      * @return Iterator to the end of the map view.
      */
-    auto end() const { return mapview.end(); }
+    auto end() const { return py::enumerate(this->_lst).end(); }
 };
 
 /**
