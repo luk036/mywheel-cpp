@@ -75,7 +75,7 @@ template <typename Tp, typename Int> class BpqIterator;
  * @tparam Sequence The container type for buckets (default: vector of Dllist)
  */
 template <typename Tp, typename Int = int32_t,
-          typename Sequence = std::vector<Dllink<std::pair<Tp, std::make_unsigned_t<Int>>>>>
+          typename Sequence = std::vector<Dllist<std::pair<Tp, std::make_unsigned_t<Int>>>>>
 class BPQueue {
     using UInt = std::make_unsigned_t<Int>;
 
@@ -121,7 +121,7 @@ class BPQueue {
           high(static_cast<UInt>(max_key - offset)) {
         assert(min_key <= max_key);
         static_assert(std::is_integral<Int>::value, "bucket's key must be an integer");
-        bucket[0].attach(this->sentinel);  // sentinel
+        bucket[0].appendleft(this->sentinel);  // sentinel
     }
 
     // Rule of Five: Explicitly control copy/move operations
@@ -187,8 +187,7 @@ class BPQueue {
      */
     constexpr auto clear() noexcept -> void {
         while (this->max > 0) {
-            auto& h = this->bucket[this->max];
-            h.next = h.prev = &h;
+            this->bucket[this->max].clear();
             this->max -= 1;
         }
     }
@@ -230,7 +229,7 @@ class BPQueue {
         if (this->max < item.data.second) {
             this->max = item.data.second;
         }
-        this->bucket[item.data.second].attach(item);
+        this->bucket[item.data.second].appendleft(item);
     }
 
     /**
@@ -253,8 +252,7 @@ class BPQueue {
         if (this->max < item.data.second) {
             this->max = item.data.second;
         }
-        auto& h = this->bucket[item.data.second];
-        h.prev->attach(item);
+        this->bucket[item.data.second].append(item);
     }
 
     /**
@@ -271,9 +269,8 @@ class BPQueue {
      * @post max key is updated if the highest bucket becomes empty
      */
     constexpr auto popleft() noexcept -> Item& {
-        auto& res = *this->bucket[this->max].next;
-        res.detach();
-        while (this->bucket[this->max].next == &this->bucket[this->max]) {
+        auto& res = this->bucket[this->max].popleft();
+        while (this->bucket[this->max].is_empty()) {
             this->max -= 1;
         }
         return res;
@@ -302,15 +299,12 @@ class BPQueue {
         item.data.second -= delta;
         assert(item.data.second > 0);
         assert(item.data.second <= this->high);
-        {  // FIFO
-            auto& h = this->bucket[item.data.second];
-            h.prev->attach(item);
-        }
+        this->bucket[item.data.second].append(item);  // FIFO
         if (this->max < item.data.second) {
             this->max = item.data.second;
             return;
         }
-        while (this->bucket[this->max].next == &this->bucket[this->max]) {
+        while (this->bucket[this->max].is_empty()) {
             this->max -= 1;
         }
     }
@@ -338,7 +332,7 @@ class BPQueue {
         item.data.second += delta;
         assert(item.data.second > 0);
         assert(item.data.second <= this->high);
-        this->bucket[item.data.second].attach(item);  // LIFO
+        this->bucket[item.data.second].appendleft(item);  // LIFO
         if (this->max < item.data.second) {
             this->max = item.data.second;
         }
@@ -388,7 +382,7 @@ class BPQueue {
     constexpr auto detach(Item& item) noexcept -> void {
         // this->bucket[item.data.second].detach(item)
         item.detach();
-        while (this->bucket[this->max].next == &this->bucket[this->max]) {
+        while (this->bucket[this->max].is_empty()) {
             this->max -= 1;
         }
     }
@@ -465,7 +459,7 @@ template <typename Tp, typename Int = int32_t> class BpqIterator {
      * @param[in] curr_key The initial key value to start from
      */
     constexpr BpqIterator(BPQueue<Tp, Int>& bpq, UInt curr_key)
-        : bpq{bpq}, curr_key{curr_key}, curr_item{bpq.bucket[curr_key].next} {}
+        : bpq{bpq}, curr_key{curr_key}, curr_item{bpq.bucket[curr_key].begin()} {}
 
     /**
      * @brief Move to the next item
@@ -474,15 +468,14 @@ template <typename Tp, typename Int = int32_t> class BpqIterator {
      */
     constexpr auto operator++() -> BpqIterator& {
         ++this->curr_item;
-        while (this->curr_item == DllIterator<std::pair<Tp, UInt>>{&this->bpq.bucket[this->curr_key]}) {
+        while (this->curr_item == this->curlist().end()) {
             while (true) {
                 this->curr_key -= 1;
-                auto& h = this->bpq.bucket[this->curr_key];
-                if (h.next != &h) {
+                if (!this->curlist().is_empty()) {
                     break;
                 }
             }
-            this->curr_item = DllIterator<std::pair<Tp, UInt>>{this->bpq.bucket[this->curr_key].next};
+            this->curr_item = this->curlist().begin();
         }
         return *this;
     }

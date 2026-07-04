@@ -8,11 +8,9 @@
 #include <cstddef>
 #include <utility>  // for std::move()
 
-// Forward declarations
+// Forward declaration for begin() end()
 template <typename T> class Dllist;
 template <typename T> class DllIterator;
-template <typename Tp, typename Int, typename Sequence> class BPQueue;
-template <typename Tp, typename Int> class BpqIterator;
 
 /**
  * @brief Doubly-linked list node with sentinel support
@@ -73,8 +71,6 @@ template <typename T> class Dllink {
     friend DllIterator<T>;
 
   private:
-    template <typename Tp, typename Int, typename Sequence> friend class BPQueue;
-    template <typename Tp, typename Int> friend class BpqIterator;
     static constexpr size_t MAX_DLLINK_SIZE = 24;
     Dllink* next{this}; /**< Pointer to the next node in the list */
     Dllink* prev{this}; /**< Pointer to the previous node in the list */
