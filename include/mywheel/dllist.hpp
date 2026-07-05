@@ -111,8 +111,13 @@ template <typename T> class Dllist {
     ~Dllist() = default;
     Dllist(const Dllist&) = delete;                               // don't copy
     constexpr auto operator=(const Dllist&) -> Dllist& = delete;  // don't assign
-    constexpr Dllist(Dllist&&) noexcept = default;
-    constexpr auto operator=(Dllist&&) noexcept -> Dllist& = default;  // don't assign
+    constexpr Dllist(Dllist&& other) noexcept : head(std::move(other.head)) {
+        // Fix self-referencing sentinel pointers after move.
+        // If the list was empty, head.next/prev pointed to other.head.
+        if (this->head.next == &other.head) this->head.next = &this->head;
+        if (this->head.prev == &other.head) this->head.prev = &this->head;
+    }
+    constexpr auto operator=(Dllist&&) noexcept -> Dllist& = delete;  // don't assign
 
     /**
      * @brief whether the list is empty

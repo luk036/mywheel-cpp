@@ -275,4 +275,32 @@ template <typename T> class ShiftArray {
      * @return the size of the list (lst) minus the starting index (start).
      */
     auto size() const noexcept -> size_t { return this->_lst.size() - this->_start; }
+
+    /**
+     * @brief Remove the inaccessible prefix from the underlying storage.
+     *
+     * Erases elements before `_start` from `_lst` and resets `_start` to 0.
+     * This frees memory that was made inaccessible by `set_start()`.
+     * After calling this, `operator[]` and iteration behavior are unchanged
+     * but the underlying vector no longer holds unreachable elements.
+     *
+     * @verbatim
+     * Before trim_front():
+     *   _lst = [A B C D E F], _start = 2
+     *   Accessible: [C D E F]  (via operator[] 0,1,2,3)
+     *   Unused:     [A B]      (still allocated)
+     *
+     * After trim_front():
+     *   _lst = [C D E F], _start = 0
+     *   Accessible: [C D E F]  (same)
+     *   No unused prefix.
+     * @endverbatim
+     */
+    auto trim_front() -> void {
+        if (this->_start > 0) {
+            this->_lst.erase(this->_lst.begin(),
+                             this->_lst.begin() + static_cast<std::ptrdiff_t>(this->_start));
+            this->_start = 0;
+        }
+    }
 };

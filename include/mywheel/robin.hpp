@@ -1,9 +1,13 @@
 #pragma once
 
 /** @file robin.hpp
- *  @brief Round-robin cycle implementation with circular singly-linked list.
+ *  @brief Round-robin cycle implementation with index-based circular addressing.
+ *
+ *  Uses modular arithmetic instead of linked-list pointers, saving 8 bytes per node
+ *  and avoiding pointer invalidation on vector reallocation.
  */
 
+#include <cstddef>
 #include <vector>
 
 namespace fun {
@@ -11,182 +15,109 @@ namespace fun {
     namespace detail {
 
         /**
-         * The code snippet is defining a struct template called `RobinSlNode`. It represents a node
-         * in a singly linked list used in the implementation of the `Robin` class.
-         *
-         * @tparam T
-         */
-        /**
-         * @brief Node in a singly-linked cycle for round-robin iteration.
-         * @tparam T Type of the key/value stored in the node.
-         */
-        template <typename T> struct RobinSlNode {
-            RobinSlNode* next;  //!< Pointer to the next node in the cycle
-            T key;              //!< The key/value stored in this node
-        };
-
-        /**
-         * The code snippet defines a struct template called `RobinIterator`. This struct is used in
-         * the implementation of the `Robin` class in the `fun` namespace.
-         *
-         * @tparam T
-         */
-        /**
          * @brief Iterator for traversing elements in a Robin cycle.
          * @tparam T Type of the key/value stored in nodes.
          */
         template <typename T> struct RobinIterator {
-            const RobinSlNode<T>* curr;  //!< Pointer to the current node in the iteration
+            const std::vector<T>* cycle;  //!< Pointer to the cycle vector
+            std::size_t idx;              //!< Current index in the cycle
+            std::size_t start_idx;        //!< Index where iteration ends (exclusive)
 
             /**
-             * The function checks if the current iterator is not equal to another iterator.
-             *
-             * @param[in] other The parameter "other" is of type RobinIterator, which is the type of
-             * the object being compared to the current object.
-             *
-             * @return The operator is returning a boolean value. If the current iterator is not
-             * equal to the other iterator, it will return true. Otherwise, it will return false.
+             * @brief Inequality comparison
              */
-            auto operator!=(const RobinIterator& other) const -> bool { return curr != other.curr; }
+            auto operator!=(const RobinIterator& other) const -> bool { return idx != other.idx; }
 
             /**
-             * The function checks if the current iterator is equal to another iterator.
-             *
-             * @param[in] other The parameter "other" is of type RobinIterator, which is the type of
-             * the object being compared to the current object.
-             *
-             * @return The operator is returning a boolean value.
+             * @brief Equality comparison
              */
-            auto operator==(const RobinIterator& other) const -> bool { return curr == other.curr; }
+            auto operator==(const RobinIterator& other) const -> bool { return idx == other.idx; }
 
             /**
-             * The function increments the iterator to the next element and returns a reference to
-             * the updated iterator.
-             *
-             * @return The `operator++` function is returning a reference to a `RobinIterator`
-             * object.
+             * @brief Pre-increment — advance to next index (circular)
              */
             auto operator++() -> RobinIterator& {
-                curr = curr->next;
+                idx = (idx + 1) % cycle->size();
                 return *this;
             }
 
             /**
-             * The above function is an overloaded operator* that returns a const reference to the
-             * key of the current node.
-             *
-             * @return The code is returning a reference to a constant object of type T.
+             * @brief Dereference — return the key at current index
              */
-            auto operator*() const -> const T& { return curr->key; }
+            auto operator*() const -> const T& { return (*cycle)[idx]; }
         };
 
-        /**
-         * The code snippet is defining a struct template called `RobinIterableWrapper`. This struct
-         * is used in the implementation of the `Robin` class in the `fun` namespace.
-         *
-         * @tparam T
-         */
         /**
          * @brief Wrapper providing begin/end iteration excluding a specified part.
          * @tparam T Type of the key/value stored in nodes.
          */
         template <typename T> struct RobinIterableWrapper {
-            const detail::RobinSlNode<T>*
-                curr_node;  //!< Pointer to the node to start iteration from
+            const std::vector<T>* cycle;    //!< Pointer to the cycle vector
+            std::size_t start_idx;          //!< Index of the excluded part
 
             /**
-             * The begin() function returns a RobinIterator object pointing to the next node.
-             *
-             * @return a `RobinIterator<T>` object.
+             * @brief Begin iterator — starts at the node after the excluded part
              */
-            auto begin() const -> RobinIterator<T> { return RobinIterator<T>{curr_node->next}; }
+            auto begin() const -> RobinIterator<T> {
+                return RobinIterator<T>{cycle, (start_idx + 1) % cycle->size(), start_idx};
+            }
 
             /**
-             * The function returns a RobinIterator object representing the end of a collection.
-             *
-             * @return a `RobinIterator<T>` object.
+             * @brief End iterator — points to the excluded part
              */
-            auto end() const -> RobinIterator<T> { return RobinIterator<T>{curr_node}; }
+            auto end() const -> RobinIterator<T> {
+                return RobinIterator<T>{cycle, start_idx, start_idx};
+            }
         };
     }  // namespace detail
 
     /**
      * @brief Round Robin
      *
-     * The `Robin` class is implementing a round-robin algorithm. It is used to
-     * cycle through a sequence of elements in a circular manner. The constructor
-     * initializes the cycle with a specified number of parts, and each part is
-     * assigned a unique key. The `exclude` method returns an iterable wrapper that
-     * excludes a specified part from the cycle.
+     * Cycles through a sequence of elements in a circular manner using
+     * index-based addressing (no linked-list pointers). Each part is
+     * assigned a unique key. The `exclude` method returns an iterable
+     * wrapper that excludes a specified part from the cycle.
+     *
+     * Memory: O(num_parts) for the key vector, no pointer overhead.
      *
      * @verbatim
-     * Round Robin Cycle:
+     * Round Robin Cycle (index-based):
      *
-     *    ┌─────┐
-     *    │  0  │◄────────────────────────┐
-     *    └──┬──┘                        │
-     *       │                           │
-     *       ▼                           │
-     *    ┌─────┐                        │
-     *    │  1  │◄────┐                 │
-     *    └──┬──┘     │                 │
-     *       │        │                 │
-     *       ▼        │                 │
-     *    ┌─────┐     │                 │
-     *    │  2  │◄────┼─────────────────┤  <-- exclude(2) would skip this node
-     *    └──┬──┘     │                 │
-     *       │        │                 │
-     *       ▼        │                 │
-     *    ┌─────┐     │                 │
-     *    │  3  │◄────┘                 │
-     *    └──┬──┘                       │
-     *       │                          │
-     *       └──────────────────────────┘
+     *   cycle vector: [0] [1] [2] [3] [4] [5]
      *
-     * The cycle forms a circular linked list where exclude(from_part)
-     * returns an iterator that starts after the excluded part.
+     *   Iteration order:
+     *   exclude(2) -> 3 -> 4 -> 5 -> 0 -> 1  (modular arithmetic)
+     *
+     *   No linked-list pointers needed: next = (idx + 1) % size
      * @endverbatim
      *
-     * @tparam T
+     * @tparam T Integer type for keys
      */
     template <typename T> struct Robin {
-        using SlNode = detail::RobinSlNode<T>;
+        using Iterator = detail::RobinIterator<T>;
         using IterableWrapper = detail::RobinIterableWrapper<T>;
 
-        std::vector<SlNode> cycle;  //!< Vector storing the circular linked list nodes
+        std::vector<T> cycle;  //!< Vector storing the keys (no pointer overhead)
 
         /**
-         * The Robin constructor initializes a cycle of objects with keys ranging from 0 to
-         * num_parts-1.
-         *
-         * @param[in] num_parts The parameter `num_parts` represents the number of parts or elements
-         * in the Robin object.
+         * @brief Construct a Robin cycle with num_parts elements.
+         * @param num_parts Number of parts in the cycle.
          */
         explicit Robin(T num_parts)
-            : cycle(static_cast<typename std::vector<SlNode>::size_type>(num_parts)) {
-            auto* slptr = &this->cycle.back();
+            : cycle(static_cast<typename std::vector<T>::size_type>(num_parts)) {
             for (auto idx = T(0); idx != num_parts; ++idx) {
-                this->cycle[static_cast<typename std::vector<SlNode>::size_type>(idx)].key = idx;
-                slptr->next
-                    = &this->cycle[static_cast<typename std::vector<SlNode>::size_type>(idx)];
-                slptr = slptr->next;
+                cycle[static_cast<std::size_t>(idx)] = idx;
             }
         }
 
         /**
-         * The `exclude` method in the `Robin` class returns an iterable wrapper that excludes a
-         * specified part from the cycle.
-         *
-         * @param[in] from_part The `from_part` parameter in the `exclude` method is the part of the
-         * cycle that you want to exclude. It is of type `T`, which is the same type as the elements
-         * in the cycle.
-         *
-         * @return The `exclude` method in the `Robin` class returns an iterable wrapper of type
-         * `IterableWrapper`.
+         * @brief Return an iterable wrapper that excludes a specified part.
+         * @param from_part The part to exclude from iteration.
+         * @return IterableWrapper that iterates over all parts except from_part.
          */
         [[nodiscard]] auto exclude(T from_part) const noexcept -> IterableWrapper {
-            return IterableWrapper{
-                &this->cycle[static_cast<typename std::vector<SlNode>::size_type>(from_part)]};
+            return IterableWrapper{&cycle, static_cast<std::size_t>(from_part)};
         }
     };
 

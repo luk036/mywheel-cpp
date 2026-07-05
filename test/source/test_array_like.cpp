@@ -74,3 +74,27 @@ TEST_CASE("ShiftArray: empty initialization") {
     arr.set_start(0);
     CHECK(arr.empty());
 }
+
+TEST_CASE("ShiftArray trim_front") {
+    std::vector<int> data = {0, 1, 2, 3, 4, 5};
+    ShiftArray<int> arr(data);
+    arr.set_start(2);
+    CHECK_EQ(arr.size(), 4);  // accessible: [2,3,4,5]
+    CHECK_EQ(arr[2], 0);
+    arr.trim_front();
+    CHECK_EQ(arr.size(), 4);  // same size
+    CHECK_EQ(arr[0], 2);      // now 0-indexed, first element is 2
+    CHECK_EQ(arr[2], 4);
+}
+
+// --- Memory regression: class sizes ---
+
+TEST_CASE("sizeof RepeatArray<int>") {
+    // int value (4) + padding (4) + size_t size (8) = 16
+    CHECK_EQ(sizeof(RepeatArray<int>), 16);
+}
+
+TEST_CASE("sizeof ShiftArray<int>") {
+    // size_t _start + vector<int> _lst = 8 + 24 (MSVC vector = 24 bytes) = 32
+    CHECK_EQ(sizeof(ShiftArray<int>), sizeof(size_t) + sizeof(std::vector<int>));
+}
