@@ -52,8 +52,8 @@ namespace fun {
          * @tparam T Type of the key/value stored in nodes.
          */
         template <typename T> struct RobinIterableWrapper {
-            const std::vector<T>* cycle;    //!< Pointer to the cycle vector
-            std::size_t start_idx;          //!< Index of the excluded part
+            const std::vector<T>* cycle;  //!< Pointer to the cycle vector
+            std::size_t start_idx;        //!< Index of the excluded part
 
             /**
              * @brief Begin iterator — starts at the node after the excluded part
