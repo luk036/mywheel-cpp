@@ -39,8 +39,7 @@ namespace fun {
              * @param c Pointer to the starting node.
              * @param s Pointer to the excluded (stop) node.
              */
-            RobinIterator(const RobinSlNode<T>* c,
-                          const RobinSlNode<T>* s) noexcept
+            RobinIterator(const RobinSlNode<T>* c, const RobinSlNode<T>* s) noexcept
                 : curr(c), stop(s) {}
 
             /**
@@ -95,9 +94,7 @@ namespace fun {
             /**
              * @brief Return a past-the-end iterator (points to the excluded node).
              */
-            auto end() const -> RobinIterator<T> {
-                return RobinIterator<T>{curr_node, curr_node};
-            }
+            auto end() const -> RobinIterator<T> { return RobinIterator<T>{curr_node, curr_node}; }
         };
     }  // namespace detail
 
