@@ -71,4 +71,3 @@ TEST_CASE("Test dllist pop") {
     L1.pop();
     CHECK(L1.is_empty());
 }
-
