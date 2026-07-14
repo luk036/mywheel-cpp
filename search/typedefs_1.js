@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['enumerator_0',['Enumerator',['../classMapAdapter.html#a21a0ee803340f6a39085344f80be60d4',1,'MapAdapter']]]
+  ['iterablewrapper_0',['IterableWrapper',['../structfun_1_1Robin.html#a8c1b56085a10abe05ae1b660d739b2db',1,'fun::Robin']]]
 ];

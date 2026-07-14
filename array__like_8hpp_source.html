@@ -28,7 +28,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">MyWheel<span id="projectnumber">&#160;1.1.4;  VERSION ${PROJECT_VERSION}</span>
+   <div id="projectname">MyWheel<span id="projectnumber">&#160;1.1.5;  VERSION ${PROJECT_VERSION}</span>
    </div>
   </td>
  </tr>
@@ -165,7 +165,7 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="classShiftArray.html#af8871557f5550a186dc747bc796b1d04">  182</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classShiftArray.html#af8871557f5550a186dc747bc796b1d04">empty</a>() const noexcept { <span class="keywordflow">return</span> this-&gt;_lst.empty() || this-&gt;_start &gt;= this-&gt;_lst.size(); }</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="classShiftArray.html#af5d71a04aab7279d7209905aecce5393">  190</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="classShiftArray.html#af5d71a04aab7279d7209905aecce5393">operator[]</a>(<span class="keywordtype">size_t</span> key) <span class="keyword">const</span> -&gt; <span class="keyword">const</span> T&amp; { <span class="keywordflow">return</span> this-&gt;_lst[key - this-&gt;_start]; }</div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="classShiftArray.html#ac56a1bdb5d24b69c253fb5eda3b7c8c4">  198</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="classShiftArray.html#ac56a1bdb5d24b69c253fb5eda3b7c8c4">operator[]</a>(<span class="keywordtype">size_t</span> key) -&gt; T&amp; { <span class="keywordflow">return</span> this-&gt;_lst[key - this-&gt;_start]; }</div>
@@ -212,7 +212,17 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 <div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno"><a class="line" href="classShiftArray.html#aab153133d15f57609b4639e291fbb84b">  277</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="classShiftArray.html#aab153133d15f57609b4639e291fbb84b">size</a>() const noexcept -&gt; <span class="keywordtype">size_t</span> { <span class="keywordflow">return</span> this-&gt;_lst.size() - this-&gt;_start; }</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>};</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="foldopen" id="foldopen00299" data-start="{" data-end="}">
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno"><a class="line" href="classShiftArray.html#a2f1f4009c35141883f53a89e62134eac">  299</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="classShiftArray.html#a2f1f4009c35141883f53a89e62134eac">trim_front</a>() -&gt; <span class="keywordtype">void</span> {</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        <span class="keywordflow">if</span> (this-&gt;_start &gt; 0) {</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>            this-&gt;_lst.erase(this-&gt;_lst.begin(),</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>                             this-&gt;_lst.begin() + <span class="keyword">static_cast&lt;</span>std::ptrdiff_t<span class="keyword">&gt;</span>(this-&gt;_start));</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>            this-&gt;_start = 0;</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        }</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    }</div>
+</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>};</div>
 </div>
 <div class="ttc" id="aclassRepeatArray_1_1Iterator_html"><div class="ttname"><a href="classRepeatArray_1_1Iterator.html">RepeatArray::Iterator</a></div><div class="ttdef"><b>Definition</b> array_like.hpp:64</div></div>
 <div class="ttc" id="aclassRepeatArray_1_1Iterator_html_a3b10dcb4c39c48be6658315d8b01abda"><div class="ttname"><a href="classRepeatArray_1_1Iterator.html#a3b10dcb4c39c48be6658315d8b01abda">RepeatArray::Iterator::operator*</a></div><div class="ttdeci">auto operator*() const noexcept -&gt; const T &amp;</div><div class="ttdef"><b>Definition</b> array_like.hpp:103</div></div>
@@ -233,6 +243,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassShiftArray_1_1Iterator_html_ac25fbba9ac5a62b8bd181b5a6e1f6226"><div class="ttname"><a href="classShiftArray_1_1Iterator.html#ac25fbba9ac5a62b8bd181b5a6e1f6226">ShiftArray::Iterator::Iterator</a></div><div class="ttdeci">Iterator(const ShiftArray&lt; T &gt; &amp;array, size_t count)</div><div class="ttdef"><b>Definition</b> array_like.hpp:218</div></div>
 <div class="ttc" id="aclassShiftArray_html"><div class="ttname"><a href="classShiftArray.html">ShiftArray</a></div><div class="ttdoc">Array with shifted index access semantics.</div><div class="ttdef"><b>Definition</b> array_like.hpp:156</div></div>
 <div class="ttc" id="aclassShiftArray_html_a1cb30f22ba0e254790b4549552488c89"><div class="ttname"><a href="classShiftArray.html#a1cb30f22ba0e254790b4549552488c89">ShiftArray::set_start</a></div><div class="ttdeci">void set_start(size_t start)</div><div class="ttdef"><b>Definition</b> array_like.hpp:175</div></div>
+<div class="ttc" id="aclassShiftArray_html_a2f1f4009c35141883f53a89e62134eac"><div class="ttname"><a href="classShiftArray.html#a2f1f4009c35141883f53a89e62134eac">ShiftArray::trim_front</a></div><div class="ttdeci">auto trim_front() -&gt; void</div><div class="ttdoc">Remove the inaccessible prefix from the underlying storage.</div><div class="ttdef"><b>Definition</b> array_like.hpp:299</div></div>
 <div class="ttc" id="aclassShiftArray_html_a4bc73a638e30cc93c87621b6e78873d5"><div class="ttname"><a href="classShiftArray.html#a4bc73a638e30cc93c87621b6e78873d5">ShiftArray::ShiftArray</a></div><div class="ttdeci">ShiftArray(const std::vector&lt; T &gt; &amp;lst)</div><div class="ttdef"><b>Definition</b> array_like.hpp:171</div></div>
 <div class="ttc" id="aclassShiftArray_html_a97d1be0ab7dc02aa3946713952d3dfa1"><div class="ttname"><a href="classShiftArray.html#a97d1be0ab7dc02aa3946713952d3dfa1">ShiftArray::end</a></div><div class="ttdeci">auto end() const -&gt; Iterator</div><div class="ttdef"><b>Definition</b> array_like.hpp:265</div></div>
 <div class="ttc" id="aclassShiftArray_html_a9b8038eba70b86adf1525ec86c5f506e"><div class="ttname"><a href="classShiftArray.html#a9b8038eba70b86adf1525ec86c5f506e">ShiftArray::ShiftArray</a></div><div class="ttdeci">ShiftArray()</div><div class="ttdef"><b>Definition</b> array_like.hpp:162</div></div>

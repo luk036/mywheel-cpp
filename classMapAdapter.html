@@ -28,7 +28,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">MyWheel<span id="projectnumber">&#160;1.1.4;  VERSION ${PROJECT_VERSION}</span>
+   <div id="projectname">MyWheel<span id="projectnumber">&#160;1.1.5;  VERSION ${PROJECT_VERSION}</span>
    </div>
   </td>
  </tr>
@@ -97,8 +97,6 @@ Public Types</h2></td></tr>
 <tr class="separator:ad5a66feb8fdde8bee3f04aea9956b510"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace736e64299823bec5787b3262e9b4bf" id="r_ace736e64299823bec5787b3262e9b4bf"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapAdapter.html#ace736e64299823bec5787b3262e9b4bf">value_type</a> = std::pair&lt; <a class="el" href="classMapAdapter.html#a8fb99030b7706c56bc75a9ae694b5d38">key_type</a>, <a class="el" href="classMapAdapter.html#ad5a66feb8fdde8bee3f04aea9956b510">mapped_type</a> &gt;</td></tr>
 <tr class="separator:ace736e64299823bec5787b3262e9b4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21a0ee803340f6a39085344f80be60d4" id="r_a21a0ee803340f6a39085344f80be60d4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapAdapter.html#a21a0ee803340f6a39085344f80be60d4">Enumerator</a> = decltype(py::enumerate(std::declval&lt; Container &amp; &gt;()))</td></tr>
-<tr class="separator:a21a0ee803340f6a39085344f80be60d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -154,22 +152,6 @@ class MapAdapter&lt; Container &gt;</div><p>Dict-like data structure by std::vec
   </dd>
 </dl>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a21a0ee803340f6a39085344f80be60d4" name="a21a0ee803340f6a39085344f80be60d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21a0ee803340f6a39085344f80be60d4">&#9670;&#160;</a></span>Enumerator</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Container &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="classMapAdapter.html">MapAdapter</a>&lt; Container &gt;::Enumerator =  decltype(py::enumerate(std::declval&lt;Container&amp;&gt;()))</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a8fb99030b7706c56bc75a9ae694b5d38" name="a8fb99030b7706c56bc75a9ae694b5d38"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8fb99030b7706c56bc75a9ae694b5d38">&#9670;&#160;</a></span>key_type</h2>
 
@@ -328,10 +310,7 @@ template&lt;typename Container &gt; </div>
 </div><div class="memdoc">
 
 <p>Get iterator to the first (key, value) pair. </p>
-<p>The function returns an iterator pointing to the beginning of the mapview.</p>
-<dl class="section return"><dt>Returns</dt><dd>The <code><a class="el" href="classMapAdapter.html#a5da9c98d5695e059cbc1396848df79c7" title="Get iterator to the first (key, value) pair.">begin()</a></code> function is returning an iterator pointing to the beginning of the <code>mapview</code> container. </dd>
-<dd>
-Iterator to the beginning of the map view. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Iterator to the beginning of the map view. </dd></dl>
 
 </div>
 </div>

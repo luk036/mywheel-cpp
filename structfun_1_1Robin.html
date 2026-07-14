@@ -28,7 +28,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">MyWheel<span id="projectnumber">&#160;1.1.4;  VERSION ${PROJECT_VERSION}</span>
+   <div id="projectname">MyWheel<span id="projectnumber">&#160;1.1.5;  VERSION ${PROJECT_VERSION}</span>
    </div>
   </td>
  </tr>
@@ -89,7 +89,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Round <a class="el" href="structfun_1_1Robin.html" title="Round Robin.">Robin</a>.  
+<p>Round <a class="el" href="structfun_1_1Robin.html" title="Round Robin scheduler.">Robin</a> scheduler.  
  <a href="structfun_1_1Robin.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="robin_8hpp_source.html">robin.hpp</a>&gt;</code></p>
@@ -104,9 +104,11 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4608f5920d65065f1b7deac7efbea1fa" id="r_a4608f5920d65065f1b7deac7efbea1fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfun_1_1Robin.html#a4608f5920d65065f1b7deac7efbea1fa">Robin</a> (T num_parts)</td></tr>
+<tr class="memdesc:a4608f5920d65065f1b7deac7efbea1fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a round-robin cycle with <code>num_parts</code> nodes.  <br /></td></tr>
 <tr class="separator:a4608f5920d65065f1b7deac7efbea1fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa167d4bb12591ef170963be1591b5faa" id="r_aa167d4bb12591ef170963be1591b5faa"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfun_1_1Robin.html#aa167d4bb12591ef170963be1591b5faa">exclude</a> (T from_part) const noexcept -&gt; <a class="el" href="structfun_1_1Robin.html#a8c1b56085a10abe05ae1b660d739b2db">IterableWrapper</a></td></tr>
-<tr class="separator:aa167d4bb12591ef170963be1591b5faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fbd580a3509262f191d12c458e2382c" id="r_a1fbd580a3509262f191d12c458e2382c"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfun_1_1Robin.html#a1fbd580a3509262f191d12c458e2382c">exclude</a> (T from_part) const -&gt; <a class="el" href="structfun_1_1Robin.html#a8c1b56085a10abe05ae1b660d739b2db">IterableWrapper</a></td></tr>
+<tr class="memdesc:a1fbd580a3509262f191d12c458e2382c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an iterable that visits every node <b>except</b> <code>from_part</code>.  <br /></td></tr>
+<tr class="separator:a1fbd580a3509262f191d12c458e2382c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -116,8 +118,8 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
-struct fun::Robin&lt; T &gt;</div><p>Round <a class="el" href="structfun_1_1Robin.html" title="Round Robin.">Robin</a>. </p>
-<p>The <code><a class="el" href="structfun_1_1Robin.html" title="Round Robin.">Robin</a></code> class is implementing a round-robin algorithm. It is used to cycle through a sequence of elements in a circular manner. The constructor initializes the cycle with a specified number of parts, and each part is assigned a unique key. The <code>exclude</code> method returns an iterable wrapper that excludes a specified part from the cycle.</p>
+struct fun::Robin&lt; T &gt;</div><p>Round <a class="el" href="structfun_1_1Robin.html" title="Round Robin scheduler.">Robin</a> scheduler. </p>
+<p>Implements a round-robin cycle using a circular singly-linked list. The <code><a class="el" href="structfun_1_1Robin.html#a1fbd580a3509262f191d12c458e2382c" title="Return an iterable that visits every node except from_part.">exclude()</a></code> method returns an iterable that visits every node <b>except</b> the excluded one, starting from the node immediately after the excluded node.</p>
 <pre class="fragment">* Round Robin Cycle:
 *
 *    ┌─────┐
@@ -131,7 +133,7 @@ struct fun::Robin&lt; T &gt;</div><p>Round <a class="el" href="structfun_1_1Robi
 *       │        │                 │
 *       ▼        │                 │
 *    ┌─────┐     │                 │
-*    │  2  │◄────┼─────────────────┤  &lt;-- exclude(2) would skip this node
+*    │  2  │◄────┼─────────────────┤  &lt;-- exclude(2) skips this
 *    └──┬──┘     │                 │
 *       │        │                 │
 *       ▼        │                 │
@@ -140,12 +142,9 @@ struct fun::Robin&lt; T &gt;</div><p>Round <a class="el" href="structfun_1_1Robi
 *    └──┬──┘                       │
 *       │                          │
 *       └──────────────────────────┘
-*
-* The cycle forms a circular linked list where exclude(from_part)
-* returns an iterator that starts after the excluded part.
 * </pre><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td></td></tr>
+    <tr><td class="paramname">T</td><td>Type of the key stored in each node (typically uint8_t or int). </td></tr>
   </table>
   </dd>
 </dl>
@@ -208,19 +207,19 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The <a class="el" href="structfun_1_1Robin.html" title="Round Robin.">Robin</a> constructor initializes a cycle of objects with keys ranging from 0 to num_parts-1.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">num_parts</td><td>The parameter <code>num_parts</code> represents the number of parts or elements in the <a class="el" href="structfun_1_1Robin.html" title="Round Robin.">Robin</a> object. </td></tr>
-  </table>
-  </dd>
-</dl>
+
+<p>Construct a round-robin cycle with <code>num_parts</code> nodes. </p>
+<p>Creates nodes with sequential keys 0, 1, …, <code>num_parts</code>-1 and links them in a circular singly-linked list.</p>
+<p>Two-phase construction matching the Python implementation:</p><ol type="1">
+<li>Create nodes with their keys</li>
+<li>Link them into a circle </li>
+</ol>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa167d4bb12591ef170963be1591b5faa" name="aa167d4bb12591ef170963be1591b5faa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa167d4bb12591ef170963be1591b5faa">&#9670;&#160;</a></span>exclude()</h2>
+<a id="a1fbd580a3509262f191d12c458e2382c" name="a1fbd580a3509262f191d12c458e2382c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fbd580a3509262f191d12c458e2382c">&#9670;&#160;</a></span>exclude()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -240,18 +239,19 @@ template&lt;typename T &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The <code>exclude</code> method in the <code><a class="el" href="structfun_1_1Robin.html" title="Round Robin.">Robin</a></code> class returns an iterable wrapper that excludes a specified part from the cycle.</p>
+
+<p>Return an iterable that visits every node <b>except</b> <code>from_part</code>. </p>
+<p>Iteration begins at the node after <code>from_part</code> and stops when it would circle back to the excluded node.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">from_part</td><td>The <code>from_part</code> parameter in the <code>exclude</code> method is the part of the cycle that you want to exclude. It is of type <code>T</code>, which is the same type as the elements in the cycle.</td></tr>
+    <tr><td class="paramname">from_part</td><td>The node to exclude from iteration. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The <code>exclude</code> method in the <code><a class="el" href="structfun_1_1Robin.html" title="Round Robin.">Robin</a></code> class returns an iterable wrapper of type <code>IterableWrapper</code>. </dd></dl>
 
 </div>
 </div>

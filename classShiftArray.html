@@ -28,7 +28,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">MyWheel<span id="projectnumber">&#160;1.1.4;  VERSION ${PROJECT_VERSION}</span>
+   <div id="projectname">MyWheel<span id="projectnumber">&#160;1.1.5;  VERSION ${PROJECT_VERSION}</span>
    </div>
   </td>
  </tr>
@@ -116,6 +116,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a97d1be0ab7dc02aa3946713952d3dfa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab153133d15f57609b4639e291fbb84b" id="r_aab153133d15f57609b4639e291fbb84b"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classShiftArray.html#aab153133d15f57609b4639e291fbb84b">size</a> () const noexcept -&gt; size_t</td></tr>
 <tr class="separator:aab153133d15f57609b4639e291fbb84b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f1f4009c35141883f53a89e62134eac" id="r_a2f1f4009c35141883f53a89e62134eac"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classShiftArray.html#a2f1f4009c35141883f53a89e62134eac">trim_front</a> () -&gt; void</td></tr>
+<tr class="memdesc:a2f1f4009c35141883f53a89e62134eac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the inaccessible prefix from the underlying storage.  <br /></td></tr>
+<tr class="separator:a2f1f4009c35141883f53a89e62134eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
@@ -426,6 +429,45 @@ template&lt;typename T &gt; </div>
 <p>The function returns the size of a list, excluding a specified starting index.</p>
 <dl class="section return"><dt>Returns</dt><dd>the size of the list (lst) minus the starting index (start). </dd></dl>
 
+</div>
+</div>
+<a id="a2f1f4009c35141883f53a89e62134eac" name="a2f1f4009c35141883f53a89e62134eac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f1f4009c35141883f53a89e62134eac">&#9670;&#160;</a></span>trim_front()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classShiftArray.html">ShiftArray</a>&lt; T &gt;::trim_front </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt; void </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove the inaccessible prefix from the underlying storage. </p>
+<p>Erases elements before <code>_start</code> from <code>_lst</code> and resets <code>_start</code> to 0. This frees memory that was made inaccessible by <code><a class="el" href="classShiftArray.html#a1cb30f22ba0e254790b4549552488c89">set_start()</a></code>. After calling this, <code>operator[]</code> and iteration behavior are unchanged but the underlying vector no longer holds unreachable elements.</p>
+<pre class="fragment">* Before trim_front():
+*   _lst = [A B C D E F], _start = 2
+*   Accessible: [C D E F]  (via operator[] 0,1,2,3)
+*   Unused:     [A B]      (still allocated)
+*
+* After trim_front():
+*   _lst = [C D E F], _start = 0
+*   Accessible: [C D E F]  (same)
+*   No unused prefix.
+* </pre> 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

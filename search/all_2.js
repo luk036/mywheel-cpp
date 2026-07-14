@@ -8,6 +8,6 @@ var searchData=
   ['contains_5',['contains',['../classMapAdapter.html#ac822b1565be4a0350a4c289112eb8475',1,'MapAdapter']]],
   ['cpp_6',['🛞 mywheel-cpp',['../index.html#autotoc_md0',1,'']]],
   ['curr_7',['curr',['../structfun_1_1detail_1_1RobinIterator.html#a0bfe4dbd72fb63f37b61e592109d5c0b',1,'fun::detail::RobinIterator']]],
-  ['curr_5fnode_8',['curr_node',['../structfun_1_1detail_1_1RobinIterableWrapper.html#ab08849352340811b0c838a911042bb8b',1,'fun::detail::RobinIterableWrapper']]],
+  ['curr_5fnode_8',['curr_node',['../structfun_1_1detail_1_1RobinIterableWrapper.html#a6a926990db0d882a5b3e62933ff73be8',1,'fun::detail::RobinIterableWrapper']]],
   ['cycle_9',['cycle',['../structfun_1_1Robin.html#a3979822b32d495997c258fb78fd33051',1,'fun::Robin']]]
 ];

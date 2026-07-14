@@ -7,7 +7,7 @@ var searchData=
   ['robin_4',['robin',['../structfun_1_1Robin.html',1,'fun::Robin&lt; T &gt;'],['../structfun_1_1Robin.html#a4608f5920d65065f1b7deac7efbea1fa',1,'fun::Robin::Robin()']]],
   ['robin_2ehpp_5',['robin.hpp',['../robin_8hpp.html',1,'']]],
   ['robiniterablewrapper_6',['RobinIterableWrapper',['../structfun_1_1detail_1_1RobinIterableWrapper.html',1,'fun::detail']]],
-  ['robiniterator_7',['RobinIterator',['../structfun_1_1detail_1_1RobinIterator.html',1,'fun::detail']]],
+  ['robiniterator_7',['robiniterator',['../structfun_1_1detail_1_1RobinIterator.html',1,'fun::detail::RobinIterator&lt; T &gt;'],['../structfun_1_1detail_1_1RobinIterator.html#a1c6ccc49a4e659f49f2a3b9aa4c59593',1,'fun::detail::RobinIterator::RobinIterator()']]],
   ['robinslnode_8',['RobinSlNode',['../structfun_1_1detail_1_1RobinSlNode.html',1,'fun::detail']]],
   ['run_20clang_20format_9',['Run clang-format',['../index.html#autotoc_md6',1,'']]],
   ['run_20test_20suite_10',['Build and run test suite',['../index.html#autotoc_md5',1,'']]],
