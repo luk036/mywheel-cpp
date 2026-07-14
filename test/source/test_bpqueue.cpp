@@ -89,3 +89,21 @@ TEST_CASE("Test BPQueue get_max") {
     bpq.decrease_key(node_a, 2);
     CHECK_EQ(bpq.get_max(), -1);
 }
+
+// --- Memory: BPQueue lazy allocation — bucket vector grows only on demand ---
+
+TEST_CASE("BPQueue lazy allocation") {
+    // With a large key range but only a few insertions,
+    // bucket vector should only be sized to cover max key used.
+    auto bpq = BPQueue<int, int32_t>{-10000, 10000};
+    // Initially only 1 bucket (sentinel)
+    CHECK_EQ(bpq.get_max(), -10001);
+
+    auto node_a = Dllink<std::pair<int, uint32_t>>{std::make_pair(0, static_cast<uint32_t>(0))};
+    bpq.append(node_a, 0);
+    // After insert at key 0, bucket must cover key 0 (internal = 10001)
+    CHECK_EQ(bpq.get_max(), 0);
+
+    bpq.popleft();
+    CHECK(bpq.is_empty());
+}

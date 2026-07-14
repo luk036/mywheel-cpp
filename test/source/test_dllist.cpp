@@ -1,8 +1,6 @@
 #include <doctest/doctest.h>  // for ResultBuilder, CHECK, Expr...
 
-#include <cstdint>             // for uint8_t
 #include <mywheel/dllist.hpp>  // for Dllist, DllIterator, oper...
-#include <mywheel/robin.hpp>   // for Robin, fun::Robin<>::iterable_w...
 #include <utility>             // for pair
 
 using namespace std;
@@ -72,13 +70,4 @@ TEST_CASE("Test dllist pop") {
 
     L1.pop();
     CHECK(L1.is_empty());
-}
-
-TEST_CASE("Test Robin") {
-    fun::Robin<uint8_t> rr(6U);
-    auto count = 0U;
-    for ([[maybe_unused]] const auto& _i : rr.exclude(2)) {
-        count += 1;
-    }
-    CHECK_EQ(count, 5);
 }

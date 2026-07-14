@@ -5,6 +5,7 @@
  */
 
 #include <cassert>      // for assert
+#include <cstddef>      // for size_t
 #include <cstdint>      // for int32_t
 #include <type_traits>  // for make_unsigned_t, is_integral, integral_consta...
 #include <utility>      // for pair
@@ -99,6 +100,22 @@ class BPQueue {
     Int offset;       //!< Offset value (a - 1) for key translation
     UInt high;        //!< Maximum allowed key value (b - a + 1)
 
+    /**
+     * @brief Ensure a bucket exists at the given key index.
+     *
+     * Grows the bucket array on demand so that bucket[key] is valid.
+     * This enables lazy allocation: buckets are only created when first needed.
+     *
+     * @param key The internal key index (must be <= high)
+     */
+    constexpr auto ensure_bucket(UInt key) noexcept -> void {
+        // Grow one bucket at a time using emplace_back.
+        // emplace_back does not invalidate references if capacity is sufficient.
+        while (key >= this->bucket.size()) {
+            this->bucket.emplace_back();
+        }
+    }
+
   public:
     /**
      * @brief Construct a bounded priority queue with specified key range
@@ -116,12 +133,16 @@ class BPQueue {
      * @post The queue is empty and ready for operations
      */
     constexpr BPQueue(Int min_key, Int max_key)
-        : bucket(static_cast<UInt>(max_key - min_key) + 2U),
+        : bucket(),  // empty; grow on demand via ensure_bucket
           offset(min_key - 1),
           high(static_cast<UInt>(max_key - offset)) {
         assert(min_key <= max_key);
         static_assert(std::is_integral<Int>::value, "bucket's key must be an integer");
-        bucket[0].appendleft(this->sentinel);  // sentinel
+        // Pre-reserve capacity for all possible keys to avoid reallocation
+        // that would invalidate bucket references during growth.
+        this->bucket.reserve(static_cast<std::size_t>(this->high) + 2);
+        this->bucket.emplace_back();  // bucket[0] for sentinel
+        this->bucket[0].appendleft(this->sentinel);
     }
 
     // Rule of Five: Explicitly control copy/move operations
@@ -226,6 +247,7 @@ class BPQueue {
     constexpr auto appendleft(Item& item, Int key) noexcept -> void {
         assert(key > this->offset);
         item.data.second = UInt(key - this->offset);
+        this->ensure_bucket(item.data.second);
         if (this->max < item.data.second) {
             this->max = item.data.second;
         }
@@ -249,6 +271,7 @@ class BPQueue {
     constexpr auto append(Item& item, Int key) noexcept -> void {
         assert(key > this->offset);
         item.data.second = UInt(key - this->offset);
+        this->ensure_bucket(item.data.second);
         if (this->max < item.data.second) {
             this->max = item.data.second;
         }
@@ -294,11 +317,11 @@ class BPQueue {
      * @note The order of items with the same key is not preserved (FIFO behavior)
      */
     constexpr auto decrease_key(Item& item, UInt delta) noexcept -> void {
-        // this->bucket[item.data.second].detach(item)
         item.detach();
         item.data.second -= delta;
         assert(item.data.second > 0);
         assert(item.data.second <= this->high);
+        this->ensure_bucket(item.data.second);
         this->bucket[item.data.second].append(item);  // FIFO
         if (this->max < item.data.second) {
             this->max = item.data.second;
@@ -327,11 +350,11 @@ class BPQueue {
      * @note The order of items with the same key is not preserved (LIFO behavior)
      */
     constexpr auto increase_key(Item& item, UInt delta) noexcept -> void {
-        // this->bucket[item.data.second].detach(item)
         item.detach();
         item.data.second += delta;
         assert(item.data.second > 0);
         assert(item.data.second <= this->high);
+        this->ensure_bucket(item.data.second);
         this->bucket[item.data.second].appendleft(item);  // LIFO
         if (this->max < item.data.second) {
             this->max = item.data.second;
@@ -380,7 +403,6 @@ class BPQueue {
      * @post max key is updated if the highest bucket becomes empty
      */
     constexpr auto detach(Item& item) noexcept -> void {
-        // this->bucket[item.data.second].detach(item)
         item.detach();
         while (this->bucket[this->max].is_empty()) {
             this->max -= 1;
