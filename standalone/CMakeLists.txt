@@ -7,16 +7,23 @@ project(MyWheelStandalone LANGUAGES CXX)
 include(../cmake/tools.cmake)
 
 # ---- Dependencies ----
+# Guard: when used via add_subdirectory from test_installed, targets are already available
+if(NOT TARGET MyWheel::MyWheel)
+  include(../cmake/CPM.cmake)
+endif()
 
-include(../cmake/CPM.cmake)
+if(NOT TARGET cxxopts::cxxopts)
+  include(../cmake/CPM.cmake)
+  CPMAddPackage(
+    GITHUB_REPOSITORY jarro2783/cxxopts
+    VERSION 3.2.1
+    OPTIONS "CXXOPTS_BUILD_EXAMPLES NO" "CXXOPTS_BUILD_TESTS NO" "CXXOPTS_ENABLE_INSTALL YES"
+  )
+endif()
 
-CPMAddPackage(
-  GITHUB_REPOSITORY jarro2783/cxxopts
-  VERSION 3.2.1
-  OPTIONS "CXXOPTS_BUILD_EXAMPLES NO" "CXXOPTS_BUILD_TESTS NO" "CXXOPTS_ENABLE_INSTALL YES"
-)
-
-CPMAddPackage(NAME MyWheel SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/..)
+if(NOT TARGET MyWheel::MyWheel)
+  CPMAddPackage(NAME MyWheel SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/..)
+endif()
 
 # ---- Create standalone executable ----
 
