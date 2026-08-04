@@ -1,53 +1,41 @@
-#include <mywheel/greeter.h>
-#include <mywheel/version.h>
+#include <mywheel/bpqueue.hpp>
+#include <mywheel/dllink.hpp>
 
 #include <cxxopts.hpp>
 #include <iostream>
 #include <string>
-#include <unordered_map>
+#include <utility>
 
 auto main(int argc, char** argv) -> int {
-    const std::unordered_map<std::string, mywheel::LanguageCode> languages{
-        {"en", mywheel::LanguageCode::EN},
-        {"de", mywheel::LanguageCode::DE},
-        {"es", mywheel::LanguageCode::ES},
-        {"fr", mywheel::LanguageCode::FR},
-    };
+    cxxopts::Options options("MyWheel", "Bounded priority queue demo");
+    options.add_options()("h,help", "Print usage")(
+        "n,count", "Number of items", cxxopts::value<int>()->default_value("8"));
 
-    cxxopts::Options options(*argv, "A program to welcome the world!");
-
-    std::string language;
-    std::string name;
-
-    // clang-format off
-  options.add_options()
-    ("h,help", "Show help")
-    ("v,version", "Print the current version number")
-    ("n,name", "Name to greet", cxxopts::value(name)->default_value("World"))
-    ("l,lang", "Language code to use", cxxopts::value(language)->default_value("en"))
-  ;
-    // clang-format on
-
-    auto result = options.parse(argc, argv);
-
-    if (result["help"].as<bool>()) {
+    const auto result = options.parse(argc, argv);
+    if (result.count("help") > 0) {
         std::cout << options.help() << '\n';
         return 0;
     }
 
-    if (result["version"].as<bool>()) {
-        std::cout << "MyWheel, version " << MYWHEEL_VERSION << '\n';
-        return 0;
+    const int count = result["count"].as<int>();
+    const int min_key = 0;
+    const int max_key = 16;
+
+    std::vector<Dllink<std::pair<int, uint32_t>>> nodes(count);
+    BPQueue<int, int32_t> bpq(min_key, max_key);
+
+    for (int i = 0; i < count; ++i) {
+        bpq.append(nodes[static_cast<size_t>(i)], i);
     }
 
-    auto langIt = languages.find(language);
-    if (langIt == languages.end()) {
-        std::cerr << "unknown language code: " << language << '\n';
-        return 1;
-    }
+    std::cout << "mywheel: queue empty=" << (bpq.is_empty() ? "yes" : "no") << '\n';
+    std::cout << "mywheel: max key=" << bpq.get_max() << '\n';
 
-    // mywheel::MyWheel mywheel(name);
-    // std::cout << mywheel.greet(langIt->second) << '\n';
+    while (!bpq.is_empty()) {
+        std::cout << ' ' << bpq.get_max();
+        bpq.popleft();
+    }
+    std::cout << '\n';
 
     return 0;
 }
