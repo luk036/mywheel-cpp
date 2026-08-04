@@ -9,21 +9,19 @@ This is a header-only C++ library project providing data structures (Lict, Robin
 ### CMake (Primary Build System)
 
 ```bash
-# Configure and build all subprojects
-cmake -S all -B build
+# Configure and build all targets
+cmake -B build
 cmake --build build
 
-# Build and run tests only
-cmake -S test -B build/test
-cmake --build build/test
-CTEST_OUTPUT_ON_FAILURE=1 cmake --build build/test --target test
+# Build and run tests
+ctest --test-dir build --output-on-failure
 
 # Run test executable directly
-./build/test/MyWheelTests
+./build/MyWheelTests
 
 # Run a single test case (doctest supports filtering)
-./build/test/MyWheelTests -tc="Test Lict"
-./build/test/MyWheelTests -tc="Test Lict operator*"
+./build/MyWheelTests -tc="Test Lict"
+./build/MyWheelTests -tc="Test Lict operator*"
 ```
 
 ### xmake (Alternative)
@@ -48,11 +46,11 @@ xmake test_mywheel -tc "Test Lict"
 
 ```bash
 # View changes
-cmake -S test -B build/test
-cmake --build build/test --target format
+cmake -B build
+cmake --build build --target format
 
 # Apply fixes
-cmake --build build/test --target fix-format
+cmake --build build --target fix-format
 ```
 
 Required tooling:
