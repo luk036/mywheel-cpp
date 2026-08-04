@@ -1,29 +1,16 @@
-cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.14)
+project(MyWheelInstalledTest LANGUAGES CXX)
 
-# ---- Include guards ----
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
-  message(
-    FATAL_ERROR
-      "In-source builds not allowed. Please make a new directory (called a build directory) and run CMake from there."
-  )
-endif()
-
-project(MyWheel LANGUAGES CXX)
-
-# --- Import tools ----
-
-include(../cmake/tools.cmake)
-
-# ---- Dependencies (all installed by the parent build) ----
-
-include(../cmake/CPM.cmake)
-
-# Find dependencies first — MyWheelConfig.cmake references fmt::fmt and Py2Cpp::Py2Cpp
-find_package(fmt REQUIRED)
+# Find dependencies first - MyWheelConfig.cmake references Py2Cpp::Py2Cpp
 find_package(Py2Cpp REQUIRED)
-find_package(${PROJECT_NAME} REQUIRED)
+find_package(MyWheel REQUIRED)
 
-set(SPECIFIC_LIBS fmt::fmt Py2Cpp::Py2Cpp)
+add_executable(mywheel_installed_test main.cpp)
+target_link_libraries(mywheel_installed_test PRIVATE MyWheel::MyWheel Py2Cpp::Py2Cpp)
 
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../standalone ${CMAKE_BINARY_DIR}/test_installed)
+enable_testing()
+add_test(NAME mywheel_installed_test COMMAND mywheel_installed_test)
