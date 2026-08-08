@@ -1,6 +1,5 @@
-#include <mywheel/map_adapter.hpp>
-
 #include <iostream>
+#include <mywheel/map_adapter.hpp>
 #include <vector>
 
 auto main() -> int {

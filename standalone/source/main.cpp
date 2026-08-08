@@ -1,15 +1,14 @@
-#include <mywheel/bpqueue.hpp>
-#include <mywheel/dllink.hpp>
-
 #include <cxxopts.hpp>
 #include <iostream>
+#include <mywheel/bpqueue.hpp>
+#include <mywheel/dllink.hpp>
 #include <string>
 #include <utility>
 
 auto main(int argc, char** argv) -> int {
     cxxopts::Options options("MyWheel", "Bounded priority queue demo");
-    options.add_options()("h,help", "Print usage")(
-        "n,count", "Number of items", cxxopts::value<int>()->default_value("8"));
+    options.add_options()("h,help", "Print usage")("n,count", "Number of items",
+                                                   cxxopts::value<int>()->default_value("8"));
 
     const auto result = options.parse(argc, argv);
     if (result.count("help") > 0) {
