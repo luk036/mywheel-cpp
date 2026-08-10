@@ -247,17 +247,12 @@ TEST_CASE("Test Lict") {
 }
 ```
 
-## Static Analysis
+## Static Analyzers
 
 ```bash
-# clang-tidy
-cmake -S test -B build/test -DUSE_STATIC_ANALYZER=clang-tidy
-
-# Include What You Use (IWYU)
-cmake -S test -B build/test -DUSE_STATIC_ANALYZER=iwyu
-
-# cppcheck
-cmake -S test -B build/test -DUSE_STATIC_ANALYZER=cppcheck
+# clang-tidy over the public headers (uses the checks in .clang-tidy)
+cmake -S . -B build -DMYWHEEL_ENABLE_CLANG_TIDY=ON
+cmake --build build --target clang-tidy
 ```
 
 ## Git Conventions
