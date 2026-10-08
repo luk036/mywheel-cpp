@@ -33,6 +33,11 @@
  * enumerate() → [(0, A), (1, B), (2, C), (3, D), (4, E)]
  * @endverbatim
  *
+ * @note Adapter pattern: wraps a std::vector container behind a dict-like
+ * interface (operator[] keyed by index, begin/end iterating (index, value)
+ * pairs, enumerate()). Adapts the container's interface to the dict
+ * interface without changing the container.
+ *
  * @tparam Container
  */
 template <typename Container> class MapAdapter {

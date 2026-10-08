@@ -403,9 +403,12 @@ class BPQueue {
      * @post max key is updated if the highest bucket becomes empty
      */
     constexpr auto detach(Item& item) noexcept -> void {
+        const auto key = item.data.second;
         item.detach();
-        while (this->bucket[this->max].is_empty()) {
-            this->max -= 1;
+        if (key == this->max) {
+            while (this->bucket[this->max].is_empty()) {
+                this->max -= 1;
+            }
         }
     }
 
