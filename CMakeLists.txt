@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14...3.22)
 
 project(
   MyWheel
-  VERSION 1.1.6
+  VERSION 1.1.7
   LANGUAGES CXX
 )
 
@@ -59,7 +59,7 @@ CPMAddPackage("gh:TheLartians/PackageProject.cmake@1.8.0")
 
 CPMAddPackage(
   NAME Py2Cpp
-  GIT_TAG v1.6.4
+  GIT_TAG v1.6.6
   GITHUB_REPOSITORY luk036/py2cpp
   OPTIONS "INSTALL_ONLY YES" "PY2CPP_BUILD_TESTS OFF"
 )
