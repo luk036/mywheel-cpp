@@ -2,7 +2,7 @@ var searchData=
 [
   ['readme_2emd_0',['README.md',['../README_8md.html',1,'']]],
   ['reference_1',['reference',['../classBPQueue.html#ab43c0c2b99ad73507f384196549f4075',1,'BPQueue']]],
-  ['related_20projects_20and_20alternatives_2',['Related projects and alternatives',['../index.html#autotoc_md14',1,'']]],
+  ['related_20projects_20and_20alternatives_2',['Related projects and alternatives',['../index.html#autotoc_md11',1,'']]],
   ['repeatarray_3',['repeatarray',['../classRepeatArray.html',1,'RepeatArray&lt; T &gt;'],['../classRepeatArray.html#a42ec98f19f942ce4a4fa5a2148ee25ea',1,'RepeatArray::RepeatArray()']]],
   ['robin_4',['robin',['../structfun_1_1Robin.html',1,'fun::Robin&lt; T &gt;'],['../structfun_1_1Robin.html#a4608f5920d65065f1b7deac7efbea1fa',1,'fun::Robin::Robin()']]],
   ['robin_2ehpp_5',['robin.hpp',['../robin_8hpp.html',1,'']]],

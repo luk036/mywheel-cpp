@@ -28,7 +28,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">MyWheel<span id="projectnumber">&#160;1.1.6</span>
+   <div id="projectname">MyWheel<span id="projectnumber">&#160;1.1.7</span>
    </div>
   </td>
  </tr>
@@ -145,7 +145,8 @@ class MapAdapter&lt; Container &gt;</div><p>Dict-like data structure by std::vec
 * end()   → iterator past (4, E)
 *
 * enumerate() → [(0, A), (1, B), (2, C), (3, D), (4, E)]
-* </pre><dl class="tparams"><dt>Template Parameters</dt><dd>
+* </pre><dl class="section note"><dt>Note</dt><dd>Adapter pattern: wraps a std::vector container behind a dict-like interface (operator[] keyed by index, begin/end iterating (index, value) pairs, enumerate()). Adapts the container's interface to the dict interface without changing the container.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Container</td><td></td></tr>
   </table>
