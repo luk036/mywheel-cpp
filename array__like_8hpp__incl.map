@@ -1,9 +1,9 @@
 <map id="mywheel/array_like.hpp" name="mywheel/array_like.hpp">
-<area shape="rect" id="Node000001" title="RepeatArray and ShiftArray &#45; array&#45;like containers with special indexing semantics." alt="" coords="54,5,233,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,76,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,33,70,73,67,68,125,28"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="100,79,187,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,31,146,65,141,65,141,31"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="211,79,273,104"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="161,29,216,68,213,73,158,33"/>
+<area shape="rect" id="Node000001" title="RepeatArray and ShiftArray &#45; array&#45;like containers with special indexing semantics." alt="" coords="53,5,230,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,81,75,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,33,72,74,69,70,121,34"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="99,81,184,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="143,32,144,66,139,64,140,36"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="208,81,270,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="160,31,212,71,207,72,158,36"/>
 </map>
