@@ -31,13 +31,13 @@ ctest --test-dir build --output-on-failure
 xmake
 
 # Build and run tests
-xmake -t
+xmake test
 
-# Run tests
+# Run tests directly
 xmake run test_mywheel
 
 # Run a single test
-xmake test_mywheel -tc "Test Lict"
+xmake run test_mywheel --test-case="Test Lict"
 ```
 
 ## Code Formatting
@@ -219,15 +219,14 @@ CPMAddPackage("gh:owner/repo@version")
 
 ```bash
 # All tests via CTest
-CTEST_OUTPUT_ON_FAILURE=1 cmake --build build/test --target test
+ctest --test-dir build --output-on-failure
 
 # Direct executable
-./build/test/MyWheelTests
+./build/Release/MyWheelTests
 
 # With coverage
-cmake -S test -B build/test -DENABLE_TEST_COVERAGE=1
-cmake --build build/test
-./build/test/MyWheelTests --s=yes
+cmake -S . -B build -DMYWHEEL_ENABLE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug
+cmake --build build --target coverage   # requires gcovr
 ```
 
 ### Test Framework
